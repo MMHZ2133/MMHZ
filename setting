@@ -53,7 +53,6 @@
             position: relative;
         }
 
-        /* ===== Wood Texture Overlay ===== */
         body::before {
             content: '';
             position: fixed;
@@ -77,7 +76,6 @@
             z-index: 0;
         }
 
-        /* ===== Wood Grain Animation ===== */
         @keyframes woodGrain {
             0% { background-position: 0 0; }
             100% { background-position: 100px 0; }
@@ -108,7 +106,6 @@
 
         /* ===== CSS Variables ===== */
         :root {
-            /* Light Theme - Black & Gold with Wood */
             --bg-body: transparent;
             --bg-card: rgba(255, 248, 240, 0.92);
             --bg-card-hover: rgba(255, 248, 240, 0.96);
@@ -136,6 +133,12 @@
             --red: #8b1a1a;
             --red-bg: rgba(139, 26, 26, 0.1);
             --red-border: rgba(139, 26, 26, 0.2);
+            --purple: #7c3aed;
+            --purple-bg: rgba(124, 58, 237, 0.1);
+            --purple-border: rgba(124, 58, 237, 0.2);
+            --pink: #db2777;
+            --pink-bg: rgba(219, 39, 119, 0.1);
+            --pink-border: rgba(219, 39, 119, 0.2);
             
             --progress-bg: rgba(200, 185, 165, 0.5);
             --modal-overlay: rgba(0, 0, 0, 0.7);
@@ -145,7 +148,6 @@
             --transition: 0.2s ease;
         }
 
-        /* Dark Theme - Black & Gold with Wood */
         .dark {
             --bg-body: transparent;
             --bg-card: rgba(20, 16, 12, 0.92);
@@ -174,6 +176,12 @@
             --red: #b55a5a;
             --red-bg: rgba(181, 90, 90, 0.12);
             --red-border: rgba(181, 90, 90, 0.2);
+            --purple: #8b5cf6;
+            --purple-bg: rgba(139, 92, 246, 0.12);
+            --purple-border: rgba(139, 92, 246, 0.2);
+            --pink: #ec4899;
+            --pink-bg: rgba(236, 72, 153, 0.12);
+            --pink-border: rgba(236, 72, 153, 0.2);
             
             --progress-bg: rgba(60, 50, 40, 0.6);
             --modal-overlay: rgba(0, 0, 0, 0.85);
@@ -233,7 +241,6 @@
             box-shadow: var(--shadow-hover);
         }
 
-        /* ===== Gold Border ===== */
         .gold-border {
             position: relative;
         }
@@ -395,6 +402,27 @@
             background: var(--accent-light);
         }
 
+        .btn-copy-small {
+            padding: 4px 12px;
+            font-size: 9px;
+            border-radius: 4px;
+            background: var(--accent-light);
+            color: var(--accent);
+            border: 1px solid rgba(212, 175, 55, 0.2);
+            cursor: pointer;
+            transition: all var(--transition);
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            white-space: nowrap;
+        }
+
+        .btn-copy-small:hover {
+            background: var(--accent);
+            color: #1a1a1a;
+            transform: scale(1.05);
+        }
+
         /* ===== Input Group ===== */
         .input-group {
             display: flex;
@@ -427,6 +455,91 @@
         .input-group input::selection {
             background: var(--accent);
             color: #1a1a1a;
+        }
+
+        /* ===== Format Items ===== */
+        .format-item {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            padding: 8px 12px;
+            background: var(--bg-inner);
+            border: 1px solid var(--border-inner);
+            border-radius: var(--radius-sm);
+            transition: all var(--transition);
+        }
+
+        .format-item:hover {
+            border-color: var(--accent);
+            background: var(--bg-card);
+            transform: translateX(4px);
+        }
+
+        .format-tag {
+            font-size: 8px;
+            font-weight: 800;
+            text-transform: uppercase;
+            letter-spacing: 1.2px;
+            padding: 3px 12px;
+            border-radius: 4px;
+            white-space: nowrap;
+            flex-shrink: 0;
+            min-width: 60px;
+            text-align: center;
+        }
+
+        .format-tag-base64 {
+            background: var(--green-bg);
+            color: var(--green);
+            border: 1px solid var(--green-border);
+        }
+
+        .format-tag-clash {
+            background: var(--purple-bg);
+            color: var(--purple);
+            border: 1px solid var(--purple-border);
+        }
+
+        .format-tag-singbox {
+            background: var(--amber-bg);
+            color: var(--amber);
+            border: 1px solid var(--amber-border);
+        }
+
+        .format-tag-raw {
+            background: var(--pink-bg);
+            color: var(--pink);
+            border: 1px solid var(--pink-border);
+        }
+
+        .format-input {
+            flex: 1;
+            min-width: 0;
+            padding: 6px 10px;
+            background: var(--bg-input);
+            border: 1px solid var(--border-inner);
+            border-radius: 4px;
+            color: var(--text-primary);
+            font-size: 11px;
+            font-family: 'Inter', monospace;
+            outline: none;
+            transition: all var(--transition);
+        }
+
+        .format-input:focus {
+            border-color: var(--accent);
+            box-shadow: 0 0 0 2px var(--border-focus);
+        }
+
+        .format-input::selection {
+            background: var(--accent);
+            color: #1a1a1a;
+        }
+
+        .format-actions {
+            display: flex;
+            gap: 4px;
+            flex-shrink: 0;
         }
 
         /* ===== Tags ===== */
@@ -639,6 +752,9 @@
             .avatar svg { width: 24px; height: 24px; }
             .modal-card { padding: 20px; margin: 16px; }
             .btn-donate { padding: 10px 24px; font-size: 13px; gap: 10px; }
+            .format-item { flex-wrap: wrap; padding: 10px; }
+            .format-tag { min-width: 50px; font-size: 7px; padding: 2px 8px; }
+            .format-input { font-size: 10px; }
         }
 
         @media (max-width: 480px) {
@@ -647,6 +763,9 @@
             .btn { font-size: 10px; padding: 5px 12px; }
             .btn-donate { padding: 8px 18px; font-size: 12px; gap: 8px; }
             .btn-donate svg { width: 16px; height: 16px; }
+            .format-item { flex-wrap: wrap; gap: 6px; }
+            .format-tag { min-width: 45px; font-size: 7px; }
+            .format-actions { width: 100%; justify-content: flex-end; }
         }
 
         /* ===== Utility ===== */
@@ -823,14 +942,14 @@
 
             <div class="label label-gold mb-2" data-i18n="formats">Formats</div>
 
-            <div style="display: flex; flex-direction: column; gap: 6px;">
+            <div style="display: flex; flex-direction: column; gap: 8px;">
                 <!-- Base64 -->
-                <div class="flex" style="gap: 6px; align-items: center;">
-                    <span class="tag tag-gold">Base64</span>
-                    <div class="input-group" style="flex: 1;">
-                        <input type="text" id="link-base64" value="__SYNC_NORMAL__" readonly>
-                        <button onclick="copyLink('link-base64')" class="btn">Copy</button>
-                        <button onclick="showQR(document.getElementById('link-base64').value)" class="btn-icon">
+                <div class="format-item">
+                    <span class="format-tag format-tag-base64">Base64</span>
+                    <input type="text" class="format-input" id="link-base64" value="https://nahan1.mmhztest.workers.dev/sync?sub=ME&flag=base64" readonly>
+                    <div class="format-actions">
+                        <button onclick="copyLink('link-base64')" class="btn-copy-small">Copy</button>
+                        <button onclick="showQR(document.getElementById('link-base64').value)" class="btn-icon" style="width: 30px; height: 30px;">
                             <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
                                 <rect x="3" y="3" width="7" height="7"/>
                                 <rect x="14" y="3" width="7" height="7"/>
@@ -844,12 +963,12 @@
                 </div>
 
                 <!-- Clash -->
-                <div class="flex" style="gap: 6px; align-items: center;">
-                    <span class="tag" style="background: var(--text-primary); color: var(--bg-body); border-color: var(--text-primary);">Clash</span>
-                    <div class="input-group" style="flex: 1;">
-                        <input type="text" id="link-clash" value="__SYNC_NORMAL__" readonly>
-                        <button onclick="copyLink('link-clash')" class="btn">Copy</button>
-                        <button onclick="showQR(document.getElementById('link-clash').value)" class="btn-icon">
+                <div class="format-item">
+                    <span class="format-tag format-tag-clash">Clash</span>
+                    <input type="text" class="format-input" id="link-clash" value="https://nahan1.mmhztest.workers.dev/sync?sub=ME&flag=clash" readonly>
+                    <div class="format-actions">
+                        <button onclick="copyLink('link-clash')" class="btn-copy-small">Copy</button>
+                        <button onclick="showQR(document.getElementById('link-clash').value)" class="btn-icon" style="width: 30px; height: 30px;">
                             <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
                                 <rect x="3" y="3" width="7" height="7"/>
                                 <rect x="14" y="3" width="7" height="7"/>
@@ -863,12 +982,12 @@
                 </div>
 
                 <!-- Sing-box -->
-                <div class="flex" style="gap: 6px; align-items: center;">
-                    <span class="tag" style="background: var(--amber-bg); color: var(--amber); border-color: var(--amber-border);">Sing-box</span>
-                    <div class="input-group" style="flex: 1;">
-                        <input type="text" id="link-singbox" value="__SYNC_NORMAL__" readonly>
-                        <button onclick="copyLink('link-singbox')" class="btn">Copy</button>
-                        <button onclick="showQR(document.getElementById('link-singbox').value)" class="btn-icon">
+                <div class="format-item">
+                    <span class="format-tag format-tag-singbox">Sing-box</span>
+                    <input type="text" class="format-input" id="link-singbox" value="https://nahan1.mmhztest.workers.dev/sync?sub=ME&flag=singbox" readonly>
+                    <div class="format-actions">
+                        <button onclick="copyLink('link-singbox')" class="btn-copy-small">Copy</button>
+                        <button onclick="showQR(document.getElementById('link-singbox').value)" class="btn-icon" style="width: 30px; height: 30px;">
                             <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
                                 <rect x="3" y="3" width="7" height="7"/>
                                 <rect x="14" y="3" width="7" height="7"/>
@@ -882,12 +1001,12 @@
                 </div>
 
                 <!-- Raw -->
-                <div class="flex" style="gap: 6px; align-items: center;">
-                    <span class="tag" style="background: var(--red-bg); color: var(--red); border-color: var(--red-border);">Raw</span>
-                    <div class="input-group" style="flex: 1;">
-                        <input type="text" id="link-raw" value="__SYNC_NORMAL__" readonly>
-                        <button onclick="copyLink('link-raw')" class="btn">Copy</button>
-                        <button onclick="showQR(document.getElementById('link-raw').value)" class="btn-icon">
+                <div class="format-item">
+                    <span class="format-tag format-tag-raw">Raw</span>
+                    <input type="text" class="format-input" id="link-raw" value="https://nahan1.mmhztest.workers.dev/sync?sub=ME&flag=raw" readonly>
+                    <div class="format-actions">
+                        <button onclick="copyLink('link-raw')" class="btn-copy-small">Copy</button>
+                        <button onclick="showQR(document.getElementById('link-raw').value)" class="btn-icon" style="width: 30px; height: 30px;">
                             <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
                                 <rect x="3" y="3" width="7" height="7"/>
                                 <rect x="14" y="3" width="7" height="7"/>
@@ -1178,29 +1297,14 @@
             const year = $('footer-year');
             if (year) year.textContent = new Date().getFullYear();
 
-            const main = $('link-main');
-            if (main) {
-                const base = main.value;
-                const hasQuery = base.includes('?');
-                const q = hasQuery ? '&' : '?';
-
-                const setVal = (id, flag) => {
-                    const el = $(id);
-                    if (el) el.value = base + q + 'flag=' + flag;
-                };
-
-                setVal('link-base64', 'base64');
-                setVal('link-clash', 'clash');
-                setVal('link-singbox', 'singbox');
-                setVal('link-raw', 'raw');
-
-                const v2 = $('v2rayng-link');
-                if (v2) {
-                    const base64Url = base + q + 'flag=base64';
-                    v2.href = 'v2rayng://install-sub?url=' + encodeURIComponent(base64Url) + '&name=' + encodeURIComponent('__USER_NAME__');
-                }
+            // Set v2rayNG link
+            const v2 = $('v2rayng-link');
+            if (v2) {
+                const base64Url = 'https://nahan1.mmhztest.workers.dev/sync?sub=ME&flag=base64';
+                v2.href = 'v2rayng://install-sub?url=' + encodeURIComponent(base64Url) + '&name=' + encodeURIComponent('__USER_NAME__');
             }
 
+            // Fetch IP
             fetch('https://api.ipify.org?format=json')
                 .then(r => r.json())
                 .then(data => {
