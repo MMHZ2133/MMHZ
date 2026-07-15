@@ -20,65 +20,150 @@
         }
     </script>
     <style>
+        /* ===== Wood Background ===== */
+        body {
+            background-image: 
+                repeating-linear-gradient(
+                    90deg,
+                    rgba(139, 90, 43, 0.03) 0px,
+                    rgba(139, 90, 43, 0.03) 2px,
+                    transparent 2px,
+                    transparent 6px
+                ),
+                repeating-linear-gradient(
+                    0deg,
+                    rgba(101, 67, 33, 0.05) 0px,
+                    rgba(101, 67, 33, 0.05) 1px,
+                    transparent 1px,
+                    transparent 8px
+                ),
+                linear-gradient(
+                    135deg,
+                    #8B6914 0%,
+                    #A67B3D 15%,
+                    #8B6914 30%,
+                    #C4A35A 45%,
+                    #A67B3D 60%,
+                    #8B6914 75%,
+                    #C4A35A 90%,
+                    #A67B3D 100%
+                );
+            background-size: 100% 100%;
+            background-attachment: fixed;
+            position: relative;
+        }
+
+        /* ===== Wood Texture Overlay ===== */
+        body::before {
+            content: '';
+            position: fixed;
+            inset: 0;
+            background: 
+                repeating-linear-gradient(
+                    90deg,
+                    rgba(0, 0, 0, 0.03) 0px,
+                    rgba(0, 0, 0, 0.03) 3px,
+                    transparent 3px,
+                    transparent 7px
+                ),
+                repeating-linear-gradient(
+                    0deg,
+                    rgba(0, 0, 0, 0.02) 0px,
+                    rgba(0, 0, 0, 0.02) 1px,
+                    transparent 1px,
+                    transparent 5px
+                );
+            pointer-events: none;
+            z-index: 0;
+        }
+
+        /* ===== Wood Grain Animation ===== */
+        @keyframes woodGrain {
+            0% { background-position: 0 0; }
+            100% { background-position: 100px 0; }
+        }
+
+        .wood-texture {
+            position: fixed;
+            inset: 0;
+            background: 
+                repeating-linear-gradient(
+                    90deg,
+                    rgba(101, 67, 33, 0.06) 0px,
+                    rgba(101, 67, 33, 0.06) 1px,
+                    transparent 1px,
+                    transparent 4px
+                ),
+                repeating-linear-gradient(
+                    45deg,
+                    rgba(139, 90, 43, 0.04) 0px,
+                    rgba(139, 90, 43, 0.04) 2px,
+                    transparent 2px,
+                    transparent 6px
+                );
+            pointer-events: none;
+            z-index: 0;
+            animation: woodGrain 60s linear infinite;
+        }
+
         /* ===== CSS Variables ===== */
         :root {
-            /* Light Theme - Black & Gold */
-            --bg-body: #f8f5f0;
-            --bg-card: #ffffff;
-            --bg-card-hover: #ffffff;
-            --bg-inner: #faf8f5;
-            --bg-input: #f5f2ed;
-            --border-card: #e8e0d8;
-            --border-inner: #e8e0d8;
+            /* Light Theme - Black & Gold with Wood */
+            --bg-body: transparent;
+            --bg-card: rgba(255, 248, 240, 0.92);
+            --bg-card-hover: rgba(255, 248, 240, 0.96);
+            --bg-inner: rgba(245, 235, 220, 0.7);
+            --bg-input: rgba(245, 235, 220, 0.7);
+            --border-card: rgba(212, 175, 55, 0.2);
+            --border-inner: rgba(212, 175, 55, 0.15);
             --border-focus: rgba(212, 175, 55, 0.3);
             --text-primary: #1a1a1a;
-            --text-secondary: #4a4a4a;
-            --text-muted: #8a8a8a;
+            --text-secondary: #4a3a2a;
+            --text-muted: #8a7a6a;
             --accent: #d4af37;
-            --accent-light: rgba(212, 175, 55, 0.1);
+            --accent-light: rgba(212, 175, 55, 0.15);
             --accent-hover: #c4a030;
             --accent-gradient: linear-gradient(135deg, #d4af37, #f5d060);
-            --shadow-card: 0 1px 3px rgba(0, 0, 0, 0.06);
-            --shadow-hover: 0 4px 16px rgba(0, 0, 0, 0.08);
+            --shadow-card: 0 4px 20px rgba(0, 0, 0, 0.08);
+            --shadow-hover: 0 8px 32px rgba(0, 0, 0, 0.12);
             
-            /* Status Colors */
             --green: #2d7d46;
-            --green-bg: #f0f7f2;
-            --green-border: #d4e8d9;
+            --green-bg: rgba(45, 125, 70, 0.1);
+            --green-border: rgba(45, 125, 70, 0.2);
             --amber: #b8860b;
-            --amber-bg: #fdf8f0;
-            --amber-border: #f5ead0;
+            --amber-bg: rgba(184, 134, 11, 0.1);
+            --amber-border: rgba(184, 134, 11, 0.2);
             --red: #8b1a1a;
-            --red-bg: #fdf0f0;
-            --red-border: #f5d4d4;
+            --red-bg: rgba(139, 26, 26, 0.1);
+            --red-border: rgba(139, 26, 26, 0.2);
             
-            --progress-bg: #edebe8;
-            --modal-overlay: rgba(0, 0, 0, 0.6);
-            --modal-card: #ffffff;
+            --progress-bg: rgba(200, 185, 165, 0.5);
+            --modal-overlay: rgba(0, 0, 0, 0.7);
+            --modal-card: rgba(255, 248, 240, 0.96);
             --radius: 12px;
             --radius-sm: 8px;
             --transition: 0.2s ease;
         }
 
-        /* Dark Theme - Black & Gold */
+        /* Dark Theme - Black & Gold with Wood */
         .dark {
-            --bg-body: #0a0a0a;
-            --bg-card: #1a1a1a;
-            --bg-card-hover: #1a1a1a;
-            --bg-inner: #222222;
-            --bg-input: #0a0a0a;
-            --border-card: #333333;
-            --border-inner: #2a2a2a;
+            --bg-body: transparent;
+            --bg-card: rgba(20, 16, 12, 0.92);
+            --bg-card-hover: rgba(30, 24, 18, 0.96);
+            --bg-inner: rgba(40, 32, 24, 0.7);
+            --bg-input: rgba(40, 32, 24, 0.7);
+            --border-card: rgba(212, 175, 55, 0.15);
+            --border-inner: rgba(212, 175, 55, 0.1);
             --border-focus: rgba(212, 175, 55, 0.3);
             --text-primary: #f5f0eb;
-            --text-secondary: #b0b0b0;
-            --text-muted: #6a6a6a;
+            --text-secondary: #c0b0a0;
+            --text-muted: #8a7a6a;
             --accent: #d4af37;
             --accent-light: rgba(212, 175, 55, 0.12);
             --accent-hover: #c4a030;
             --accent-gradient: linear-gradient(135deg, #d4af37, #f5d060);
-            --shadow-card: 0 1px 3px rgba(0, 0, 0, 0.3);
-            --shadow-hover: 0 4px 16px rgba(0, 0, 0, 0.4);
+            --shadow-card: 0 4px 20px rgba(0, 0, 0, 0.3);
+            --shadow-hover: 0 8px 32px rgba(0, 0, 0, 0.4);
             
             --green: #5a9b6e;
             --green-bg: rgba(90, 155, 110, 0.12);
@@ -90,9 +175,9 @@
             --red-bg: rgba(181, 90, 90, 0.12);
             --red-border: rgba(181, 90, 90, 0.2);
             
-            --progress-bg: #2a2a2a;
+            --progress-bg: rgba(60, 50, 40, 0.6);
             --modal-overlay: rgba(0, 0, 0, 0.85);
-            --modal-card: #1a1a1a;
+            --modal-card: rgba(20, 16, 12, 0.96);
         }
 
         /* ===== Base ===== */
@@ -104,15 +189,15 @@
 
         body {
             font-family: 'Inter', 'Vazirmatn', sans-serif;
-            background: var(--bg-body);
             color: var(--text-primary);
-            transition: background var(--transition), color var(--transition);
+            transition: color var(--transition);
             min-height: 100vh;
             padding: 20px 16px;
             display: flex;
             align-items: center;
             justify-content: center;
             -webkit-font-smoothing: antialiased;
+            position: relative;
         }
 
         [lang="fa"] body {
@@ -135,6 +220,8 @@
         /* ===== Cards ===== */
         .card {
             background: var(--bg-card);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
             border: 1px solid var(--border-card);
             border-radius: var(--radius);
             padding: 20px 24px;
@@ -146,15 +233,7 @@
             box-shadow: var(--shadow-hover);
         }
 
-        .card-inner {
-            background: var(--bg-inner);
-            border: 1px solid var(--border-inner);
-            border-radius: var(--radius-sm);
-            padding: 14px 18px;
-            transition: all var(--transition);
-        }
-
-        /* ===== Gold Accent Border ===== */
+        /* ===== Gold Border ===== */
         .gold-border {
             position: relative;
         }
@@ -245,8 +324,8 @@
         }
 
         .btn:hover {
-            transform: translateY(-1px);
-            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.06);
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
         }
 
         .btn-primary {
@@ -258,20 +337,30 @@
         }
 
         .btn-primary:hover {
-            box-shadow: 0 2px 16px rgba(212, 175, 55, 0.3);
-            transform: translateY(-1px);
+            box-shadow: 0 4px 20px rgba(212, 175, 55, 0.3);
+            transform: translateY(-2px);
         }
 
-        .btn-dark {
-            background: var(--text-primary);
-            color: var(--bg-body);
+        .btn-donate {
+            background: linear-gradient(135deg, #d4af37, #f5d060, #d4af37);
+            background-size: 200% 200%;
+            color: #1a1a1a;
             border: none;
-            padding: 7px 18px;
+            padding: 10px 28px;
+            font-weight: 800;
+            font-size: 13px;
+            animation: goldShimmer 3s ease-in-out infinite;
+            box-shadow: 0 4px 20px rgba(212, 175, 55, 0.2);
         }
 
-        .btn-dark:hover {
-            opacity: 0.85;
-            transform: translateY(-1px);
+        .btn-donate:hover {
+            transform: translateY(-2px) scale(1.02);
+            box-shadow: 0 8px 32px rgba(212, 175, 55, 0.35);
+        }
+
+        @keyframes goldShimmer {
+            0%, 100% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
         }
 
         .btn-icon {
@@ -347,12 +436,6 @@
             background: var(--accent-light);
             color: var(--accent);
             border-color: rgba(212, 175, 55, 0.25);
-        }
-
-        .tag-dark {
-            background: var(--text-primary);
-            color: var(--bg-body);
-            border-color: var(--text-primary);
         }
 
         /* ===== Status Badge ===== */
@@ -438,8 +521,8 @@
             position: fixed;
             inset: 0;
             background: var(--modal-overlay);
-            backdrop-filter: blur(4px);
-            -webkit-backdrop-filter: blur(4px);
+            backdrop-filter: blur(8px);
+            -webkit-backdrop-filter: blur(8px);
             display: none;
             align-items: center;
             justify-content: center;
@@ -465,6 +548,7 @@
             transition: transform 0.3s ease;
             box-shadow: 0 20px 60px rgba(0, 0, 0, 0.2);
             position: relative;
+            backdrop-filter: blur(10px);
         }
 
         .modal-overlay.show .modal-card {
@@ -496,6 +580,7 @@
             left: 50%;
             transform: translateX(-50%) translateY(-16px);
             background: var(--bg-card);
+            backdrop-filter: blur(20px);
             border: 1px solid var(--border-card);
             border-radius: var(--radius-sm);
             padding: 10px 20px;
@@ -523,18 +608,12 @@
             flex-shrink: 0;
         }
 
-        /* ===== Gold Divider ===== */
+        /* ===== Divider ===== */
         .divider-gold {
             height: 1px;
             background: linear-gradient(90deg, transparent, var(--accent), transparent);
             margin: 14px 0;
             opacity: 0.3;
-        }
-
-        .divider {
-            height: 1px;
-            background: var(--border-inner);
-            margin: 14px 0;
         }
 
         /* ===== Responsive ===== */
@@ -548,6 +627,7 @@
             .avatar { width: 48px; height: 48px; }
             .avatar svg { width: 24px; height: 24px; }
             .modal-card { padding: 20px; margin: 16px; }
+            .btn-donate { padding: 8px 20px; font-size: 12px; }
         }
 
         @media (max-width: 480px) {
@@ -589,24 +669,12 @@
         .delay-2 { animation-delay: 0.1s; opacity: 0; }
         .delay-3 { animation-delay: 0.15s; opacity: 0; }
         .delay-4 { animation-delay: 0.2s; opacity: 0; }
-
-        /* ===== Gold Sparkle ===== */
-        .sparkle {
-            position: relative;
-        }
-
-        .sparkle::after {
-            content: '✦';
-            position: absolute;
-            top: -4px;
-            right: -6px;
-            font-size: 8px;
-            color: var(--accent);
-            opacity: 0.5;
-        }
     </style>
 </head>
 <body>
+
+    <!-- ===== Wood Texture Overlay ===== -->
+    <div class="wood-texture"></div>
 
     <!-- ===== Toast ===== -->
     <div id="toast" class="toast">
@@ -763,7 +831,7 @@
 
                 <!-- Clash -->
                 <div class="flex" style="gap: 6px; align-items: center;">
-                    <span class="tag tag-dark">Clash</span>
+                    <span class="tag" style="background: var(--text-primary); color: var(--bg-body); border-color: var(--text-primary);">Clash</span>
                     <div class="input-group" style="flex: 1;">
                         <input type="text" id="link-clash" value="__SYNC_NORMAL__" readonly>
                         <button onclick="copyLink('link-clash')" class="btn">Copy</button>
@@ -856,8 +924,33 @@
             </div>
         </div>
 
+        <!-- ===== Donate Button ===== -->
+        <div class="text-center mt-4 animate-in delay-4">
+            <a href="https://www.paypal.com/donate" target="_blank" class="btn btn-donate" style="display: inline-flex; align-items: center; gap: 12px;">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M12 2L2 7l10 5 10-5-10-5z"/>
+                    <path d="M2 17l10 5 10-5"/>
+                    <path d="M2 12l10 5 10-5"/>
+                    <path d="M12 2v5"/>
+                    <path d="M12 17v5"/>
+                    <path d="M2 7l10 5 10-5"/>
+                    <path d="M2 12l10 5 10-5"/>
+                </svg>
+                <span>❤️ Support the Project</span>
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M12 2L2 7l10 5 10-5-10-5z"/>
+                    <path d="M2 17l10 5 10-5"/>
+                    <path d="M2 12l10 5 10-5"/>
+                    <path d="M12 2v5"/>
+                    <path d="M12 17v5"/>
+                    <path d="M2 7l10 5 10-5"/>
+                    <path d="M2 12l10 5 10-5"/>
+                </svg>
+            </a>
+        </div>
+
         <!-- ===== Footer ===== -->
-        <div class="text-center mt-4">
+        <div class="text-center mt-3">
             <span class="subtitle" style="font-size: 11px; letter-spacing: 1px;">
                 <span class="title-gold">✦</span> Panel <span class="title-gold">✦</span> &bull; <span id="footer-year">2024</span>
             </span>
