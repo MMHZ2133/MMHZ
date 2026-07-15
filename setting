@@ -42,7 +42,7 @@
             display: flex;
             justify-content: space-between;
             align-items: center;
-            margin-bottom: 20px;
+            margin-bottom: 16px;
         }
 
         .logo {
@@ -75,14 +75,30 @@
         }
 
         .status-badge {
-            font-size: 11px;
+            font-size: 12px;
             font-weight: 700;
             color: #34d399;
             background: rgba(52, 211, 153, 0.12);
             border: 1px solid rgba(52, 211, 153, 0.2);
             padding: 4px 14px;
             border-radius: 20px;
-            letter-spacing: 0.3px;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+        }
+
+        .status-dot {
+            width: 6px;
+            height: 6px;
+            border-radius: 50%;
+            background: #34d399;
+            display: inline-block;
+            animation: pulse 2s infinite;
+        }
+
+        @keyframes pulse {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0.3; }
         }
 
         /* ===== USERNAME ===== */
@@ -97,7 +113,6 @@
             font-size: 11px;
             color: rgba(255, 255, 255, 0.25);
             font-weight: 500;
-            letter-spacing: 0.5px;
             direction: ltr;
             text-align: left;
         }
@@ -106,15 +121,15 @@
         .divider {
             height: 1px;
             background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.06), transparent);
-            margin: 16px 0;
+            margin: 14px 0;
         }
 
         /* ===== STATS GRID ===== */
         .stats-grid {
             display: grid;
             grid-template-columns: 1fr 1fr;
-            gap: 12px;
-            margin-bottom: 16px;
+            gap: 10px;
+            margin-bottom: 14px;
         }
 
         .stat-item {
@@ -134,8 +149,6 @@
             font-size: 10px;
             font-weight: 600;
             color: rgba(255, 255, 255, 0.3);
-            text-transform: uppercase;
-            letter-spacing: 0.5px;
             margin-bottom: 2px;
         }
 
@@ -150,17 +163,10 @@
         .stat-value.blue { color: #818cf8; }
         .stat-value.amber { color: #fbbf24; }
         .stat-value.pink { color: #f472b6; }
-        .stat-value.purple { color: #a78bfa; }
 
-        .stat-sub {
-            font-size: 11px;
-            color: rgba(255, 255, 255, 0.3);
-            font-weight: 500;
-        }
-
-        /* ===== PROGRESS BAR ===== */
+        /* ===== PROGRESS ===== */
         .progress-section {
-            margin: 12px 0 16px;
+            margin: 10px 0 14px;
         }
 
         .progress-header {
@@ -168,7 +174,7 @@
             justify-content: space-between;
             font-size: 12px;
             font-weight: 600;
-            color: rgba(255, 255, 255, 0.5);
+            color: rgba(255, 255, 255, 0.4);
             margin-bottom: 6px;
         }
 
@@ -195,7 +201,7 @@
         .info-row {
             display: flex;
             justify-content: space-between;
-            padding: 6px 0;
+            padding: 5px 0;
             font-size: 12px;
         }
 
@@ -220,11 +226,13 @@
             background: rgba(255, 255, 255, 0.02);
             border-radius: 14px;
             padding: 12px 16px;
-            margin-top: 16px;
+            margin-top: 14px;
             border: 1px solid rgba(255, 255, 255, 0.03);
             display: flex;
             justify-content: space-between;
             align-items: center;
+            flex-wrap: wrap;
+            gap: 6px;
         }
 
         .bottom-status .bot-name {
@@ -265,8 +273,6 @@
             font-size: 10px;
             font-weight: 600;
             color: rgba(255, 255, 255, 0.2);
-            text-transform: uppercase;
-            letter-spacing: 0.5px;
             margin-bottom: 4px;
         }
 
@@ -280,7 +286,7 @@
             line-height: 1.6;
         }
 
-        /* ===== GLOW EFFECTS ===== */
+        /* ===== GLOW ===== */
         .glow {
             position: fixed;
             border-radius: 50%;
@@ -311,7 +317,7 @@
             .stats-grid { gap: 8px; }
             .stat-item { padding: 10px 12px; }
             .stat-value { font-size: 14px; }
-            .bottom-status { flex-direction: column; gap: 6px; align-items: flex-start; }
+            .bottom-status { flex-direction: column; align-items: flex-start; }
         }
     </style>
 </head>
@@ -330,7 +336,9 @@
                 <div class="logo-icon">📡</div>
                 <div class="logo-text">MMHZ<span>Panel</span></div>
             </div>
-            <span class="status-badge" id="statusBadge">● فعال</span>
+            <span class="status-badge" id="statusBadge">
+                <span class="status-dot"></span> فعال
+            </span>
         </div>
 
         <!-- USER -->
@@ -342,12 +350,12 @@
         <!-- STATS -->
         <div class="stats-grid">
             <div class="stat-item">
-                <div class="stat-label">دانلود</div>
-                <div class="stat-value green" id="download">481.31MB</div>
-            </div>
-            <div class="stat-item">
                 <div class="stat-label">آپلود</div>
                 <div class="stat-value blue" id="upload">43.35MB</div>
+            </div>
+            <div class="stat-item">
+                <div class="stat-label">دانلود</div>
+                <div class="stat-value green" id="download">481.31MB</div>
             </div>
             <div class="stat-item">
                 <div class="stat-label">مصرف</div>
@@ -377,16 +385,16 @@
         </div>
         <div class="info-row">
             <span class="label">آخرین آنلاین</span>
-            <span class="value" id="lastOnline">۵/۷/۲۰۲۶، ۱۰:۳۵:۱۸ ب.ظ</span>
+            <span class="value" id="lastOnline">۶/۶/۲۰۲۴، ۱۰:۱۴:۱۸ ب.ظ</span>
         </div>
         <div class="info-row">
             <span class="label">انقضا</span>
-            <span class="value" id="expiry">۶/۶/۲۰۲۶، ۱:۱۰:۱۸ ب.ظ</span>
+            <span class="value" id="expiry">۶/۶/۲۰۲۴، ۱۰:۱۴:۱۸ ب.ظ</span>
         </div>
 
         <!-- BOTTOM STATUS -->
         <div class="bottom-status">
-            <div class="bot-name"><span>1G25</span>NeshanVpnBot</div>
+            <div class="bot-name"><span>G</span>NeshanVpnBot125</div>
             <div class="usage-info">
                 <span class="remain">-499.34MB</span>
                 <span class="expiry"> -29D,13H</span>
@@ -402,56 +410,65 @@
     </div>
 
     <script>
-        // ===== داده‌های واقعی (از سرور جایگزین میشه) =====
-        const data = {
+        // =============================================
+        // 🚀 اینجا رو با داده‌های واقعی پر کن!
+        // =============================================
+        const userData = {
             name: 'Sanaei',
             id: '152y5rt1mjwh94ny',
-            status: 'active',
+            status: 'active', // active | paused | expired | limit
             download: '481.31MB',
             upload: '43.35MB',
             usage: '524.66MB',
             totalQuota: '1.00GB',
             remained: '499.34MB',
-            percent: 52,
-            lastOnline: '۵/۷/۲۰۲۶، ۱۰:۳۵:۱۸ ب.ظ',
-            expiry: '۶/۶/۲۰۲۶، ۱:۱۰:۱۸ ب.ظ',
-            botName: '1G25NeshanVpnBot',
+            percent: 52, // عدد بین 0 تا 100
+            lastOnline: '۶/۶/۲۰۲۴، ۱۰:۱۴:۱۸ ب.ظ',
+            expiry: '۶/۶/۲۰۲۴، ۱۰:۱۴:۱۸ ب.ظ',
+            botName: 'GNeshanVpnBot125',
             remainTime: '-499.34MB',
             expiryTime: '-29D,13H',
             vless: 'vless://50a592ee-404d-424b-b758-4e98389c4090@iran2.imsurn.ir:25539?encryption=none&headerType=http&host=nobi...'
         };
 
-        // ===== نمایش داده‌ها =====
-        document.getElementById('userName').textContent = data.name;
-        document.getElementById('userId').textContent = 'شناسه: ' + data.id;
+        // =============================================
+        // نمایش داده‌ها
+        // =============================================
+        document.getElementById('userName').textContent = userData.name;
+        document.getElementById('userId').textContent = 'شناسه: ' + userData.id;
 
+        // وضعیت
         const statusMap = {
-            active: { text: '● فعال', color: '#34d399' },
-            paused: { text: '● متوقف', color: '#fbbf24' },
-            expired: { text: '● منقضی', color: '#f87171' },
-            limit: { text: '● رد شده', color: '#f87171' }
+            active: { text: 'فعال', color: '#34d399' },
+            paused: { text: 'متوقف', color: '#fbbf24' },
+            expired: { text: 'منقضی', color: '#f87171' },
+            limit: { text: 'رد شده', color: '#f87171' }
         };
-        const s = statusMap[data.status] || statusMap.active;
-        document.getElementById('statusBadge').textContent = s.text;
+        const s = statusMap[userData.status] || statusMap.active;
+        document.getElementById('statusBadge').innerHTML = `<span class="status-dot"></span> ${s.text}`;
         document.getElementById('statusBadge').style.color = s.color;
         document.getElementById('statusBadge').style.borderColor = s.color + '33';
+        document.querySelector('.status-dot').style.background = s.color;
 
-        document.getElementById('download').textContent = data.download;
-        document.getElementById('upload').textContent = data.upload;
-        document.getElementById('usage').textContent = data.usage;
-        document.getElementById('totalQuota').textContent = data.totalQuota;
-        document.getElementById('remained').textContent = data.remained;
-        document.getElementById('percentText').textContent = data.percent + '%';
-        document.getElementById('progressFill').style.width = data.percent + '%';
-        document.getElementById('lastOnline').textContent = data.lastOnline;
-        document.getElementById('expiry').textContent = data.expiry;
-        document.getElementById('vlessLink').textContent = data.vless;
+        // آمار
+        document.getElementById('download').textContent = userData.download;
+        document.getElementById('upload').textContent = userData.upload;
+        document.getElementById('usage').textContent = userData.usage;
+        document.getElementById('totalQuota').textContent = userData.totalQuota;
+        document.getElementById('remained').textContent = userData.remained;
+        document.getElementById('percentText').textContent = userData.percent + '%';
+        document.getElementById('progressFill').style.width = Math.min(100, userData.percent) + '%';
+        document.getElementById('lastOnline').textContent = userData.lastOnline;
+        document.getElementById('expiry').textContent = userData.expiry;
 
-        // ===== BOTTOM =====
-        const botEl = document.querySelector('.bot-name');
-        botEl.innerHTML = `<span>${data.botName.replace(/[0-9]/g, '')}</span>${data.botName.match(/[0-9]/g)?.join('') || ''}`;
-        document.querySelector('.usage-info').innerHTML =
-            `<span class="remain">${data.remainTime}</span> <span class="expiry">${data.expiryTime}</span>`;
+        // لینک
+        document.getElementById('vlessLink').textContent = userData.vless;
+
+        // فوتر
+        document.querySelector('.bot-name').innerHTML = 
+            `<span>${userData.botName.replace(/[0-9]/g, '')}</span>${userData.botName.match(/[0-9]/g)?.join('') || ''}`;
+        document.querySelector('.usage-info').innerHTML = 
+            `<span class="remain">${userData.remainTime}</span> <span class="expiry">${userData.expiryTime}</span>`;
     </script>
 
 </body>
