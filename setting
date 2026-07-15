@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>3x-UI - Subscription Panel</title>
+    <title>__USER_NAME__ - Subscription Panel</title>
     <link href="https://fonts.googleapis.com/css2?family=Vazirmatn:wght@400;500;600;700;800;900&family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
     <script src="https://cdn.jsdelivr.net/gh/itsyebekhe/nahan@main/tailwindcss.js"></script>
     <script>
@@ -15,92 +15,77 @@
                         fa: ['Vazirmatn', 'sans-serif'],
                         en: ['Inter', 'sans-serif'],
                     },
-                    colors: {
-                        dark: {
-                            900: '#0a0a0f',
-                            800: '#12121a',
-                            700: '#1a1a2e',
-                        },
-                        neon: {
-                            purple: '#b44dff',
-                            blue: '#4d7dff',
-                            pink: '#ff4dc4',
-                            cyan: '#4dffd4',
-                            orange: '#ff6d4d',
-                        }
-                    }
                 }
             }
         }
     </script>
     <style>
         :root {
-            --bg-primary: #0a0a0f;
-            --bg-card: rgba(18, 18, 26, 0.85);
-            --bg-card-inner: rgba(26, 26, 46, 0.6);
-            --bg-input: #0a0a0f;
-            --border-card: rgba(180, 77, 255, 0.25);
-            --border-inner: rgba(180, 77, 255, 0.12);
-            --text-primary: #f0f0ff;
-            --text-secondary: #a0a0c0;
-            --text-muted: #606080;
-            --accent: #b44dff;
-            --accent-light: rgba(180, 77, 255, 0.15);
-            --accent-border: rgba(180, 77, 255, 0.35);
-            --accent-hover: #9a3de0;
-            --green-bg: rgba(77, 255, 212, 0.1);
-            --green-border: rgba(77, 255, 212, 0.2);
-            --green-text: #4dffd4;
-            --amber-bg: rgba(255, 77, 196, 0.1);
-            --amber-border: rgba(255, 77, 196, 0.2);
-            --amber-text: #ff4dc4;
-            --red-bg: rgba(255, 77, 77, 0.1);
-            --red-border: rgba(255, 77, 77, 0.2);
-            --red-text: #ff4d4d;
-            --progress-bg: rgba(26, 26, 46, 0.8);
-            --shadow-card: 0 10px 30px rgba(180, 77, 255, 0.08), 0 4px 15px rgba(0, 0, 0, 0.4);
-            --btn-primary-bg: linear-gradient(135deg, #b44dff, #4d7dff);
-            --btn-primary-hover: linear-gradient(135deg, #9a3de0, #3d6de0);
-            --btn-secondary-bg: rgba(26, 26, 46, 0.6);
-            --btn-secondary-hover: rgba(40, 40, 70, 0.8);
-            --modal-bg: rgba(0,0,0,0.9);
-            --modal-card: #12121a;
-            --glow-color: rgba(180, 77, 255, 0.3);
-            --header-gradient: linear-gradient(135deg, rgba(180, 77, 255, 0.3), rgba(77, 125, 255, 0.3), rgba(255, 77, 196, 0.3));
+            --bg-primary: #f3f4f6;
+            --bg-card: #ffffff;
+            --bg-card-inner: #f9fafb;
+            --bg-input: #f3f4f6;
+            --border-card: #e5e7eb;
+            --border-inner: #e5e7eb;
+            --text-primary: #111827;
+            --text-secondary: #4b5563;
+            --text-muted: #9ca3af;
+            --accent: #6366f1;
+            --accent-light: #e0e7ff;
+            --accent-border: #c7d2fe;
+            --accent-hover: #4f46e5;
+            --green-bg: #d1fae5;
+            --green-border: #a7f3d0;
+            --green-text: #059669;
+            --amber-bg: #fef3c7;
+            --amber-border: #fde68a;
+            --amber-text: #d97706;
+            --red-bg: #fee2e2;
+            --red-border: #fecaca;
+            --red-text: #dc2626;
+            --progress-bg: #e5e7eb;
+            --shadow-card: 0 10px 15px -3px rgba(0, 0, 0, 0.05), 0 4px 6px -2px rgba(0, 0, 0, 0.025);
+            --btn-primary-bg: #6366f1;
+            --btn-primary-hover: #4f46e5;
+            --btn-secondary-bg: #f3f4f6;
+            --btn-secondary-hover: #e5e7eb;
+            --modal-bg: rgba(0,0,0,0.5);
+            --modal-card: #ffffff;
+            --header-gradient: linear-gradient(135deg, rgba(99, 102, 241, 0.08), rgba(79, 70, 229, 0.08));
         }
 
         .dark {
-            --bg-primary: #0a0a0f;
-            --bg-card: rgba(18, 18, 26, 0.85);
-            --bg-card-inner: rgba(26, 26, 46, 0.6);
-            --bg-input: #0a0a0f;
-            --border-card: rgba(180, 77, 255, 0.25);
-            --border-inner: rgba(180, 77, 255, 0.12);
-            --text-primary: #f0f0ff;
-            --text-secondary: #a0a0c0;
-            --text-muted: #606080;
-            --accent: #b44dff;
-            --accent-light: rgba(180, 77, 255, 0.15);
-            --accent-border: rgba(180, 77, 255, 0.35);
-            --accent-hover: #9a3de0;
-            --green-bg: rgba(77, 255, 212, 0.1);
-            --green-border: rgba(77, 255, 212, 0.2);
-            --green-text: #4dffd4;
-            --amber-bg: rgba(255, 77, 196, 0.1);
-            --amber-border: rgba(255, 77, 196, 0.2);
-            --amber-text: #ff4dc4;
-            --red-bg: rgba(255, 77, 77, 0.1);
-            --red-border: rgba(255, 77, 77, 0.2);
-            --red-text: #ff4d4d;
-            --progress-bg: rgba(26, 26, 46, 0.8);
-            --shadow-card: 0 10px 30px rgba(180, 77, 255, 0.08), 0 4px 15px rgba(0, 0, 0, 0.4);
-            --btn-primary-bg: linear-gradient(135deg, #b44dff, #4d7dff);
-            --btn-primary-hover: linear-gradient(135deg, #9a3de0, #3d6de0);
-            --btn-secondary-bg: rgba(26, 26, 46, 0.6);
-            --btn-secondary-hover: rgba(40, 40, 70, 0.8);
-            --modal-bg: rgba(0,0,0,0.9);
-            --modal-card: #12121a;
-            --glow-color: rgba(180, 77, 255, 0.3);
+            --bg-primary: #0b0f19;
+            --bg-card: rgba(17, 24, 39, 0.9);
+            --bg-card-inner: rgba(31, 41, 55, 0.5);
+            --bg-input: #111827;
+            --border-card: rgba(99, 102, 241, 0.15);
+            --border-inner: rgba(99, 102, 241, 0.1);
+            --text-primary: #f9fafb;
+            --text-secondary: #9ca3af;
+            --text-muted: #6b7280;
+            --accent: #818cf8;
+            --accent-light: rgba(99, 102, 241, 0.15);
+            --accent-border: rgba(99, 102, 241, 0.3);
+            --accent-hover: #6366f1;
+            --green-bg: rgba(16, 185, 129, 0.1);
+            --green-border: rgba(16, 185, 129, 0.2);
+            --green-text: #34d399;
+            --amber-bg: rgba(245, 158, 11, 0.1);
+            --amber-border: rgba(245, 158, 11, 0.2);
+            --amber-text: #fbbf24;
+            --red-bg: rgba(239, 68, 68, 0.1);
+            --red-border: rgba(239, 68, 68, 0.2);
+            --red-text: #f87171;
+            --progress-bg: rgba(31, 41, 55, 0.8);
+            --shadow-card: 0 10px 15px -3px rgba(0, 0, 0, 0.2), 0 4px 6px -2px rgba(0, 0, 0, 0.1);
+            --btn-primary-bg: #6366f1;
+            --btn-primary-hover: #4f46e5;
+            --btn-secondary-bg: rgba(31, 41, 55, 0.6);
+            --btn-secondary-hover: rgba(55, 65, 81, 0.8);
+            --modal-bg: rgba(0,0,0,0.8);
+            --modal-card: #1f2937;
+            --header-gradient: linear-gradient(135deg, rgba(99, 102, 241, 0.15), rgba(79, 70, 229, 0.15));
         }
 
         body {
@@ -117,27 +102,14 @@
             border: 1px solid var(--border-card) !important;
             box-shadow: var(--shadow-card) !important;
             border-radius: 1.5rem;
-            backdrop-filter: blur(15px);
+            backdrop-filter: blur(10px);
             transition: all 0.3s;
             position: relative;
             overflow: hidden;
         }
-        
-        .bento-card::before {
-            content: '';
-            position: absolute;
-            top: -50%;
-            left: -50%;
-            width: 200%;
-            height: 200%;
-            background: radial-gradient(circle at 30% 20%, var(--glow-color) 0%, transparent 70%);
-            opacity: 0.3;
-            pointer-events: none;
-        }
 
         .bento-card:hover {
             border-color: var(--accent-border);
-            box-shadow: 0 10px 40px rgba(180, 77, 255, 0.15), 0 4px 20px rgba(0, 0, 0, 0.4);
             transform: translateY(-2px);
         }
         
@@ -146,7 +118,6 @@
             border: 1px solid var(--border-inner);
             border-radius: 1rem;
             transition: all 0.3s;
-            backdrop-filter: blur(10px);
         }
 
         .input-field {
@@ -154,13 +125,12 @@
             border: 1px solid var(--border-inner);
             color: var(--text-primary);
             font-size: 12px;
-            letter-spacing: 0.5px;
             font-family: 'Inter', monospace;
         }
 
         .input-field:focus {
             border-color: var(--accent);
-            box-shadow: 0 0 20px rgba(180, 77, 255, 0.15);
+            box-shadow: 0 0 0 3px var(--accent-light);
         }
 
         ::-webkit-scrollbar { width: 6px; }
@@ -170,50 +140,29 @@
         .btn-primary {
             background: var(--btn-primary-bg);
             color: white;
-            transition: all 0.3s ease;
-            position: relative;
-            overflow: hidden;
-            text-transform: uppercase;
-            letter-spacing: 1px;
+            transition: all 0.2s ease;
             font-weight: 700;
             font-size: 11px;
-        }
-        .btn-primary::after {
-            content: '';
-            position: absolute;
-            top: -50%;
-            left: -50%;
-            width: 200%;
-            height: 200%;
-            background: radial-gradient(circle at 30% 30%, rgba(255,255,255,0.1), transparent 70%);
-            opacity: 0;
-            transition: opacity 0.3s;
-        }
-        .btn-primary:hover::after {
-            opacity: 1;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
         }
         .btn-primary:hover { 
             background: var(--btn-primary-hover);
-            transform: translateY(-2px);
-            box-shadow: 0 8px 25px rgba(180, 77, 255, 0.3);
+            transform: translateY(-1px);
+            box-shadow: 0 4px 12px rgba(99, 102, 241, 0.3);
         }
         
         .btn-secondary {
             background: var(--btn-secondary-bg);
             color: var(--text-primary);
             border: 1px solid var(--border-inner);
-            transition: all 0.3s ease;
-            backdrop-filter: blur(10px);
+            transition: all 0.2s ease;
             font-size: 11px;
-            font-weight: 700;
-            text-transform: uppercase;
-            letter-spacing: 0.5px;
+            font-weight: 600;
         }
         .btn-secondary:hover { 
             background: var(--btn-secondary-hover);
-            transform: translateY(-2px);
-            border-color: var(--accent);
-            box-shadow: 0 8px 25px rgba(180, 77, 255, 0.1);
+            transform: translateY(-1px);
         }
         
         .text-secondary { color: var(--text-secondary); }
@@ -224,104 +173,31 @@
             from { opacity: 0; transform: translateY(20px); } 
             to { opacity: 1; transform: translateY(0); } 
         }
-        @keyframes pulseGlow {
-            0%, 100% { opacity: 0.3; }
-            50% { opacity: 0.6; }
-        }
         .fade-in { animation: fadeIn 0.6s ease-out; }
         
         .modal-overlay { 
             background: var(--modal-bg); 
-            backdrop-filter: blur(15px);
+            backdrop-filter: blur(8px);
         }
         .modal-card { 
             background: var(--modal-card); 
             border: 1px solid var(--border-card);
-            box-shadow: 0 20px 60px rgba(180, 77, 255, 0.15);
         }
         
         .app-btn {
             background: var(--bg-card-inner);
             border: 1px solid var(--border-inner);
             color: var(--text-primary);
-            transition: all 0.3s ease;
+            transition: all 0.2s ease;
             font-size: 10px;
-            letter-spacing: 0.5px;
-            text-transform: uppercase;
             font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
         }
         .app-btn:hover { 
             border-color: var(--accent); 
             color: var(--accent); 
-            transform: translateY(-3px);
-            box-shadow: 0 8px 25px rgba(180, 77, 255, 0.15);
-        }
-        
-        .glow-effect {
-            position: absolute;
-            width: 300px;
-            height: 300px;
-            background: var(--accent);
-            filter: blur(120px);
-            opacity: 0.12;
-            border-radius: 50%;
-            pointer-events: none;
-            z-index: 0;
-            animation: pulseGlow 4s ease-in-out infinite;
-        }
-
-        .glow-effect-green {
-            background: #4dffd4;
-        }
-
-        .glow-effect-pink {
-            background: #ff4dc4;
-        }
-
-        .status-badge {
-            letter-spacing: 2px;
-            text-transform: uppercase;
-            font-size: 10px;
-            padding: 6px 16px;
-            border-radius: 12px;
-            border: 1px solid;
-            backdrop-filter: blur(10px);
-            font-weight: 700;
-        }
-
-        .progress-gaming {
-            height: 6px;
-            border-radius: 4px;
-            background: var(--progress-bg);
-            position: relative;
-            overflow: hidden;
-        }
-
-        .progress-gaming .progress-fill {
-            height: 100%;
-            border-radius: 4px;
-            background: linear-gradient(90deg, #b44dff, #4d7dff, #ff4dc4);
-            background-size: 200% 100%;
-            animation: shimmer 3s ease-in-out infinite;
-            position: relative;
-            transition: width 1s ease;
-        }
-
-        .progress-gaming .progress-fill::after {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent);
-            background-size: 200% 100%;
-            animation: shimmer 2s ease-in-out infinite;
-        }
-
-        @keyframes shimmer {
-            0% { background-position: 200% 0; }
-            100% { background-position: -200% 0; }
+            transform: translateY(-2px);
         }
 
         .header-glow {
@@ -331,8 +207,17 @@
             left: 0;
             right: 0;
             height: 100%;
-            opacity: 0.3;
             pointer-events: none;
+        }
+
+        .status-badge {
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            font-size: 10px;
+            padding: 6px 16px;
+            border-radius: 12px;
+            border: 1px solid;
+            font-weight: 700;
         }
 
         .subscription-input-group {
@@ -348,7 +233,7 @@
 
         .subscription-input-group:focus-within {
             border-color: var(--accent);
-            box-shadow: 0 0 30px rgba(180, 77, 255, 0.1);
+            box-shadow: 0 0 0 3px var(--accent-light);
         }
 
         .subscription-input-group input {
@@ -361,11 +246,6 @@
             font-family: 'Inter', monospace;
             outline: none;
             min-width: 0;
-        }
-
-        .subscription-input-group input::selection {
-            background: var(--accent);
-            color: white;
         }
 
         .format-tag {
@@ -398,7 +278,7 @@
 
         .copy-btn-mini:hover {
             transform: scale(1.05);
-            box-shadow: 0 4px 15px rgba(180, 77, 255, 0.3);
+            box-shadow: 0 4px 12px rgba(99, 102, 241, 0.3);
         }
 
         .copy-btn-mini-outline {
@@ -419,7 +299,6 @@
         .copy-btn-mini-outline:hover {
             border-color: var(--accent);
             color: var(--accent);
-            transform: scale(1.05);
         }
 
         .qr-btn-mini {
@@ -438,14 +317,13 @@
         .qr-btn-mini:hover {
             border-color: var(--accent);
             color: var(--accent);
-            transform: scale(1.05);
         }
 
         .metric-value {
             font-size: 28px;
             font-weight: 900;
             color: var(--text-primary);
-            letter-spacing: 1px;
+            letter-spacing: 0.5px;
         }
 
         .metric-label {
@@ -454,11 +332,6 @@
             letter-spacing: 1px;
             color: var(--text-secondary);
             font-weight: 700;
-        }
-
-        .divider-light {
-            border-color: var(--border-inner);
-            opacity: 0.5;
         }
 
         .panel-title {
@@ -473,38 +346,65 @@
             font-size: 12px;
             color: var(--text-muted);
         }
+
+        .progress-gaming {
+            height: 6px;
+            border-radius: 4px;
+            background: var(--progress-bg);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .progress-gaming .progress-fill {
+            height: 100%;
+            border-radius: 4px;
+            background: var(--accent);
+            transition: width 1s ease;
+        }
+
+        .glow-effect {
+            position: absolute;
+            width: 300px;
+            height: 300px;
+            background: var(--accent);
+            filter: blur(120px);
+            opacity: 0.05;
+            border-radius: 50%;
+            pointer-events: none;
+            z-index: 0;
+        }
     </style>
 </head>
 <body class="min-h-screen py-6 px-4 sm:px-6 lg:px-8 flex flex-col items-center justify-start fade-in relative overflow-x-hidden">
+    
     <!-- Ambient Background Glows -->
     <div class="glow-effect top-0 left-10"></div>
-    <div class="glow-effect bottom-20 right-10 glow-effect-green"></div>
-    <div class="glow-effect top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 glow-effect-pink" style="width: 500px; height: 500px; opacity: 0.06;"></div>
+    <div class="glow-effect bottom-20 right-10" style="background: #34d399;"></div>
 
     <!-- Main Container -->
     <div class="w-full max-w-4xl z-10 relative">
         
-        <!-- Header - 3x-UI Style -->
+        <!-- Header -->
         <div class="bento-card p-6 mb-6 relative overflow-hidden">
             <div class="header-glow"></div>
             <div class="relative z-10 flex flex-col sm:flex-row items-center justify-between gap-4">
                 <div class="flex items-center gap-4">
-                    <div class="w-12 h-12 rounded-xl flex items-center justify-center" style="background: linear-gradient(135deg, #b44dff, #4d7dff);">
+                    <div class="w-12 h-12 rounded-xl flex items-center justify-center" style="background: var(--accent);">
                         <svg class="w-7 h-7 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"/>
                         </svg>
                     </div>
                     <div>
-                        <h1 class="text-xl font-black tracking-tight" style="color: var(--text-primary);">3x-UI</h1>
-                        <p class="text-xs text-muted">Subscription Panel</p>
+                        <h1 class="text-xl font-black tracking-tight" style="color: var(--text-primary);">Subscription Panel</h1>
+                        <p class="text-xs text-muted">Manage your subscription</p>
                     </div>
                 </div>
                 <div class="flex items-center gap-3">
-                    <button onclick="toggleTheme()" id="theme-toggle" class="btn-secondary px-3 py-1.5 rounded-lg text-xs font-bold transition-all flex items-center gap-1.5">
-                        <span id="theme-icon">☀️</span>
-                        <span id="theme-label">Light</span>
+                    <button onclick="toggleTheme()" id="theme-toggle" class="btn-secondary px-3 py-1.5 rounded-lg text-xs transition-all flex items-center gap-1.5">
+                        <span id="theme-icon">🌙</span>
+                        <span id="theme-label">Dark</span>
                     </button>
-                    <button onclick="toggleLang()" id="lang-toggle" class="btn-secondary px-3 py-1.5 rounded-lg text-xs font-bold transition-all flex items-center gap-1.5">
+                    <button onclick="toggleLang()" id="lang-toggle" class="btn-secondary px-3 py-1.5 rounded-lg text-xs transition-all flex items-center gap-1.5">
                         <span id="lang-icon">🇺🇸</span>
                         <span id="lang-label">EN</span>
                     </button>
@@ -516,7 +416,7 @@
         <div class="bento-card p-6 mb-6">
             <div class="flex flex-col sm:flex-row items-center sm:items-start gap-6">
                 <div class="flex-shrink-0">
-                    <div class="w-20 h-20 rounded-2xl flex items-center justify-center shadow-lg" style="background: linear-gradient(135deg, #1a1a2e, #2a2a4e); border: 2px solid var(--accent-border); box-shadow: 0 0 30px rgba(180, 77, 255, 0.15);">
+                    <div class="w-20 h-20 rounded-2xl flex items-center justify-center shadow-lg" style="background: var(--bg-card-inner); border: 2px solid var(--accent-border);">
                         <svg class="w-10 h-10" fill="none" stroke="var(--accent)" viewBox="0 0 24 24">
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z"/>
                         </svg>
@@ -539,7 +439,7 @@
             </div>
         </div>
 
-        <!-- Usage Stats - 3x-UI Style -->
+        <!-- Usage Stats -->
         <div class="grid grid-cols-1 sm:grid-cols-2 gap-6 mb-6">
             <div class="bento-card p-6">
                 <div class="flex justify-between items-start mb-2">
@@ -559,14 +459,14 @@
             </div>
         </div>
 
-        <!-- Subscription Links - Main Section -->
+        <!-- Subscription Links -->
         <div class="bento-card p-6 mb-6">
             <div class="flex items-center justify-between mb-4">
                 <div>
                     <h3 class="panel-title" data-i18n="subscriptionUrl">Subscription URL</h3>
                     <p class="panel-subtitle" data-i18n="subscriptionDesc">Use this link to import your configuration</p>
                 </div>
-                <span class="format-tag">v3.0</span>
+                <span class="format-tag">v2.0</span>
             </div>
 
             <!-- Main Subscription Input -->
@@ -585,7 +485,7 @@
                 </button>
             </div>
 
-            <!-- Format Options - 3x-UI Style -->
+            <!-- Format Options -->
             <div class="space-y-3">
                 <div class="flex items-center gap-2 mb-3">
                     <span class="text-xs font-bold uppercase tracking-wider text-secondary" data-i18n="formats">Formats</span>
@@ -594,9 +494,9 @@
 
                 <!-- Base64 -->
                 <div class="flex items-center gap-2">
-                    <span class="format-tag" style="background: rgba(77, 255, 212, 0.15); color: #4dffd4; border-color: rgba(77, 255, 212, 0.2);">Base64</span>
+                    <span class="format-tag" style="background: rgba(16, 185, 129, 0.1); color: #10b981; border-color: rgba(16, 185, 129, 0.2);">Base64</span>
                     <div class="flex-1 subscription-input-group">
-                        <input type="text" id="link-base64-fmt" value="__SYNC_NORMAL__?flag=base64" readonly>
+                        <input type="text" id="link-base64-fmt" value="__SYNC_NORMAL__" readonly>
                         <button onclick="copyLink('link-base64-fmt')" class="copy-btn-mini-outline">Copy</button>
                         <button onclick="showQRModal(document.getElementById('link-base64-fmt').value)" class="qr-btn-mini">
                             <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -608,9 +508,9 @@
 
                 <!-- Clash -->
                 <div class="flex items-center gap-2">
-                    <span class="format-tag" style="background: rgba(77, 125, 255, 0.15); color: #4d7dff; border-color: rgba(77, 125, 255, 0.2);">Clash</span>
+                    <span class="format-tag" style="background: rgba(139, 92, 246, 0.1); color: #8b5cf6; border-color: rgba(139, 92, 246, 0.2);">Clash</span>
                     <div class="flex-1 subscription-input-group">
-                        <input type="text" id="link-clash-fmt" value="__SYNC_NORMAL__?flag=clash" readonly>
+                        <input type="text" id="link-clash-fmt" value="__SYNC_NORMAL__" readonly>
                         <button onclick="copyLink('link-clash-fmt')" class="copy-btn-mini-outline">Copy</button>
                         <button onclick="showQRModal(document.getElementById('link-clash-fmt').value)" class="qr-btn-mini">
                             <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -622,9 +522,9 @@
 
                 <!-- Sing-box -->
                 <div class="flex items-center gap-2">
-                    <span class="format-tag" style="background: rgba(255, 77, 196, 0.15); color: #ff4dc4; border-color: rgba(255, 77, 196, 0.2);">Sing-box</span>
+                    <span class="format-tag" style="background: rgba(245, 158, 11, 0.1); color: #f59e0b; border-color: rgba(245, 158, 11, 0.2);">Sing-box</span>
                     <div class="flex-1 subscription-input-group">
-                        <input type="text" id="link-singbox-fmt" value="__SYNC_NORMAL__?flag=singbox" readonly>
+                        <input type="text" id="link-singbox-fmt" value="__SYNC_NORMAL__" readonly>
                         <button onclick="copyLink('link-singbox-fmt')" class="copy-btn-mini-outline">Copy</button>
                         <button onclick="showQRModal(document.getElementById('link-singbox-fmt').value)" class="qr-btn-mini">
                             <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -636,9 +536,9 @@
 
                 <!-- Raw -->
                 <div class="flex items-center gap-2">
-                    <span class="format-tag" style="background: rgba(180, 77, 255, 0.15); color: #b44dff; border-color: rgba(180, 77, 255, 0.2);">Raw</span>
+                    <span class="format-tag" style="background: rgba(236, 72, 153, 0.1); color: #ec4899; border-color: rgba(236, 72, 153, 0.2);">Raw</span>
                     <div class="flex-1 subscription-input-group">
-                        <input type="text" id="link-raw-fmt" value="__SYNC_NORMAL__?flag=raw" readonly>
+                        <input type="text" id="link-raw-fmt" value="__SYNC_NORMAL__" readonly>
                         <button onclick="copyLink('link-raw-fmt')" class="copy-btn-mini-outline">Copy</button>
                         <button onclick="showQRModal(document.getElementById('link-raw-fmt').value)" class="qr-btn-mini">
                             <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -650,7 +550,7 @@
             </div>
         </div>
 
-        <!-- One-Click Import - 3x-UI Style -->
+        <!-- One-Click Import -->
         <div class="bento-card p-6 mb-6">
             <div class="flex items-center justify-between mb-4">
                 <div>
@@ -688,14 +588,14 @@
 
         <!-- Footer -->
         <div class="text-center text-xs text-muted">
-            <p>3x-UI Subscription Panel • <span id="footer-year">2024</span></p>
+            <p>Subscription Panel • <span id="footer-year">2024</span></p>
         </div>
     </div>
 
     <!-- QR Modal -->
     <div id="qr-modal" class="fixed inset-0 modal-overlay z-50 hidden items-center justify-center p-4 transition-opacity duration-300 opacity-0">
         <div class="modal-card max-w-sm w-full rounded-3xl p-6 md:p-8 transform scale-95 transition-transform duration-300 shadow-2xl relative">
-            <button onclick="closeQRModal()" class="absolute top-4 right-4 p-2 rounded-full hover:bg-white/5 transition-colors">
+            <button onclick="closeQRModal()" class="absolute top-4 right-4 p-2 rounded-full hover:bg-black/5 dark:hover:bg-white/5 transition-colors">
                 <svg class="w-6 h-6 text-muted" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/>
                 </svg>
@@ -731,8 +631,6 @@
                 close: 'Close',
                 qrTitle: 'Scan QR Code',
                 copied: 'Copied to clipboard!',
-                decodedCopied: 'Decoded links copied!',
-                decodedError: 'Error fetching content',
                 active: 'Active',
                 paused: 'Paused',
                 expired: 'Expired',
@@ -751,8 +649,6 @@
                 close: 'بستن',
                 qrTitle: 'اسکن کد QR',
                 copied: 'کپی شد!',
-                decodedCopied: 'لینک‌ها کپی شد!',
-                decodedError: 'خطا در دریافت',
                 active: 'فعال',
                 paused: 'متوقف',
                 expired: 'منقضی',
@@ -767,13 +663,15 @@
         function applyTheme() {
             const root = document.documentElement;
             const themeLabel = document.getElementById('theme-label');
+            const themeIcon = document.getElementById('theme-icon');
+            
             if (isDark) {
                 root.classList.add('dark');
-                document.getElementById('theme-icon').textContent = '☀️';
+                themeIcon.textContent = '☀️';
                 if (themeLabel) themeLabel.textContent = currentLang === 'fa' ? 'روشن' : 'Light';
             } else {
                 root.classList.remove('dark');
-                document.getElementById('theme-icon').textContent = '🌙';
+                themeIcon.textContent = '🌙';
                 if (themeLabel) themeLabel.textContent = currentLang === 'fa' ? 'تاریک' : 'Dark';
             }
             try { localStorage.setItem('sub-theme', isDark ? 'dark' : 'light'); } catch(e) {}
@@ -907,7 +805,7 @@
             
             const normalLink = '__SYNC_NORMAL__';
             
-            // Update format links
+            // Update format links with flags
             document.getElementById('link-base64-fmt').value = normalLink + (normalLink.includes('?') ? '&flag=base64' : '?flag=base64');
             document.getElementById('link-clash-fmt').value = normalLink + (normalLink.includes('?') ? '&flag=clash' : '?flag=clash');
             document.getElementById('link-singbox-fmt').value = normalLink + (normalLink.includes('?') ? '&flag=singbox' : '?flag=singbox');
