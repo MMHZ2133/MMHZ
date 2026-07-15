@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>__USER_NAME__ - Connect Panel</title>
-    <link href="https://fonts.googleapis.com/css2?family=Vazirmatn:wght@400;500;600;700;800;900&family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Vazirmatn:wght@400;500;600;700;800;900&family=Inter:wght@400;500;600;700;800;900&family=Orbitron:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
     <script src="https://cdn.jsdelivr.net/gh/itsyebekhe/nahan@main/tailwindcss.js"></script>
     <script>
         tailwind.config = {
@@ -14,6 +14,7 @@
                     fontFamily: {
                         fa: ['Vazirmatn', 'sans-serif'],
                         en: ['Inter', 'sans-serif'],
+                        gaming: ['Orbitron', 'sans-serif'],
                     },
                 }
             }
@@ -41,6 +42,16 @@
             --shadow-card: 0 8px 32px rgba(0, 0, 0, 0.06);
             --shadow-hover: 0 12px 48px rgba(99, 102, 241, 0.12);
             --shadow-glow: 0 0 40px rgba(99, 102, 241, 0.15);
+            
+            /* Gaming Colors - Light */
+            --neon-purple: #a855f7;
+            --neon-blue: #3b82f6;
+            --neon-pink: #ec4899;
+            --neon-cyan: #06b6d4;
+            --neon-green: #10b981;
+            --neon-orange: #f59e0b;
+            --neon-red: #ef4444;
+            
             --green: #10b981;
             --green-bg: rgba(16, 185, 129, 0.1);
             --green-border: rgba(16, 185, 129, 0.2);
@@ -58,26 +69,36 @@
             --transition: 0.3s cubic-bezier(0.4, 0, 0.2, 1);
         }
 
-        /* Dark Theme */
+        /* Dark Theme - Gaming */
         .dark {
-            --bg-body: #0c0c1a;
-            --bg-card: rgba(20, 20, 40, 0.85);
-            --bg-card-hover: rgba(30, 30, 60, 0.95);
+            --bg-body: #0a0a12;
+            --bg-card: rgba(16, 16, 36, 0.88);
+            --bg-card-hover: rgba(26, 26, 56, 0.95);
             --bg-inner: rgba(30, 30, 60, 0.5);
             --bg-input: rgba(10, 10, 26, 0.8);
-            --border-card: rgba(99, 102, 241, 0.12);
-            --border-inner: rgba(99, 102, 241, 0.08);
-            --border-focus: rgba(99, 102, 241, 0.5);
+            --border-card: rgba(168, 85, 247, 0.15);
+            --border-inner: rgba(168, 85, 247, 0.08);
+            --border-focus: rgba(168, 85, 247, 0.4);
             --text-primary: #eeefff;
             --text-secondary: #9999bb;
             --text-muted: #666688;
-            --accent: #818cf8;
-            --accent-light: rgba(99, 102, 241, 0.15);
-            --accent-hover: #6366f1;
-            --accent-gradient: linear-gradient(135deg, #818cf8, #a78bfa);
-            --shadow-card: 0 8px 32px rgba(0, 0, 0, 0.4);
-            --shadow-hover: 0 12px 48px rgba(99, 102, 241, 0.2);
-            --shadow-glow: 0 0 60px rgba(99, 102, 241, 0.08);
+            --accent: #a855f7;
+            --accent-light: rgba(168, 85, 247, 0.15);
+            --accent-hover: #9333ea;
+            --accent-gradient: linear-gradient(135deg, #a855f7, #ec4899);
+            --shadow-card: 0 8px 32px rgba(0, 0, 0, 0.5);
+            --shadow-hover: 0 12px 48px rgba(168, 85, 247, 0.15);
+            --shadow-glow: 0 0 60px rgba(168, 85, 247, 0.08);
+            
+            /* Gaming Colors - Dark */
+            --neon-purple: #a855f7;
+            --neon-blue: #60a5fa;
+            --neon-pink: #f472b6;
+            --neon-cyan: #22d3ee;
+            --neon-green: #34d399;
+            --neon-orange: #fbbf24;
+            --neon-red: #f87171;
+            
             --green: #34d399;
             --green-bg: rgba(52, 211, 153, 0.1);
             --green-border: rgba(52, 211, 153, 0.2);
@@ -88,7 +109,7 @@
             --red-bg: rgba(248, 113, 113, 0.1);
             --red-border: rgba(248, 113, 113, 0.2);
             --progress-bg: rgba(30, 30, 60, 0.8);
-            --modal-overlay: rgba(0, 0, 0, 0.8);
+            --modal-overlay: rgba(0, 0, 0, 0.85);
             --modal-card: #1a1a3a;
         }
 
@@ -144,6 +165,7 @@
         .card:hover {
             box-shadow: var(--shadow-hover);
             background: var(--bg-card-hover);
+            border-color: var(--accent-border);
         }
 
         .card-inner {
@@ -154,47 +176,60 @@
             transition: all var(--transition);
         }
 
-        .card-glass {
-            background: var(--bg-card);
-            backdrop-filter: blur(20px);
-            -webkit-backdrop-filter: blur(20px);
-            border: 1px solid var(--border-card);
-            border-radius: var(--radius);
-            padding: 24px;
-            box-shadow: var(--shadow-card);
-            transition: all var(--transition);
-        }
-
         /* ===== Glow Effects ===== */
         .glow {
             position: fixed;
             border-radius: 50%;
-            filter: blur(100px);
+            filter: blur(120px);
             pointer-events: none;
             z-index: 0;
             opacity: 0.4;
+            animation: pulseGlow 4s ease-in-out infinite;
         }
 
         .glow-1 {
-            width: 400px;
-            height: 400px;
-            top: -100px;
-            right: -100px;
-            background: #818cf8;
+            width: 450px;
+            height: 450px;
+            top: -120px;
+            right: -120px;
+            background: #a855f7;
             opacity: 0.12;
+            animation-delay: 0s;
         }
 
         .glow-2 {
+            width: 350px;
+            height: 350px;
+            bottom: -80px;
+            left: -80px;
+            background: #ec4899;
+            opacity: 0.08;
+            animation-delay: 2s;
+        }
+
+        .glow-3 {
             width: 300px;
             height: 300px;
-            bottom: -50px;
-            left: -50px;
-            background: #34d399;
-            opacity: 0.08;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background: #3b82f6;
+            opacity: 0.05;
+            animation-delay: 4s;
         }
 
         .dark .glow-1 { opacity: 0.08; }
         .dark .glow-2 { opacity: 0.06; }
+        .dark .glow-3 { opacity: 0.04; }
+
+        @keyframes pulseGlow {
+            0%, 100% { transform: scale(1); opacity: var(--opacity, 0.12); }
+            50% { transform: scale(1.2); opacity: var(--opacity-hover, 0.18); }
+        }
+
+        .dark .glow-1 { --opacity: 0.08; --opacity-hover: 0.14; }
+        .dark .glow-2 { --opacity: 0.06; --opacity-hover: 0.10; }
+        .dark .glow-3 { --opacity: 0.04; --opacity-hover: 0.08; }
 
         /* ===== Typography ===== */
         .title {
@@ -202,6 +237,15 @@
             font-weight: 900;
             letter-spacing: -0.5px;
             color: var(--text-primary);
+        }
+
+        .title-gaming {
+            font-family: 'Orbitron', sans-serif;
+            letter-spacing: 1px;
+            background: var(--accent-gradient);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
         }
 
         .subtitle {
@@ -218,11 +262,26 @@
             color: var(--text-muted);
         }
 
+        .label-gaming {
+            font-family: 'Orbitron', sans-serif;
+            letter-spacing: 1.5px;
+            color: var(--accent);
+        }
+
         .value {
             font-size: 28px;
             font-weight: 900;
             letter-spacing: -0.5px;
             color: var(--text-primary);
+        }
+
+        .value-gaming {
+            font-family: 'Orbitron', sans-serif;
+            letter-spacing: 0.5px;
+            background: var(--accent-gradient);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
         }
 
         .value-sm {
@@ -263,10 +322,28 @@
             color: #fff;
             border: none;
             padding: 8px 20px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .btn-primary::after {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(circle at 30% 30%, rgba(255,255,255,0.15), transparent 60%);
+            opacity: 0;
+            transition: opacity 0.4s;
+        }
+
+        .btn-primary:hover::after {
+            opacity: 1;
         }
 
         .btn-primary:hover {
-            box-shadow: 0 4px 24px rgba(99, 102, 241, 0.35);
+            box-shadow: 0 4px 24px rgba(168, 85, 247, 0.4);
             transform: translateY(-2px);
         }
 
@@ -289,7 +366,39 @@
             border-color: var(--accent);
             color: var(--accent);
             background: var(--accent-light);
-            transform: translateY(-2px);
+            transform: translateY(-2px) scale(1.05);
+            box-shadow: 0 0 20px rgba(168, 85, 247, 0.15);
+        }
+
+        .btn-gaming {
+            background: var(--accent-gradient);
+            color: #fff;
+            border: none;
+            font-family: 'Orbitron', sans-serif;
+            letter-spacing: 1.5px;
+            font-size: 9px;
+            padding: 10px 20px;
+            position: relative;
+            overflow: hidden;
+            text-shadow: 0 0 20px rgba(168, 85, 247, 0.3);
+        }
+
+        .btn-gaming::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.1), transparent);
+            transform: translateX(-100%);
+            transition: transform 0.6s;
+        }
+
+        .btn-gaming:hover::before {
+            transform: translateX(100%);
+        }
+
+        .btn-gaming:hover {
+            box-shadow: 0 0 40px rgba(168, 85, 247, 0.3);
+            transform: translateY(-2px) scale(1.02);
         }
 
         /* ===== Input Group ===== */
@@ -306,7 +415,7 @@
 
         .input-group:focus-within {
             border-color: var(--accent);
-            box-shadow: 0 0 0 3px var(--border-focus);
+            box-shadow: 0 0 0 3px var(--border-focus), 0 0 30px rgba(168, 85, 247, 0.05);
         }
 
         .input-group input {
@@ -339,6 +448,7 @@
             background: var(--bg-inner);
             color: var(--text-muted);
             white-space: nowrap;
+            font-family: 'Orbitron', sans-serif;
         }
 
         .tag-primary {
@@ -347,22 +457,34 @@
             border-color: var(--border-focus);
         }
 
+        .tag-purple {
+            background: rgba(168, 85, 247, 0.15);
+            color: #a855f7;
+            border-color: rgba(168, 85, 247, 0.25);
+        }
+
+        .tag-pink {
+            background: rgba(236, 72, 153, 0.15);
+            color: #ec4899;
+            border-color: rgba(236, 72, 153, 0.25);
+        }
+
+        .tag-cyan {
+            background: rgba(6, 182, 212, 0.15);
+            color: #06b6d4;
+            border-color: rgba(6, 182, 212, 0.25);
+        }
+
+        .tag-orange {
+            background: rgba(245, 158, 11, 0.15);
+            color: #f59e0b;
+            border-color: rgba(245, 158, 11, 0.25);
+        }
+
         .tag-green {
             background: var(--green-bg);
             color: var(--green);
             border-color: var(--green-border);
-        }
-
-        .tag-amber {
-            background: var(--amber-bg);
-            color: var(--amber);
-            border-color: var(--amber-border);
-        }
-
-        .tag-red {
-            background: var(--red-bg);
-            color: var(--red);
-            border-color: var(--red-border);
         }
 
         /* ===== Status Badge ===== */
@@ -377,24 +499,28 @@
             border: 1px solid var(--border-inner);
             background: var(--bg-inner);
             color: var(--text-secondary);
+            font-family: 'Orbitron', sans-serif;
         }
 
         .badge-active {
             background: var(--green-bg);
             color: var(--green);
             border-color: var(--green-border);
+            box-shadow: 0 0 20px rgba(52, 211, 153, 0.15);
         }
 
         .badge-paused {
             background: var(--amber-bg);
             color: var(--amber);
             border-color: var(--amber-border);
+            box-shadow: 0 0 20px rgba(251, 191, 36, 0.15);
         }
 
         .badge-expired {
             background: var(--red-bg);
             color: var(--red);
             border-color: var(--red-border);
+            box-shadow: 0 0 20px rgba(248, 113, 113, 0.15);
         }
 
         /* ===== Progress ===== */
@@ -404,6 +530,7 @@
             background: var(--progress-bg);
             overflow: hidden;
             margin-top: 8px;
+            position: relative;
         }
 
         .progress-fill {
@@ -411,6 +538,24 @@
             border-radius: 4px;
             background: var(--accent-gradient);
             transition: width 1s ease;
+            position: relative;
+        }
+
+        .progress-fill::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.3), transparent);
+            animation: shimmer 2s ease-in-out infinite;
+            background-size: 200% 100%;
+        }
+
+        @keyframes shimmer {
+            0% { background-position: 200% 0; }
+            100% { background-position: -200% 0; }
         }
 
         /* ===== Avatar ===== */
@@ -425,6 +570,19 @@
             border: 2px solid var(--border-focus);
             color: var(--accent);
             flex-shrink: 0;
+            position: relative;
+        }
+
+        .avatar::after {
+            content: '';
+            position: absolute;
+            inset: -3px;
+            border-radius: 18px;
+            background: var(--accent-gradient);
+            opacity: 0.2;
+            z-index: -1;
+            filter: blur(4px);
+            animation: pulseGlow 3s ease-in-out infinite;
         }
 
         .avatar svg {
@@ -523,6 +681,7 @@
             opacity: 0;
             pointer-events: none;
             transition: all 0.4s ease;
+            font-family: 'Orbitron', sans-serif;
         }
 
         .toast.show {
@@ -534,6 +693,37 @@
         .toast-icon {
             color: var(--green);
             flex-shrink: 0;
+        }
+
+        /* ===== Gaming Accents ===== */
+        .gaming-border {
+            position: relative;
+        }
+
+        .gaming-border::before {
+            content: '';
+            position: absolute;
+            inset: -1px;
+            border-radius: var(--radius);
+            padding: 1px;
+            background: var(--accent-gradient);
+            -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+            -webkit-mask-composite: xor;
+            mask-composite: exclude;
+            pointer-events: none;
+            opacity: 0.3;
+            transition: opacity 0.4s;
+        }
+
+        .gaming-border:hover::before {
+            opacity: 0.7;
+        }
+
+        .neon-text {
+            background: var(--accent-gradient);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
         }
 
         /* ===== Responsive ===== */
@@ -604,6 +794,11 @@
             to { opacity: 1; transform: translateY(0); }
         }
 
+        @keyframes glowPulse {
+            0%, 100% { box-shadow: 0 0 20px rgba(168, 85, 247, 0.1); }
+            50% { box-shadow: 0 0 40px rgba(168, 85, 247, 0.2); }
+        }
+
         .animate-in {
             animation: fadeInUp 0.6s ease forwards;
         }
@@ -612,6 +807,10 @@
         .delay-2 { animation-delay: 0.1s; opacity: 0; }
         .delay-3 { animation-delay: 0.15s; opacity: 0; }
         .delay-4 { animation-delay: 0.2s; opacity: 0; }
+
+        .glow-pulse {
+            animation: glowPulse 3s ease-in-out infinite;
+        }
     </style>
 </head>
 <body>
@@ -619,6 +818,7 @@
     <!-- ===== Glow Effects ===== -->
     <div class="glow glow-1"></div>
     <div class="glow glow-2"></div>
+    <div class="glow glow-3"></div>
 
     <!-- ===== Toast ===== -->
     <div id="toast" class="toast">
@@ -637,12 +837,12 @@
                     <line x1="6" y1="6" x2="18" y2="18"/>
                 </svg>
             </button>
-            <h3 class="title text-center mb-3" id="qr-title">Scan QR</h3>
+            <h3 class="title text-center mb-3" id="qr-title" style="font-family: 'Orbitron', sans-serif;">SCAN QR</h3>
             <div class="flex-center">
                 <img id="qr-img" src="" alt="QR Code" class="w-48 h-48 sm:w-52 sm:h-52" style="border-radius: 12px; background: white; padding: 8px;">
             </div>
             <p id="qr-text" class="text-center text-xs text-muted mt-3 break-all" style="font-family: monospace;"></p>
-            <button onclick="closeQR()" class="btn btn-primary w-full mt-4">Close</button>
+            <button onclick="closeQR()" class="btn btn-gaming w-full mt-4">Close</button>
         </div>
     </div>
 
@@ -650,10 +850,10 @@
     <div class="container">
 
         <!-- ===== Header ===== -->
-        <div class="card animate-in delay-1">
+        <div class="card animate-in delay-1 gaming-border">
             <div class="flex-between">
                 <div class="flex gap-2">
-                    <div style="width: 40px; height: 40px; border-radius: 12px; background: var(--accent-gradient); display: flex; align-items: center; justify-content: center; flex-shrink: 0;">
+                    <div style="width: 40px; height: 40px; border-radius: 12px; background: var(--accent-gradient); display: flex; align-items: center; justify-content: center; flex-shrink: 0; box-shadow: 0 0 30px rgba(168, 85, 247, 0.2);">
                         <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
                             <path d="M12 2L2 7l10 5 10-5-10-5z"/>
                             <path d="M2 17l10 5 10-5"/>
@@ -661,7 +861,7 @@
                         </svg>
                     </div>
                     <div>
-                        <div class="title">Connect Panel</div>
+                        <div class="title title-gaming" style="font-size: 20px;">Connect Panel</div>
                         <div class="subtitle">Manage your subscription</div>
                     </div>
                 </div>
@@ -679,7 +879,7 @@
         </div>
 
         <!-- ===== Profile ===== -->
-        <div class="card animate-in delay-2 mt-2">
+        <div class="card animate-in delay-2 mt-2 gaming-border">
             <div class="flex" style="gap: 18px; flex-wrap: wrap;">
                 <div class="avatar">
                     <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
@@ -696,46 +896,46 @@
                     </div>
                 </div>
                 <div style="text-align: right; flex-shrink: 0;">
-                    <div class="label">Connection IP</div>
-                    <div class="value-sm" style="font-family: monospace;" id="client-ip">—</div>
+                    <div class="label label-gaming">Connection IP</div>
+                    <div class="value-sm" style="font-family: 'Orbitron', monospace; font-size: 13px;" id="client-ip">—</div>
                 </div>
             </div>
         </div>
 
         <!-- ===== Stats ===== -->
         <div class="grid-2 animate-in delay-3 mt-2">
-            <div class="card">
+            <div class="card gaming-border">
                 <div class="flex-between">
-                    <span class="label" data-i18n="total">Total Usage</span>
+                    <span class="label label-gaming" data-i18n="total">Total Usage</span>
                     <span class="subtitle" style="font-size: 11px;">/ __LIMIT_TOTAL_GB__ GB</span>
                 </div>
-                <div class="value mt-1">__TOTAL_GB__</div>
+                <div class="value value-gaming mt-1">__TOTAL_GB__</div>
                 __TOTAL_PROGRESS__
             </div>
-            <div class="card">
+            <div class="card gaming-border">
                 <div class="flex-between">
-                    <span class="label" data-i18n="daily">Daily Usage</span>
+                    <span class="label label-gaming" data-i18n="daily">Daily Usage</span>
                     <span class="subtitle" style="font-size: 11px;">/ __LIMIT_DAILY_GB__ GB</span>
                 </div>
-                <div class="value mt-1">__DAILY_GB__</div>
+                <div class="value value-gaming mt-1">__DAILY_GB__</div>
                 __DAILY_PROGRESS__
             </div>
         </div>
 
         <!-- ===== Subscription ===== -->
-        <div class="card animate-in delay-4 mt-2">
+        <div class="card animate-in delay-4 mt-2 gaming-border">
             <div class="flex-between mb-2">
                 <div>
-                    <div class="label" data-i18n="sub">Subscription URL</div>
+                    <div class="label label-gaming" data-i18n="sub">Subscription URL</div>
                     <div class="subtitle" data-i18n="sub-desc">Import this link into your client</div>
                 </div>
-                <span class="tag tag-primary">v2</span>
+                <span class="tag tag-purple">v2 • gaming</span>
             </div>
 
             <!-- Main -->
             <div class="input-group">
                 <input type="text" id="link-main" value="__SYNC_NORMAL__" readonly>
-                <button onclick="copyLink('link-main')" class="btn btn-primary">Copy</button>
+                <button onclick="copyLink('link-main')" class="btn btn-gaming">Copy</button>
                 <button onclick="showQR('__SYNC_NORMAL__')" class="btn-icon">
                     <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
                         <rect x="3" y="3" width="7" height="7"/>
@@ -751,7 +951,7 @@
             <!-- Formats -->
             <div class="divider"></div>
 
-            <div class="label mb-2" data-i18n="formats">Formats</div>
+            <div class="label label-gaming mb-2" data-i18n="formats">Formats</div>
 
             <div style="display: flex; flex-direction: column; gap: 8px;">
                 <!-- Base64 -->
@@ -775,7 +975,7 @@
 
                 <!-- Clash -->
                 <div class="flex" style="gap: 8px; align-items: center;">
-                    <span class="tag" style="background: rgba(139, 92, 246, 0.12); color: #8b5cf6; border-color: rgba(139, 92, 246, 0.2);">Clash</span>
+                    <span class="tag tag-purple">Clash</span>
                     <div class="input-group" style="flex: 1;">
                         <input type="text" id="link-clash" value="__SYNC_NORMAL__" readonly>
                         <button onclick="copyLink('link-clash')" class="btn">Copy</button>
@@ -794,7 +994,7 @@
 
                 <!-- Sing-box -->
                 <div class="flex" style="gap: 8px; align-items: center;">
-                    <span class="tag tag-amber">Sing-box</span>
+                    <span class="tag tag-pink">Sing-box</span>
                     <div class="input-group" style="flex: 1;">
                         <input type="text" id="link-singbox" value="__SYNC_NORMAL__" readonly>
                         <button onclick="copyLink('link-singbox')" class="btn">Copy</button>
@@ -813,7 +1013,7 @@
 
                 <!-- Raw -->
                 <div class="flex" style="gap: 8px; align-items: center;">
-                    <span class="tag tag-red">Raw</span>
+                    <span class="tag tag-orange">Raw</span>
                     <div class="input-group" style="flex: 1;">
                         <input type="text" id="link-raw" value="__SYNC_NORMAL__" readonly>
                         <button onclick="copyLink('link-raw')" class="btn">Copy</button>
@@ -833,32 +1033,32 @@
         </div>
 
         <!-- ===== One-Click ===== -->
-        <div class="card mt-2 animate-in delay-4">
-            <div class="label mb-2" data-i18n="oneclick">One-Click Import</div>
+        <div class="card mt-2 animate-in delay-4 gaming-border">
+            <div class="label label-gaming mb-2" data-i18n="oneclick">One-Click Import</div>
             <div class="subtitle mb-2" data-i18n="oneclick-desc">Quick import for supported clients</div>
             <div class="grid-4">
-                <a id="v2rayng-link" href="#" class="btn" style="justify-content: center; gap: 8px;">
+                <a id="v2rayng-link" href="#" class="btn btn-gaming" style="justify-content: center; gap: 8px; font-size: 8px;">
                     <span>v2rayNG</span>
                     <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
                         <path d="M7 7h10v10"/>
                         <path d="M7 17L17 7"/>
                     </svg>
                 </a>
-                <a href="#" onclick="window.location.href='v2rayn://install-sub?url='+encodeURIComponent('__SYNC_NORMAL__')+'&name=__USER_NAME__'" class="btn" style="justify-content: center; gap: 8px;">
+                <a href="#" onclick="window.location.href='v2rayn://install-sub?url='+encodeURIComponent('__SYNC_NORMAL__')+'&name=__USER_NAME__'" class="btn btn-gaming" style="justify-content: center; gap: 8px; font-size: 8px;">
                     <span>v2rayN</span>
                     <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
                         <path d="M7 7h10v10"/>
                         <path d="M7 17L17 7"/>
                     </svg>
                 </a>
-                <a href="#" onclick="window.location.href='shadowrocket://add/sub://'+btoa('__SYNC_NORMAL__')+'?title=__USER_NAME__'" class="btn" style="justify-content: center; gap: 8px;">
+                <a href="#" onclick="window.location.href='shadowrocket://add/sub://'+btoa('__SYNC_NORMAL__')+'?title=__USER_NAME__'" class="btn btn-gaming" style="justify-content: center; gap: 8px; font-size: 8px;">
                     <span>Shadowrocket</span>
                     <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
                         <path d="M7 7h10v10"/>
                         <path d="M7 17L17 7"/>
                     </svg>
                 </a>
-                <a href="#" onclick="window.location.href='streisand://import/__SYNC_NORMAL__'" class="btn" style="justify-content: center; gap: 8px;">
+                <a href="#" onclick="window.location.href='streisand://import/__SYNC_NORMAL__'" class="btn btn-gaming" style="justify-content: center; gap: 8px; font-size: 8px;">
                     <span>Streisand</span>
                     <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
                         <path d="M7 7h10v10"/>
@@ -870,7 +1070,7 @@
 
         <!-- ===== Footer ===== -->
         <div class="text-center mt-4">
-            <span class="subtitle" style="font-size: 11px;">Connect Panel &bull; <span id="footer-year">2024</span></span>
+            <span class="subtitle" style="font-size: 11px; font-family: 'Orbitron', sans-serif; letter-spacing: 2px;">Connect Panel &bull; <span id="footer-year">2024</span></span>
         </div>
 
     </div>
