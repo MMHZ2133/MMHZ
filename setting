@@ -22,77 +22,77 @@
     <style>
         /* ===== CSS Variables ===== */
         :root {
-            /* Light Theme - Classic */
-            --bg-body: #f5f6fa;
+            /* Light Theme - Black & Gold */
+            --bg-body: #f8f5f0;
             --bg-card: #ffffff;
             --bg-card-hover: #ffffff;
-            --bg-inner: #f8f9fa;
-            --bg-input: #f1f3f5;
-            --border-card: #e2e8f0;
-            --border-inner: #e2e8f0;
-            --border-focus: rgba(99, 102, 241, 0.3);
-            --text-primary: #1a202c;
-            --text-secondary: #4a5568;
-            --text-muted: #a0aec0;
-            --accent: #6366f1;
-            --accent-light: rgba(99, 102, 241, 0.08);
-            --accent-hover: #4f46e5;
-            --accent-gradient: linear-gradient(135deg, #6366f1, #8b5cf6);
+            --bg-inner: #faf8f5;
+            --bg-input: #f5f2ed;
+            --border-card: #e8e0d8;
+            --border-inner: #e8e0d8;
+            --border-focus: rgba(212, 175, 55, 0.3);
+            --text-primary: #1a1a1a;
+            --text-secondary: #4a4a4a;
+            --text-muted: #8a8a8a;
+            --accent: #d4af37;
+            --accent-light: rgba(212, 175, 55, 0.1);
+            --accent-hover: #c4a030;
+            --accent-gradient: linear-gradient(135deg, #d4af37, #f5d060);
             --shadow-card: 0 1px 3px rgba(0, 0, 0, 0.06);
-            --shadow-hover: 0 4px 12px rgba(0, 0, 0, 0.08);
+            --shadow-hover: 0 4px 16px rgba(0, 0, 0, 0.08);
             
-            /* Classic Colors */
-            --green: #48bb78;
-            --green-bg: #f0fff4;
-            --green-border: #c6f6d5;
-            --amber: #ed8936;
-            --amber-bg: #fffbeb;
-            --amber-border: #fef3c7;
-            --red: #fc8181;
-            --red-bg: #fff5f5;
-            --red-border: #fed7d7;
+            /* Status Colors */
+            --green: #2d7d46;
+            --green-bg: #f0f7f2;
+            --green-border: #d4e8d9;
+            --amber: #b8860b;
+            --amber-bg: #fdf8f0;
+            --amber-border: #f5ead0;
+            --red: #8b1a1a;
+            --red-bg: #fdf0f0;
+            --red-border: #f5d4d4;
             
-            --progress-bg: #edf2f7;
-            --modal-overlay: rgba(0, 0, 0, 0.4);
+            --progress-bg: #edebe8;
+            --modal-overlay: rgba(0, 0, 0, 0.6);
             --modal-card: #ffffff;
             --radius: 12px;
             --radius-sm: 8px;
             --transition: 0.2s ease;
         }
 
-        /* Dark Theme - Classic */
+        /* Dark Theme - Black & Gold */
         .dark {
-            --bg-body: #1a202c;
-            --bg-card: #2d3748;
-            --bg-card-hover: #2d3748;
-            --bg-inner: #374151;
-            --bg-input: #1a202c;
-            --border-card: #4a5568;
-            --border-inner: #4a5568;
-            --border-focus: rgba(99, 102, 241, 0.3);
-            --text-primary: #f7fafc;
-            --text-secondary: #a0aec0;
-            --text-muted: #718096;
-            --accent: #818cf8;
-            --accent-light: rgba(99, 102, 241, 0.12);
-            --accent-hover: #6366f1;
-            --accent-gradient: linear-gradient(135deg, #818cf8, #a78bfa);
-            --shadow-card: 0 1px 3px rgba(0, 0, 0, 0.2);
-            --shadow-hover: 0 4px 12px rgba(0, 0, 0, 0.3);
+            --bg-body: #0a0a0a;
+            --bg-card: #1a1a1a;
+            --bg-card-hover: #1a1a1a;
+            --bg-inner: #222222;
+            --bg-input: #0a0a0a;
+            --border-card: #333333;
+            --border-inner: #2a2a2a;
+            --border-focus: rgba(212, 175, 55, 0.3);
+            --text-primary: #f5f0eb;
+            --text-secondary: #b0b0b0;
+            --text-muted: #6a6a6a;
+            --accent: #d4af37;
+            --accent-light: rgba(212, 175, 55, 0.12);
+            --accent-hover: #c4a030;
+            --accent-gradient: linear-gradient(135deg, #d4af37, #f5d060);
+            --shadow-card: 0 1px 3px rgba(0, 0, 0, 0.3);
+            --shadow-hover: 0 4px 16px rgba(0, 0, 0, 0.4);
             
-            --green: #68d391;
-            --green-bg: rgba(104, 211, 145, 0.1);
-            --green-border: rgba(104, 211, 145, 0.2);
-            --amber: #f6ad55;
-            --amber-bg: rgba(246, 173, 85, 0.1);
-            --amber-border: rgba(246, 173, 85, 0.2);
-            --red: #fc8181;
-            --red-bg: rgba(252, 129, 129, 0.1);
-            --red-border: rgba(252, 129, 129, 0.2);
+            --green: #5a9b6e;
+            --green-bg: rgba(90, 155, 110, 0.12);
+            --green-border: rgba(90, 155, 110, 0.2);
+            --amber: #d4a030;
+            --amber-bg: rgba(212, 160, 48, 0.12);
+            --amber-border: rgba(212, 160, 48, 0.2);
+            --red: #b55a5a;
+            --red-bg: rgba(181, 90, 90, 0.12);
+            --red-border: rgba(181, 90, 90, 0.2);
             
-            --progress-bg: #4a5568;
-            --modal-overlay: rgba(0, 0, 0, 0.7);
-            --modal-card: #2d3748;
+            --progress-bg: #2a2a2a;
+            --modal-overlay: rgba(0, 0, 0, 0.85);
+            --modal-card: #1a1a1a;
         }
 
         /* ===== Base ===== */
@@ -154,11 +154,39 @@
             transition: all var(--transition);
         }
 
+        /* ===== Gold Accent Border ===== */
+        .gold-border {
+            position: relative;
+        }
+
+        .gold-border::before {
+            content: '';
+            position: absolute;
+            inset: -1px;
+            border-radius: var(--radius);
+            padding: 1px;
+            background: var(--accent-gradient);
+            -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+            -webkit-mask-composite: xor;
+            mask-composite: exclude;
+            pointer-events: none;
+            opacity: 0.3;
+            transition: opacity 0.3s;
+        }
+
+        .gold-border:hover::before {
+            opacity: 0.8;
+        }
+
         /* ===== Typography ===== */
         .title {
             font-size: 20px;
             font-weight: 800;
             color: var(--text-primary);
+        }
+
+        .title-gold {
+            color: var(--accent);
         }
 
         .subtitle {
@@ -171,14 +199,23 @@
             font-size: 11px;
             font-weight: 600;
             text-transform: uppercase;
-            letter-spacing: 0.8px;
+            letter-spacing: 1px;
             color: var(--text-muted);
+        }
+
+        .label-gold {
+            color: var(--accent);
+            letter-spacing: 1.5px;
         }
 
         .value {
             font-size: 26px;
             font-weight: 800;
             color: var(--text-primary);
+        }
+
+        .value-gold {
+            color: var(--accent);
         }
 
         .value-sm {
@@ -213,15 +250,27 @@
         }
 
         .btn-primary {
-            background: var(--accent);
-            color: #fff;
+            background: var(--accent-gradient);
+            color: #1a1a1a;
+            border: none;
+            padding: 7px 18px;
+            font-weight: 700;
+        }
+
+        .btn-primary:hover {
+            box-shadow: 0 2px 16px rgba(212, 175, 55, 0.3);
+            transform: translateY(-1px);
+        }
+
+        .btn-dark {
+            background: var(--text-primary);
+            color: var(--bg-body);
             border: none;
             padding: 7px 18px;
         }
 
-        .btn-primary:hover {
-            background: var(--accent-hover);
-            box-shadow: 0 2px 12px rgba(99, 102, 241, 0.3);
+        .btn-dark:hover {
+            opacity: 0.85;
             transform: translateY(-1px);
         }
 
@@ -277,7 +326,7 @@
 
         .input-group input::selection {
             background: var(--accent);
-            color: #fff;
+            color: #1a1a1a;
         }
 
         /* ===== Tags ===== */
@@ -294,10 +343,16 @@
             white-space: nowrap;
         }
 
-        .tag-primary {
+        .tag-gold {
             background: var(--accent-light);
             color: var(--accent);
-            border-color: var(--border-focus);
+            border-color: rgba(212, 175, 55, 0.25);
+        }
+
+        .tag-dark {
+            background: var(--text-primary);
+            color: var(--bg-body);
+            border-color: var(--text-primary);
         }
 
         /* ===== Status Badge ===== */
@@ -355,7 +410,7 @@
             align-items: center;
             justify-content: center;
             background: var(--accent-light);
-            border: 2px solid var(--border-focus);
+            border: 2px solid var(--accent);
             color: var(--accent);
             flex-shrink: 0;
         }
@@ -408,7 +463,7 @@
             width: 100%;
             transform: scale(0.95);
             transition: transform 0.3s ease;
-            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.15);
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.2);
             position: relative;
         }
 
@@ -464,8 +519,22 @@
         }
 
         .toast-icon {
-            color: var(--green);
+            color: var(--accent);
             flex-shrink: 0;
+        }
+
+        /* ===== Gold Divider ===== */
+        .divider-gold {
+            height: 1px;
+            background: linear-gradient(90deg, transparent, var(--accent), transparent);
+            margin: 14px 0;
+            opacity: 0.3;
+        }
+
+        .divider {
+            height: 1px;
+            background: var(--border-inner);
+            margin: 14px 0;
         }
 
         /* ===== Responsive ===== */
@@ -506,12 +575,6 @@
         .w-full { width: 100%; }
         .relative { position: relative; }
 
-        .divider {
-            height: 1px;
-            background: var(--border-inner);
-            margin: 14px 0;
-        }
-
         /* ===== Animations ===== */
         @keyframes fadeInUp {
             from { opacity: 0; transform: translateY(16px); }
@@ -526,6 +589,21 @@
         .delay-2 { animation-delay: 0.1s; opacity: 0; }
         .delay-3 { animation-delay: 0.15s; opacity: 0; }
         .delay-4 { animation-delay: 0.2s; opacity: 0; }
+
+        /* ===== Gold Sparkle ===== */
+        .sparkle {
+            position: relative;
+        }
+
+        .sparkle::after {
+            content: '✦';
+            position: absolute;
+            top: -4px;
+            right: -6px;
+            font-size: 8px;
+            color: var(--accent);
+            opacity: 0.5;
+        }
     </style>
 </head>
 <body>
@@ -547,7 +625,7 @@
                     <line x1="6" y1="6" x2="18" y2="18"/>
                 </svg>
             </button>
-            <h3 class="title text-center mb-2" id="qr-title">Scan QR</h3>
+            <h3 class="title text-center mb-2" id="qr-title" style="color: var(--accent);">Scan QR</h3>
             <div class="flex-center">
                 <img id="qr-img" src="" alt="QR Code" class="w-48 h-48 sm:w-52 sm:h-52" style="border-radius: 8px; background: white; padding: 8px;">
             </div>
@@ -560,18 +638,18 @@
     <div class="container">
 
         <!-- ===== Header ===== -->
-        <div class="card animate-in delay-1">
+        <div class="card gold-border animate-in delay-1">
             <div class="flex-between">
                 <div class="flex gap-2">
-                    <div style="width: 36px; height: 36px; border-radius: var(--radius-sm); background: var(--accent); display: flex; align-items: center; justify-content: center; flex-shrink: 0;">
-                        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                    <div style="width: 36px; height: 36px; border-radius: var(--radius-sm); background: var(--accent-gradient); display: flex; align-items: center; justify-content: center; flex-shrink: 0;">
+                        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#1a1a1a" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
                             <path d="M12 2L2 7l10 5 10-5-10-5z"/>
                             <path d="M2 17l10 5 10-5"/>
                             <path d="M2 12l10 5 10-5"/>
                         </svg>
                     </div>
                     <div>
-                        <div class="title">Panel</div>
+                        <div class="title"><span class="title-gold">✦</span> Panel</div>
                         <div class="subtitle">Subscription Manager</div>
                     </div>
                 </div>
@@ -589,7 +667,7 @@
         </div>
 
         <!-- ===== Profile ===== -->
-        <div class="card animate-in delay-2 mt-2">
+        <div class="card gold-border animate-in delay-2 mt-2">
             <div class="flex" style="gap: 16px; flex-wrap: wrap;">
                 <div class="avatar">
                     <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
@@ -606,7 +684,7 @@
                     </div>
                 </div>
                 <div style="text-align: right; flex-shrink: 0;">
-                    <div class="label">IP</div>
+                    <div class="label label-gold">IP</div>
                     <div class="value-sm" style="font-family: monospace; font-size: 13px;" id="client-ip">—</div>
                 </div>
             </div>
@@ -614,32 +692,32 @@
 
         <!-- ===== Stats ===== -->
         <div class="grid-2 animate-in delay-3 mt-2">
-            <div class="card">
+            <div class="card gold-border">
                 <div class="flex-between">
-                    <span class="label" data-i18n="total">Total Usage</span>
+                    <span class="label label-gold" data-i18n="total">Total Usage</span>
                     <span class="subtitle" style="font-size: 11px;">/ __LIMIT_TOTAL_GB__ GB</span>
                 </div>
-                <div class="value mt-1">__TOTAL_GB__</div>
+                <div class="value value-gold mt-1">__TOTAL_GB__</div>
                 __TOTAL_PROGRESS__
             </div>
-            <div class="card">
+            <div class="card gold-border">
                 <div class="flex-between">
-                    <span class="label" data-i18n="daily">Daily Usage</span>
+                    <span class="label label-gold" data-i18n="daily">Daily Usage</span>
                     <span class="subtitle" style="font-size: 11px;">/ __LIMIT_DAILY_GB__ GB</span>
                 </div>
-                <div class="value mt-1">__DAILY_GB__</div>
+                <div class="value value-gold mt-1">__DAILY_GB__</div>
                 __DAILY_PROGRESS__
             </div>
         </div>
 
         <!-- ===== Subscription ===== -->
-        <div class="card animate-in delay-4 mt-2">
+        <div class="card gold-border animate-in delay-4 mt-2">
             <div class="flex-between mb-2">
                 <div>
-                    <div class="label" data-i18n="sub">Subscription URL</div>
+                    <div class="label label-gold" data-i18n="sub">Subscription URL</div>
                     <div class="subtitle" data-i18n="sub-desc">Import this link into your client</div>
                 </div>
-                <span class="tag tag-primary">v2</span>
+                <span class="tag tag-gold">✦ Premium</span>
             </div>
 
             <!-- Main -->
@@ -659,14 +737,14 @@
             </div>
 
             <!-- Formats -->
-            <div class="divider"></div>
+            <div class="divider-gold"></div>
 
-            <div class="label mb-2" data-i18n="formats">Formats</div>
+            <div class="label label-gold mb-2" data-i18n="formats">Formats</div>
 
             <div style="display: flex; flex-direction: column; gap: 6px;">
                 <!-- Base64 -->
                 <div class="flex" style="gap: 6px; align-items: center;">
-                    <span class="tag" style="background: #f0fff4; color: #48bb78; border-color: #c6f6d5;">Base64</span>
+                    <span class="tag tag-gold">Base64</span>
                     <div class="input-group" style="flex: 1;">
                         <input type="text" id="link-base64" value="__SYNC_NORMAL__" readonly>
                         <button onclick="copyLink('link-base64')" class="btn">Copy</button>
@@ -685,7 +763,7 @@
 
                 <!-- Clash -->
                 <div class="flex" style="gap: 6px; align-items: center;">
-                    <span class="tag" style="background: #faf5ff; color: #805ad5; border-color: #e9d5ff;">Clash</span>
+                    <span class="tag tag-dark">Clash</span>
                     <div class="input-group" style="flex: 1;">
                         <input type="text" id="link-clash" value="__SYNC_NORMAL__" readonly>
                         <button onclick="copyLink('link-clash')" class="btn">Copy</button>
@@ -704,7 +782,7 @@
 
                 <!-- Sing-box -->
                 <div class="flex" style="gap: 6px; align-items: center;">
-                    <span class="tag" style="background: #fffbeb; color: #d69e2e; border-color: #fef3c7;">Sing-box</span>
+                    <span class="tag" style="background: var(--amber-bg); color: var(--amber); border-color: var(--amber-border);">Sing-box</span>
                     <div class="input-group" style="flex: 1;">
                         <input type="text" id="link-singbox" value="__SYNC_NORMAL__" readonly>
                         <button onclick="copyLink('link-singbox')" class="btn">Copy</button>
@@ -723,7 +801,7 @@
 
                 <!-- Raw -->
                 <div class="flex" style="gap: 6px; align-items: center;">
-                    <span class="tag" style="background: #fff5f5; color: #fc8181; border-color: #fed7d7;">Raw</span>
+                    <span class="tag" style="background: var(--red-bg); color: var(--red); border-color: var(--red-border);">Raw</span>
                     <div class="input-group" style="flex: 1;">
                         <input type="text" id="link-raw" value="__SYNC_NORMAL__" readonly>
                         <button onclick="copyLink('link-raw')" class="btn">Copy</button>
@@ -743,34 +821,34 @@
         </div>
 
         <!-- ===== One-Click ===== -->
-        <div class="card mt-2 animate-in delay-4">
-            <div class="label mb-1" data-i18n="oneclick">One-Click Import</div>
+        <div class="card gold-border mt-2 animate-in delay-4">
+            <div class="label label-gold mb-1" data-i18n="oneclick">One-Click Import</div>
             <div class="subtitle mb-2" data-i18n="oneclick-desc">Quick import for supported clients</div>
             <div class="grid-4">
-                <a id="v2rayng-link" href="#" class="btn" style="justify-content: center; gap: 6px;">
-                    <span style="font-size: 10px;">v2rayNG</span>
-                    <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <a id="v2rayng-link" href="#" class="btn" style="justify-content: center; gap: 6px; border-color: var(--accent);">
+                    <span style="font-size: 10px; font-weight: 700;">v2rayNG</span>
+                    <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="var(--accent)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
                         <path d="M7 7h10v10"/>
                         <path d="M7 17L17 7"/>
                     </svg>
                 </a>
-                <a href="#" onclick="window.location.href='v2rayn://install-sub?url='+encodeURIComponent('__SYNC_NORMAL__')+'&name=__USER_NAME__'" class="btn" style="justify-content: center; gap: 6px;">
-                    <span style="font-size: 10px;">v2rayN</span>
-                    <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <a href="#" onclick="window.location.href='v2rayn://install-sub?url='+encodeURIComponent('__SYNC_NORMAL__')+'&name=__USER_NAME__'" class="btn" style="justify-content: center; gap: 6px; border-color: var(--accent);">
+                    <span style="font-size: 10px; font-weight: 700;">v2rayN</span>
+                    <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="var(--accent)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
                         <path d="M7 7h10v10"/>
                         <path d="M7 17L17 7"/>
                     </svg>
                 </a>
-                <a href="#" onclick="window.location.href='shadowrocket://add/sub://'+btoa('__SYNC_NORMAL__')+'?title=__USER_NAME__'" class="btn" style="justify-content: center; gap: 6px;">
-                    <span style="font-size: 10px;">Shadowrocket</span>
-                    <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <a href="#" onclick="window.location.href='shadowrocket://add/sub://'+btoa('__SYNC_NORMAL__')+'?title=__USER_NAME__'" class="btn" style="justify-content: center; gap: 6px; border-color: var(--accent);">
+                    <span style="font-size: 10px; font-weight: 700;">Shadowrocket</span>
+                    <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="var(--accent)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
                         <path d="M7 7h10v10"/>
                         <path d="M7 17L17 7"/>
                     </svg>
                 </a>
-                <a href="#" onclick="window.location.href='streisand://import/__SYNC_NORMAL__'" class="btn" style="justify-content: center; gap: 6px;">
-                    <span style="font-size: 10px;">Streisand</span>
-                    <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <a href="#" onclick="window.location.href='streisand://import/__SYNC_NORMAL__'" class="btn" style="justify-content: center; gap: 6px; border-color: var(--accent);">
+                    <span style="font-size: 10px; font-weight: 700;">Streisand</span>
+                    <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="var(--accent)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
                         <path d="M7 7h10v10"/>
                         <path d="M7 17L17 7"/>
                     </svg>
@@ -780,7 +858,9 @@
 
         <!-- ===== Footer ===== -->
         <div class="text-center mt-4">
-            <span class="subtitle" style="font-size: 11px;">Panel &bull; <span id="footer-year">2024</span></span>
+            <span class="subtitle" style="font-size: 11px; letter-spacing: 1px;">
+                <span class="title-gold">✦</span> Panel <span class="title-gold">✦</span> &bull; <span id="footer-year">2024</span>
+            </span>
         </div>
 
     </div>
