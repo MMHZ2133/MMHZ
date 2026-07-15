@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>پنل مدیریت Xray</title>
+    <title>پنل اشتراک کاربری</title>
     <link href="https://fonts.googleapis.com/css2?family=Vazirmatn:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
@@ -17,22 +17,24 @@
         }
 
         :root {
-            --bg-primary: #0f0f1a;
-            --bg-secondary: #1a1a2e;
-            --bg-card: rgba(255, 255, 255, 0.03);
-            --bg-hover: rgba(255, 255, 255, 0.05);
-            --border-color: rgba(255, 255, 255, 0.06);
-            --text-primary: #ffffff;
-            --text-secondary: rgba(255, 255, 255, 0.6);
-            --text-muted: rgba(255, 255, 255, 0.3);
+            --bg-primary: #0b0f19;
+            --bg-card: rgba(17, 24, 39, 0.8);
+            --bg-card-hover: rgba(31, 41, 55, 0.6);
+            --bg-inner: rgba(31, 41, 55, 0.4);
+            --border-color: rgba(99, 102, 241, 0.15);
+            --border-hover: rgba(99, 102, 241, 0.3);
+            --text-primary: #f9fafb;
+            --text-secondary: #9ca3af;
+            --text-muted: #6b7280;
             --accent-purple: #818cf8;
             --accent-blue: #4f46e5;
             --accent-green: #34d399;
             --accent-amber: #fbbf24;
             --accent-pink: #f472b6;
             --accent-red: #f87171;
-            --shadow-card: 0 8px 32px rgba(0, 0, 0, 0.4);
-            --radius: 12px;
+            --shadow-card: 0 10px 30px rgba(0, 0, 0, 0.3);
+            --radius: 16px;
+            --radius-sm: 12px;
             --transition: all 0.3s ease;
         }
 
@@ -42,275 +44,240 @@
             color: var(--text-primary);
             min-height: 100vh;
             display: flex;
-            direction: rtl;
-        }
-
-        /* =============================================
-                   SIDEBAR (مشابه Marzban)
-                ============================================= */
-        .sidebar {
-            width: 280px;
-            background: var(--bg-secondary);
-            border-left: 1px solid var(--border-color);
-            height: 100vh;
-            position: sticky;
-            top: 0;
-            padding: 24px 16px;
-            display: flex;
-            flex-direction: column;
-            gap: 4px;
-            overflow-y: auto;
-            transition: var(--transition);
-            z-index: 100;
-        }
-
-        .sidebar-logo {
-            display: flex;
-            align-items: center;
-            gap: 12px;
-            padding: 0 8px 24px;
-            border-bottom: 1px solid var(--border-color);
-            margin-bottom: 20px;
-        }
-
-        .sidebar-logo .icon {
-            width: 42px;
-            height: 42px;
-            background: linear-gradient(135deg, var(--accent-purple), var(--accent-blue));
-            border-radius: 12px;
-            display: flex;
-            align-items: center;
             justify-content: center;
-            font-size: 20px;
-            color: #fff;
-        }
-
-        .sidebar-logo .text {
-            font-size: 20px;
-            font-weight: 800;
-            letter-spacing: -0.5px;
-        }
-
-        .sidebar-logo .text span {
-            color: var(--accent-purple);
-        }
-
-        .sidebar-logo .version {
-            font-size: 10px;
-            color: var(--text-muted);
-            background: rgba(255, 255, 255, 0.05);
-            padding: 2px 8px;
-            border-radius: 10px;
-            margin-right: auto;
-        }
-
-        .sidebar-item {
-            display: flex;
             align-items: center;
-            gap: 14px;
-            padding: 12px 16px;
-            border-radius: var(--radius);
-            color: var(--text-secondary);
-            text-decoration: none;
-            transition: var(--transition);
-            cursor: pointer;
-            font-weight: 500;
-            font-size: 14px;
+            padding: 20px;
+            direction: rtl;
             position: relative;
-        }
-
-        .sidebar-item:hover {
-            background: var(--bg-hover);
-            color: var(--text-primary);
-        }
-
-        .sidebar-item.active {
-            background: rgba(129, 140, 248, 0.12);
-            color: var(--accent-purple);
-        }
-
-        .sidebar-item.active::before {
-            content: '';
-            position: absolute;
-            right: 0;
-            top: 50%;
-            transform: translateY(-50%);
-            width: 3px;
-            height: 24px;
-            background: var(--accent-purple);
-            border-radius: 0 4px 4px 0;
-        }
-
-        .sidebar-item i {
-            width: 20px;
-            text-align: center;
-            font-size: 16px;
-        }
-
-        .sidebar-item .badge {
-            margin-right: auto;
-            background: rgba(129, 140, 248, 0.15);
-            color: var(--accent-purple);
-            font-size: 10px;
-            padding: 2px 10px;
-            border-radius: 20px;
-            font-weight: 600;
-        }
-
-        .sidebar-divider {
-            height: 1px;
-            background: var(--border-color);
-            margin: 8px 12px;
-        }
-
-        .sidebar-footer {
-            margin-top: auto;
-            padding-top: 16px;
-            border-top: 1px solid var(--border-color);
+            overflow-x: hidden;
         }
 
         /* =============================================
-                   MAIN CONTENT
+                   BACKGROUND EFFECTS (مشابه Marzban)
                 ============================================= */
-        .main {
-            flex: 1;
-            padding: 24px 32px;
-            overflow-y: auto;
-            max-height: 100vh;
+        .bg-glow {
+            position: fixed;
+            border-radius: 50%;
+            filter: blur(100px);
+            pointer-events: none;
+            z-index: 0;
+        }
+
+        .bg-glow-1 {
+            width: 400px;
+            height: 400px;
+            background: rgba(99, 102, 241, 0.08);
+            top: -100px;
+            right: -100px;
+        }
+
+        .bg-glow-2 {
+            width: 500px;
+            height: 500px;
+            background: rgba(52, 211, 153, 0.05);
+            bottom: -200px;
+            left: -200px;
+        }
+
+        /* =============================================
+                   MAIN CONTAINER
+                ============================================= */
+        .container {
+            max-width: 1100px;
+            width: 100%;
+            position: relative;
+            z-index: 1;
         }
 
         /* =============================================
                    TOP BAR (مشابه Marzban)
                 ============================================= */
-        .topbar {
+        .top-bar {
             display: flex;
             justify-content: space-between;
             align-items: center;
-            margin-bottom: 28px;
+            margin-bottom: 24px;
             flex-wrap: wrap;
-            gap: 16px;
+            gap: 12px;
         }
 
-        .topbar-left {
+        .brand {
             display: flex;
             align-items: center;
-            gap: 16px;
+            gap: 10px;
         }
 
-        .topbar-left h1 {
-            font-size: 22px;
+        .brand .icon {
+            width: 40px;
+            height: 40px;
+            background: linear-gradient(135deg, var(--accent-purple), var(--accent-blue));
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 18px;
+            color: #fff;
+        }
+
+        .brand .text {
+            font-size: 20px;
             font-weight: 800;
+            letter-spacing: -0.5px;
         }
 
-        .topbar-left .subtitle {
-            font-size: 13px;
-            color: var(--text-muted);
-            font-weight: 400;
+        .brand .text span {
+            color: var(--accent-purple);
         }
 
-        .topbar-actions {
+        .top-actions {
             display: flex;
             gap: 10px;
             align-items: center;
         }
 
-        /* =============================================
-                   BUTTONS
-                ============================================= */
-        .btn {
-            padding: 8px 18px;
-            border-radius: 10px;
-            border: none;
-            font-family: inherit;
-            font-weight: 600;
-            font-size: 13px;
+        .btn-icon {
+            background: var(--bg-card);
+            border: 1px solid var(--border-color);
+            color: var(--text-secondary);
+            padding: 8px 14px;
+            border-radius: var(--radius-sm);
             cursor: pointer;
             transition: var(--transition);
+            font-family: inherit;
+            font-size: 13px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .btn-icon:hover {
+            background: var(--bg-card-hover);
+            border-color: var(--border-hover);
+            color: var(--text-primary);
+        }
+
+        .btn-icon i {
+            font-size: 14px;
+        }
+
+        /* =============================================
+                   USER PROFILE CARD (مشابه Marzban)
+                ============================================= */
+        .profile-card {
+            background: var(--bg-card);
+            border: 1px solid var(--border-color);
+            border-radius: var(--radius);
+            padding: 28px 32px;
+            backdrop-filter: blur(12px);
+            margin-bottom: 24px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 20px;
+            transition: var(--transition);
+        }
+
+        .profile-card:hover {
+            border-color: var(--border-hover);
+        }
+
+        .profile-info {
+            display: flex;
+            align-items: center;
+            gap: 20px;
+        }
+
+        .profile-avatar {
+            width: 64px;
+            height: 64px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, var(--accent-purple), var(--accent-blue));
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 28px;
+            font-weight: 800;
+            color: #fff;
+            flex-shrink: 0;
+        }
+
+        .profile-details h2 {
+            font-size: 22px;
+            font-weight: 800;
+            margin-bottom: 2px;
+        }
+
+        .profile-details .sub {
+            font-size: 13px;
+            color: var(--text-muted);
+            font-family: monospace;
+            direction: ltr;
+            text-align: left;
+        }
+
+        .profile-status {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .status-badge {
+            padding: 6px 20px;
+            border-radius: 20px;
+            font-size: 13px;
+            font-weight: 700;
             display: inline-flex;
             align-items: center;
             gap: 8px;
         }
 
-        .btn-primary {
-            background: linear-gradient(135deg, var(--accent-purple), var(--accent-blue));
-            color: #fff;
-        }
-
-        .btn-primary:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 8px 25px rgba(129, 140, 248, 0.3);
-        }
-
-        .btn-outline {
-            background: transparent;
-            border: 1px solid var(--border-color);
-            color: var(--text-secondary);
-        }
-
-        .btn-outline:hover {
-            background: var(--bg-hover);
-            color: var(--text-primary);
-        }
-
-        .btn-danger {
-            background: rgba(248, 113, 113, 0.12);
-            color: var(--accent-red);
-        }
-
-        .btn-danger:hover {
-            background: rgba(248, 113, 113, 0.25);
-        }
-
-        .btn-success {
+        .status-badge.active {
             background: rgba(52, 211, 153, 0.12);
             color: var(--accent-green);
+            border: 1px solid rgba(52, 211, 153, 0.2);
         }
 
-        .btn-success:hover {
-            background: rgba(52, 211, 153, 0.25);
+        .status-badge.expired {
+            background: rgba(248, 113, 113, 0.12);
+            color: var(--accent-red);
+            border: 1px solid rgba(248, 113, 113, 0.2);
         }
 
-        .btn-sm {
-            padding: 4px 12px;
-            font-size: 11px;
-            border-radius: 8px;
+        .status-badge.limited {
+            background: rgba(251, 191, 36, 0.12);
+            color: var(--accent-amber);
+            border: 1px solid rgba(251, 191, 36, 0.2);
         }
 
-        /* =============================================
-                   SEARCH
-                ============================================= */
-        .search-box {
-            display: flex;
-            align-items: center;
-            background: var(--bg-secondary);
-            border: 1px solid var(--border-color);
-            border-radius: 10px;
-            padding: 0 14px;
-            transition: var(--transition);
+        .status-dot {
+            width: 8px;
+            height: 8px;
+            border-radius: 50%;
+            display: inline-block;
         }
 
-        .search-box:focus-within {
-            border-color: var(--accent-purple);
+        .status-dot.on {
+            background: var(--accent-green);
+            animation: pulse 2s infinite;
+        }
+        .status-dot.off {
+            background: var(--accent-red);
+        }
+        .status-dot.warn {
+            background: var(--accent-amber);
         }
 
-        .search-box input {
-            background: transparent;
-            border: none;
-            padding: 9px 10px;
-            color: var(--text-primary);
-            font-family: inherit;
-            font-size: 13px;
-            width: 200px;
-            outline: none;
-        }
-
-        .search-box input::placeholder {
-            color: var(--text-muted);
-        }
-
-        .search-box i {
-            color: var(--text-muted);
-            font-size: 14px;
+        @keyframes pulse {
+            0%,
+            100% {
+                opacity: 1;
+                transform: scale(1);
+            }
+            50% {
+                opacity: 0.5;
+                transform: scale(0.9);
+            }
         }
 
         /* =============================================
@@ -320,7 +287,7 @@
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
             gap: 16px;
-            margin-bottom: 28px;
+            margin-bottom: 24px;
         }
 
         .stat-card {
@@ -332,7 +299,7 @@
         }
 
         .stat-card:hover {
-            background: var(--bg-hover);
+            border-color: var(--border-hover);
             transform: translateY(-2px);
         }
 
@@ -342,51 +309,79 @@
             font-weight: 500;
             text-transform: uppercase;
             letter-spacing: 0.5px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .stat-card .label i {
+            font-size: 14px;
+            opacity: 0.6;
         }
 
         .stat-card .value {
-            font-size: 28px;
+            font-size: 26px;
             font-weight: 800;
-            margin: 4px 0 2px;
+            margin: 6px 0 2px;
         }
 
-        .stat-card .change {
-            font-size: 12px;
-            font-weight: 600;
+        .stat-card .sub-value {
+            font-size: 13px;
+            color: var(--text-secondary);
         }
 
-        .stat-card .change.up {
-            color: var(--accent-green);
+        .stat-card .progress-bar {
+            margin-top: 10px;
+            height: 4px;
+            background: rgba(255, 255, 255, 0.06);
+            border-radius: 4px;
+            overflow: hidden;
         }
-        .stat-card .change.down {
-            color: var(--accent-red);
+
+        .stat-card .progress-bar .fill {
+            height: 100%;
+            border-radius: 4px;
+            transition: width 0.8s ease;
         }
 
         .stat-card.purple .value {
             color: var(--accent-purple);
         }
+        .stat-card.purple .fill {
+            background: var(--accent-purple);
+        }
         .stat-card.green .value {
             color: var(--accent-green);
+        }
+        .stat-card.green .fill {
+            background: var(--accent-green);
         }
         .stat-card.amber .value {
             color: var(--accent-amber);
         }
+        .stat-card.amber .fill {
+            background: var(--accent-amber);
+        }
         .stat-card.pink .value {
             color: var(--accent-pink);
         }
+        .stat-card.pink .fill {
+            background: var(--accent-pink);
+        }
 
         /* =============================================
-                   PANEL CARDS
+                   SUBSCRIPTION LINKS (مشابه 3x-ui)
                 ============================================= */
-        .panel-card {
+        .links-section {
             background: var(--bg-card);
             border: 1px solid var(--border-color);
             border-radius: var(--radius);
             padding: 24px;
+            backdrop-filter: blur(12px);
             margin-bottom: 24px;
         }
 
-        .panel-header {
+        .links-section .header {
             display: flex;
             justify-content: space-between;
             align-items: center;
@@ -395,271 +390,515 @@
             gap: 12px;
         }
 
-        .panel-header h3 {
-            font-size: 16px;
+        .links-section .header h3 {
+            font-size: 18px;
             font-weight: 700;
+            display: flex;
+            align-items: center;
+            gap: 10px;
         }
 
-        .panel-header .subtitle {
+        .links-section .header h3 i {
+            color: var(--accent-purple);
+        }
+
+        .links-section .header .badge-recommended {
+            background: var(--accent-purple);
+            color: #fff;
+            font-size: 10px;
+            font-weight: 700;
+            padding: 4px 12px;
+            border-radius: 20px;
+            letter-spacing: 0.5px;
+        }
+
+        /* ===== Universal Link ===== */
+        .universal-link {
+            background: var(--bg-inner);
+            border: 1px solid var(--border-hover);
+            border-radius: var(--radius-sm);
+            padding: 16px 20px;
+            margin-bottom: 16px;
+            transition: var(--transition);
+        }
+
+        .universal-link:hover {
+            border-color: var(--accent-purple);
+        }
+
+        .universal-link .label {
             font-size: 13px;
-            color: var(--text-muted);
-            font-weight: 400;
+            font-weight: 600;
+            margin-bottom: 8px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
         }
 
-        .panel-header .actions {
+        .universal-link .link-box {
+            display: flex;
+            gap: 10px;
+            align-items: center;
+            flex-wrap: wrap;
+        }
+
+        .universal-link .link-box input {
+            flex: 1;
+            background: rgba(0, 0, 0, 0.3);
+            border: 1px solid var(--border-color);
+            border-radius: var(--radius-sm);
+            padding: 10px 16px;
+            color: var(--text-primary);
+            font-family: monospace;
+            font-size: 13px;
+            direction: ltr;
+            text-align: left;
+            outline: none;
+            transition: var(--transition);
+            min-width: 200px;
+        }
+
+        .universal-link .link-box input:focus {
+            border-color: var(--accent-purple);
+        }
+
+        .universal-link .link-box .actions {
             display: flex;
             gap: 8px;
         }
 
-        /* =============================================
-                   TABLES (مشابه Marzban User List)
-                ============================================= */
-        .table-wrapper {
-            overflow-x: auto;
-        }
-
-        table {
-            width: 100%;
-            border-collapse: collapse;
-        }
-
-        thead th {
-            text-align: right;
-            padding: 12px 16px;
-            font-size: 11px;
+        .btn-copy {
+            background: var(--accent-purple);
+            color: #fff;
+            border: none;
+            padding: 10px 18px;
+            border-radius: var(--radius-sm);
+            font-family: inherit;
             font-weight: 600;
-            color: var(--text-muted);
-            border-bottom: 1px solid var(--border-color);
-            text-transform: uppercase;
-            letter-spacing: 0.5px;
-        }
-
-        tbody td {
-            padding: 14px 16px;
             font-size: 13px;
-            border-bottom: 1px solid rgba(255, 255, 255, 0.03);
-        }
-
-        tbody tr:hover {
-            background: var(--bg-hover);
-        }
-
-        .status-badge {
-            padding: 4px 14px;
-            border-radius: 20px;
-            font-size: 11px;
-            font-weight: 600;
-            display: inline-flex;
+            cursor: pointer;
+            transition: var(--transition);
+            display: flex;
             align-items: center;
-            gap: 6px;
+            gap: 8px;
         }
 
-        .status-badge.active {
-            background: rgba(52, 211, 153, 0.12);
-            color: var(--accent-green);
+        .btn-copy:hover {
+            background: var(--accent-blue);
+            transform: translateY(-2px);
+            box-shadow: 0 8px 25px rgba(99, 102, 241, 0.3);
         }
 
-        .status-badge.expired {
-            background: rgba(248, 113, 113, 0.12);
-            color: var(--accent-red);
+        .btn-qr {
+            background: var(--bg-inner);
+            border: 1px solid var(--border-color);
+            color: var(--text-secondary);
+            padding: 10px 14px;
+            border-radius: var(--radius-sm);
+            cursor: pointer;
+            transition: var(--transition);
+            font-size: 16px;
         }
 
-        .status-badge.limited {
-            background: rgba(251, 191, 36, 0.12);
-            color: var(--accent-amber);
+        .btn-qr:hover {
+            border-color: var(--accent-purple);
+            color: var(--text-primary);
         }
 
-        .status-badge.paused {
-            background: rgba(129, 140, 248, 0.12);
-            color: var(--accent-purple);
-        }
-
-        .status-dot {
-            width: 6px;
-            height: 6px;
-            border-radius: 50%;
-            display: inline-block;
-        }
-
-        .status-dot.on {
-            background: var(--accent-green);
-        }
-        .status-dot.off {
-            background: var(--accent-red);
-        }
-        .status-dot.warn {
-            background: var(--accent-amber);
-        }
-        .status-dot.pause {
-            background: var(--accent-purple);
-        }
-
-        .usage-bar {
-            width: 100px;
-            height: 4px;
-            background: rgba(255, 255, 255, 0.06);
-            border-radius: 4px;
-            overflow: hidden;
-            display: inline-block;
-            vertical-align: middle;
-            margin-right: 8px;
-        }
-
-        .usage-bar .fill {
-            height: 100%;
-            border-radius: 4px;
-            transition: width 0.6s ease;
-        }
-
-        .usage-bar .fill.purple {
-            background: var(--accent-purple);
-        }
-        .usage-bar .fill.green {
-            background: var(--accent-green);
-        }
-        .usage-bar .fill.amber {
-            background: var(--accent-amber);
-        }
-        .usage-bar .fill.red {
-            background: var(--accent-red);
-        }
-
-        .user-avatar {
-            width: 32px;
-            height: 32px;
-            border-radius: 50%;
-            display: inline-flex;
-            align-items: center;
-            justify-content: center;
-            font-weight: 700;
-            font-size: 14px;
-            background: rgba(129, 140, 248, 0.15);
-            color: var(--accent-purple);
-        }
-
-        /* =============================================
-                   SYSTEM STATUS BAR (مشابه Marzban)
-                ============================================= */
-        .system-status {
+        /* ===== Format Grid ===== */
+        .format-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+            grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
             gap: 12px;
             margin-top: 16px;
         }
 
-        .status-item {
+        .format-item {
+            background: var(--bg-inner);
+            border: 1px solid var(--border-color);
+            border-radius: var(--radius-sm);
+            padding: 14px 16px;
+            transition: var(--transition);
+        }
+
+        .format-item:hover {
+            border-color: var(--border-hover);
+            transform: translateY(-2px);
+        }
+
+        .format-item .top {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 8px;
+        }
+
+        .format-item .top .name {
+            font-size: 13px;
+            font-weight: 600;
             display: flex;
             align-items: center;
-            gap: 12px;
-            padding: 12px 16px;
-            background: var(--bg-secondary);
-            border-radius: var(--radius);
+            gap: 8px;
+        }
+
+        .format-item .top .tag {
+            font-size: 9px;
+            font-weight: 700;
+            text-transform: uppercase;
+            padding: 2px 10px;
+            border-radius: 20px;
+            letter-spacing: 0.5px;
+        }
+
+        .tag.vless {
+            background: rgba(99, 102, 241, 0.15);
+            color: var(--accent-purple);
+        }
+        .tag.base64 {
+            background: rgba(52, 211, 153, 0.15);
+            color: var(--accent-green);
+        }
+        .tag.singbox {
+            background: rgba(251, 191, 36, 0.15);
+            color: var(--accent-amber);
+        }
+        .tag.clash {
+            background: rgba(139, 92, 246, 0.15);
+            color: #8b5cf6;
+        }
+
+        .format-item .link-box {
+            display: flex;
+            gap: 8px;
+            align-items: center;
+        }
+
+        .format-item .link-box input {
+            flex: 1;
+            background: rgba(0, 0, 0, 0.3);
             border: 1px solid var(--border-color);
+            border-radius: 8px;
+            padding: 8px 12px;
+            color: var(--text-primary);
+            font-family: monospace;
+            font-size: 11px;
+            direction: ltr;
+            text-align: left;
+            outline: none;
+            min-width: 100px;
         }
 
-        .status-item .label {
+        .format-item .link-box input:focus {
+            border-color: var(--accent-purple);
+        }
+
+        .format-item .link-box .btn-sm {
+            padding: 6px 12px;
             font-size: 12px;
-            color: var(--text-muted);
-        }
-
-        .status-item .value {
-            font-size: 14px;
-            font-weight: 600;
-        }
-
-        .status-item .indicator {
-            width: 8px;
-            height: 8px;
-            border-radius: 50%;
-            margin-right: auto;
-        }
-
-        .status-item .indicator.online {
-            background: var(--accent-green);
-        }
-        .status-item .indicator.warning {
-            background: var(--accent-amber);
-        }
-        .status-item .indicator.offline {
-            background: var(--accent-red);
+            border-radius: 8px;
         }
 
         /* =============================================
-                   RESPONSIVE (مشابه Marzban)
+                   ONE-CLICK IMPORTS (مشابه 3x-ui)
                 ============================================= */
-        @media (max-width: 1024px) {
-            .sidebar {
-                width: 72px;
-                padding: 16px 8px;
+        .import-section {
+            background: var(--bg-card);
+            border: 1px solid var(--border-color);
+            border-radius: var(--radius);
+            padding: 24px;
+            backdrop-filter: blur(12px);
+            margin-bottom: 24px;
+        }
+
+        .import-section .header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 16px;
+            flex-wrap: wrap;
+            gap: 12px;
+        }
+
+        .import-section .header h3 {
+            font-size: 16px;
+            font-weight: 700;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .import-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+            gap: 10px;
+        }
+
+        .import-btn {
+            background: var(--bg-inner);
+            border: 1px solid var(--border-color);
+            border-radius: var(--radius-sm);
+            padding: 12px 16px;
+            color: var(--text-secondary);
+            text-decoration: none;
+            text-align: center;
+            transition: var(--transition);
+            font-weight: 600;
+            font-size: 13px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+        }
+
+        .import-btn:hover {
+            background: var(--bg-card-hover);
+            border-color: var(--border-hover);
+            color: var(--text-primary);
+            transform: translateY(-2px);
+        }
+
+        .import-btn i {
+            font-size: 16px;
+        }
+
+        /* =============================================
+                   EXPIRY & DETAILS (مشابه Marzban)
+                ============================================= */
+        .details-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 16px;
+        }
+
+        .detail-card {
+            background: var(--bg-card);
+            border: 1px solid var(--border-color);
+            border-radius: var(--radius);
+            padding: 18px 22px;
+            transition: var(--transition);
+        }
+
+        .detail-card:hover {
+            border-color: var(--border-hover);
+        }
+
+        .detail-card .label {
+            font-size: 11px;
+            color: var(--text-muted);
+            font-weight: 500;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .detail-card .value {
+            font-size: 18px;
+            font-weight: 700;
+            margin-top: 4px;
+        }
+
+        .detail-card .value.highlight {
+            color: var(--accent-purple);
+        }
+
+        /* =============================================
+                   TOAST NOTIFICATION
+                ============================================= */
+        .toast {
+            position: fixed;
+            bottom: 30px;
+            left: 50%;
+            transform: translateX(-50%) translateY(100px);
+            background: var(--bg-card);
+            border: 1px solid var(--border-hover);
+            color: var(--text-primary);
+            padding: 14px 28px;
+            border-radius: var(--radius-sm);
+            font-weight: 600;
+            font-size: 14px;
+            box-shadow: var(--shadow-card);
+            backdrop-filter: blur(12px);
+            z-index: 999;
+            transition: all 0.5s ease;
+            opacity: 0;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .toast.show {
+            opacity: 1;
+            transform: translateX(-50%) translateY(0);
+        }
+
+        .toast i {
+            color: var(--accent-green);
+            font-size: 18px;
+        }
+
+        /* =============================================
+                   QR MODAL
+                ============================================= */
+        .modal-overlay {
+            position: fixed;
+            inset: 0;
+            background: rgba(0, 0, 0, 0.7);
+            backdrop-filter: blur(8px);
+            z-index: 1000;
+            display: none;
+            justify-content: center;
+            align-items: center;
+            padding: 20px;
+        }
+
+        .modal-overlay.show {
+            display: flex;
+        }
+
+        .modal-content {
+            background: var(--bg-card);
+            border: 1px solid var(--border-hover);
+            border-radius: var(--radius);
+            padding: 32px;
+            max-width: 400px;
+            width: 100%;
+            text-align: center;
+            animation: fadeIn 0.3s ease-out;
+        }
+
+        .modal-content h3 {
+            font-size: 20px;
+            font-weight: 700;
+            margin-bottom: 16px;
+        }
+
+        .modal-content .qr-wrapper {
+            background: #fff;
+            padding: 16px;
+            border-radius: var(--radius-sm);
+            display: inline-block;
+            margin-bottom: 16px;
+        }
+
+        .modal-content .qr-wrapper img {
+            width: 200px;
+            height: 200px;
+            display: block;
+        }
+
+        .modal-content .link-text {
+            font-family: monospace;
+            font-size: 12px;
+            color: var(--text-secondary);
+            word-break: break-all;
+            background: var(--bg-inner);
+            padding: 12px 16px;
+            border-radius: var(--radius-sm);
+            margin-bottom: 16px;
+            direction: ltr;
+            text-align: left;
+        }
+
+        .modal-content .btn-close {
+            background: var(--bg-inner);
+            border: 1px solid var(--border-color);
+            color: var(--text-secondary);
+            padding: 10px 32px;
+            border-radius: var(--radius-sm);
+            font-family: inherit;
+            font-weight: 600;
+            font-size: 14px;
+            cursor: pointer;
+            transition: var(--transition);
+        }
+
+        .modal-content .btn-close:hover {
+            border-color: var(--accent-purple);
+            color: var(--text-primary);
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: scale(0.95);
             }
-            .sidebar .text,
-            .sidebar .badge,
-            .sidebar .version,
-            .sidebar .label-text {
-                display: none;
-            }
-            .sidebar-item {
-                justify-content: center;
-                padding: 12px;
-                border-radius: 10px;
-            }
-            .sidebar-item.active::before {
-                display: none;
-            }
-            .sidebar-item.active {
-                background: rgba(129, 140, 248, 0.15);
-            }
-            .sidebar-logo {
-                justify-content: center;
-                padding-bottom: 16px;
-            }
-            .sidebar-logo .text {
-                display: none;
-            }
-            .sidebar-footer .sidebar-item .label-text {
-                display: none;
-            }
-            .main {
-                padding: 16px 20px;
+            to {
+                opacity: 1;
+                transform: scale(1);
             }
         }
 
-        @media (max-width: 640px) {
-            .sidebar {
-                display: none;
+        /* =============================================
+                   RESPONSIVE
+                ============================================= */
+        @media (max-width: 768px) {
+            .profile-card {
+                flex-direction: column;
+                align-items: flex-start;
+                padding: 20px;
             }
-            .main {
-                padding: 12px;
+            .profile-status {
+                width: 100%;
+                justify-content: flex-start;
             }
             .stats-grid {
                 grid-template-columns: 1fr 1fr;
             }
-            .topbar {
+            .links-section .header {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+            .universal-link .link-box {
                 flex-direction: column;
                 align-items: stretch;
             }
-            .topbar-actions {
-                flex-wrap: wrap;
+            .universal-link .link-box .actions {
+                justify-content: stretch;
             }
-            .search-box input {
-                width: 100%;
-            }
-            .panel-header {
+            .format-item .link-box {
                 flex-direction: column;
                 align-items: stretch;
             }
-            .system-status {
+            .details-grid {
                 grid-template-columns: 1fr 1fr;
             }
-            table {
-                font-size: 12px;
+            .top-bar {
+                flex-direction: column;
+                align-items: stretch;
             }
-            thead th,
-            tbody td {
-                padding: 8px 10px;
+            .top-actions {
+                justify-content: stretch;
             }
-            .usage-bar {
-                width: 60px;
+            .btn-icon {
+                flex: 1;
+                justify-content: center;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .stats-grid {
+                grid-template-columns: 1fr;
+            }
+            .details-grid {
+                grid-template-columns: 1fr;
+            }
+            .import-grid {
+                grid-template-columns: 1fr 1fr;
+            }
+            .profile-info {
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 12px;
+            }
+            .profile-avatar {
+                width: 50px;
+                height: 50px;
+                font-size: 22px;
+            }
+            .profile-details h2 {
+                font-size: 18px;
             }
         }
 
@@ -677,614 +916,502 @@
             background: var(--accent-purple);
             border-radius: 4px;
         }
-
-        /* =============================================
-                   ANIMATIONS
-                ============================================= */
-        @keyframes fadeIn {
-            from {
-                opacity: 0;
-                transform: translateY(8px);
-            }
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
-        }
-        .fade-in {
-            animation: fadeIn 0.4s ease-out;
-        }
-
-        @keyframes pulse {
-            0%,
-            100% {
-                opacity: 1;
-            }
-            50% {
-                opacity: 0.3;
-            }
-        }
-        .pulse {
-            animation: pulse 2s infinite;
-        }
-
-        /* =============================================
-                   TOOLTIP
-                ============================================= */
-        .tooltip {
-            position: relative;
-        }
-        .tooltip:hover::after {
-            content: attr(data-tip);
-            position: absolute;
-            bottom: 100%;
-            left: 50%;
-            transform: translateX(-50%);
-            background: var(--bg-secondary);
-            color: var(--text-primary);
-            padding: 4px 12px;
-            border-radius: 6px;
-            font-size: 11px;
-            white-space: nowrap;
-            border: 1px solid var(--border-color);
-        }
     </style>
 </head>
 <body>
 
-    <!-- =============================================
-    SIDEBAR
-    ============================================= -->
-    <aside class="sidebar">
-        <div class="sidebar-logo">
-            <div class="icon">🚀</div>
-            <div class="text">Xray<span>Panel</span></div>
-            <span class="version">v2.0</span>
-        </div>
+    <!-- ===== BACKGROUND EFFECTS ===== -->
+    <div class="bg-glow bg-glow-1"></div>
+    <div class="bg-glow bg-glow-2"></div>
 
-        <a class="sidebar-item active">
-            <i class="fas fa-chart-pie"></i>
-            <span class="label-text">داشبورد</span>
-        </a>
-        <a class="sidebar-item">
-            <i class="fas fa-users"></i>
-            <span class="label-text">کاربران</span>
-            <span class="badge">۱۲</span>
-        </a>
-        <a class="sidebar-item">
-            <i class="fas fa-server"></i>
-            <span class="label-text">سرورها</span>
-            <span class="badge">۳</span>
-        </a>
-        <a class="sidebar-item">
-            <i class="fas fa-plug"></i>
-            <span class="label-text">Inbound</span>
-        </a>
-        <a class="sidebar-item">
-            <i class="fas fa-chart-line"></i>
-            <span class="label-text">آمار</span>
-        </a>
+    <!-- ===== MAIN CONTAINER ===== -->
+    <div class="container">
 
-        <div class="sidebar-divider"></div>
-
-        <a class="sidebar-item">
-            <i class="fas fa-cog"></i>
-            <span class="label-text">تنظیمات</span>
-        </a>
-        <a class="sidebar-item">
-            <i class="fas fa-shield-alt"></i>
-            <span class="label-text">امنیت</span>
-        </a>
-
-        <div class="sidebar-footer">
-            <a class="sidebar-item">
-                <i class="fas fa-user-circle"></i>
-                <span class="label-text">پروفایل</span>
-            </a>
-            <a class="sidebar-item" style="color: var(--accent-red);">
-                <i class="fas fa-sign-out-alt"></i>
-                <span class="label-text">خروج</span>
-            </a>
-        </div>
-    </aside>
-
-    <!-- =============================================
-    MAIN CONTENT
-    ============================================= -->
-    <main class="main fade-in">
-
-        <!-- ===== TOPBAR ===== -->
-        <div class="topbar">
-            <div class="topbar-left">
-                <h1>📊 داشبورد</h1>
-                <span class="subtitle">خلاصه وضعیت سیستم</span>
+        <!-- ===== TOP BAR ===== -->
+        <div class="top-bar">
+            <div class="brand">
+                <div class="icon">🚀</div>
+                <div class="text">Xray<span>Panel</span></div>
             </div>
-            <div class="topbar-actions">
-                <div class="search-box">
-                    <i class="fas fa-search"></i>
-                    <input type="text" placeholder="جستجو..." />
-                </div>
-                <button class="btn btn-primary">
-                    <i class="fas fa-plus"></i> کاربر جدید
+            <div class="top-actions">
+                <button class="btn-icon" onclick="toggleTheme()">
+                    <i class="fas fa-moon"></i>
+                    <span id="theme-label">تاریک</span>
                 </button>
-                <button class="btn btn-outline">
+                <button class="btn-icon" onclick="toggleLang()">
+                    <i class="fas fa-globe"></i>
+                    <span id="lang-label">FA</span>
+                </button>
+                <button class="btn-icon" onclick="window.location.reload();">
                     <i class="fas fa-sync-alt"></i>
                 </button>
+            </div>
+        </div>
+
+        <!-- ===== PROFILE CARD ===== -->
+        <div class="profile-card">
+            <div class="profile-info">
+                <div class="profile-avatar">س</div>
+                <div class="profile-details">
+                    <h2 id="userName">Sanaei</h2>
+                    <div class="sub" id="userId">شناسه: 152y5rt1mjwh94ny</div>
+                </div>
+            </div>
+            <div class="profile-status">
+                <span class="status-badge active" id="statusBadge">
+                    <span class="status-dot on"></span>
+                    <span id="statusText">فعال</span>
+                </span>
+                <span style="font-size:13px;color:var(--text-muted);">|</span>
+                <span style="font-size:13px;color:var(--text-secondary);" id="ipDisplay">
+                    <i class="fas fa-network-wired"></i>
+                    <span id="clientIp">در حال تشخیص...</span>
+                </span>
             </div>
         </div>
 
         <!-- ===== STATS ===== -->
         <div class="stats-grid">
             <div class="stat-card purple">
-                <div class="label">کل کاربران</div>
-                <div class="value">۱۲</div>
-                <div class="change up">↑ ۲ جدید</div>
+                <div class="label"><i class="fas fa-upload"></i> آپلود</div>
+                <div class="value" id="uploadValue">43.35MB</div>
+                <div class="sub-value">از کل مصرف</div>
             </div>
             <div class="stat-card green">
-                <div class="label">فعال</div>
-                <div class="value">۸</div>
-                <div class="change up">↑ ۶۷٪</div>
+                <div class="label"><i class="fas fa-download"></i> دانلود</div>
+                <div class="value" id="downloadValue">481.31MB</div>
+                <div class="sub-value">از کل مصرف</div>
             </div>
             <div class="stat-card amber">
-                <div class="label">مصرف امروز</div>
-                <div class="value">۲.۴GB</div>
-                <div class="change up">↑ ۱۲٪</div>
+                <div class="label"><i class="fas fa-chart-pie"></i> مصرف کل</div>
+                <div class="value" id="usageValue">524.66MB</div>
+                <div class="sub-value">از <span id="quotaTotal">1.00GB</span></div>
+                <div class="progress-bar">
+                    <div class="fill" id="usageProgress" style="width:52%"></div>
+                </div>
             </div>
             <div class="stat-card pink">
-                <div class="label">کل مصرف</div>
-                <div class="value">۴۷.۸GB</div>
-                <div class="change down">↓ ۳٪</div>
+                <div class="label"><i class="fas fa-clock"></i> زمان باقیمانده</div>
+                <div class="value" id="timeRemaining">29 روز</div>
+                <div class="sub-value">تا انقضا</div>
             </div>
         </div>
 
-        <!-- ===== SYSTEM STATUS ===== -->
-        <div class="panel-card">
-            <div class="panel-header">
-                <h3>🖥️ وضعیت سیستم</h3>
-                <span class="subtitle">آخرین بروزرسانی: لحظه‌ای</span>
-            </div>
-            <div class="system-status">
-                <div class="status-item">
-                    <span class="indicator online"></span>
-                    <div>
-                        <div class="label">سرور اصلی</div>
-                        <div class="value">آنلاین</div>
-                    </div>
-                </div>
-                <div class="status-item">
-                    <span class="indicator online"></span>
-                    <div>
-                        <div class="label">CPU</div>
-                        <div class="value">۱۲٪</div>
-                    </div>
-                </div>
-                <div class="status-item">
-                    <span class="indicator warning"></span>
-                    <div>
-                        <div class="label">RAM</div>
-                        <div class="value">۴۳٪</div>
-                    </div>
-                </div>
-                <div class="status-item">
-                    <span class="indicator online"></span>
-                    <div>
-                        <div class="label">Uptime</div>
-                        <div class="value">۱۴ روز</div>
-                    </div>
-                </div>
-                <div class="status-item">
-                    <span class="indicator online"></span>
-                    <div>
-                        <div class="label">Xray Core</div>
-                        <div class="value">v1.8.4</div>
-                    </div>
-                </div>
-                <div class="status-item">
-                    <span class="indicator online"></span>
-                    <div>
-                        <div class="label">اتصال اینترنت</div>
-                        <div class="value">پایدار</div>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-        <!-- ===== USERS TABLE ===== -->
-        <div class="panel-card">
-            <div class="panel-header">
-                <div>
-                    <h3>👤 لیست کاربران</h3>
-                    <span class="subtitle">۱۲ کاربر فعال • ۴ کاربر غیرفعال</span>
-                </div>
-                <div class="actions">
-                    <button class="btn btn-outline btn-sm">
-                        <i class="fas fa-download"></i> خروجی
-                    </button>
-                    <button class="btn btn-primary btn-sm">
-                        <i class="fas fa-plus"></i> افزودن
-                    </button>
-                </div>
+        <!-- ===== SUBSCRIPTION LINKS ===== -->
+        <div class="links-section">
+            <div class="header">
+                <h3>
+                    <i class="fas fa-link"></i>
+                    لینک‌های اشتراک
+                    <span class="badge-recommended">پیشنهادی</span>
+                </h3>
+                <span style="font-size:13px;color:var(--text-muted);">برای اتصال از این لینک‌ها استفاده کنید</span>
             </div>
 
-            <div class="table-wrapper">
-                <table>
-                    <thead>
-                        <tr>
-                            <th>کاربر</th>
-                            <th>شناسه</th>
-                            <th>مصرف</th>
-                            <th>سهمیه</th>
-                            <th>وضعیت</th>
-                            <th>انقضا</th>
-                            <th>عملیات</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr>
-                            <td>
-                                <div style="display:flex;align-items:center;gap:10px;">
-                                    <span class="user-avatar">س</span>
-                                    <strong>Sanaei</strong>
-                                </div>
-                            </td>
-                            <td style="font-family: monospace; font-size: 12px; color: var(--text-muted);">152y5rt1mjwh94ny</td>
-                            <td>
-                                <span>۵۲۴MB</span>
-                                <div class="usage-bar"><div class="fill purple" style="width:52%"></div></div>
-                            </td>
-                            <td>۱GB</td>
-                            <td><span class="status-badge active"><span class="status-dot on"></span> فعال</span></td>
-                            <td style="font-size: 12px; color: var(--text-muted);">۱۴۰۴/۰۴/۲۵</td>
-                            <td>
-                                <button class="btn btn-outline btn-sm">
-                                    <i class="fas fa-edit"></i>
-                                </button>
-                                <button class="btn btn-danger btn-sm">
-                                    <i class="fas fa-trash"></i>
-                                </button>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>
-                                <div style="display:flex;align-items:center;gap:10px;">
-                                    <span class="user-avatar" style="background:rgba(251,191,36,0.15);color:var(--accent-amber);">ر</span>
-                                    <strong>Reza</strong>
-                                </div>
-                            </td>
-                            <td style="font-family: monospace; font-size: 12px; color: var(--text-muted);">9x8k3m2n1b7v4c6</td>
-                            <td>
-                                <span>۱.۲GB</span>
-                                <div class="usage-bar"><div class="fill amber" style="width:78%"></div></div>
-                            </td>
-                            <td>۲GB</td>
-                            <td><span class="status-badge limited"><span class="status-dot warn"></span> محدود</span></td>
-                            <td style="font-size: 12px; color: var(--text-muted);">۱۴۰۴/۰۵/۰۲</td>
-                            <td>
-                                <button class="btn btn-outline btn-sm">
-                                    <i class="fas fa-edit"></i>
-                                </button>
-                                <button class="btn btn-danger btn-sm">
-                                    <i class="fas fa-trash"></i>
-                                </button>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>
-                                <div style="display:flex;align-items:center;gap:10px;">
-                                    <span class="user-avatar" style="background:rgba(248,113,113,0.15);color:var(--accent-red);">ع</span>
-                                    <strong>Ali</strong>
-                                </div>
-                            </td>
-                            <td style="font-family: monospace; font-size: 12px; color: var(--text-muted);">4d5f6g7h8j9k0l1</td>
-                            <td>
-                                <span>۰MB</span>
-                                <div class="usage-bar"><div class="fill" style="width:0%"></div></div>
-                            </td>
-                            <td>۵۰۰MB</td>
-                            <td><span class="status-badge expired"><span class="status-dot off"></span> منقضی</span></td>
-                            <td style="font-size: 12px; color: var(--text-muted);">۱۴۰۴/۰۳/۱۵</td>
-                            <td>
-                                <button class="btn btn-outline btn-sm">
-                                    <i class="fas fa-edit"></i>
-                                </button>
-                                <button class="btn btn-danger btn-sm">
-                                    <i class="fas fa-trash"></i>
-                                </button>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>
-                                <div style="display:flex;align-items:center;gap:10px;">
-                                    <span class="user-avatar" style="background:rgba(129,140,248,0.15);">م</span>
-                                    <strong>Mohammad</strong>
-                                </div>
-                            </td>
-                            <td style="font-family: monospace; font-size: 12px; color: var(--text-muted);">7h8j9k0l1m2n3b4</td>
-                            <td>
-                                <span>۳.۸GB</span>
-                                <div class="usage-bar"><div class="fill purple" style="width:95%"></div></div>
-                            </td>
-                            <td>۴GB</td>
-                            <td><span class="status-badge active"><span class="status-dot on"></span> فعال</span></td>
-                            <td style="font-size: 12px; color: var(--text-muted);">۱۴۰۴/۰۶/۱۰</td>
-                            <td>
-                                <button class="btn btn-outline btn-sm">
-                                    <i class="fas fa-edit"></i>
-                                </button>
-                                <button class="btn btn-danger btn-sm">
-                                    <i class="fas fa-trash"></i>
-                                </button>
-                            </td>
-                        </tr>
-                    </tbody>
-                </table>
-            </div>
-
-            <!-- Pagination -->
-            <div style="display:flex;justify-content:space-between;align-items:center;margin-top:16px;padding-top:16px;border-top:1px solid var(--border-color);">
-                <span style="font-size:13px;color:var(--text-muted);">نمایش ۱-۴ از ۱۲ کاربر</span>
-                <div style="display:flex;gap:6px;">
-                    <button class="btn btn-outline btn-sm"><i class="fas fa-chevron-right"></i></button>
-                    <button class="btn btn-primary btn-sm" style="padding:4px 12px;">۱</button>
-                    <button class="btn btn-outline btn-sm">۲</button>
-                    <button class="btn btn-outline btn-sm">۳</button>
-                    <button class="btn btn-outline btn-sm"><i class="fas fa-chevron-left"></i></button>
+            <!-- Universal Link -->
+            <div class="universal-link">
+                <div class="label">
+                    <i class="fas fa-star" style="color:var(--accent-amber);"></i>
+                    لینک خودکار (تشخیص کلاینت)
                 </div>
-            </div>
-        </div>
-
-        <!-- ===== INBOUND CONFIG (مشابه 3x-ui) ===== -->
-        <div class="panel-card">
-            <div class="panel-header">
-                <h3>📡 تنظیمات Inbound</h3>
-                <div class="actions">
-                    <button class="btn btn-success btn-sm">
-                        <i class="fas fa-plus"></i> اضافه کردن
-                    </button>
-                </div>
-            </div>
-
-            <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:12px;">
-                <div style="background:var(--bg-secondary);border-radius:var(--radius);padding:14px 18px;border:1px solid var(--border-color);">
-                    <div style="font-size:11px;color:var(--text-muted);font-weight:500;">پروتکل</div>
-                    <div style="font-size:15px;font-weight:600;margin-top:2px;color:var(--accent-purple);">VLESS</div>
-                </div>
-                <div style="background:var(--bg-secondary);border-radius:var(--radius);padding:14px 18px;border:1px solid var(--border-color);">
-                    <div style="font-size:11px;color:var(--text-muted);font-weight:500;">پورت</div>
-                    <div style="font-size:15px;font-weight:600;margin-top:2px;">۲۵۵۳۹</div>
-                </div>
-                <div style="background:var(--bg-secondary);border-radius:var(--radius);padding:14px 18px;border:1px solid var(--border-color);">
-                    <div style="font-size:11px;color:var(--text-muted);font-weight:500;">آدرس</div>
-                    <div style="font-size:15px;font-weight:600;margin-top:2px;">iran2.imsurn.ir</div>
-                </div>
-                <div style="background:var(--bg-secondary);border-radius:var(--radius);padding:14px 18px;border:1px solid var(--border-color);">
-                    <div style="font-size:11px;color:var(--text-muted);font-weight:500;">UUID</div>
-                    <div style="font-size:13px;font-weight:600;margin-top:2px;font-family:monospace;direction:ltr;text-align:left;display:flex;justify-content:space-between;align-items:center;">
-                        <span style="font-size:11px;color:var(--text-secondary);">50a592ee-404d-424b...</span>
-                        <button onclick="navigator.clipboard.writeText('50a592ee-404d-424b-b758-4e98389c4090')" style="background:transparent;border:none;color:var(--text-muted);cursor:pointer;padding:2px 6px;border-radius:4px;">
-                            <i class="fas fa-copy" style="font-size:12px;"></i>
+                <div class="link-box">
+                    <input type="text" id="universalLink" readonly value="vless://50a592ee-404d-424b-b758-4e98389c4090@iran2.imsurn.ir:25539?encryption=none&headerType=http&host=nobi...">
+                    <div class="actions">
+                        <button class="btn-copy" onclick="copyLink('universalLink')">
+                            <i class="fas fa-copy"></i> کپی
+                        </button>
+                        <button class="btn-qr" onclick="showQR('universalLink')" title="نمایش QR Code">
+                            <i class="fas fa-qrcode"></i>
                         </button>
                     </div>
                 </div>
-                <div style="background:var(--bg-secondary);border-radius:var(--radius);padding:14px 18px;border:1px solid var(--border-color);">
-                    <div style="font-size:11px;color:var(--text-muted);font-weight:500;">Flow</div>
-                    <div style="font-size:15px;font-weight:600;margin-top:2px;">xtls-rprx-vision</div>
+            </div>
+
+            <!-- Format Grid -->
+            <div class="format-grid">
+                <!-- VLESS / Raw -->
+                <div class="format-item">
+                    <div class="top">
+                        <span class="name"><i class="fas fa-code"></i> فرمت خام</span>
+                        <span class="tag vless">VLESS</span>
+                    </div>
+                    <div class="link-box">
+                        <input type="text" id="rawLink" readonly value="vless://50a592ee-404d-424b-b758-4e98389c4090@iran2.imsurn.ir:25539?encryption=none">
+                        <button class="btn-copy btn-sm" onclick="copyLink('rawLink')">
+                            <i class="fas fa-copy"></i>
+                        </button>
+                    </div>
                 </div>
-                <div style="background:var(--bg-secondary);border-radius:var(--radius);padding:14px 18px;border:1px solid var(--border-color);">
-                    <div style="font-size:11px;color:var(--text-muted);font-weight:500;">Security</div>
-                    <div style="font-size:15px;font-weight:600;margin-top:2px;color:var(--accent-green);">reality</div>
+
+                <!-- Base64 -->
+                <div class="format-item">
+                    <div class="top">
+                        <span class="name"><i class="fas fa-base"></i> Base64</span>
+                        <span class="tag base64">V2Ray</span>
+                    </div>
+                    <div class="link-box">
+                        <input type="text" id="base64Link" readonly value="dmxlc3M6Ly81MGE1OTJlZS00MDRkLTQyNGItYjc1OC00ZTk4Mzg5YzQwOTBAaXJhbjIuaW1zdXJuLmlyOjI1NTM5P2VuY3J5cHRpb249bm9uZQ==">
+                        <button class="btn-copy btn-sm" onclick="copyLink('base64Link')">
+                            <i class="fas fa-copy"></i>
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Sing-box -->
+                <div class="format-item">
+                    <div class="top">
+                        <span class="name"><i class="fas fa-cube"></i> Sing-box</span>
+                        <span class="tag singbox">JSON</span>
+                    </div>
+                    <div class="link-box">
+                        <input type="text" id="singboxLink" readonly value="https://example.com/sub/singbox/152y5rt1mjwh94ny">
+                        <button class="btn-copy btn-sm" onclick="copyLink('singboxLink')">
+                            <i class="fas fa-copy"></i>
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Clash -->
+                <div class="format-item">
+                    <div class="top">
+                        <span class="name"><i class="fas fa-shield"></i> Clash</span>
+                        <span class="tag clash">YAML</span>
+                    </div>
+                    <div class="link-box">
+                        <input type="text" id="clashLink" readonly value="https://example.com/sub/clash/152y5rt1mjwh94ny">
+                        <button class="btn-copy btn-sm" onclick="copyLink('clashLink')">
+                            <i class="fas fa-copy"></i>
+                        </button>
+                    </div>
                 </div>
             </div>
         </div>
 
-        <!-- ===== QUICK ACTIONS (مشابه 3x-ui) ===== -->
-        <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:12px;margin-top:4px;">
-            <button class="btn btn-outline" style="padding:14px;justify-content:center;border-color:var(--accent-purple);">
-                <i class="fas fa-save" style="color:var(--accent-purple);"></i> پشتیبان‌گیری
-            </button>
-            <button class="btn btn-outline" style="padding:14px;justify-content:center;border-color:var(--accent-green);">
-                <i class="fas fa-sync-alt" style="color:var(--accent-green);"></i> ریستارت Xray
-            </button>
-            <button class="btn btn-outline" style="padding:14px;justify-content:center;border-color:var(--accent-amber);">
-                <i class="fas fa-file-export" style="color:var(--accent-amber);"></i> خروجی تنظیمات
-            </button>
-            <button class="btn btn-outline" style="padding:14px;justify-content:center;border-color:var(--accent-red);">
-                <i class="fas fa-exclamation-triangle" style="color:var(--accent-red);"></i> مشاهده لاگ
-            </button>
+        <!-- ===== ONE-CLICK IMPORTS ===== -->
+        <div class="import-section">
+            <div class="header">
+                <h3><i class="fas fa-bolt" style="color:var(--accent-amber);"></i> وارد کردن با یک کلیک</h3>
+                <span style="font-size:13px;color:var(--text-muted);">برای کلاینت‌های محبوب</span>
+            </div>
+            <div class="import-grid">
+                <a href="#" class="import-btn" onclick="importToApp('v2rayng')">
+                    <i class="fas fa-crown"></i> v2rayNG
+                </a>
+                <a href="#" class="import-btn" onclick="importToApp('v2rayn')">
+                    <i class="fas fa-window-maximize"></i> v2rayN
+                </a>
+                <a href="#" class="import-btn" onclick="importToApp('shadowrocket')">
+                    <i class="fas fa-rocket"></i> Shadowrocket
+                </a>
+                <a href="#" class="import-btn" onclick="importToApp('streisand')">
+                    <i class="fas fa-umbrella"></i> Streisand
+                </a>
+                <a href="#" class="import-btn" onclick="importToApp('clashmeta')">
+                    <i class="fas fa-shield-halved"></i> Clash Meta
+                </a>
+                <a href="#" class="import-btn" onclick="importToApp('singbox')">
+                    <i class="fas fa-cube"></i> Sing-box
+                </a>
+            </div>
+        </div>
+
+        <!-- ===== DETAILS ===== -->
+        <div class="details-grid">
+            <div class="detail-card">
+                <div class="label"><i class="fas fa-calendar-alt"></i> تاریخ انقضا</div>
+                <div class="value highlight" id="expiryDate">۱۴۰۴/۰۴/۲۵</div>
+            </div>
+            <div class="detail-card">
+                <div class="label"><i class="fas fa-clock"></i> آخرین اتصال</div>
+                <div class="value" id="lastOnline">۶/۶/۲۰۲۴، ۱۰:۱۴:۱۸ ب.ظ</div>
+            </div>
+            <div class="detail-card">
+                <div class="label"><i class="fas fa-database"></i> سهمیه باقیمانده</div>
+                <div class="value highlight" id="remainingQuota">۴۹۹.۳۴MB</div>
+            </div>
+            <div class="detail-card">
+                <div class="label"><i class="fas fa-server"></i> سرور</div>
+                <div class="value" id="serverName">iran2.imsurn.ir</div>
+            </div>
         </div>
 
         <!-- ===== FOOTER ===== -->
-        <div style="margin-top:32px;padding-top:16px;border-top:1px solid var(--border-color);display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:12px;font-size:12px;color:var(--text-muted);">
-            <span>Xray Panel v2.0 • ساخته شده با ❤️</span>
-            <span>Xray Core v1.8.4 • uptime: 14 روز</span>
+        <div style="margin-top:24px;padding-top:16px;border-top:1px solid var(--border-color);display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:12px;font-size:12px;color:var(--text-muted);">
+            <span>Xray Panel v2.0 • <span id="footerStatus">سیستم پایدار</span></span>
+            <span>
+                <i class="fas fa-telegram"></i>
+                <a href="#" style="color:var(--accent-purple);text-decoration:none;">پشتیبانی</a>
+                •
+                <i class="fas fa-github"></i>
+                <a href="#" style="color:var(--accent-purple);text-decoration:none;">مستندات</a>
+            </span>
         </div>
 
-    </main>
+    </div>
+
+    <!-- ===== TOAST ===== -->
+    <div class="toast" id="toast">
+        <i class="fas fa-check-circle"></i>
+        <span id="toastMessage">کپی شد!</span>
+    </div>
+
+    <!-- ===== QR MODAL ===== -->
+    <div class="modal-overlay" id="qrModal">
+        <div class="modal-content">
+            <h3><i class="fas fa-qrcode" style="color:var(--accent-purple);"></i> اسکن کنید</h3>
+            <div class="qr-wrapper">
+                <img id="qrImage" src="" alt="QR Code">
+            </div>
+            <div class="link-text" id="qrLinkText">لینک</div>
+            <button class="btn-close" onclick="closeQR()">بستن</button>
+        </div>
+    </div>
 
     <script>
         // =============================================
-        // DATA STORE (مشابه Marzban API)
+        // DATA (مشابه Marzban API Response)
         // =============================================
-        const panelData = {
-            users: [
-                { name: 'Sanaei', id: '152y5rt1mjwh94ny', usage: '524MB', quota: '1GB', percent: 52,
-                status: 'active', expiry: '۱۴۰۴/۰۴/۲۵' },
-                { name: 'Reza', id: '9x8k3m2n1b7v4c6', usage: '1.2GB', quota: '2GB', percent: 78,
-                status: 'limited', expiry: '۱۴۰۴/۰۵/۰۲' },
-                { name: 'Ali', id: '4d5f6g7h8j9k0l1', usage: '0MB', quota: '500MB', percent: 0,
-                status: 'expired', expiry: '۱۴۰۴/۰۳/۱۵' },
-                { name: 'Mohammad', id: '7h8j9k0l1m2n3b4', usage: '3.8GB', quota: '4GB', percent: 95,
-                    status: 'active', expiry: '۱۴۰۴/۰۶/۱۰' }
-            ],
-            stats: {
-                totalUsers: 12,
-                activeUsers: 8,
-                todayUsage: '2.4GB',
-                totalUsage: '47.8GB'
+        const userData = {
+            name: 'Sanaei',
+            id: '152y5rt1mjwh94ny',
+            status: 'active', // active | expired | limited
+            upload: '43.35MB',
+            download: '481.31MB',
+            usage: '524.66MB',
+            quota: '1.00GB',
+            remaining: '499.34MB',
+            percent: 52,
+            expiry: '۱۴۰۴/۰۴/۲۵',
+            lastOnline: '۶/۶/۲۰۲۴، ۱۰:۱۴:۱۸ ب.ظ',
+            server: 'iran2.imsurn.ir',
+            universalLink: 'vless://50a592ee-404d-424b-b758-4e98389c4090@iran2.imsurn.ir:25539?encryption=none&headerType=http&host=nobi...',
+            rawLink: 'vless://50a592ee-404d-424b-b758-4e98389c4090@iran2.imsurn.ir:25539?encryption=none',
+            base64Link: 'dmxlc3M6Ly81MGE1OTJlZS00MDRkLTQyNGItYjc1OC00ZTk4Mzg5YzQwOTBAaXJhbjIuaW1zdXJuLmlyOjI1NTM5P2VuY3J5cHRpb249bm9uZQ==',
+            singboxLink: 'https://example.com/sub/singbox/152y5rt1mjwh94ny',
+            clashLink: 'https://example.com/sub/clash/152y5rt1mjwh94ny',
+            timeRemaining: '29 روز'
+        };
+
+        // =============================================
+        // I18N
+        // =============================================
+        const i18n = {
+            fa: {
+                copy: 'کپی',
+                copied: 'کپی شد!',
+                qr: 'QR',
+                close: 'بستن',
+                qrTitle: 'اسکن کد QR',
+                active: 'فعال',
+                expired: 'منقضی',
+                limited: 'محدود',
+                dark: 'تاریک',
+                light: 'روشن',
+                lang: 'FA'
             },
-            system: {
-                status: 'online',
-                cpu: '12%',
-                ram: '43%',
-                uptime: '14 days',
-                coreVersion: 'v1.8.4'
+            en: {
+                copy: 'Copy',
+                copied: 'Copied!',
+                qr: 'QR',
+                close: 'Close',
+                qrTitle: 'Scan QR Code',
+                active: 'Active',
+                expired: 'Expired',
+                limited: 'Limited',
+                dark: 'Dark',
+                light: 'Light',
+                lang: 'EN'
             }
         };
+
+        let currentLang = 'fa';
+        let isDark = true;
 
         // =============================================
         // RENDER FUNCTIONS
         // =============================================
-        function renderStats() {
-            const stats = panelData.stats;
-            const cards = document.querySelectorAll('.stat-card .value');
-            if (cards.length >= 4) {
-                cards[0].textContent = stats.totalUsers;
-                cards[1].textContent = stats.activeUsers;
-                cards[2].textContent = stats.todayUsage;
-                cards[3].textContent = stats.totalUsage;
-            }
-        }
+        function renderProfile() {
+            document.getElementById('userName').textContent = userData.name;
+            document.getElementById('userId').textContent = 'شناسه: ' + userData.id;
 
-        function renderUsers() {
-            const tbody = document.querySelector('tbody');
-            if (!tbody) return;
+            const badge = document.getElementById('statusBadge');
+            const statusText = document.getElementById('statusText');
+            const dot = badge.querySelector('.status-dot');
 
             const statusMap = {
-                active: { class: 'active', dot: 'on', text: 'فعال' },
-                limited: { class: 'limited', dot: 'warn', text: 'محدود' },
-                expired: { class: 'expired', dot: 'off', text: 'منقضی' },
-                paused: { class: 'paused', dot: 'pause', text: 'متوقف' }
+                active: { class: 'active', dotClass: 'on', text: currentLang === 'fa' ? 'فعال' : 'Active' },
+                expired: { class: 'expired', dotClass: 'off', text: currentLang === 'fa' ? 'منقضی' : 'Expired' },
+                limited: { class: 'limited', dotClass: 'warn', text: currentLang === 'fa' ? 'محدود' : 'Limited' }
             };
 
-            const users = panelData.users;
-
-            tbody.innerHTML = users.map(user => {
-                const status = statusMap[user.status] || statusMap.expired;
-                const colorClass = user.percent > 80 ? 'amber' : user.percent > 50 ? 'purple' : 'green';
-                const initial = user.name.charAt(0);
-                const avatarColors = {
-                    'س': 'rgba(129,140,248,0.15)',
-                    'ر': 'rgba(251,191,36,0.15)',
-                    'ع': 'rgba(248,113,113,0.15)',
-                    'م': 'rgba(129,140,248,0.15)'
-                };
-                const avatarColor = avatarColors[initial] || 'rgba(129,140,248,0.15)';
-                const textColor = initial === 'ر' ? 'var(--accent-amber)' : initial === 'ع' ? 'var(--accent-red)' :
-                    'var(--accent-purple)';
-
-                return `
-                            <tr>
-                                <td>
-                                    <div style="display:flex;align-items:center;gap:10px;">
-                                        <span class="user-avatar" style="background:${avatarColor};color:${textColor};">${initial}</span>
-                                        <strong>${user.name}</strong>
-                                    </div>
-                                </td>
-                                <td style="font-family: monospace; font-size: 12px; color: var(--text-muted);">${user.id}</td>
-                                <td>
-                                    <span>${user.usage}</span>
-                                    <div class="usage-bar"><div class="fill ${colorClass}" style="width:${user.percent}%"></div></div>
-                                </td>
-                                <td>${user.quota}</td>
-                                <td><span class="status-badge ${status.class}"><span class="status-dot ${status.dot}"></span> ${status.text}</span></td>
-                                <td style="font-size: 12px; color: var(--text-muted);">${user.expiry}</td>
-                                <td>
-                                    <button class="btn btn-outline btn-sm">
-                                        <i class="fas fa-edit"></i>
-                                    </button>
-                                    <button class="btn btn-danger btn-sm">
-                                        <i class="fas fa-trash"></i>
-                                    </button>
-                                </td>
-                            </tr>
-                        `;
-            }).join('');
-
-            // Update user count badge
-            const badge = document.querySelector('.sidebar-item .badge');
-            if (badge) badge.textContent = panelData.users.length;
+            const s = statusMap[userData.status] || statusMap.active;
+            badge.className = 'status-badge ' + s.class;
+            dot.className = 'status-dot ' + s.dotClass;
+            statusText.textContent = s.text;
         }
 
-        function renderSystemStatus() {
-            const sys = panelData.system;
-            const statusItems = document.querySelectorAll('.status-item');
-            if (statusItems.length >= 6) {
-                // First item (server status)
-                const dot = statusItems[0].querySelector('.indicator');
-                if (dot) {
-                    dot.className = 'indicator ' + (sys.status === 'online' ? 'online' : 'offline');
-                }
-                const value = statusItems[0].querySelector('.value');
-                if (value) value.textContent = sys.status === 'online' ? 'آنلاین' : 'آفلاین';
-
-                // CPU
-                const cpuValue = statusItems[1].querySelector('.value');
-                if (cpuValue) cpuValue.textContent = sys.cpu;
-
-                // RAM
-                const ramValue = statusItems[2].querySelector('.value');
-                if (ramValue) ramValue.textContent = sys.ram;
-
-                // Uptime
-                const uptimeValue = statusItems[3].querySelector('.value');
-                if (uptimeValue) uptimeValue.textContent = sys.uptime;
-
-                // Core version
-                const coreValue = statusItems[4].querySelector('.value');
-                if (coreValue) coreValue.textContent = sys.coreVersion;
-            }
+        function renderStats() {
+            document.getElementById('uploadValue').textContent = userData.upload;
+            document.getElementById('downloadValue').textContent = userData.download;
+            document.getElementById('usageValue').textContent = userData.usage;
+            document.getElementById('quotaTotal').textContent = userData.quota;
+            document.getElementById('usageProgress').style.width = userData.percent + '%';
+            document.getElementById('timeRemaining').textContent = userData.timeRemaining;
         }
 
-        // =============================================
-        // INIT
-        // =============================================
-        document.addEventListener('DOMContentLoaded', function() {
-            renderStats();
-            renderUsers();
-            renderSystemStatus();
+        function renderLinks() {
+            document.getElementById('universalLink').value = userData.universalLink;
+            document.getElementById('rawLink').value = userData.rawLink;
+            document.getElementById('base64Link').value = userData.base64Link;
+            document.getElementById('singboxLink').value = userData.singboxLink;
+            document.getElementById('clashLink').value = userData.clashLink;
+        }
 
-            // Sidebar navigation
-            document.querySelectorAll('.sidebar-item').forEach(item => {
-                item.addEventListener('click', function(e) {
-                    e.preventDefault();
-                    document.querySelectorAll('.sidebar-item').forEach(i => i.classList.remove('active'));
-                    this.classList.add('active');
-                });
-            });
-
-            console.log('✅ Xray Panel loaded successfully');
-            console.log('📊 Data:', panelData);
-        });
+        function renderDetails() {
+            document.getElementById('expiryDate').textContent = userData.expiry;
+            document.getElementById('lastOnline').textContent = userData.lastOnline;
+            document.getElementById('remainingQuota').textContent = userData.remaining;
+            document.getElementById('serverName').textContent = userData.server;
+        }
 
         // =============================================
         // UTILITY FUNCTIONS
         // =============================================
+        function copyLink(id) {
+            const el = document.getElementById(id);
+            el.select();
+            navigator.clipboard.writeText(el.value).then(() => {
+                showToast(i18n[currentLang].copied);
+            });
+        }
+
         function showToast(message) {
-            const toast = document.createElement('div');
-            toast.style.cssText = `
-                        position: fixed;
-                        bottom: 24px;
-                        left: 50%;
-                        transform: translateX(-50%);
-                        background: var(--bg-secondary);
-                        color: var(--text-primary);
-                        padding: 12px 24px;
-                        border-radius: var(--radius);
-                        border: 1px solid var(--border-color);
-                        font-weight: 600;
-                        font-size: 14px;
-                        z-index: 999;
-                        box-shadow: var(--shadow-card);
-                        animation: fadeIn 0.3s ease-out;
-                    `;
-            toast.textContent = message;
-            document.body.appendChild(toast);
-            setTimeout(() => {
-                toast.style.opacity = '0';
-                toast.style.transition = 'opacity 0.3s';
-                setTimeout(() => toast.remove(), 300);
+            const toast = document.getElementById('toast');
+            document.getElementById('toastMessage').textContent = message;
+            toast.classList.add('show');
+            clearTimeout(toast._timeout);
+            toast._timeout = setTimeout(() => {
+                toast.classList.remove('show');
             }, 2500);
         }
+
+        function showQR(linkId) {
+            const el = document.getElementById(linkId);
+            const url = el.value;
+            const modal = document.getElementById('qrModal');
+            document.getElementById('qrLinkText').textContent = url;
+            document.getElementById('qrImage').src = 'https://api.qrserver.com/v1/create-qr-code/?size=250x250&data=' +
+                encodeURIComponent(url);
+            modal.classList.add('show');
+        }
+
+        function closeQR() {
+            document.getElementById('qrModal').classList.remove('show');
+        }
+
+        // Close QR with Escape key
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'Escape') closeQR();
+        });
+
+        // Click outside to close
+        document.getElementById('qrModal').addEventListener('click', (e) => {
+            if (e.target === e.currentTarget) closeQR();
+        });
+
+        function importToApp(app) {
+            const link = userData.universalLink;
+            const name = userData.name;
+
+            const appLinks = {
+                v2rayng: 'v2rayng://install-sub?url=' + encodeURIComponent(link) + '&name=' + encodeURIComponent(name),
+                v2rayn: 'v2rayn://install-sub?url=' + encodeURIComponent(link) + '&name=' + encodeURIComponent(name),
+                shadowrocket: 'shadowrocket://add/sub://' + btoa(link) + '?title=' + encodeURIComponent(name),
+                streisand: 'streisand://import/' + encodeURIComponent(link),
+                clashmeta: 'clashmeta://install-config?url=' + encodeURIComponent(link),
+                singbox: 'singbox://install-sub?url=' + encodeURIComponent(link)
+            };
+
+            const url = appLinks[app];
+            if (url) {
+                window.location.href = url;
+                showToast('در حال باز کردن ' + app + '...');
+            }
+        }
+
+        function toggleTheme() {
+            isDark = !isDark;
+            const root = document.documentElement;
+            if (isDark) {
+                root.style.setProperty('--bg-primary', '#0b0f19');
+                root.style.setProperty('--bg-card', 'rgba(17, 24, 39, 0.8)');
+                root.style.setProperty('--text-primary', '#f9fafb');
+                document.getElementById('theme-label').textContent = currentLang === 'fa' ? 'تاریک' : 'Dark';
+            } else {
+                root.style.setProperty('--bg-primary', '#f3f4f6');
+                root.style.setProperty('--bg-card', 'rgba(255, 255, 255, 0.9)');
+                root.style.setProperty('--text-primary', '#111827');
+                document.getElementById('theme-label').textContent = currentLang === 'fa' ? 'روشن' : 'Light';
+            }
+            try { localStorage.setItem('sub-theme', isDark ? 'dark' : 'light'); } catch (e) {}
+        }
+
+        function toggleLang() {
+            currentLang = currentLang === 'fa' ? 'en' : 'fa';
+            const t = i18n[currentLang];
+            document.getElementById('lang-label').textContent = t.lang;
+            document.getElementById('theme-label').textContent = isDark ? t.dark : t.light;
+            renderProfile();
+            try { localStorage.setItem('sub-lang', currentLang); } catch (e) {}
+        }
+
+        // =============================================
+        // FETCH CLIENT IP
+        // =============================================
+        fetch('https://api.ipify.org?format=json')
+            .then(r => r.json())
+            .then(data => {
+                document.getElementById('clientIp').textContent = data.ip;
+            })
+            .catch(() => {
+                document.getElementById('clientIp').textContent = 'نامشخص';
+            });
+
+        // =============================================
+        // INIT
+        // =============================================
+        (function init() {
+            // Load saved settings
+            try {
+                const savedTheme = localStorage.getItem('sub-theme');
+                if (savedTheme === 'light') {
+                    isDark = false;
+                    document.documentElement.style.setProperty('--bg-primary', '#f3f4f6');
+                    document.documentElement.style.setProperty('--bg-card', 'rgba(255, 255, 255, 0.9)');
+                    document.documentElement.style.setProperty('--text-primary', '#111827');
+                    document.getElementById('theme-label').textContent = 'روشن';
+                }
+                const savedLang = localStorage.getItem('sub-lang');
+                if (savedLang === 'en') {
+                    currentLang = 'en';
+                    document.getElementById('lang-label').textContent = 'EN';
+                    document.getElementById('theme-label').textContent = isDark ? 'Dark' : 'Light';
+                }
+            } catch (e) {}
+
+            renderProfile();
+            renderStats();
+            renderLinks();
+            renderDetails();
+
+            // Set initial theme label
+            document.getElementById('theme-label').textContent = isDark ?
+                (currentLang === 'fa' ? 'تاریک' : 'Dark') :
+                (currentLang === 'fa' ? 'روشن' : 'Light');
+
+            console.log('✅ Xray Subscriber Panel loaded');
+            console.log('👤 User:', userData.name);
+        })();
     </script>
 
 </body>
