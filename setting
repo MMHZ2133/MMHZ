@@ -314,7 +314,7 @@
 
         <!-- User Greeting -->
         <div class="user-greeting animate delay-2">
-            <span data-i18n="greeting">خوش آمدی،</span> <strong>__USER_NAME__</strong>
+            <span data-i18n="greeting">به پنلت خوش اومدی</span> <strong>__USER_NAME__</strong>
         </div>
 
         <!-- Cards Grid -->
@@ -397,14 +397,14 @@
         // =====================================================
         const I18N = {
             fa: {
-                greeting: "به پنلت خوش اومدی,
-                used_label: "چقدر حروم شده",
-                days_label: "چقدر وقت حروم شدنش مونده",
-                days_unit: "شبانه روز",
-                expiry_label: "تاریخ قطع شدنش",
-                unlimited: "تا میتونی مصرف کن ستون",
-                expired: "تسلیت میگم",
-                no_expiry: "تا ابد وقت داری",
+                greeting:"به پنلت خوش اومدی,
+                used_label:"چقدر حروم شده",
+                days_label:"چقدر وقت حروم شدنش مونده",
+                days_unit:"شبانه روز",
+                expiry_label:"تاریخ قطع شدنش",
+                unlimited:"تا میتونی مصرف کن ستون",
+                expired:"تسلیت میگم",
+                no_expiry:"تا ابد وقت داری",
             },
             en: {
                 greeting: "Welcome,",
