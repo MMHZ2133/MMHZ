@@ -361,7 +361,7 @@
 
         <!-- Footer -->
         <div class="footer animate delay-4">
-            VASLPLUS <span class="dot">✦</span> SUBSCRIPTION PANEL <span class="dot">✦</span>
+            وصل پلاس <span class="dot">⚜</span> پنل کاربری <span class="dot">⚜</span>
         </div>
 
     </div>
@@ -397,14 +397,14 @@
         // =====================================================
         const I18N = {
             fa: {
-                greeting: "خوش آمدی،",
-                used_label: "حجم مصرف‌شده",
-                days_label: "روزهای باقی‌مانده",
+                greeting: "خوش آومدی،",
+                used_label: "حجم مصرفی",
+                days_label: "تعداد روز باقی مانده",
                 days_unit: "روز",
-                expiry_label: "تاریخ انقضا:",
+                expiry_label: "تاریخ اتمام:",
                 unlimited: "نامحدود",
-                expired: "منقضی شده",
-                no_expiry: "بدون انقضا"
+                expired: "تموم شده",
+                no_expiry: "نامحدود"
             },
             en: {
                 greeting: "Welcome,",
