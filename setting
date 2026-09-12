@@ -398,7 +398,7 @@
         const I18N = {
             fa: {
                 greeting: "به پنلت خوش اومدی",
-                used_label: "به فنا رفت",
+                used_label: "حجم به فنا رفته",
                 days_label: "هنوز وقت هست ستون",
                 days_unit: "شبانه روز",
                 expiry_label: "تاریخ قطع شدنش",
