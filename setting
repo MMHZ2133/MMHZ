@@ -1,79 +1,44 @@
 <!DOCTYPE html>
-<html lang="fa" dir="rtl">
+<html lang="en" class="dark">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>VaslPlus | __USER_NAME__</title>
     <link href="https://fonts.googleapis.com/css2?family=Vazirmatn:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
     <style>
-        * { margin: 0; padding: 0; box-sizing: border-box; }
-
         :root {
-            --bg-primary: #0a0a0f;
-            --bg-card: #14141c;
             --accent: #e11d2e;
             --accent-bright: #ff2338;
             --accent-glow: rgba(225, 29, 46, 0.4);
             --accent-soft: rgba(225, 29, 46, 0.12);
             --accent-border: rgba(225, 29, 46, 0.35);
+            --bg-primary: #0a0a0f;
+            --bg-card: #14141c;
             --text-primary: #ffffff;
-            --text-secondary: #a0a0b0;
             --text-muted: #5a5a6e;
+            --text-secondary: #a0a0b0;
             --border: #23232f;
+            --ring-bg: #23232f;
             --gradient-accent: linear-gradient(135deg, #e11d2e 0%, #ff2338 100%);
             --gradient-silver: linear-gradient(135deg, #ffffff 0%, #b8b8c8 100%);
-            --shadow-card: 0 4px 24px rgba(0, 0, 0, 0.6);
-            --shadow-accent: 0 8px 32px rgba(225, 29, 46, 0.25);
-            --grid-color: rgba(255, 255, 255, 0.015);
-            --ring-bg: #23232f;
-            --radius: 16px;
-            --radius-sm: 10px;
-            --transition: 0.3s cubic-bezier(0.4, 0, 0.2, 1);
         }
-
-        body.light {
-            --bg-primary: #f5f7f5;
-            --bg-card: #ffffff;
+        html.light {
             --accent: #16a34a;
             --accent-bright: #22c55e;
             --accent-glow: rgba(22, 163, 74, 0.35);
             --accent-soft: rgba(22, 163, 74, 0.12);
             --accent-border: rgba(22, 163, 74, 0.35);
+            --bg-primary: #f5f7f5;
+            --bg-card: #ffffff;
             --text-primary: #14532d;
-            --text-secondary: #4b5563;
             --text-muted: #9ca3af;
+            --text-secondary: #4b5563;
             --border: #e5e7eb;
+            --ring-bg: #e5e7eb;
             --gradient-accent: linear-gradient(135deg, #16a34a 0%, #22c55e 100%);
             --gradient-silver: linear-gradient(135deg, #14532d 0%, #166534 100%);
-            --shadow-card: 0 4px 24px rgba(22, 163, 74, 0.08);
-            --shadow-accent: 0 8px 32px rgba(22, 163, 74, 0.2);
-            --grid-color: rgba(22, 163, 74, 0.04);
-            --ring-bg: #e5e7eb;
         }
-
-        body.light .logo-mark {
-            background: #ffffff;
-            border-color: var(--accent);
-            box-shadow: 0 0 30px var(--accent-glow), inset 0 0 20px rgba(22, 163, 74, 0.1);
-        }
-        body.light .brand-name .vasl {
-            background: linear-gradient(135deg, #14532d 0%, #16a34a 100%);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
-        }
-        body.light .brand-name .plus {
-            color: #22c55e;
-            text-shadow: 0 0 16px rgba(22, 163, 74, 0.3);
-        }
-        body.light .brand-tagline span { color: #16a34a; }
-        body.light .logo-swoosh { stroke: #22c55e !important; }
-        body.light .logo-globe { stroke: #22c55e !important; }
-        body.light #silverGrad stop:first-child { stop-color: #14532d; }
-        body.light #silverGrad stop:last-child { stop-color: #16a34a; }
-        body.light .card { box-shadow: 0 4px 20px rgba(22, 163, 74, 0.06); }
-        body.light .card::after { background: radial-gradient(circle, rgba(22, 163, 74, 0.08) 0%, transparent 70%); }
-
+        * { margin: 0; padding: 0; box-sizing: border-box; }
         body {
             font-family: 'Vazirmatn', sans-serif;
             background: var(--bg-primary);
@@ -83,15 +48,11 @@
             display: flex;
             align-items: center;
             justify-content: center;
-            transition: background 0.4s ease, color 0.4s ease;
-            background-image:
-                radial-gradient(circle at 20% 20%, var(--accent-soft) 0%, transparent 45%),
-                radial-gradient(circle at 80% 80%, var(--accent-soft) 0%, transparent 45%),
-                linear-gradient(var(--grid-color) 1px, transparent 1px),
-                linear-gradient(90deg, var(--grid-color) 1px, transparent 1px);
-            background-size: auto, auto, 40px 40px, 40px 40px;
+            transition: background 0.4s, color 0.4s;
         }
+        .container { width: 100%; max-width: 640px; }
 
+        /* Top Controls */
         .top-controls {
             position: fixed;
             top: 20px;
@@ -100,7 +61,6 @@
             gap: 10px;
             z-index: 100;
         }
-
         .ctrl-btn {
             display: inline-flex;
             align-items: center;
@@ -108,172 +68,199 @@
             padding: 9px 14px;
             background: var(--bg-card);
             border: 1px solid var(--border);
-            border-radius: var(--radius-sm);
+            border-radius: 10px;
             color: var(--text-secondary);
             font-family: inherit;
             font-size: 12px;
             font-weight: 700;
             cursor: pointer;
-            transition: all var(--transition);
-            box-shadow: var(--shadow-card);
+            transition: all 0.3s;
         }
         .ctrl-btn:hover {
             border-color: var(--accent);
             color: var(--accent-bright);
             transform: translateY(-2px);
-            box-shadow: var(--shadow-accent);
         }
-        .ctrl-btn svg { width: 16px; height: 16px; }
-        .ctrl-btn .flag { font-size: 14px; }
 
-        .container { width: 100%; max-width: 640px; position: relative; z-index: 1; }
-
+        /* Logo */
         .logo-header { text-align: center; margin-bottom: 36px; }
         .logo-mark {
-            width: 72px; height: 72px; margin: 0 auto 14px;
-            border-radius: 50%; display: flex; align-items: center; justify-content: center;
-            background: var(--bg-card); border: 2px solid var(--accent);
-            box-shadow: 0 0 30px var(--accent-glow), inset 0 0 20px var(--accent-soft);
-            position: relative; transition: all 0.4s ease;
+            width: 72px;
+            height: 72px;
+            margin: 0 auto 14px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: var(--bg-card);
+            border: 2px solid var(--accent);
+            box-shadow: 0 0 30px var(--accent-glow);
         }
         .logo-mark svg { width: 38px; height: 38px; }
-
-        .brand-name { font-size: 26px; font-weight: 900; letter-spacing: 0.5px; line-height: 1; direction: ltr; }
+        .brand-name {
+            font-size: 26px;
+            font-weight: 900;
+            letter-spacing: 0.5px;
+            line-height: 1;
+            direction: ltr;
+        }
         .brand-name .vasl {
             background: var(--gradient-silver);
-            -webkit-background-clip: text; -webkit-text-fill-color: transparent;
-            background-clip: text; transition: all 0.4s ease;
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
         }
         .brand-name .plus {
-            color: var(--accent-bright); text-shadow: 0 0 20px var(--accent-glow);
-            transition: all 0.4s ease;
+            color: var(--accent-bright);
+            text-shadow: 0 0 20px var(--accent-glow);
         }
         .brand-tagline {
-            font-size: 10px; font-weight: 600; letter-spacing: 3px;
-            color: var(--text-muted); margin-top: 6px; direction: ltr;
+            font-size: 10px;
+            font-weight: 600;
+            letter-spacing: 3px;
+            color: var(--text-muted);
+            margin-top: 6px;
+            direction: ltr;
         }
-        .brand-tagline span { color: var(--accent); margin: 0 6px; transition: color 0.4s ease; }
+        .brand-tagline span { color: var(--accent); margin: 0 6px; }
 
+        /* User Greeting */
         .user-greeting {
-            display: flex; align-items: center; justify-content: center;
-            gap: 10px; margin-bottom: 24px; font-size: 14px; color: var(--text-secondary);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            margin-bottom: 24px;
+            font-size: 14px;
+            color: var(--text-secondary);
         }
         .user-greeting strong { color: var(--text-primary); font-weight: 700; }
-        .user-greeting svg { color: var(--accent-bright); transition: color 0.4s ease; }
 
-        .cards-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
-
+        /* Cards Grid */
+        .cards-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 16px;
+        }
         .card {
-            background: var(--bg-card); border: 1px solid var(--border);
-            border-radius: var(--radius); padding: 24px 22px;
-            position: relative; overflow: hidden;
-            transition: all var(--transition); box-shadow: var(--shadow-card);
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            border-radius: 16px;
+            padding: 24px 22px;
+            position: relative;
+            overflow: hidden;
+            transition: all 0.3s;
         }
         .card::before {
-            content: ''; position: absolute; top: 0; left: 0; right: 0; height: 2px;
-            background: var(--gradient-accent); opacity: 0.7; transition: opacity 0.3s;
-        }
-        .card::after {
-            content: ''; position: absolute; top: -60px; left: -60px;
-            width: 160px; height: 160px; border-radius: 50%;
-            background: radial-gradient(circle, var(--accent-soft) 0%, transparent 70%);
-            pointer-events: none; transition: background 0.4s ease;
+            content: '';
+            position: absolute;
+            top: 0; left: 0; right: 0;
+            height: 2px;
+            background: var(--gradient-accent);
+            opacity: 0.7;
         }
         .card:hover {
             border-color: var(--accent-border);
-            transform: translateY(-4px); box-shadow: var(--shadow-accent);
+            transform: translateY(-4px);
+            box-shadow: 0 8px 32px var(--accent-glow);
         }
-        .card:hover::before { opacity: 1; }
-
         .card-icon {
-            width: 42px; height: 42px; border-radius: var(--radius-sm);
-            display: flex; align-items: center; justify-content: center;
-            background: var(--accent-soft); border: 1px solid var(--accent-border);
-            color: var(--accent-bright); margin-bottom: 16px;
-            position: relative; z-index: 1; transition: all 0.4s ease;
+            width: 42px;
+            height: 42px;
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: var(--accent-soft);
+            border: 1px solid var(--accent-border);
+            color: var(--accent-bright);
+            margin-bottom: 16px;
         }
         .card-icon svg { width: 20px; height: 20px; }
-
         .card-label {
-            font-size: 12px; font-weight: 600; color: var(--text-secondary);
-            margin-bottom: 10px; position: relative; z-index: 1; letter-spacing: 0.3px;
+            font-size: 12px;
+            font-weight: 600;
+            color: var(--text-secondary);
+            margin-bottom: 10px;
         }
-
         .card-value {
-            font-size: 30px; font-weight: 900; line-height: 1;
-            position: relative; z-index: 1;
-            display: flex; align-items: baseline; gap: 5px;
-            direction: ltr; justify-content: flex-start; flex-wrap: wrap;
+            font-size: 30px;
+            font-weight: 900;
+            line-height: 1;
+            display: flex;
+            align-items: baseline;
+            gap: 5px;
+            direction: ltr;
+            flex-wrap: wrap;
         }
-        .card-value .num { color: var(--text-primary); transition: color 0.4s ease; }
+        .card-value .num { color: var(--text-primary); }
         .card-value .unit { font-size: 13px; font-weight: 600; color: var(--text-muted); }
-        .card-value .unit-accent { color: var(--accent-bright); transition: color 0.4s ease; }
+        .card-value .unit-accent { color: var(--accent-bright); }
         .card-value .infinity {
-            font-size: 42px; font-weight: 900; color: var(--accent-bright);
-            text-shadow: 0 0 20px var(--accent-glow); line-height: 0.8;
-            transition: all 0.4s ease;
+            font-size: 42px;
+            font-weight: 900;
+            color: var(--accent-bright);
+            text-shadow: 0 0 20px var(--accent-glow);
+            line-height: 0.8;
         }
         .card-value .infinity-text {
-            font-size: 18px; font-weight: 700; color: var(--accent-bright);
-            text-shadow: 0 0 12px var(--accent-glow);
-            transition: all 0.4s ease; margin-right: 6px;
+            font-size: 18px;
+            font-weight: 700;
+            color: var(--accent-bright);
+            margin-right: 6px;
         }
 
-        .progress-wrap { margin-top: 16px; position: relative; z-index: 1; }
-        .progress-track {
-            height: 8px; border-radius: 8px; background: var(--ring-bg);
-            overflow: hidden; position: relative; transition: background 0.4s ease;
+        /* Progress Bars (کلاس‌هایی که پنل استفاده می‌کنه) */
+        .progress-bar-bg {
+            background: var(--ring-bg);
         }
-        .progress-fill {
-            height: 100%; border-radius: 8px;
-            background: var(--gradient-accent); box-shadow: 0 0 12px var(--accent-glow);
-            transition: width 1s cubic-bezier(0.4, 0, 0.2, 1), background 0.4s ease;
-            position: relative;
+        .progress-bar-bg > div {
+            transition: width 1s cubic-bezier(0.4, 0, 0.2, 1);
         }
-        .progress-fill::after {
-            content: ''; position: absolute; inset: 0;
-            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.35), transparent);
-            animation: shimmer 2.2s infinite;
-        }
-        @keyframes shimmer {
-            0% { transform: translateX(-100%); }
-            100% { transform: translateX(100%); }
-        }
-        .progress-info {
-            display: flex; justify-content: space-between;
-            margin-top: 10px; font-size: 11px; font-weight: 600;
-            color: var(--text-muted); gap: 8px; flex-wrap: wrap;
-        }
-        .progress-info .highlight {
-            color: var(--accent-bright); font-weight: 700; transition: color 0.4s ease;
-        }
+        .text-muted { color: var(--text-muted); }
+        .text-right { text-align: right; }
+        .text-center { text-align: center; }
+        .mt-2 { margin-top: 8px; }
+        .mt-3 { margin-top: 12px; }
+        .mt-1\.5 { margin-top: 6px; }
+        .text-\[10px\] { font-size: 10px; }
 
+        /* Days Ring */
         .days-ring {
-            margin-top: 16px; display: flex; gap: 4px;
-            position: relative; z-index: 1;
+            margin-top: 16px;
+            display: flex;
+            gap: 4px;
         }
         .day-seg {
-            flex: 1; height: 6px; border-radius: 4px;
-            background: var(--ring-bg); transition: all 0.4s;
+            flex: 1;
+            height: 6px;
+            border-radius: 4px;
+            background: var(--ring-bg);
+            transition: all 0.4s;
         }
         .day-seg.active {
-            background: var(--gradient-accent); box-shadow: 0 0 8px var(--accent-glow);
+            background: var(--gradient-accent);
+            box-shadow: 0 0 8px var(--accent-glow);
         }
 
+        /* Footer */
         .footer {
-            text-align: center; margin-top: 28px;
-            font-size: 11px; color: var(--text-muted);
-            letter-spacing: 1.5px; direction: ltr; font-weight: 600;
+            text-align: center;
+            margin-top: 28px;
+            font-size: 11px;
+            color: var(--text-muted);
+            letter-spacing: 1.5px;
+            direction: ltr;
+            font-weight: 600;
         }
-        .footer .dot { color: var(--accent); margin: 0 6px; transition: color 0.4s ease; }
+        .footer .dot { color: var(--accent); margin: 0 6px; }
 
+        /* Animations */
         @keyframes fadeInUp {
             from { opacity: 0; transform: translateY(24px); }
             to { opacity: 1; transform: translateY(0); }
         }
-        .animate {
-            animation: fadeInUp 0.6s cubic-bezier(0.4, 0, 0.2, 1) forwards; opacity: 0;
-        }
+        .animate { animation: fadeInUp 0.6s ease forwards; opacity: 0; }
         .delay-1 { animation-delay: 0.1s; }
         .delay-2 { animation-delay: 0.2s; }
         .delay-3 { animation-delay: 0.3s; }
@@ -282,46 +269,35 @@
         @media (max-width: 600px) {
             body { padding: 60px 12px 16px; }
             .top-controls { top: 12px; left: 12px; }
-            .ctrl-btn { padding: 7px 10px; font-size: 11px; }
             .cards-grid { grid-template-columns: 1fr; gap: 14px; }
             .card { padding: 22px 20px; }
             .card-value { font-size: 28px; }
             .brand-name { font-size: 22px; }
-            .logo-mark { width: 64px; height: 64px; }
-            .logo-mark svg { width: 32px; height: 32px; }
-            .logo-header { margin-bottom: 28px; }
         }
     </style>
 </head>
 <body>
 
+    <!-- Top Controls -->
     <div class="top-controls">
         <button class="ctrl-btn" onclick="toggleLang()">
-            <span class="flag" id="lang-flag">🇮🇷</span>
+            <span id="lang-flag">🇮🇷</span>
             <span id="lang-text">FA</span>
         </button>
         <button class="ctrl-btn" onclick="toggleTheme()">
-            <svg id="theme-icon-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/>
-            </svg>
-            <svg id="theme-icon-sun" style="display:none;" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                <circle cx="12" cy="12" r="4"/>
-                <path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M6.34 17.66l-1.41 1.41M19.07 4.93l-1.41 1.41"/>
-            </svg>
-            <span id="theme-text">Dark</span>
+            <span id="theme-icon">🌙</span>
         </button>
     </div>
 
     <div class="container">
 
+        <!-- Logo -->
         <div class="logo-header animate delay-1">
             <div class="logo-mark">
                 <svg viewBox="0 0 24 24" fill="none">
                     <path d="M4 4 L10 20 L14 20 L20 4 L16 4 L12 15 L8 4 Z" fill="url(#silverGrad)"/>
                     <path class="logo-swoosh" d="M3 8 Q12 16 21 6" stroke="#ff2338" stroke-width="2" fill="none" stroke-linecap="round"/>
                     <circle class="logo-globe" cx="19" cy="5" r="2.5" stroke="#ff2338" stroke-width="1.2" fill="none"/>
-                    <ellipse class="logo-globe" cx="19" cy="5" rx="1" ry="2.5" stroke="#ff2338" stroke-width="0.8" fill="none"/>
-                    <line class="logo-globe" x1="16.5" y1="5" x2="21.5" y2="5" stroke="#ff2338" stroke-width="0.8"/>
                     <defs>
                         <linearGradient id="silverGrad" x1="0%" y1="0%" x2="100%" y2="100%">
                             <stop offset="0%" stop-color="#ffffff"/>
@@ -336,17 +312,15 @@
             <div class="brand-tagline">FAST <span>•</span> SECURE <span>•</span> GLOBAL</div>
         </div>
 
+        <!-- User Greeting -->
         <div class="user-greeting animate delay-2">
-            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/>
-                <circle cx="12" cy="7" r="4"/>
-            </svg>
-            <span><span data-i18n="greeting">خوش آمدی،</span> <strong>__USER_NAME__</strong></span>
+            <span data-i18n="greeting">خوش آمدی،</span> <strong>__USER_NAME__</strong>
         </div>
 
+        <!-- Cards Grid -->
         <div class="cards-grid">
 
-            <!-- ===== کارت میزان مصرف ===== -->
+            <!-- ===== حجم مصرفی ===== -->
             <div class="card animate delay-3">
                 <div class="card-icon">
                     <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
@@ -356,21 +330,15 @@
                 </div>
                 <div class="card-label" data-i18n="used_label">حجم مصرف‌شده</div>
                 <div class="card-value" id="usage-value-container">
-                    <!-- Worker اینجا رو با __TOTAL_PROGRESS__ یا مقدار پیش‌فرض پر می‌کنه -->
-                    <!-- در حالت عادی با JS پر می‌شه -->
+                    <!-- JS اینجا رو پر می‌کنه -->
                 </div>
-                <div class="progress-wrap" id="usage-progress-wrap">
-                    <div class="progress-track">
-                        <div class="progress-fill" id="usage-progress" style="width: 0%;"></div>
-                    </div>
-                    <div class="progress-info">
-                        <span><span class="highlight" id="used-percent">0</span><span data-i18n="percent_used">٪ مصرف شده</span></span>
-                        <span><span data-i18n="remaining">باقی‌مانده:</span> <span class="highlight" id="remaining-gb">0</span> <span data-i18n="gb_unit">GB</span></span>
-                    </div>
+                <div id="usage-progress-container">
+                    <!-- پنل با __TOTAL_PROGRESS__ اینجا رو پر می‌کنه -->
+                    __TOTAL_PROGRESS__
                 </div>
             </div>
 
-            <!-- ===== کارت روزهای باقی‌مانده ===== -->
+            <!-- ===== روزهای باقی‌مانده ===== -->
             <div class="card animate delay-4">
                 <div class="card-icon">
                     <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
@@ -383,49 +351,46 @@
                 <div class="card-label" data-i18n="days_label">روزهای باقی‌مانده</div>
                 <div class="card-value" id="days-value-container"></div>
                 <div class="days-ring" id="days-ring"></div>
-                <div class="progress-info" style="margin-top: 10px;">
+                <div class="text-\[10px\] text-muted mt-3">
                     <span data-i18n="expiry_label">تاریخ انقضا:</span>
-                    <span class="highlight" id="expiry-date">—</span>
+                    <span id="expiry-date" style="color: var(--accent-bright); font-weight: 700;"></span>
                 </div>
             </div>
 
         </div>
 
+        <!-- Footer -->
         <div class="footer animate delay-4">
             VASLPLUS <span class="dot">✦</span> SUBSCRIPTION PANEL <span class="dot">✦</span>
         </div>
 
     </div>
 
-    <!-- ============================================================
-         JavaScript - فقط محاسبه‌ی روزها (بقیه از Worker میاد)
-         ============================================================ -->
     <script>
         // =====================================================
-        // 📌 داده‌های داینامیک که Worker پر می‌کنه
+        // 📌 داده‌هایی که پنل پر کرده
         // =====================================================
         const DATA = {
-            // از Worker
             userName: "__USER_NAME__",
             userId: "__USER_ID__",
             statusCode: "__STATUS_CODE__",
-            totalGb: "__TOTAL_GB__",           // عدد خام
-            limitTotalGb: "__LIMIT_TOTAL_GB__", // عدد یا 9999
-            totalPercent: "__TOTAL_PERCENT__",  // درصد
+            totalGb: "__TOTAL_GB__",
+            limitTotalGb: "__LIMIT_TOTAL_GB__",
+            totalPercent: "__TOTAL_PERCENT__",
             dailyGb: "__DAILY_GB__",
             limitDailyGb: "__LIMIT_DAILY_GB__",
             dailyPercent: "__DAILY_PERCENT__",
-            expiryDate: "__EXPIRY_DATE__"       // YYYY-MM-DD
+            expiryDate: "__EXPIRY_DATE__"
         };
 
         // تشخیص نامحدود بودن
         const isUnlimitedGB = DATA.limitTotalGb === "9999" || 
                               DATA.limitTotalGb === "Unlimited" ||
                               parseFloat(DATA.limitTotalGb) >= 9999;
-        
+
         const isUnlimitedDays = !DATA.expiryDate || 
-                                DATA.expiryDate === "Never Expire" ||
-                                DATA.expiryDate === "2099-01-01";
+                                DATA.expiryDate === "2099-01-01" ||
+                                DATA.expiryDate === "Never Expire";
 
         // =====================================================
         // 🌐 ترجمه‌ها
@@ -436,13 +401,8 @@
                 used_label: "حجم مصرف‌شده",
                 days_label: "روزهای باقی‌مانده",
                 days_unit: "روز",
-                percent_used: "٪ مصرف شده",
-                remaining: "باقی‌مانده:",
                 expiry_label: "تاریخ انقضا:",
                 unlimited: "نامحدود",
-                gb_unit: "GB",
-                theme_dark: "شب",
-                theme_light: "روز",
                 expired: "منقضی شده",
                 no_expiry: "بدون انقضا"
             },
@@ -451,13 +411,8 @@
                 used_label: "Data Used",
                 days_label: "Days Remaining",
                 days_unit: "days",
-                percent_used: "% used",
-                remaining: "Remaining:",
                 expiry_label: "Expiry date:",
                 unlimited: "Unlimited",
-                gb_unit: "GB",
-                theme_dark: "Dark",
-                theme_light: "Light",
                 expired: "Expired",
                 no_expiry: "No expiry"
             }
@@ -479,32 +434,20 @@
         }
 
         // =====================================================
-        // 📅 محاسبه‌ی دقیق روزها از تاریخ انقضا
+        // 📅 محاسبه‌ی دقیق روزها
         // =====================================================
         function calcDaysLeft(expiryStr) {
             if (!expiryStr || expiryStr === "Never Expire" || expiryStr === "2099-01-01") {
                 return { days: 0, expired: false, valid: false };
             }
 
-            // پارس تاریخ (پشتیبانی از فرمت‌های مختلف)
             let expiry = null;
-            
-            // YYYY-MM-DD
             if (/^\d{4}-\d{1,2}-\d{1,2}/.test(expiryStr)) {
                 expiry = new Date(expiryStr);
-            }
-            // timestamp
-            else if (/^\d+$/.test(expiryStr)) {
+            } else if (/^\d+$/.test(expiryStr)) {
                 const num = parseInt(expiryStr);
                 expiry = new Date(num > 10000000000 ? num : num * 1000);
-            }
-            // فرمت با اسلش
-            else if (/^\d{4}\/\d{1,2}\/\d{1,2}/.test(expiryStr)) {
-                const parts = expiryStr.split("/");
-                expiry = new Date(parseInt(parts[0]), parseInt(parts[1]) - 1, parseInt(parts[2]));
-            }
-            // تلاش نهایی
-            else {
+            } else {
                 expiry = new Date(expiryStr);
             }
 
@@ -519,7 +462,6 @@
                 return { days: 0, expired: true, valid: true };
             }
 
-            // محاسبه دقیق روز
             const totalHours = diffMs / (1000 * 60 * 60);
             const fullDays = Math.floor(totalHours / 24);
             const remainingHours = totalHours % 24;
@@ -561,7 +503,6 @@
             $("lang-flag").textContent = currentLang === "fa" ? "🇮🇷" : "🇬🇧";
             $("lang-text").textContent = currentLang === "fa" ? "FA" : "EN";
 
-            updateThemeButtonText();
             render();
         }
 
@@ -575,22 +516,8 @@
         // 🌙/☀️ تغییر تم
         // =====================================================
         function applyTheme() {
-            document.body.classList.toggle("light", currentTheme === "light");
-            const moon = $("theme-icon-moon");
-            const sun = $("theme-icon-sun");
-            if (currentTheme === "dark") {
-                moon.style.display = "block";
-                sun.style.display = "none";
-            } else {
-                moon.style.display = "none";
-                sun.style.display = "block";
-            }
-            updateThemeButtonText();
-        }
-
-        function updateThemeButtonText() {
-            const t = I18N[currentLang];
-            $("theme-text").textContent = currentTheme === "dark" ? t.theme_dark : t.theme_light;
+            document.documentElement.classList.toggle("light", currentTheme === "light");
+            $("theme-icon").textContent = currentTheme === "dark" ? "🌙" : "☀️";
         }
 
         function toggleTheme() {
@@ -605,7 +532,6 @@
         function render() {
             const t = I18N[currentLang];
             const usageContainer = $("usage-value-container");
-            const progressWrap = $("usage-progress-wrap");
             const daysContainer = $("days-value-container");
             const ring = $("days-ring");
 
@@ -617,12 +543,9 @@
                     <span class="infinity">∞</span>
                     <span class="infinity-text">${t.unlimited}</span>
                 `;
-                progressWrap.style.display = "none";
             } else {
                 const used = parseFloat(DATA.totalGb) || 0;
                 const total = parseFloat(DATA.limitTotalGb) || 0;
-                const remaining = Math.max(0, total - used);
-                const percent = parseFloat(DATA.totalPercent) || 0;
 
                 usageContainer.innerHTML = `
                     <span class="num">${formatNumber(used)}</span>
@@ -630,14 +553,6 @@
                     <span class="num">${formatNumber(total)}</span>
                     <span class="unit unit-accent">GB</span>
                 `;
-
-                progressWrap.style.display = "block";
-                $("used-percent").textContent = formatNumber(percent, 1);
-                $("remaining-gb").textContent = formatNumber(remaining);
-
-                setTimeout(() => {
-                    $("usage-progress").style.width = Math.min(100, percent) + "%";
-                }, 200);
             }
 
             // ==========================================
