@@ -126,213 +126,112 @@
         .ctrl-btn svg { width: 16px; height: 16px; }
         .ctrl-btn .flag { font-size: 14px; }
 
-        .container {
-            width: 100%;
-            max-width: 640px;
-            position: relative;
-            z-index: 1;
-        }
+        .container { width: 100%; max-width: 640px; position: relative; z-index: 1; }
 
         .logo-header { text-align: center; margin-bottom: 36px; }
-
         .logo-mark {
-            width: 72px;
-            height: 72px;
-            margin: 0 auto 14px;
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            background: var(--bg-card);
-            border: 2px solid var(--accent);
+            width: 72px; height: 72px; margin: 0 auto 14px;
+            border-radius: 50%; display: flex; align-items: center; justify-content: center;
+            background: var(--bg-card); border: 2px solid var(--accent);
             box-shadow: 0 0 30px var(--accent-glow), inset 0 0 20px var(--accent-soft);
-            position: relative;
-            transition: all 0.4s ease;
+            position: relative; transition: all 0.4s ease;
         }
         .logo-mark svg { width: 38px; height: 38px; }
 
-        .brand-name {
-            font-size: 26px;
-            font-weight: 900;
-            letter-spacing: 0.5px;
-            line-height: 1;
-            direction: ltr;
-        }
+        .brand-name { font-size: 26px; font-weight: 900; letter-spacing: 0.5px; line-height: 1; direction: ltr; }
         .brand-name .vasl {
             background: var(--gradient-silver);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
-            transition: all 0.4s ease;
+            -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+            background-clip: text; transition: all 0.4s ease;
         }
         .brand-name .plus {
-            color: var(--accent-bright);
-            text-shadow: 0 0 20px var(--accent-glow);
+            color: var(--accent-bright); text-shadow: 0 0 20px var(--accent-glow);
             transition: all 0.4s ease;
         }
         .brand-tagline {
-            font-size: 10px;
-            font-weight: 600;
-            letter-spacing: 3px;
-            color: var(--text-muted);
-            margin-top: 6px;
-            direction: ltr;
+            font-size: 10px; font-weight: 600; letter-spacing: 3px;
+            color: var(--text-muted); margin-top: 6px; direction: ltr;
         }
-        .brand-tagline span {
-            color: var(--accent);
-            margin: 0 6px;
-            transition: color 0.4s ease;
-        }
+        .brand-tagline span { color: var(--accent); margin: 0 6px; transition: color 0.4s ease; }
 
         .user-greeting {
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            gap: 10px;
-            margin-bottom: 24px;
-            font-size: 14px;
-            color: var(--text-secondary);
+            display: flex; align-items: center; justify-content: center;
+            gap: 10px; margin-bottom: 24px; font-size: 14px; color: var(--text-secondary);
         }
         .user-greeting strong { color: var(--text-primary); font-weight: 700; }
         .user-greeting svg { color: var(--accent-bright); transition: color 0.4s ease; }
 
-        .cards-grid {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 16px;
-        }
+        .cards-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
 
         .card {
-            background: var(--bg-card);
-            border: 1px solid var(--border);
-            border-radius: var(--radius);
-            padding: 24px 22px;
-            position: relative;
-            overflow: hidden;
-            transition: all var(--transition);
-            box-shadow: var(--shadow-card);
+            background: var(--bg-card); border: 1px solid var(--border);
+            border-radius: var(--radius); padding: 24px 22px;
+            position: relative; overflow: hidden;
+            transition: all var(--transition); box-shadow: var(--shadow-card);
         }
         .card::before {
-            content: '';
-            position: absolute;
-            top: 0; left: 0; right: 0;
-            height: 2px;
-            background: var(--gradient-accent);
-            opacity: 0.7;
-            transition: opacity 0.3s;
+            content: ''; position: absolute; top: 0; left: 0; right: 0; height: 2px;
+            background: var(--gradient-accent); opacity: 0.7; transition: opacity 0.3s;
         }
         .card::after {
-            content: '';
-            position: absolute;
-            top: -60px; left: -60px;
-            width: 160px; height: 160px;
-            border-radius: 50%;
+            content: ''; position: absolute; top: -60px; left: -60px;
+            width: 160px; height: 160px; border-radius: 50%;
             background: radial-gradient(circle, var(--accent-soft) 0%, transparent 70%);
-            pointer-events: none;
-            transition: background 0.4s ease;
+            pointer-events: none; transition: background 0.4s ease;
         }
         .card:hover {
             border-color: var(--accent-border);
-            transform: translateY(-4px);
-            box-shadow: var(--shadow-accent);
+            transform: translateY(-4px); box-shadow: var(--shadow-accent);
         }
         .card:hover::before { opacity: 1; }
 
         .card-icon {
-            width: 42px;
-            height: 42px;
-            border-radius: var(--radius-sm);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            background: var(--accent-soft);
-            border: 1px solid var(--accent-border);
-            color: var(--accent-bright);
-            margin-bottom: 16px;
-            position: relative;
-            z-index: 1;
-            transition: all 0.4s ease;
+            width: 42px; height: 42px; border-radius: var(--radius-sm);
+            display: flex; align-items: center; justify-content: center;
+            background: var(--accent-soft); border: 1px solid var(--accent-border);
+            color: var(--accent-bright); margin-bottom: 16px;
+            position: relative; z-index: 1; transition: all 0.4s ease;
         }
         .card-icon svg { width: 20px; height: 20px; }
 
         .card-label {
-            font-size: 12px;
-            font-weight: 600;
-            color: var(--text-secondary);
-            margin-bottom: 10px;
-            position: relative;
-            z-index: 1;
-            letter-spacing: 0.3px;
+            font-size: 12px; font-weight: 600; color: var(--text-secondary);
+            margin-bottom: 10px; position: relative; z-index: 1; letter-spacing: 0.3px;
         }
 
         .card-value {
-            font-size: 30px;
-            font-weight: 900;
-            line-height: 1;
-            position: relative;
-            z-index: 1;
-            display: flex;
-            align-items: baseline;
-            gap: 5px;
-            direction: ltr;
-            justify-content: flex-start;
-            flex-wrap: wrap;
+            font-size: 30px; font-weight: 900; line-height: 1;
+            position: relative; z-index: 1;
+            display: flex; align-items: baseline; gap: 5px;
+            direction: ltr; justify-content: flex-start; flex-wrap: wrap;
         }
-        .card-value .num {
-            color: var(--text-primary);
-            transition: color 0.4s ease;
-        }
-        .card-value .unit {
-            font-size: 13px;
-            font-weight: 600;
-            color: var(--text-muted);
-        }
-        .card-value .unit-accent {
-            color: var(--accent-bright);
-            transition: color 0.4s ease;
-        }
+        .card-value .num { color: var(--text-primary); transition: color 0.4s ease; }
+        .card-value .unit { font-size: 13px; font-weight: 600; color: var(--text-muted); }
+        .card-value .unit-accent { color: var(--accent-bright); transition: color 0.4s ease; }
         .card-value .infinity {
-            font-size: 42px;
-            font-weight: 900;
-            color: var(--accent-bright);
-            text-shadow: 0 0 20px var(--accent-glow);
-            line-height: 0.8;
+            font-size: 42px; font-weight: 900; color: var(--accent-bright);
+            text-shadow: 0 0 20px var(--accent-glow); line-height: 0.8;
             transition: all 0.4s ease;
         }
         .card-value .infinity-text {
-            font-size: 18px;
-            font-weight: 700;
-            color: var(--accent-bright);
+            font-size: 18px; font-weight: 700; color: var(--accent-bright);
             text-shadow: 0 0 12px var(--accent-glow);
-            transition: all 0.4s ease;
-            margin-right: 6px;
+            transition: all 0.4s ease; margin-right: 6px;
         }
 
-        .progress-wrap {
-            margin-top: 16px;
-            position: relative;
-            z-index: 1;
-        }
+        .progress-wrap { margin-top: 16px; position: relative; z-index: 1; }
         .progress-track {
-            height: 8px;
-            border-radius: 8px;
-            background: var(--ring-bg);
-            overflow: hidden;
-            position: relative;
-            transition: background 0.4s ease;
+            height: 8px; border-radius: 8px; background: var(--ring-bg);
+            overflow: hidden; position: relative; transition: background 0.4s ease;
         }
         .progress-fill {
-            height: 100%;
-            border-radius: 8px;
-            background: var(--gradient-accent);
-            box-shadow: 0 0 12px var(--accent-glow);
+            height: 100%; border-radius: 8px;
+            background: var(--gradient-accent); box-shadow: 0 0 12px var(--accent-glow);
             transition: width 1s cubic-bezier(0.4, 0, 0.2, 1), background 0.4s ease;
             position: relative;
         }
         .progress-fill::after {
-            content: '';
-            position: absolute;
-            inset: 0;
+            content: ''; position: absolute; inset: 0;
             background: linear-gradient(90deg, transparent, rgba(255,255,255,0.35), transparent);
             animation: shimmer 2.2s infinite;
         }
@@ -341,62 +240,39 @@
             100% { transform: translateX(100%); }
         }
         .progress-info {
-            display: flex;
-            justify-content: space-between;
-            margin-top: 10px;
-            font-size: 11px;
-            font-weight: 600;
-            color: var(--text-muted);
-            gap: 8px;
-            flex-wrap: wrap;
+            display: flex; justify-content: space-between;
+            margin-top: 10px; font-size: 11px; font-weight: 600;
+            color: var(--text-muted); gap: 8px; flex-wrap: wrap;
         }
         .progress-info .highlight {
-            color: var(--accent-bright);
-            font-weight: 700;
-            transition: color 0.4s ease;
+            color: var(--accent-bright); font-weight: 700; transition: color 0.4s ease;
         }
 
         .days-ring {
-            margin-top: 16px;
-            display: flex;
-            gap: 4px;
-            position: relative;
-            z-index: 1;
+            margin-top: 16px; display: flex; gap: 4px;
+            position: relative; z-index: 1;
         }
         .day-seg {
-            flex: 1;
-            height: 6px;
-            border-radius: 4px;
-            background: var(--ring-bg);
-            transition: all 0.4s;
+            flex: 1; height: 6px; border-radius: 4px;
+            background: var(--ring-bg); transition: all 0.4s;
         }
         .day-seg.active {
-            background: var(--gradient-accent);
-            box-shadow: 0 0 8px var(--accent-glow);
+            background: var(--gradient-accent); box-shadow: 0 0 8px var(--accent-glow);
         }
 
         .footer {
-            text-align: center;
-            margin-top: 28px;
-            font-size: 11px;
-            color: var(--text-muted);
-            letter-spacing: 1.5px;
-            direction: ltr;
-            font-weight: 600;
+            text-align: center; margin-top: 28px;
+            font-size: 11px; color: var(--text-muted);
+            letter-spacing: 1.5px; direction: ltr; font-weight: 600;
         }
-        .footer .dot {
-            color: var(--accent);
-            margin: 0 6px;
-            transition: color 0.4s ease;
-        }
+        .footer .dot { color: var(--accent); margin: 0 6px; transition: color 0.4s ease; }
 
         @keyframes fadeInUp {
             from { opacity: 0; transform: translateY(24px); }
             to { opacity: 1; transform: translateY(0); }
         }
         .animate {
-            animation: fadeInUp 0.6s cubic-bezier(0.4, 0, 0.2, 1) forwards;
-            opacity: 0;
+            animation: fadeInUp 0.6s cubic-bezier(0.4, 0, 0.2, 1) forwards; opacity: 0;
         }
         .delay-1 { animation-delay: 0.1s; }
         .delay-2 { animation-delay: 0.2s; }
@@ -478,10 +354,11 @@
                         <path d="M8 12h8"/>
                     </svg>
                 </div>
-
                 <div class="card-label" data-i18n="used_label">حجم مصرف‌شده</div>
-                <div class="card-value" id="usage-value-container"></div>
-
+                <div class="card-value" id="usage-value-container">
+                    <!-- Worker اینجا رو با __TOTAL_PROGRESS__ یا مقدار پیش‌فرض پر می‌کنه -->
+                    <!-- در حالت عادی با JS پر می‌شه -->
+                </div>
                 <div class="progress-wrap" id="usage-progress-wrap">
                     <div class="progress-track">
                         <div class="progress-fill" id="usage-progress" style="width: 0%;"></div>
@@ -503,11 +380,9 @@
                         <line x1="3" y1="10" x2="21" y2="10"/>
                     </svg>
                 </div>
-
                 <div class="card-label" data-i18n="days_label">روزهای باقی‌مانده</div>
                 <div class="card-value" id="days-value-container"></div>
                 <div class="days-ring" id="days-ring"></div>
-
                 <div class="progress-info" style="margin-top: 10px;">
                     <span data-i18n="expiry_label">تاریخ انقضا:</span>
                     <span class="highlight" id="expiry-date">—</span>
@@ -523,20 +398,34 @@
     </div>
 
     <!-- ============================================================
-         JavaScript
+         JavaScript - فقط محاسبه‌ی روزها (بقیه از Worker میاد)
          ============================================================ -->
     <script>
         // =====================================================
-        // 📌 داده‌های داینامیک از بک‌اند
+        // 📌 داده‌های داینامیک که Worker پر می‌کنه
         // =====================================================
         const DATA = {
-            usedGB: parseFloat("__USED_GB__") || 0,
-            totalGB: parseFloat("__TOTAL_GB__") || 0,
-            expiryDate: "__EXPIRY_DATE__" || "",
-            // دو شرط مستقل برای نامحدود بودن
-            isUnlimitedGB: "__IS_UNLIMITED_GB__" === "true" || false,   // حجم نامحدود
-            isUnlimitedDays: "__IS_UNLIMITED_DAYS__" === "true" || false  // روز نامحدود
+            // از Worker
+            userName: "__USER_NAME__",
+            userId: "__USER_ID__",
+            statusCode: "__STATUS_CODE__",
+            totalGb: "__TOTAL_GB__",           // عدد خام
+            limitTotalGb: "__LIMIT_TOTAL_GB__", // عدد یا 9999
+            totalPercent: "__TOTAL_PERCENT__",  // درصد
+            dailyGb: "__DAILY_GB__",
+            limitDailyGb: "__LIMIT_DAILY_GB__",
+            dailyPercent: "__DAILY_PERCENT__",
+            expiryDate: "__EXPIRY_DATE__"       // YYYY-MM-DD
         };
+
+        // تشخیص نامحدود بودن
+        const isUnlimitedGB = DATA.limitTotalGb === "9999" || 
+                              DATA.limitTotalGb === "Unlimited" ||
+                              parseFloat(DATA.limitTotalGb) >= 9999;
+        
+        const isUnlimitedDays = !DATA.expiryDate || 
+                                DATA.expiryDate === "Never Expire" ||
+                                DATA.expiryDate === "2099-01-01";
 
         // =====================================================
         // 🌐 ترجمه‌ها
@@ -580,7 +469,7 @@
         const $ = (id) => document.getElementById(id);
 
         // =====================================================
-        // 🔢 فرمت دقیق اعداد
+        // 🔢 فرمت عدد
         // =====================================================
         function formatNumber(num, maxDecimals = 2) {
             if (!isFinite(num) || num === 0) return "0";
@@ -590,66 +479,36 @@
         }
 
         // =====================================================
-        // 📅 پارس کردن تاریخ انقضا (پشتیبانی از فرمت‌های مختلف)
-        // =====================================================
-        function parseExpiryDate(dateStr) {
-            if (!dateStr) return null;
-
-            // حذف فاصله‌های اضافی
-            dateStr = String(dateStr).trim();
-
-            if (dateStr === "" || dateStr === "__EXPIRY_DATE__") return null;
-
-            // حالت 1: timestamp (ثانیه یا میلی‌ثانیه) - فقط عدد
-            if (/^\d+$/.test(dateStr)) {
-                const num = parseInt(dateStr, 10);
-                // اگه عدد بزرگتر از 10000000000 باشه → میلی‌ثانیه
-                // اگه کوچکتر باشه → ثانیه
-                const ms = num > 10000000000 ? num : num * 1000;
-                const d = new Date(ms);
-                if (!isNaN(d.getTime())) return d;
-            }
-
-            // حالت 2: فرمت ISO یا YYYY-MM-DD
-            let d = new Date(dateStr);
-            if (!isNaN(d.getTime())) return d;
-
-            // حالت 3: فرمت با "/" (مثل 2024/12/28)
-            const slashMatch = dateStr.match(/^(\d{4})[\/\-](\d{1,2})[\/\-](\d{1,2})/);
-            if (slashMatch) {
-                d = new Date(
-                    parseInt(slashMatch[1]),
-                    parseInt(slashMatch[2]) - 1,
-                    parseInt(slashMatch[3])
-                );
-                if (!isNaN(d.getTime())) return d;
-            }
-
-            // حالت 4: فرمت شمسی (فقط اگه بک‌اند شمسی فرستاده باشه)
-            // این حالت به کتابخانه نیاز داره، اما یه تبدیل ساده انجام می‌دیم
-            const persianMatch = dateStr.match(/^(\d{4})[\/\-](\d{1,2})[\/\-](\d{1,2})/);
-            if (persianMatch && parseInt(persianMatch[1]) < 1500) {
-                // احتمالاً تاریخ شمسیه → تبدیل ساده
-                // (این تبدیل دقیق نیست ولی برای تخمین خوبه)
-                const jy = parseInt(persianMatch[1]);
-                const jm = parseInt(persianMatch[2]);
-                const jd = parseInt(persianMatch[3]);
-                // تبدیل تقریبی شمسی به میلادی
-                const gy = jy + 621;
-                d = new Date(gy, jm - 1, jd);
-                if (!isNaN(d.getTime())) return d;
-            }
-
-            return null;
-        }
-
-        // =====================================================
-        // 📅 محاسبه‌ی دقیق روزهای باقی‌مانده
+        // 📅 محاسبه‌ی دقیق روزها از تاریخ انقضا
         // =====================================================
         function calcDaysLeft(expiryStr) {
-            const expiry = parseExpiryDate(expiryStr);
+            if (!expiryStr || expiryStr === "Never Expire" || expiryStr === "2099-01-01") {
+                return { days: 0, expired: false, valid: false };
+            }
 
-            if (!expiry) {
+            // پارس تاریخ (پشتیبانی از فرمت‌های مختلف)
+            let expiry = null;
+            
+            // YYYY-MM-DD
+            if (/^\d{4}-\d{1,2}-\d{1,2}/.test(expiryStr)) {
+                expiry = new Date(expiryStr);
+            }
+            // timestamp
+            else if (/^\d+$/.test(expiryStr)) {
+                const num = parseInt(expiryStr);
+                expiry = new Date(num > 10000000000 ? num : num * 1000);
+            }
+            // فرمت با اسلش
+            else if (/^\d{4}\/\d{1,2}\/\d{1,2}/.test(expiryStr)) {
+                const parts = expiryStr.split("/");
+                expiry = new Date(parseInt(parts[0]), parseInt(parts[1]) - 1, parseInt(parts[2]));
+            }
+            // تلاش نهایی
+            else {
+                expiry = new Date(expiryStr);
+            }
+
+            if (!expiry || isNaN(expiry.getTime())) {
                 return { days: 0, expired: false, valid: false };
             }
 
@@ -660,30 +519,26 @@
                 return { days: 0, expired: true, valid: true };
             }
 
-            // محاسبه‌ی دقیق روزها
+            // محاسبه دقیق روز
             const totalHours = diffMs / (1000 * 60 * 60);
             const fullDays = Math.floor(totalHours / 24);
             const remainingHours = totalHours % 24;
-
-            // اگه بیشتر از 0 ساعت مونده، یک روز اضافه می‌شه
             const days = remainingHours > 0 ? fullDays + 1 : fullDays;
 
             return { days: Math.max(0, days), expired: false, valid: true };
         }
 
         // =====================================================
-        // 📅 فرمت تاریخ برای نمایش
+        // 📅 فرمت تاریخ
         // =====================================================
         function toLocaleDate(dateStr, lang) {
-            const d = parseExpiryDate(dateStr);
-            if (!d) return "—";
-
+            if (!dateStr || dateStr === "Never Expire" || dateStr === "2099-01-01") return "—";
             try {
+                const d = new Date(dateStr);
+                if (isNaN(d.getTime())) return "—";
                 const locale = lang === "fa" ? "fa-IR" : "en-GB";
                 return d.toLocaleDateString(locale, {
-                    year: 'numeric',
-                    month: '2-digit',
-                    day: '2-digit'
+                    year: 'numeric', month: '2-digit', day: '2-digit'
                 });
             } catch (e) {
                 return "—";
@@ -721,10 +576,8 @@
         // =====================================================
         function applyTheme() {
             document.body.classList.toggle("light", currentTheme === "light");
-
             const moon = $("theme-icon-moon");
             const sun = $("theme-icon-sun");
-
             if (currentTheme === "dark") {
                 moon.style.display = "block";
                 sun.style.display = "none";
@@ -747,30 +600,29 @@
         }
 
         // =====================================================
-        // 📊 رندر داده‌ها
+        // 📊 رندر
         // =====================================================
         function render() {
             const t = I18N[currentLang];
             const usageContainer = $("usage-value-container");
             const progressWrap = $("usage-progress-wrap");
             const daysContainer = $("days-value-container");
+            const ring = $("days-ring");
 
             // ==========================================
-            // 1️⃣ حجم مصرفی
+            // حجم مصرفی
             // ==========================================
-            if (DATA.isUnlimitedGB) {
-                // حجم نامحدود
+            if (isUnlimitedGB) {
                 usageContainer.innerHTML = `
                     <span class="infinity">∞</span>
                     <span class="infinity-text">${t.unlimited}</span>
                 `;
                 progressWrap.style.display = "none";
             } else {
-                // حجم محدود
-                const used = Math.max(0, DATA.usedGB);
-                const total = Math.max(0, DATA.totalGB);
+                const used = parseFloat(DATA.totalGb) || 0;
+                const total = parseFloat(DATA.limitTotalGb) || 0;
                 const remaining = Math.max(0, total - used);
-                const percent = total > 0 ? Math.min(100, Math.max(0, (used / total) * 100)) : 0;
+                const percent = parseFloat(DATA.totalPercent) || 0;
 
                 usageContainer.innerHTML = `
                     <span class="num">${formatNumber(used)}</span>
@@ -780,29 +632,23 @@
                 `;
 
                 progressWrap.style.display = "block";
-                const percentDisplay = Math.round(percent * 10) / 10;
-                $("used-percent").textContent = formatNumber(percentDisplay, 1);
+                $("used-percent").textContent = formatNumber(percent, 1);
                 $("remaining-gb").textContent = formatNumber(remaining);
 
                 setTimeout(() => {
-                    $("usage-progress").style.width = percent + "%";
+                    $("usage-progress").style.width = Math.min(100, percent) + "%";
                 }, 200);
             }
 
             // ==========================================
-            // 2️⃣ روزهای باقی‌مانده
+            // روزهای باقی‌مانده
             // ==========================================
-            const ring = $("days-ring");
-
-            if (DATA.isUnlimitedDays) {
-                // روز نامحدود
+            if (isUnlimitedDays) {
                 daysContainer.innerHTML = `
                     <span class="infinity">∞</span>
                     <span class="infinity-text">${t.unlimited}</span>
                 `;
                 $("expiry-date").textContent = t.no_expiry;
-
-                // نقاط روزها → همه فعال
                 ring.innerHTML = "";
                 for (let i = 0; i < 7; i++) {
                     const seg = document.createElement("div");
@@ -810,33 +656,22 @@
                     ring.appendChild(seg);
                 }
             } else {
-                // روز محدود
                 const result = calcDaysLeft(DATA.expiryDate);
 
-                if (!result.valid) {
-                    // تاریخ نامعتبر
-                    daysContainer.innerHTML = `
-                        <span class="num">0</span>
-                        <span class="unit unit-accent">${t.days_unit}</span>
-                    `;
-                    $("expiry-date").textContent = "—";
-                } else if (result.expired) {
-                    // منقضی شده
+                if (result.expired) {
                     daysContainer.innerHTML = `
                         <span class="num">0</span>
                         <span class="unit unit-accent">${t.expired}</span>
                     `;
-                    $("expiry-date").textContent = toLocaleDate(DATA.expiryDate, currentLang);
                 } else {
-                    // روز عادی
                     daysContainer.innerHTML = `
                         <span class="num">${result.days}</span>
                         <span class="unit unit-accent">${t.days_unit}</span>
                     `;
-                    $("expiry-date").textContent = toLocaleDate(DATA.expiryDate, currentLang);
                 }
 
-                // نقاط روزها
+                $("expiry-date").textContent = toLocaleDate(DATA.expiryDate, currentLang);
+
                 const daysLeft = result.days;
                 const segments = 7;
                 const filledSegments = daysLeft >= 30
@@ -856,15 +691,6 @@
         // 🚀 راه‌اندازی
         // =====================================================
         (function init() {
-            // داده نمونه در صورت نبود مقادیر
-            if (DATA.usedGB === 0 && DATA.totalGB === 0 && !DATA.isUnlimitedGB) {
-                DATA.usedGB = 0;
-                DATA.totalGB = 13.56;
-                const future = new Date();
-                future.setDate(future.getDate() + 18);
-                DATA.expiryDate = future.toISOString().split("T")[0];
-            }
-
             applyTheme();
             applyLang();
         })();
