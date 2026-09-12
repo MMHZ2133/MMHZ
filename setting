@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>__USER_NAME__ - پنل اشتراک</title>
+    <title>VaslPlus | __USER_NAME__</title>
     <link href="https://fonts.googleapis.com/css2?family=Vazirmatn:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
     <style>
         /* ===== Reset & Base ===== */
@@ -14,34 +14,39 @@
         }
 
         :root {
-            /* Light theme */
-            --bg-page: #f0f2f8;
-            --bg-card: #ffffff;
-            --bg-soft: #f7f8fc;
-            --text-primary: #1e1b4b;
-            --text-secondary: #6b7280;
-            --text-muted: #9ca3af;
+            /* VaslPlus Brand Colors */
+            --bg-primary: #0a0a0f;
+            --bg-card: #14141c;
+            --bg-card-hover: #1c1c28;
+            --bg-soft: #1a1a24;
 
-            --indigo: #6366f1;
-            --indigo-light: #818cf8;
-            --purple: #a855f7;
-            --purple-light: #c084fc;
-            --gradient-main: linear-gradient(135deg, #6366f1 0%, #a855f7 100%);
-            --gradient-soft: linear-gradient(135deg, #eef2ff 0%, #faf5ff 100%);
+            --red: #e11d2e;
+            --red-bright: #ff2338;
+            --red-glow: rgba(225, 29, 46, 0.4);
+            --red-soft: rgba(225, 29, 46, 0.12);
 
-            --border: #e5e7eb;
-            --shadow-sm: 0 1px 3px rgba(30, 27, 75, 0.06);
-            --shadow-md: 0 4px 16px rgba(30, 27, 75, 0.08);
-            --shadow-lg: 0 12px 32px rgba(99, 102, 241, 0.15);
+            --white: #ffffff;
+            --text-primary: #ffffff;
+            --text-secondary: #a0a0b0;
+            --text-muted: #5a5a6e;
 
-            --radius: 20px;
-            --radius-sm: 12px;
+            --border: #23232f;
+            --border-red: rgba(225, 29, 46, 0.35);
+
+            --gradient-red: linear-gradient(135deg, #e11d2e 0%, #ff2338 100%);
+            --gradient-silver: linear-gradient(135deg, #ffffff 0%, #b8b8c8 100%);
+
+            --shadow-card: 0 4px 24px rgba(0, 0, 0, 0.6);
+            --shadow-red: 0 8px 32px rgba(225, 29, 46, 0.25);
+
+            --radius: 16px;
+            --radius-sm: 10px;
             --transition: 0.3s cubic-bezier(0.4, 0, 0.2, 1);
         }
 
         body {
             font-family: 'Vazirmatn', sans-serif;
-            background: var(--bg-page);
+            background: var(--bg-primary);
             color: var(--text-primary);
             min-height: 100vh;
             padding: 24px 16px;
@@ -49,172 +54,212 @@
             align-items: center;
             justify-content: center;
             background-image:
-                radial-gradient(circle at 15% 20%, rgba(99, 102, 241, 0.08) 0%, transparent 40%),
-                radial-gradient(circle at 85% 80%, rgba(168, 85, 247, 0.08) 0%, transparent 40%);
+                radial-gradient(circle at 20% 20%, rgba(225, 29, 46, 0.06) 0%, transparent 45%),
+                radial-gradient(circle at 80% 80%, rgba(225, 29, 46, 0.06) 0%, transparent 45%),
+                linear-gradient(rgba(255, 255, 255, 0.015) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(255, 255, 255, 0.015) 1px, transparent 1px);
+            background-size: auto, auto, 40px 40px, 40px 40px;
         }
 
         /* ===== Container ===== */
         .container {
             width: 100%;
-            max-width: 720px;
+            max-width: 640px;
             position: relative;
             z-index: 1;
         }
 
-        /* ===== Header ===== */
-        .header {
-            display: flex;
-            align-items: center;
-            gap: 16px;
-            margin-bottom: 32px;
-            padding: 0 4px;
+        /* ===== Logo Header ===== */
+        .logo-header {
+            text-align: center;
+            margin-bottom: 36px;
         }
 
-        .avatar {
-            width: 56px;
-            height: 56px;
-            border-radius: 16px;
+        .logo-mark {
+            width: 72px;
+            height: 72px;
+            margin: 0 auto 14px;
+            border-radius: 50%;
             display: flex;
             align-items: center;
             justify-content: center;
-            background: var(--gradient-main);
-            color: #ffffff;
-            flex-shrink: 0;
-            box-shadow: 0 8px 20px rgba(99, 102, 241, 0.3);
+            background: var(--bg-card);
+            border: 2px solid var(--red);
+            box-shadow: 0 0 30px var(--red-glow), inset 0 0 20px rgba(225, 29, 46, 0.15);
+            position: relative;
         }
 
-        .avatar svg {
-            width: 26px;
-            height: 26px;
+        .logo-mark svg {
+            width: 38px;
+            height: 38px;
         }
 
-        .header-text h1 {
-            font-size: 20px;
-            font-weight: 800;
-            color: var(--text-primary);
-            line-height: 1.3;
+        .brand-name {
+            font-size: 26px;
+            font-weight: 900;
+            letter-spacing: 0.5px;
+            line-height: 1;
+            direction: ltr;
         }
 
-        .header-text p {
-            font-size: 13px;
+        .brand-name .vasl {
+            background: var(--gradient-silver);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .brand-name .plus {
+            color: var(--red-bright);
+            text-shadow: 0 0 20px var(--red-glow);
+        }
+
+        .brand-tagline {
+            font-size: 10px;
+            font-weight: 600;
+            letter-spacing: 3px;
+            color: var(--text-muted);
+            margin-top: 6px;
+            direction: ltr;
+        }
+
+        .brand-tagline span {
+            color: var(--red);
+            margin: 0 6px;
+        }
+
+        /* ===== User Greeting ===== */
+        .user-greeting {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            margin-bottom: 24px;
+            font-size: 14px;
             color: var(--text-secondary);
-            font-weight: 500;
-            margin-top: 2px;
+        }
+
+        .user-greeting strong {
+            color: var(--white);
+            font-weight: 700;
         }
 
         /* ===== Cards Grid ===== */
         .cards-grid {
             display: grid;
             grid-template-columns: 1fr 1fr;
-            gap: 20px;
+            gap: 16px;
         }
 
         /* ===== Card ===== */
         .card {
             background: var(--bg-card);
-            border-radius: var(--radius);
-            padding: 28px 24px;
-            box-shadow: var(--shadow-md);
             border: 1px solid var(--border);
-            transition: all var(--transition);
+            border-radius: var(--radius);
+            padding: 24px 22px;
             position: relative;
             overflow: hidden;
+            transition: all var(--transition);
+            box-shadow: var(--shadow-card);
         }
 
         .card::before {
             content: '';
             position: absolute;
             top: 0;
+            left: 0;
             right: 0;
-            width: 120px;
-            height: 120px;
-            border-radius: 50%;
-            background: var(--gradient-soft);
+            height: 2px;
+            background: var(--gradient-red);
             opacity: 0.7;
-            transform: translate(40%, -40%);
+            transition: opacity 0.3s;
+        }
+
+        .card::after {
+            content: '';
+            position: absolute;
+            top: -60px;
+            left: -60px;
+            width: 160px;
+            height: 160px;
+            border-radius: 50%;
+            background: radial-gradient(circle, var(--red-soft) 0%, transparent 70%);
             pointer-events: none;
         }
 
         .card:hover {
+            border-color: var(--border-red);
             transform: translateY(-4px);
-            box-shadow: var(--shadow-lg);
-            border-color: rgba(99, 102, 241, 0.3);
+            box-shadow: var(--shadow-red);
+        }
+
+        .card:hover::before {
+            opacity: 1;
         }
 
         /* ===== Card Icon ===== */
         .card-icon {
-            width: 44px;
-            height: 44px;
-            border-radius: 12px;
+            width: 42px;
+            height: 42px;
+            border-radius: var(--radius-sm);
             display: flex;
             align-items: center;
             justify-content: center;
-            margin-bottom: 18px;
+            background: var(--red-soft);
+            border: 1px solid var(--border-red);
+            color: var(--red-bright);
+            margin-bottom: 16px;
             position: relative;
             z-index: 1;
         }
 
-        .card-icon-usage {
-            background: rgba(99, 102, 241, 0.12);
-            color: var(--indigo);
-        }
-
-        .card-icon-days {
-            background: rgba(168, 85, 247, 0.12);
-            color: var(--purple);
-        }
-
         .card-icon svg {
-            width: 22px;
-            height: 22px;
+            width: 20px;
+            height: 20px;
         }
 
         /* ===== Card Label ===== */
         .card-label {
-            font-size: 13px;
+            font-size: 12px;
             font-weight: 600;
             color: var(--text-secondary);
-            margin-bottom: 8px;
+            margin-bottom: 10px;
             position: relative;
             z-index: 1;
+            letter-spacing: 0.3px;
         }
 
         /* ===== Card Value ===== */
         .card-value {
-            font-size: 36px;
+            font-size: 30px;
             font-weight: 900;
-            line-height: 1.1;
-            color: var(--text-primary);
+            line-height: 1;
             position: relative;
             z-index: 1;
             display: flex;
             align-items: baseline;
-            gap: 6px;
+            gap: 5px;
+            direction: ltr;
+            justify-content: flex-start;
+        }
+
+        .card-value .num {
+            color: var(--white);
         }
 
         .card-value .unit {
-            font-size: 15px;
+            font-size: 13px;
             font-weight: 600;
             color: var(--text-muted);
         }
 
-        .card-value.gradient-usage {
-            background: linear-gradient(135deg, #6366f1, #8b5cf6);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
-        }
-
-        .card-value.gradient-days {
-            background: linear-gradient(135deg, #a855f7, #d946ef);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
+        .card-value .unit-red {
+            color: var(--red-bright);
         }
 
         /* ===== Progress Bar ===== */
         .progress-wrap {
-            margin-top: 18px;
+            margin-top: 16px;
             position: relative;
             z-index: 1;
         }
@@ -222,7 +267,7 @@
         .progress-track {
             height: 8px;
             border-radius: 8px;
-            background: #eef2ff;
+            background: #23232f;
             overflow: hidden;
             position: relative;
         }
@@ -230,18 +275,18 @@
         .progress-fill {
             height: 100%;
             border-radius: 8px;
-            background: var(--gradient-main);
+            background: var(--gradient-red);
+            box-shadow: 0 0 12px var(--red-glow);
             transition: width 1s cubic-bezier(0.4, 0, 0.2, 1);
             position: relative;
-            overflow: hidden;
         }
 
         .progress-fill::after {
             content: '';
             position: absolute;
             inset: 0;
-            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.4), transparent);
-            animation: shimmer 2s infinite;
+            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.35), transparent);
+            animation: shimmer 2.2s infinite;
         }
 
         @keyframes shimmer {
@@ -252,50 +297,53 @@
         .progress-info {
             display: flex;
             justify-content: space-between;
-            margin-top: 8px;
-            font-size: 12px;
-            font-weight: 500;
+            margin-top: 10px;
+            font-size: 11px;
+            font-weight: 600;
             color: var(--text-muted);
         }
 
-        .progress-percent {
+        .progress-info .highlight {
+            color: var(--red-bright);
             font-weight: 700;
-            color: var(--indigo);
         }
 
-        /* ===== Days Bar (visual decoration) ===== */
-        .days-deco {
-            margin-top: 18px;
+        /* ===== Days Ring (visual) ===== */
+        .days-ring {
+            margin-top: 16px;
             display: flex;
             gap: 4px;
             position: relative;
             z-index: 1;
         }
 
-        .day-dot {
+        .day-seg {
             flex: 1;
             height: 6px;
-            border-radius: 6px;
-            background: #f3e8ff;
-            transition: background 0.4s;
+            border-radius: 4px;
+            background: #23232f;
+            transition: all 0.4s;
         }
 
-        .day-dot.active {
-            background: linear-gradient(135deg, #a855f7, #d946ef);
+        .day-seg.active {
+            background: var(--gradient-red);
+            box-shadow: 0 0 8px var(--red-glow);
         }
 
         /* ===== Footer ===== */
         .footer {
             text-align: center;
-            margin-top: 32px;
-            font-size: 12px;
+            margin-top: 28px;
+            font-size: 11px;
             color: var(--text-muted);
-            font-weight: 500;
+            letter-spacing: 1.5px;
+            direction: ltr;
+            font-weight: 600;
         }
 
-        .footer .brand {
-            color: var(--indigo);
-            font-weight: 700;
+        .footer .dot {
+            color: var(--red);
+            margin: 0 6px;
         }
 
         /* ===== Animations ===== */
@@ -312,44 +360,21 @@
         .delay-1 { animation-delay: 0.1s; }
         .delay-2 { animation-delay: 0.2s; }
         .delay-3 { animation-delay: 0.3s; }
+        .delay-4 { animation-delay: 0.4s; }
 
         /* ===== Responsive ===== */
-        @media (max-width: 640px) {
+        @media (max-width: 600px) {
             body { padding: 16px 12px; }
             .cards-grid {
                 grid-template-columns: 1fr;
-                gap: 16px;
+                gap: 14px;
             }
-            .card { padding: 24px 20px; }
-            .card-value { font-size: 32px; }
-            .header { margin-bottom: 24px; }
-            .header-text h1 { font-size: 18px; }
-            .avatar { width: 50px; height: 50px; }
-            .avatar svg { width: 22px; height: 22px; }
-        }
-
-        /* ===== Dark Mode (اختیاری) ===== */
-        body.dark {
-            --bg-page: #0f0f1a;
-            --bg-card: #1a1a2e;
-            --bg-soft: #16162a;
-            --text-primary: #f1f5f9;
-            --text-secondary: #94a3b8;
-            --text-muted: #64748b;
-            --border: #2a2a3e;
-            --gradient-soft: linear-gradient(135deg, #1e1b4b 0%, #2e1065 100%);
-        }
-
-        body.dark .progress-track {
-            background: #2a2a3e;
-        }
-
-        body.dark .day-dot {
-            background: #2a2a3e;
-        }
-
-        body.dark .card::before {
-            opacity: 0.3;
+            .card { padding: 22px 20px; }
+            .card-value { font-size: 28px; }
+            .brand-name { font-size: 22px; }
+            .logo-mark { width: 64px; height: 64px; }
+            .logo-mark svg { width: 32px; height: 32px; }
+            .logo-header { margin-bottom: 28px; }
         }
     </style>
 </head>
@@ -357,51 +382,76 @@
 
     <div class="container">
 
-        <!-- ===== Header ===== -->
-        <div class="header animate delay-1">
-            <div class="avatar">
-                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                    <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/>
-                    <circle cx="12" cy="7" r="4"/>
+        <!-- ===== Logo Header ===== -->
+        <div class="logo-header animate delay-1">
+            <div class="logo-mark">
+                <svg viewBox="0 0 24 24" fill="none">
+                    <!-- V letter with red/white -->
+                    <path d="M4 4 L10 20 L14 20 L20 4 L16 4 L12 15 L8 4 Z" fill="url(#silverGrad)"/>
+                    <!-- Red swoosh -->
+                    <path d="M3 8 Q12 16 21 6" stroke="#ff2338" stroke-width="2" fill="none" stroke-linecap="round"/>
+                    <!-- Globe dot -->
+                    <circle cx="19" cy="5" r="2.5" stroke="#ff2338" stroke-width="1.2" fill="none"/>
+                    <ellipse cx="19" cy="5" rx="1" ry="2.5" stroke="#ff2338" stroke-width="0.8" fill="none"/>
+                    <line x1="16.5" y1="5" x2="21.5" y2="5" stroke="#ff2338" stroke-width="0.8"/>
+                    <defs>
+                        <linearGradient id="silverGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+                            <stop offset="0%" stop-color="#ffffff"/>
+                            <stop offset="100%" stop-color="#b8b8c8"/>
+                        </linearGradient>
+                    </defs>
                 </svg>
             </div>
-            <div class="header-text">
-                <h1>__USER_NAME__</h1>
-                <p>وضعیت اشتراک شما</p>
+            <div class="brand-name">
+                <span class="vasl">Vasl</span><span class="plus">Plus</span>
             </div>
+            <div class="brand-tagline">FAST <span>•</span> SECURE <span>•</span> GLOBAL</div>
+        </div>
+
+        <!-- ===== User Greeting ===== -->
+        <div class="user-greeting animate delay-2">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#ff2338" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/>
+                <circle cx="12" cy="7" r="4"/>
+            </svg>
+            <span>خوش آمدی، <strong>__USER_NAME__</strong></span>
         </div>
 
         <!-- ===== Cards Grid ===== -->
         <div class="cards-grid">
 
             <!-- ===== کارت میزان مصرف ===== -->
-            <div class="card animate delay-2">
-                <div class="card-icon card-icon-usage">
+            <div class="card animate delay-3">
+                <div class="card-icon">
                     <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
                         <path d="M4 7v10c0 2 1.5 3 3.5 3h9c2 0 3.5-1 3.5-3V7c0-2-1.5-3-3.5-3h-9C5.5 4 4 5 4 7z"/>
                         <path d="M8 12h8"/>
                     </svg>
                 </div>
 
-                <div class="card-label">میزان مصرف</div>
-                <div class="card-value gradient-usage">
-                    __TOTAL_GB__ <span class="unit">GB</span>
+                <div class="card-label">حجم مصرف‌شده</div>
+
+                <div class="card-value">
+                    <span class="num" id="used-value">0</span>
+                    <span class="unit">/</span>
+                    <span class="num" id="total-value">0</span>
+                    <span class="unit unit-red">GB</span>
                 </div>
 
                 <div class="progress-wrap">
                     <div class="progress-track">
-                        <div class="progress-fill" style="width: __USAGE_PERCENT__%;"></div>
+                        <div class="progress-fill" id="usage-progress" style="width: 0%;"></div>
                     </div>
                     <div class="progress-info">
-                        <span>__USAGE_PERCENT__٪ مصرف شده</span>
-                        <span>از __LIMIT_TOTAL_GB__ GB</span>
+                        <span><span class="highlight" id="used-percent">0</span>٪ مصرف شده</span>
+                        <span>باقی‌مانده: <span class="highlight" id="remaining-gb">0</span> GB</span>
                     </div>
                 </div>
             </div>
 
             <!-- ===== کارت روزهای باقی‌مانده ===== -->
-            <div class="card animate delay-3">
-                <div class="card-icon card-icon-days">
+            <div class="card animate delay-4">
+                <div class="card-icon">
                     <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
                         <rect x="3" y="4" width="18" height="18" rx="2" ry="2"/>
                         <line x1="16" y1="2" x2="16" y2="6"/>
@@ -411,29 +461,150 @@
                 </div>
 
                 <div class="card-label">روزهای باقی‌مانده</div>
-                <div class="card-value gradient-days">
-                    __DAYS_LEFT__ <span class="unit">روز</span>
+
+                <div class="card-value">
+                    <span class="num" id="days-value">0</span>
+                    <span class="unit unit-red">روز</span>
                 </div>
 
-                <div class="days-deco">
-                    <div class="day-dot active"></div>
-                    <div class="day-dot active"></div>
-                    <div class="day-dot active"></div>
-                    <div class="day-dot"></div>
-                    <div class="day-dot"></div>
-                    <div class="day-dot"></div>
-                    <div class="day-dot"></div>
+                <div class="days-ring" id="days-ring">
+                    <!-- JavaScript این بخش رو پر می‌کنه -->
+                </div>
+
+                <div class="progress-info" style="margin-top: 10px;">
+                    <span>تاریخ انقضا:</span>
+                    <span class="highlight" id="expiry-date">—</span>
                 </div>
             </div>
 
         </div>
 
         <!-- ===== Footer ===== -->
-        <div class="footer animate delay-3">
-            <span class="brand">✦ Panel ✦</span>
+        <div class="footer animate delay-4">
+            VASLPLUS <span class="dot">✦</span> SUBSCRIPTION PANEL <span class="dot">✦</span>
         </div>
 
     </div>
+
+    <!-- ============================================================
+         JavaScript: محاسبه واقعی روزها و حجم
+         ============================================================ -->
+    <script>
+        (function () {
+            // =====================================================
+            // 📌 داده‌های داینامیک از بک‌اند
+            // این مقادیر رو با مقادیر واقعی خودت جایگزین کن
+            // =====================================================
+            const DATA = {
+                // حجم (به GB)
+                usedGB: parseFloat("__USED_GB__") || 0,
+                totalGB: parseFloat("__TOTAL_GB__") || 0,
+
+                // تاریخ انقضا (به میلادی: YYYY-MM-DD)
+                expiryDate: "__EXPIRY_DATE__" || ""
+            };
+
+            // =====================================================
+            // 🔧 توابع کمکی
+            // =====================================================
+            const $ = (id) => document.getElementById(id);
+
+            function formatNumber(num, decimals = 2) {
+                if (num === 0) return "0";
+                return num.toFixed(decimals).replace(/\.?0+$/, "");
+            }
+
+            // محاسبه روزهای باقی‌مانده
+            function calcDaysLeft(expiryStr) {
+                if (!expiryStr || expiryStr === "__EXPIRY_DATE__") return 0;
+
+                const now = new Date();
+                now.setHours(0, 0, 0, 0);
+
+                const expiry = new Date(expiryStr);
+                if (isNaN(expiry.getTime())) return 0;
+                expiry.setHours(0, 0, 0, 0);
+
+                const diffMs = expiry - now;
+                const diffDays = Math.ceil(diffMs / (1000 * 60 * 60 * 24));
+
+                return Math.max(0, diffDays);
+            }
+
+            // فرمت تاریخ شمسی
+            function toPersianDate(dateStr) {
+                if (!dateStr || dateStr === "__EXPIRY_DATE__") return "—";
+                try {
+                    const d = new Date(dateStr);
+                    if (isNaN(d.getTime())) return "—";
+                    return d.toLocaleDateString('fa-IR', {
+                        year: 'numeric',
+                        month: '2-digit',
+                        day: '2-digit'
+                    });
+                } catch (e) {
+                    return "—";
+                }
+            }
+
+            // =====================================================
+            // 📊 رندر داده‌ها
+            // =====================================================
+            function render() {
+                // ----- حجم مصرفی -----
+                const used = DATA.usedGB;
+                const total = DATA.totalGB;
+                const remaining = Math.max(0, total - used);
+                const percent = total > 0 ? Math.min(100, (used / total) * 100) : 0;
+
+                $("used-value").textContent = formatNumber(used);
+                $("total-value").textContent = formatNumber(total);
+                $("used-percent").textContent = Math.round(percent);
+                $("remaining-gb").textContent = formatNumber(remaining);
+
+                // نوار پیشرفت با انیمیشن
+                setTimeout(() => {
+                    $("usage-progress").style.width = percent + "%";
+                }, 200);
+
+                // ----- روزهای باقی‌مانده -----
+                const daysLeft = calcDaysLeft(DATA.expiryDate);
+                $("days-value").textContent = daysLeft;
+                $("expiry-date").textContent = toPersianDate(DATA.expiryDate);
+
+                // ----- نقاط روزها (7 نقطه) -----
+                const ring = $("days-ring");
+                ring.innerHTML = "";
+
+                // نسبت روزهای باقی‌مانده به 30 روز (فرض)
+                const segments = 7;
+                const filledSegments = daysLeft >= 30
+                    ? segments
+                    : Math.max(1, Math.round((daysLeft / 30) * segments));
+
+                for (let i = 0; i < segments; i++) {
+                    const seg = document.createElement("div");
+                    seg.className = "day-seg" + (i < filledSegments ? " active" : "");
+                    ring.appendChild(seg);
+                }
+            }
+
+            // =====================================================
+            // 🔄 اگر داده‌ها داینامیک نیستن، مقادیر نمونه
+            // =====================================================
+            if (DATA.usedGB === 0 && DATA.totalGB === 0) {
+                // داده نمونه برای نمایش
+                DATA.usedGB = 3.2;
+                DATA.totalGB = 10;
+                const future = new Date();
+                future.setDate(future.getDate() + 18);
+                DATA.expiryDate = future.toISOString().split("T")[0];
+            }
+
+            // اجرا
+            render();
+        })();
+    </script>
 
 </body>
 </html>
