@@ -14,16 +14,17 @@
         }
 
         :root {
-            /* VaslPlus Brand Colors */
+            /* ===== Dark Theme (پیش‌فرض) - VaslPlus Red ===== */
             --bg-primary: #0a0a0f;
             --bg-card: #14141c;
             --bg-card-hover: #1c1c28;
             --bg-soft: #1a1a24;
 
-            --red: #e11d2e;
-            --red-bright: #ff2338;
-            --red-glow: rgba(225, 29, 46, 0.4);
-            --red-soft: rgba(225, 29, 46, 0.12);
+            --accent: #e11d2e;
+            --accent-bright: #ff2338;
+            --accent-glow: rgba(225, 29, 46, 0.4);
+            --accent-soft: rgba(225, 29, 46, 0.12);
+            --accent-border: rgba(225, 29, 46, 0.35);
 
             --white: #ffffff;
             --text-primary: #ffffff;
@@ -31,19 +32,99 @@
             --text-muted: #5a5a6e;
 
             --border: #23232f;
-            --border-red: rgba(225, 29, 46, 0.35);
-
-            --gradient-red: linear-gradient(135deg, #e11d2e 0%, #ff2338 100%);
+            --gradient-accent: linear-gradient(135deg, #e11d2e 0%, #ff2338 100%);
             --gradient-silver: linear-gradient(135deg, #ffffff 0%, #b8b8c8 100%);
 
             --shadow-card: 0 4px 24px rgba(0, 0, 0, 0.6);
-            --shadow-red: 0 8px 32px rgba(225, 29, 46, 0.25);
+            --shadow-accent: 0 8px 32px rgba(225, 29, 46, 0.25);
+
+            --grid-color: rgba(255, 255, 255, 0.015);
+            --ring-bg: #23232f;
 
             --radius: 16px;
             --radius-sm: 10px;
             --transition: 0.3s cubic-bezier(0.4, 0, 0.2, 1);
         }
 
+        /* ===== Light Theme (روز) - Green ===== */
+        body.light {
+            --bg-primary: #f5f7f5;
+            --bg-card: #ffffff;
+            --bg-card-hover: #f0fdf4;
+            --bg-soft: #f0fdf4;
+
+            --accent: #16a34a;
+            --accent-bright: #22c55e;
+            --accent-glow: rgba(22, 163, 74, 0.35);
+            --accent-soft: rgba(22, 163, 74, 0.12);
+            --accent-border: rgba(22, 163, 74, 0.35);
+
+            --white: #14532d;
+            --text-primary: #14532d;
+            --text-secondary: #4b5563;
+            --text-muted: #9ca3af;
+
+            --border: #e5e7eb;
+            --gradient-accent: linear-gradient(135deg, #16a34a 0%, #22c55e 100%);
+            --gradient-silver: linear-gradient(135deg, #14532d 0%, #166534 100%);
+
+            --shadow-card: 0 4px 24px rgba(22, 163, 74, 0.08);
+            --shadow-accent: 0 8px 32px rgba(22, 163, 74, 0.2);
+
+            --grid-color: rgba(22, 163, 74, 0.04);
+            --ring-bg: #e5e7eb;
+        }
+
+        /* ===== Light theme: logo colors ===== */
+        body.light .logo-mark {
+            background: #ffffff;
+            border-color: var(--accent);
+            box-shadow: 0 0 30px var(--accent-glow), inset 0 0 20px rgba(22, 163, 74, 0.1);
+        }
+
+        body.light .brand-name .vasl {
+            background: linear-gradient(135deg, #14532d 0%, #16a34a 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        body.light .brand-name .plus {
+            color: #22c55e;
+            text-shadow: 0 0 16px rgba(22, 163, 74, 0.3);
+        }
+
+        body.light .brand-tagline span {
+            color: #16a34a;
+        }
+
+        /* ===== Light theme: logo SVG colors via CSS ===== */
+        body.light .logo-swoosh {
+            stroke: #22c55e !important;
+        }
+
+        body.light .logo-globe {
+            stroke: #22c55e !important;
+        }
+
+        body.light #silverGrad stop:first-child {
+            stop-color: #14532d;
+        }
+
+        body.light #silverGrad stop:last-child {
+            stop-color: #16a34a;
+        }
+
+        /* ===== Light theme: cards ===== */
+        body.light .card {
+            box-shadow: 0 4px 20px rgba(22, 163, 74, 0.06);
+        }
+
+        body.light .card::after {
+            background: radial-gradient(circle, rgba(22, 163, 74, 0.08) 0%, transparent 70%);
+        }
+
+        /* ===== Base Body ===== */
         body {
             font-family: 'Vazirmatn', sans-serif;
             background: var(--bg-primary);
@@ -53,12 +134,56 @@
             display: flex;
             align-items: center;
             justify-content: center;
+            transition: background 0.4s ease, color 0.4s ease;
             background-image:
-                radial-gradient(circle at 20% 20%, rgba(225, 29, 46, 0.06) 0%, transparent 45%),
-                radial-gradient(circle at 80% 80%, rgba(225, 29, 46, 0.06) 0%, transparent 45%),
-                linear-gradient(rgba(255, 255, 255, 0.015) 1px, transparent 1px),
-                linear-gradient(90deg, rgba(255, 255, 255, 0.015) 1px, transparent 1px);
+                radial-gradient(circle at 20% 20%, var(--accent-soft) 0%, transparent 45%),
+                radial-gradient(circle at 80% 80%, var(--accent-soft) 0%, transparent 45%),
+                linear-gradient(var(--grid-color) 1px, transparent 1px),
+                linear-gradient(90deg, var(--grid-color) 1px, transparent 1px);
             background-size: auto, auto, 40px 40px, 40px 40px;
+        }
+
+        /* ===== Top Controls (زبان + تم) ===== */
+        .top-controls {
+            position: fixed;
+            top: 20px;
+            left: 20px;
+            display: flex;
+            gap: 10px;
+            z-index: 100;
+        }
+
+        .ctrl-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            padding: 9px 14px;
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            border-radius: var(--radius-sm);
+            color: var(--text-secondary);
+            font-family: inherit;
+            font-size: 12px;
+            font-weight: 700;
+            cursor: pointer;
+            transition: all var(--transition);
+            box-shadow: var(--shadow-card);
+        }
+
+        .ctrl-btn:hover {
+            border-color: var(--accent);
+            color: var(--accent-bright);
+            transform: translateY(-2px);
+            box-shadow: var(--shadow-accent);
+        }
+
+        .ctrl-btn svg {
+            width: 16px;
+            height: 16px;
+        }
+
+        .ctrl-btn .flag {
+            font-size: 14px;
         }
 
         /* ===== Container ===== */
@@ -84,9 +209,10 @@
             align-items: center;
             justify-content: center;
             background: var(--bg-card);
-            border: 2px solid var(--red);
-            box-shadow: 0 0 30px var(--red-glow), inset 0 0 20px rgba(225, 29, 46, 0.15);
+            border: 2px solid var(--accent);
+            box-shadow: 0 0 30px var(--accent-glow), inset 0 0 20px var(--accent-soft);
             position: relative;
+            transition: all 0.4s ease;
         }
 
         .logo-mark svg {
@@ -107,11 +233,13 @@
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
             background-clip: text;
+            transition: all 0.4s ease;
         }
 
         .brand-name .plus {
-            color: var(--red-bright);
-            text-shadow: 0 0 20px var(--red-glow);
+            color: var(--accent-bright);
+            text-shadow: 0 0 20px var(--accent-glow);
+            transition: all 0.4s ease;
         }
 
         .brand-tagline {
@@ -124,8 +252,9 @@
         }
 
         .brand-tagline span {
-            color: var(--red);
+            color: var(--accent);
             margin: 0 6px;
+            transition: color 0.4s ease;
         }
 
         /* ===== User Greeting ===== */
@@ -140,8 +269,13 @@
         }
 
         .user-greeting strong {
-            color: var(--white);
+            color: var(--text-primary);
             font-weight: 700;
+        }
+
+        .user-greeting svg {
+            color: var(--accent-bright);
+            transition: color 0.4s ease;
         }
 
         /* ===== Cards Grid ===== */
@@ -170,7 +304,7 @@
             left: 0;
             right: 0;
             height: 2px;
-            background: var(--gradient-red);
+            background: var(--gradient-accent);
             opacity: 0.7;
             transition: opacity 0.3s;
         }
@@ -183,14 +317,15 @@
             width: 160px;
             height: 160px;
             border-radius: 50%;
-            background: radial-gradient(circle, var(--red-soft) 0%, transparent 70%);
+            background: radial-gradient(circle, var(--accent-soft) 0%, transparent 70%);
             pointer-events: none;
+            transition: background 0.4s ease;
         }
 
         .card:hover {
-            border-color: var(--border-red);
+            border-color: var(--accent-border);
             transform: translateY(-4px);
-            box-shadow: var(--shadow-red);
+            box-shadow: var(--shadow-accent);
         }
 
         .card:hover::before {
@@ -205,12 +340,13 @@
             display: flex;
             align-items: center;
             justify-content: center;
-            background: var(--red-soft);
-            border: 1px solid var(--border-red);
-            color: var(--red-bright);
+            background: var(--accent-soft);
+            border: 1px solid var(--accent-border);
+            color: var(--accent-bright);
             margin-bottom: 16px;
             position: relative;
             z-index: 1;
+            transition: all 0.4s ease;
         }
 
         .card-icon svg {
@@ -244,7 +380,8 @@
         }
 
         .card-value .num {
-            color: var(--white);
+            color: var(--text-primary);
+            transition: color 0.4s ease;
         }
 
         .card-value .unit {
@@ -253,8 +390,19 @@
             color: var(--text-muted);
         }
 
-        .card-value .unit-red {
-            color: var(--red-bright);
+        .card-value .unit-accent {
+            color: var(--accent-bright);
+            transition: color 0.4s ease;
+        }
+
+        /* ===== Unlimited Symbol ===== */
+        .card-value .infinity {
+            font-size: 42px;
+            font-weight: 900;
+            color: var(--accent-bright);
+            text-shadow: 0 0 20px var(--accent-glow);
+            line-height: 0.8;
+            transition: all 0.4s ease;
         }
 
         /* ===== Progress Bar ===== */
@@ -267,17 +415,18 @@
         .progress-track {
             height: 8px;
             border-radius: 8px;
-            background: #23232f;
+            background: var(--ring-bg);
             overflow: hidden;
             position: relative;
+            transition: background 0.4s ease;
         }
 
         .progress-fill {
             height: 100%;
             border-radius: 8px;
-            background: var(--gradient-red);
-            box-shadow: 0 0 12px var(--red-glow);
-            transition: width 1s cubic-bezier(0.4, 0, 0.2, 1);
+            background: var(--gradient-accent);
+            box-shadow: 0 0 12px var(--accent-glow);
+            transition: width 1s cubic-bezier(0.4, 0, 0.2, 1), background 0.4s ease;
             position: relative;
         }
 
@@ -304,11 +453,12 @@
         }
 
         .progress-info .highlight {
-            color: var(--red-bright);
+            color: var(--accent-bright);
             font-weight: 700;
+            transition: color 0.4s ease;
         }
 
-        /* ===== Days Ring (visual) ===== */
+        /* ===== Days Ring ===== */
         .days-ring {
             margin-top: 16px;
             display: flex;
@@ -321,13 +471,13 @@
             flex: 1;
             height: 6px;
             border-radius: 4px;
-            background: #23232f;
+            background: var(--ring-bg);
             transition: all 0.4s;
         }
 
         .day-seg.active {
-            background: var(--gradient-red);
-            box-shadow: 0 0 8px var(--red-glow);
+            background: var(--gradient-accent);
+            box-shadow: 0 0 8px var(--accent-glow);
         }
 
         /* ===== Footer ===== */
@@ -342,8 +492,9 @@
         }
 
         .footer .dot {
-            color: var(--red);
+            color: var(--accent);
             margin: 0 6px;
+            transition: color 0.4s ease;
         }
 
         /* ===== Animations ===== */
@@ -364,7 +515,15 @@
 
         /* ===== Responsive ===== */
         @media (max-width: 600px) {
-            body { padding: 16px 12px; }
+            body { padding: 60px 12px 16px; }
+            .top-controls {
+                top: 12px;
+                left: 12px;
+            }
+            .ctrl-btn {
+                padding: 7px 10px;
+                font-size: 11px;
+            }
             .cards-grid {
                 grid-template-columns: 1fr;
                 gap: 14px;
@@ -380,20 +539,38 @@
 </head>
 <body>
 
+    <!-- ===== Top Controls ===== -->
+    <div class="top-controls">
+        <!-- دکمه تغییر زبان -->
+        <button class="ctrl-btn" id="lang-btn" onclick="toggleLang()" aria-label="Change language">
+            <span class="flag" id="lang-flag">🇮🇷</span>
+            <span id="lang-text">FA</span>
+        </button>
+
+        <!-- دکمه تغییر تم -->
+        <button class="ctrl-btn" id="theme-btn" onclick="toggleTheme()" aria-label="Toggle theme">
+            <svg id="theme-icon-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/>
+            </svg>
+            <svg id="theme-icon-sun" style="display:none;" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <circle cx="12" cy="12" r="4"/>
+                <path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M6.34 17.66l-1.41 1.41M19.07 4.93l-1.41 1.41"/>
+            </svg>
+            <span id="theme-text">Dark</span>
+        </button>
+    </div>
+
     <div class="container">
 
         <!-- ===== Logo Header ===== -->
         <div class="logo-header animate delay-1">
             <div class="logo-mark">
                 <svg viewBox="0 0 24 24" fill="none">
-                    <!-- V letter with red/white -->
                     <path d="M4 4 L10 20 L14 20 L20 4 L16 4 L12 15 L8 4 Z" fill="url(#silverGrad)"/>
-                    <!-- Red swoosh -->
-                    <path d="M3 8 Q12 16 21 6" stroke="#ff2338" stroke-width="2" fill="none" stroke-linecap="round"/>
-                    <!-- Globe dot -->
-                    <circle cx="19" cy="5" r="2.5" stroke="#ff2338" stroke-width="1.2" fill="none"/>
-                    <ellipse cx="19" cy="5" rx="1" ry="2.5" stroke="#ff2338" stroke-width="0.8" fill="none"/>
-                    <line x1="16.5" y1="5" x2="21.5" y2="5" stroke="#ff2338" stroke-width="0.8"/>
+                    <path class="logo-swoosh" d="M3 8 Q12 16 21 6" stroke="#ff2338" stroke-width="2" fill="none" stroke-linecap="round"/>
+                    <circle class="logo-globe" cx="19" cy="5" r="2.5" stroke="#ff2338" stroke-width="1.2" fill="none"/>
+                    <ellipse class="logo-globe" cx="19" cy="5" rx="1" ry="2.5" stroke="#ff2338" stroke-width="0.8" fill="none"/>
+                    <line class="logo-globe" x1="16.5" y1="5" x2="21.5" y2="5" stroke="#ff2338" stroke-width="0.8"/>
                     <defs>
                         <linearGradient id="silverGrad" x1="0%" y1="0%" x2="100%" y2="100%">
                             <stop offset="0%" stop-color="#ffffff"/>
@@ -410,11 +587,11 @@
 
         <!-- ===== User Greeting ===== -->
         <div class="user-greeting animate delay-2">
-            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#ff2338" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
                 <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/>
                 <circle cx="12" cy="7" r="4"/>
             </svg>
-            <span>خوش آمدی، <strong>__USER_NAME__</strong></span>
+            <span><span data-i18n="greeting">خوش آمدی،</span> <strong>__USER_NAME__</strong></span>
         </div>
 
         <!-- ===== Cards Grid ===== -->
@@ -429,22 +606,19 @@
                     </svg>
                 </div>
 
-                <div class="card-label">حجم مصرف‌شده</div>
+                <div class="card-label" data-i18n="used_label">حجم مصرف‌شده</div>
 
-                <div class="card-value">
-                    <span class="num" id="used-value">0</span>
-                    <span class="unit">/</span>
-                    <span class="num" id="total-value">0</span>
-                    <span class="unit unit-red">GB</span>
+                <div class="card-value" id="usage-value-container">
+                    <!-- JavaScript اینجا رو پر می‌کنه -->
                 </div>
 
-                <div class="progress-wrap">
+                <div class="progress-wrap" id="usage-progress-wrap">
                     <div class="progress-track">
                         <div class="progress-fill" id="usage-progress" style="width: 0%;"></div>
                     </div>
                     <div class="progress-info">
-                        <span><span class="highlight" id="used-percent">0</span>٪ مصرف شده</span>
-                        <span>باقی‌مانده: <span class="highlight" id="remaining-gb">0</span> GB</span>
+                        <span><span class="highlight" id="used-percent">0</span><span data-i18n="percent_used">٪ مصرف شده</span></span>
+                        <span><span data-i18n="remaining">باقی‌مانده:</span> <span class="highlight" id="remaining-gb">0</span> GB</span>
                     </div>
                 </div>
             </div>
@@ -460,19 +634,17 @@
                     </svg>
                 </div>
 
-                <div class="card-label">روزهای باقی‌مانده</div>
+                <div class="card-label" data-i18n="days_label">روزهای باقی‌مانده</div>
 
                 <div class="card-value">
                     <span class="num" id="days-value">0</span>
-                    <span class="unit unit-red">روز</span>
+                    <span class="unit unit-accent" data-i18n="days_unit">روز</span>
                 </div>
 
-                <div class="days-ring" id="days-ring">
-                    <!-- JavaScript این بخش رو پر می‌کنه -->
-                </div>
+                <div class="days-ring" id="days-ring"></div>
 
                 <div class="progress-info" style="margin-top: 10px;">
-                    <span>تاریخ انقضا:</span>
+                    <span data-i18n="expiry_label">تاریخ انقضا:</span>
                     <span class="highlight" id="expiry-date">—</span>
                 </div>
             </div>
@@ -487,113 +659,224 @@
     </div>
 
     <!-- ============================================================
-         JavaScript: محاسبه واقعی روزها و حجم
+         JavaScript
          ============================================================ -->
     <script>
-        (function () {
-            // =====================================================
-            // 📌 داده‌های داینامیک از بک‌اند
-            // این مقادیر رو با مقادیر واقعی خودت جایگزین کن
-            // =====================================================
-            const DATA = {
-                // حجم (به GB)
-                usedGB: parseFloat("__USED_GB__") || 0,
-                totalGB: parseFloat("__TOTAL_GB__") || 0,
+        // =====================================================
+        // 📌 داده‌های داینامیک از بک‌اند
+        // =====================================================
+        const DATA = {
+            usedGB: parseFloat("__USED_GB__") || 0,
+            totalGB: parseFloat("__TOTAL_GB__") || 0,
+            expiryDate: "__EXPIRY_DATE__" || "",
+            isUnlimited: "__IS_UNLIMITED__" === "true" || false   // ← اگه نامحدود بود true
+        };
 
-                // تاریخ انقضا (به میلادی: YYYY-MM-DD)
-                expiryDate: "__EXPIRY_DATE__" || ""
-            };
+        // =====================================================
+        // 🌐 ترجمه‌ها
+        // =====================================================
+        const I18N = {
+            fa: {
+                greeting: "خوش آمدی،",
+                used_label: "حجم مصرف‌شده",
+                days_label: "روزهای باقی‌مانده",
+                days_unit: "روز",
+                percent_used: "٪ مصرف شده",
+                remaining: "باقی‌مانده:",
+                expiry_label: "تاریخ انقضا:",
+                unlimited: "نامحدود",
+                theme_dark: "شب",
+                theme_light: "روز"
+            },
+            en: {
+                greeting: "Welcome,",
+                used_label: "Data Used",
+                days_label: "Days Remaining",
+                days_unit: "days",
+                percent_used: "% used",
+                remaining: "Remaining:",
+                expiry_label: "Expiry date:",
+                unlimited: "Unlimited",
+                theme_dark: "Dark",
+                theme_light: "Light"
+            }
+        };
 
-            // =====================================================
-            // 🔧 توابع کمکی
-            // =====================================================
-            const $ = (id) => document.getElementById(id);
+        let currentLang = localStorage.getItem("vp_lang") || "fa";
+        let currentTheme = localStorage.getItem("vp_theme") || "dark";
 
-            function formatNumber(num, decimals = 2) {
-                if (num === 0) return "0";
-                return num.toFixed(decimals).replace(/\.?0+$/, "");
+        // =====================================================
+        // 🔧 توابع کمکی
+        // =====================================================
+        const $ = (id) => document.getElementById(id);
+
+        function formatNumber(num, decimals = 2) {
+            if (num === 0) return "0";
+            return num.toFixed(decimals).replace(/\.?0+$/, "");
+        }
+
+        function calcDaysLeft(expiryStr) {
+            if (!expiryStr || expiryStr === "__EXPIRY_DATE__") return 0;
+            const now = new Date();
+            now.setHours(0, 0, 0, 0);
+            const expiry = new Date(expiryStr);
+            if (isNaN(expiry.getTime())) return 0;
+            expiry.setHours(0, 0, 0, 0);
+            const diffMs = expiry - now;
+            const diffDays = Math.ceil(diffMs / (1000 * 60 * 60 * 24));
+            return Math.max(0, diffDays);
+        }
+
+        function toLocaleDate(dateStr, lang) {
+            if (!dateStr || dateStr === "__EXPIRY_DATE__") return "—";
+            try {
+                const d = new Date(dateStr);
+                if (isNaN(d.getTime())) return "—";
+                const locale = lang === "fa" ? "fa-IR" : "en-GB";
+                return d.toLocaleDateString(locale, {
+                    year: 'numeric',
+                    month: '2-digit',
+                    day: '2-digit'
+                });
+            } catch (e) {
+                return "—";
+            }
+        }
+
+        // =====================================================
+        // 🌐 تغییر زبان
+        // =====================================================
+        function applyLang() {
+            const t = I18N[currentLang];
+
+            // جهت صفحه
+            document.documentElement.lang = currentLang;
+            document.documentElement.dir = currentLang === "fa" ? "rtl" : "ltr";
+
+            // ترجمه المان‌ها
+            document.querySelectorAll("[data-i18n]").forEach(el => {
+                const key = el.getAttribute("data-i18n");
+                if (t[key]) el.textContent = t[key];
+            });
+
+            // دکمه زبان
+            $("lang-flag").textContent = currentLang === "fa" ? "🇮🇷" : "🇬🇧";
+            $("lang-text").textContent = currentLang === "fa" ? "FA" : "EN";
+
+            // دکمه تم
+            updateThemeButtonText();
+
+            // رندر مجدد (چون تاریخ و واحدها تغییر می‌کنن)
+            render();
+        }
+
+        function toggleLang() {
+            currentLang = currentLang === "fa" ? "en" : "fa";
+            localStorage.setItem("vp_lang", currentLang);
+            applyLang();
+        }
+
+        // =====================================================
+        // 🌙/☀️ تغییر تم
+        // =====================================================
+        function applyTheme() {
+            document.body.classList.toggle("light", currentTheme === "light");
+
+            // آیکون‌ها
+            const moon = $("theme-icon-moon");
+            const sun = $("theme-icon-sun");
+
+            if (currentTheme === "dark") {
+                moon.style.display = "block";
+                sun.style.display = "none";
+            } else {
+                moon.style.display = "none";
+                sun.style.display = "block";
             }
 
-            // محاسبه روزهای باقی‌مانده
-            function calcDaysLeft(expiryStr) {
-                if (!expiryStr || expiryStr === "__EXPIRY_DATE__") return 0;
+            updateThemeButtonText();
+        }
 
-                const now = new Date();
-                now.setHours(0, 0, 0, 0);
+        function updateThemeButtonText() {
+            const t = I18N[currentLang];
+            $("theme-text").textContent = currentTheme === "dark"
+                ? t.theme_dark
+                : t.theme_light;
+        }
 
-                const expiry = new Date(expiryStr);
-                if (isNaN(expiry.getTime())) return 0;
-                expiry.setHours(0, 0, 0, 0);
+        function toggleTheme() {
+            currentTheme = currentTheme === "dark" ? "light" : "dark";
+            localStorage.setItem("vp_theme", currentTheme);
+            applyTheme();
+        }
 
-                const diffMs = expiry - now;
-                const diffDays = Math.ceil(diffMs / (1000 * 60 * 60 * 24));
+        // =====================================================
+        // 📊 رندر داده‌ها
+        // =====================================================
+        function render() {
+            const t = I18N[currentLang];
+            const usageContainer = $("usage-value-container");
+            const progressWrap = $("usage-progress-wrap");
 
-                return Math.max(0, diffDays);
-            }
-
-            // فرمت تاریخ شمسی
-            function toPersianDate(dateStr) {
-                if (!dateStr || dateStr === "__EXPIRY_DATE__") return "—";
-                try {
-                    const d = new Date(dateStr);
-                    if (isNaN(d.getTime())) return "—";
-                    return d.toLocaleDateString('fa-IR', {
-                        year: 'numeric',
-                        month: '2-digit',
-                        day: '2-digit'
-                    });
-                } catch (e) {
-                    return "—";
-                }
-            }
-
-            // =====================================================
-            // 📊 رندر داده‌ها
-            // =====================================================
-            function render() {
-                // ----- حجم مصرفی -----
+            // ----- حجم مصرفی -----
+            if (DATA.isUnlimited) {
+                // حالت نامحدود
+                usageContainer.innerHTML = `
+                    <span class="infinity">∞</span>
+                    <span class="unit unit-accent" style="margin-right:6px;">${t.unlimited}</span>
+                `;
+                progressWrap.style.display = "none";
+            } else {
+                // حالت محدود
                 const used = DATA.usedGB;
                 const total = DATA.totalGB;
                 const remaining = Math.max(0, total - used);
                 const percent = total > 0 ? Math.min(100, (used / total) * 100) : 0;
 
-                $("used-value").textContent = formatNumber(used);
-                $("total-value").textContent = formatNumber(total);
+                usageContainer.innerHTML = `
+                    <span class="num">${formatNumber(used)}</span>
+                    <span class="unit">/</span>
+                    <span class="num">${formatNumber(total)}</span>
+                    <span class="unit unit-accent">GB</span>
+                `;
+
+                progressWrap.style.display = "block";
                 $("used-percent").textContent = Math.round(percent);
                 $("remaining-gb").textContent = formatNumber(remaining);
 
-                // نوار پیشرفت با انیمیشن
+                // انیمیشن نوار پیشرفت
                 setTimeout(() => {
                     $("usage-progress").style.width = percent + "%";
                 }, 200);
-
-                // ----- روزهای باقی‌مانده -----
-                const daysLeft = calcDaysLeft(DATA.expiryDate);
-                $("days-value").textContent = daysLeft;
-                $("expiry-date").textContent = toPersianDate(DATA.expiryDate);
-
-                // ----- نقاط روزها (7 نقطه) -----
-                const ring = $("days-ring");
-                ring.innerHTML = "";
-
-                // نسبت روزهای باقی‌مانده به 30 روز (فرض)
-                const segments = 7;
-                const filledSegments = daysLeft >= 30
-                    ? segments
-                    : Math.max(1, Math.round((daysLeft / 30) * segments));
-
-                for (let i = 0; i < segments; i++) {
-                    const seg = document.createElement("div");
-                    seg.className = "day-seg" + (i < filledSegments ? " active" : "");
-                    ring.appendChild(seg);
-                }
             }
 
-            // =====================================================
-            // 🔄 اگر داده‌ها داینامیک نیستن، مقادیر نمونه
-            // =====================================================
-            if (DATA.usedGB === 0 && DATA.totalGB === 0) {
-                // داده نمونه برای نمایش
+            // ----- روزهای باقی‌مانده -----
+            const daysLeft = calcDaysLeft(DATA.expiryDate);
+            $("days-value").textContent = daysLeft;
+            $("expiry-date").textContent = toLocaleDate(DATA.expiryDate, currentLang);
+
+            // ----- نقاط روزها (7 نقطه) -----
+            const ring = $("days-ring");
+            ring.innerHTML = "";
+
+            const segments = 7;
+            const filledSegments = daysLeft >= 30
+                ? segments
+                : Math.max(0, Math.round((daysLeft / 30) * segments));
+
+            for (let i = 0; i < segments; i++) {
+                const seg = document.createElement("div");
+                seg.className = "day-seg" + (i < filledSegments ? " active" : "");
+                ring.appendChild(seg);
+            }
+        }
+
+        // =====================================================
+        // 🚀 راه‌اندازی اولیه
+        // =====================================================
+        (function init() {
+            // داده نمونه در صورت نبود مقادیر
+            if (DATA.usedGB === 0 && DATA.totalGB === 0 && !DATA.isUnlimited) {
                 DATA.usedGB = 3.2;
                 DATA.totalGB = 10;
                 const future = new Date();
@@ -601,8 +884,8 @@
                 DATA.expiryDate = future.toISOString().split("T")[0];
             }
 
-            // اجرا
-            render();
+            applyTheme();
+            applyLang();
         })();
     </script>
 
