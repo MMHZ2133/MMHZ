@@ -1,10 +1,10 @@
 <!DOCTYPE html>
-<html lang="en" dir="ltr">
+<html lang="fa" dir="rtl">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>__USER_NAME__ - Subscription Panel</title>
-    <link href="https://fonts.googleapis.com/css2?family=Vazirmatn:wght@400;500;600;700;800;900&family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <title>__USER_NAME__ - پنل اشتراک</title>
+    <link href="https://fonts.googleapis.com/css2?family=Vazirmatn:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
     <style>
         /* ===== Reset & Base ===== */
         * {
@@ -14,1078 +14,426 @@
         }
 
         :root {
-            --bg-primary: #0d0d0d;
-            --bg-card: #1a1a1a;
-            --bg-card-hover: #242424;
-            --bg-input: #0d0d0d;
-            --border-color: #2a2a2a;
-            --border-hover: #d4af37;
-            --text-primary: #ffffff;
-            --text-secondary: #aaaaaa;
-            --text-muted: #666666;
-            --gold: #d4af37;
-            --gold-light: #f5d060;
-            --gold-gradient: linear-gradient(135deg, #d4af37, #f5d060);
-            --shadow-card: 0 4px 20px rgba(0, 0, 0, 0.5);
-            --shadow-hover: 0 8px 32px rgba(212, 175, 55, 0.1);
-            --radius: 12px;
-            --radius-sm: 8px;
-            --transition: 0.3s ease;
+            /* Light theme */
+            --bg-page: #f0f2f8;
+            --bg-card: #ffffff;
+            --bg-soft: #f7f8fc;
+            --text-primary: #1e1b4b;
+            --text-secondary: #6b7280;
+            --text-muted: #9ca3af;
+
+            --indigo: #6366f1;
+            --indigo-light: #818cf8;
+            --purple: #a855f7;
+            --purple-light: #c084fc;
+            --gradient-main: linear-gradient(135deg, #6366f1 0%, #a855f7 100%);
+            --gradient-soft: linear-gradient(135deg, #eef2ff 0%, #faf5ff 100%);
+
+            --border: #e5e7eb;
+            --shadow-sm: 0 1px 3px rgba(30, 27, 75, 0.06);
+            --shadow-md: 0 4px 16px rgba(30, 27, 75, 0.08);
+            --shadow-lg: 0 12px 32px rgba(99, 102, 241, 0.15);
+
+            --radius: 20px;
+            --radius-sm: 12px;
+            --transition: 0.3s cubic-bezier(0.4, 0, 0.2, 1);
         }
 
         body {
-            font-family: 'Inter', 'Vazirmatn', sans-serif;
-            background: var(--bg-primary);
+            font-family: 'Vazirmatn', sans-serif;
+            background: var(--bg-page);
             color: var(--text-primary);
             min-height: 100vh;
-            padding: 20px;
+            padding: 24px 16px;
             display: flex;
             align-items: center;
             justify-content: center;
-            background-image: 
-                radial-gradient(ellipse at 20% 50%, rgba(212, 175, 55, 0.03) 0%, transparent 60%),
-                radial-gradient(ellipse at 80% 50%, rgba(212, 175, 55, 0.03) 0%, transparent 60%);
-        }
-
-        [lang="fa"] body {
-            font-family: 'Vazirmatn', sans-serif;
+            background-image:
+                radial-gradient(circle at 15% 20%, rgba(99, 102, 241, 0.08) 0%, transparent 40%),
+                radial-gradient(circle at 85% 80%, rgba(168, 85, 247, 0.08) 0%, transparent 40%);
         }
 
         /* ===== Container ===== */
         .container {
             width: 100%;
-            max-width: 860px;
+            max-width: 720px;
             position: relative;
             z-index: 1;
         }
 
-        /* ===== Cards ===== */
-        .card {
-            background: var(--bg-card);
-            border: 1px solid var(--border-color);
-            border-radius: var(--radius);
-            padding: 24px 28px;
-            transition: all var(--transition);
-            box-shadow: var(--shadow-card);
-            margin-bottom: 16px;
+        /* ===== Header ===== */
+        .header {
+            display: flex;
+            align-items: center;
+            gap: 16px;
+            margin-bottom: 32px;
+            padding: 0 4px;
         }
 
-        .card:hover {
-            border-color: var(--border-hover);
-            box-shadow: var(--shadow-hover);
+        .avatar {
+            width: 56px;
+            height: 56px;
+            border-radius: 16px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: var(--gradient-main);
+            color: #ffffff;
+            flex-shrink: 0;
+            box-shadow: 0 8px 20px rgba(99, 102, 241, 0.3);
         }
 
-        /* ===== Gold Border Accent ===== */
-        .gold-border {
-            position: relative;
+        .avatar svg {
+            width: 26px;
+            height: 26px;
         }
 
-        .gold-border::before {
-            content: '';
-            position: absolute;
-            inset: -1px;
-            border-radius: var(--radius);
-            padding: 1px;
-            background: var(--gold-gradient);
-            -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
-            -webkit-mask-composite: xor;
-            mask-composite: exclude;
-            pointer-events: none;
-            opacity: 0.2;
-            transition: opacity 0.4s;
-        }
-
-        .gold-border:hover::before {
-            opacity: 0.6;
-        }
-
-        /* ===== Typography ===== */
-        .title {
-            font-size: 22px;
+        .header-text h1 {
+            font-size: 20px;
             font-weight: 800;
             color: var(--text-primary);
+            line-height: 1.3;
         }
 
-        .title-gold {
-            color: var(--gold);
-        }
-
-        .subtitle {
+        .header-text p {
             font-size: 13px;
             color: var(--text-secondary);
             font-weight: 500;
+            margin-top: 2px;
         }
 
-        .label {
-            font-size: 11px;
-            font-weight: 700;
-            text-transform: uppercase;
-            letter-spacing: 1.5px;
-            color: var(--text-muted);
+        /* ===== Cards Grid ===== */
+        .cards-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px;
         }
 
-        .label-gold {
-            color: var(--gold);
-            letter-spacing: 2px;
-        }
-
-        .value {
-            font-size: 28px;
-            font-weight: 800;
-            color: var(--text-primary);
-        }
-
-        .value-gold {
-            color: var(--gold);
-        }
-
-        /* ===== Buttons ===== */
-        .btn {
-            display: inline-flex;
-            align-items: center;
-            justify-content: center;
-            gap: 6px;
-            padding: 8px 16px;
-            border-radius: var(--radius-sm);
-            font-size: 11px;
-            font-weight: 600;
-            border: none;
-            cursor: pointer;
+        /* ===== Card ===== */
+        .card {
+            background: var(--bg-card);
+            border-radius: var(--radius);
+            padding: 28px 24px;
+            box-shadow: var(--shadow-md);
+            border: 1px solid var(--border);
             transition: all var(--transition);
-            text-decoration: none;
-            white-space: nowrap;
-            background: transparent;
-            color: var(--text-secondary);
-            border: 1px solid var(--border-color);
-        }
-
-        .btn:hover {
-            border-color: var(--gold);
-            color: var(--gold);
-            transform: translateY(-2px);
-        }
-
-        .btn-primary {
-            background: var(--gold-gradient);
-            color: #0d0d0d;
-            border: none;
-            font-weight: 700;
-        }
-
-        .btn-primary:hover {
-            box-shadow: 0 4px 20px rgba(212, 175, 55, 0.3);
-            transform: translateY(-2px);
-            color: #0d0d0d;
-        }
-
-        .btn-icon {
-            width: 34px;
-            height: 34px;
-            padding: 0;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            border-radius: var(--radius-sm);
-            background: transparent;
-            border: 1px solid var(--border-color);
-            color: var(--text-muted);
-            transition: all var(--transition);
-            cursor: pointer;
-        }
-
-        .btn-icon:hover {
-            border-color: var(--gold);
-            color: var(--gold);
-            background: rgba(212, 175, 55, 0.1);
-        }
-
-        .btn-donate {
-            background: var(--gold-gradient);
-            color: #0d0d0d;
-            border: none;
-            padding: 12px 32px;
-            font-weight: 800;
-            font-size: 15px;
-            border-radius: var(--radius-sm);
-            display: inline-flex;
-            align-items: center;
-            gap: 14px;
-            text-decoration: none;
-            transition: all 0.3s ease;
-            cursor: pointer;
-            animation: goldPulse 3s ease-in-out infinite;
-        }
-
-        .btn-donate:hover {
-            transform: translateY(-3px) scale(1.03);
-            box-shadow: 0 8px 40px rgba(212, 175, 55, 0.4);
-        }
-
-        @keyframes goldPulse {
-            0%, 100% { box-shadow: 0 4px 20px rgba(212, 175, 55, 0.2); }
-            50% { box-shadow: 0 4px 40px rgba(212, 175, 55, 0.4); }
-        }
-
-        /* ===== Input Group ===== */
-        .input-group {
-            display: flex;
-            align-items: stretch;
-            gap: 6px;
-            background: var(--bg-input);
-            border: 1px solid var(--border-color);
-            border-radius: var(--radius-sm);
-            padding: 4px;
-            transition: all var(--transition);
-        }
-
-        .input-group:focus-within {
-            border-color: var(--gold);
-            box-shadow: 0 0 0 3px rgba(212, 175, 55, 0.15);
-        }
-
-        .input-group input {
-            flex: 1;
-            min-width: 0;
-            padding: 10px 14px;
-            background: transparent;
-            border: none;
-            color: var(--text-primary);
-            font-size: 12px;
-            font-family: 'Inter', monospace;
-            outline: none;
-        }
-
-        .input-group input::selection {
-            background: var(--gold);
-            color: #0d0d0d;
-        }
-
-        /* ===== Format Items ===== */
-        .format-item {
-            display: flex;
-            align-items: center;
-            gap: 10px;
-            padding: 10px 14px;
-            background: var(--bg-input);
-            border: 1px solid var(--border-color);
-            border-radius: var(--radius-sm);
-            transition: all var(--transition);
-        }
-
-        .format-item:hover {
-            border-color: var(--gold);
-            background: var(--bg-card-hover);
-            transform: translateX(4px);
-        }
-
-        .format-tag {
-            font-size: 9px;
-            font-weight: 800;
-            text-transform: uppercase;
-            letter-spacing: 1.5px;
-            padding: 4px 14px;
-            border-radius: 4px;
-            white-space: nowrap;
-            flex-shrink: 0;
-            min-width: 70px;
-            text-align: center;
-            border: 1px solid;
-        }
-
-        .format-tag-base64 {
-            background: rgba(16, 185, 129, 0.15);
-            color: #34d399;
-            border-color: rgba(16, 185, 129, 0.3);
-        }
-
-        .format-tag-clash {
-            background: rgba(139, 92, 246, 0.15);
-            color: #a78bfa;
-            border-color: rgba(139, 92, 246, 0.3);
-        }
-
-        .format-tag-singbox {
-            background: rgba(245, 158, 11, 0.15);
-            color: #fbbf24;
-            border-color: rgba(245, 158, 11, 0.3);
-        }
-
-        .format-tag-raw {
-            background: rgba(236, 72, 153, 0.15);
-            color: #f472b6;
-            border-color: rgba(236, 72, 153, 0.3);
-        }
-
-        .format-tag-shadowrocket {
-            background: rgba(56, 189, 248, 0.15);
-            color: #38bdf8;
-            border-color: rgba(56, 189, 248, 0.3);
-        }
-
-        .format-input {
-            flex: 1;
-            min-width: 0;
-            padding: 6px 10px;
-            background: transparent;
-            border: none;
-            color: var(--text-primary);
-            font-size: 11px;
-            font-family: 'Inter', monospace;
-            outline: none;
-        }
-
-        .format-input::selection {
-            background: var(--gold);
-            color: #0d0d0d;
-        }
-
-        .format-actions {
-            display: flex;
-            gap: 4px;
-            flex-shrink: 0;
-        }
-
-        .btn-copy-small {
-            padding: 4px 12px;
-            font-size: 9px;
-            border-radius: 4px;
-            background: rgba(212, 175, 55, 0.15);
-            color: var(--gold);
-            border: 1px solid rgba(212, 175, 55, 0.2);
-            cursor: pointer;
-            transition: all var(--transition);
-            font-weight: 700;
-            text-transform: uppercase;
-            letter-spacing: 0.5px;
-            white-space: nowrap;
-        }
-
-        .btn-copy-small:hover {
-            background: var(--gold);
-            color: #0d0d0d;
-            transform: scale(1.05);
-        }
-
-        /* ===== Status Badge ===== */
-        .badge {
-            display: inline-block;
-            padding: 4px 16px;
-            border-radius: 6px;
-            font-size: 11px;
-            font-weight: 600;
-            border: 1px solid var(--border-color);
-            background: transparent;
-            color: var(--text-secondary);
-        }
-
-        .badge-active {
-            background: rgba(16, 185, 129, 0.15);
-            color: #34d399;
-            border-color: rgba(16, 185, 129, 0.3);
-        }
-
-        .badge-paused {
-            background: rgba(245, 158, 11, 0.15);
-            color: #fbbf24;
-            border-color: rgba(245, 158, 11, 0.3);
-        }
-
-        .badge-expired {
-            background: rgba(239, 68, 68, 0.15);
-            color: #f87171;
-            border-color: rgba(239, 68, 68, 0.3);
-        }
-
-        /* ===== Progress ===== */
-        .progress {
-            height: 4px;
-            border-radius: 4px;
-            background: #2a2a2a;
+            position: relative;
             overflow: hidden;
-            margin-top: 8px;
+        }
+
+        .card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            right: 0;
+            width: 120px;
+            height: 120px;
+            border-radius: 50%;
+            background: var(--gradient-soft);
+            opacity: 0.7;
+            transform: translate(40%, -40%);
+            pointer-events: none;
+        }
+
+        .card:hover {
+            transform: translateY(-4px);
+            box-shadow: var(--shadow-lg);
+            border-color: rgba(99, 102, 241, 0.3);
+        }
+
+        /* ===== Card Icon ===== */
+        .card-icon {
+            width: 44px;
+            height: 44px;
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 18px;
+            position: relative;
+            z-index: 1;
+        }
+
+        .card-icon-usage {
+            background: rgba(99, 102, 241, 0.12);
+            color: var(--indigo);
+        }
+
+        .card-icon-days {
+            background: rgba(168, 85, 247, 0.12);
+            color: var(--purple);
+        }
+
+        .card-icon svg {
+            width: 22px;
+            height: 22px;
+        }
+
+        /* ===== Card Label ===== */
+        .card-label {
+            font-size: 13px;
+            font-weight: 600;
+            color: var(--text-secondary);
+            margin-bottom: 8px;
+            position: relative;
+            z-index: 1;
+        }
+
+        /* ===== Card Value ===== */
+        .card-value {
+            font-size: 36px;
+            font-weight: 900;
+            line-height: 1.1;
+            color: var(--text-primary);
+            position: relative;
+            z-index: 1;
+            display: flex;
+            align-items: baseline;
+            gap: 6px;
+        }
+
+        .card-value .unit {
+            font-size: 15px;
+            font-weight: 600;
+            color: var(--text-muted);
+        }
+
+        .card-value.gradient-usage {
+            background: linear-gradient(135deg, #6366f1, #8b5cf6);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .card-value.gradient-days {
+            background: linear-gradient(135deg, #a855f7, #d946ef);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        /* ===== Progress Bar ===== */
+        .progress-wrap {
+            margin-top: 18px;
+            position: relative;
+            z-index: 1;
+        }
+
+        .progress-track {
+            height: 8px;
+            border-radius: 8px;
+            background: #eef2ff;
+            overflow: hidden;
+            position: relative;
         }
 
         .progress-fill {
             height: 100%;
-            border-radius: 4px;
-            background: var(--gold-gradient);
-            transition: width 0.8s ease;
-        }
-
-        /* ===== Avatar ===== */
-        .avatar {
-            width: 56px;
-            height: 56px;
-            border-radius: var(--radius-sm);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            background: rgba(212, 175, 55, 0.15);
-            border: 2px solid var(--gold);
-            color: var(--gold);
-            flex-shrink: 0;
-        }
-
-        .avatar svg {
-            width: 28px;
-            height: 28px;
-        }
-
-        /* ===== Grid ===== */
-        .grid-2 {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 16px;
-        }
-
-        .grid-4 {
-            display: grid;
-            grid-template-columns: repeat(4, 1fr);
-            gap: 8px;
-        }
-
-        /* ===== Divider ===== */
-        .divider-gold {
-            height: 1px;
-            background: linear-gradient(90deg, transparent, var(--gold), transparent);
-            margin: 16px 0;
-            opacity: 0.3;
-        }
-
-        /* ===== Client Buttons ===== */
-        .client-btn {
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            gap: 8px;
-            padding: 10px 14px;
-            background: var(--bg-input);
-            border: 1px solid var(--border-color);
-            border-radius: var(--radius-sm);
-            color: var(--text-secondary);
-            text-decoration: none;
-            font-size: 10px;
-            font-weight: 700;
-            text-transform: uppercase;
-            letter-spacing: 0.5px;
-            transition: all var(--transition);
-            cursor: pointer;
-        }
-
-        .client-btn:hover {
-            border-color: var(--gold);
-            color: var(--gold);
-            transform: translateY(-2px);
-            box-shadow: 0 4px 16px rgba(212, 175, 55, 0.1);
-        }
-
-        .client-btn svg {
-            width: 16px;
-            height: 16px;
-            flex-shrink: 0;
-        }
-
-        /* ===== Toast ===== */
-        .toast {
-            position: fixed;
-            top: 24px;
-            left: 50%;
-            transform: translateX(-50%) translateY(-20px);
-            background: var(--bg-card);
-            border: 1px solid var(--gold);
-            border-radius: var(--radius-sm);
-            padding: 12px 24px;
-            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.5);
-            font-size: 13px;
-            font-weight: 600;
-            color: var(--text-primary);
-            display: flex;
-            align-items: center;
-            gap: 10px;
-            z-index: 200;
-            opacity: 0;
-            pointer-events: none;
-            transition: all 0.4s ease;
-        }
-
-        .toast.show {
-            opacity: 1;
-            transform: translateX(-50%) translateY(0);
-            pointer-events: auto;
-        }
-
-        .toast-icon {
-            color: var(--gold);
-            flex-shrink: 0;
-        }
-
-        /* ===== Modal ===== */
-        .modal-overlay {
-            position: fixed;
-            inset: 0;
-            background: rgba(0, 0, 0, 0.85);
-            backdrop-filter: blur(8px);
-            display: none;
-            align-items: center;
-            justify-content: center;
-            padding: 24px;
-            z-index: 100;
-            opacity: 0;
-            transition: opacity 0.3s ease;
-        }
-
-        .modal-overlay.show {
-            display: flex;
-            opacity: 1;
-        }
-
-        .modal-card {
-            background: var(--bg-card);
-            border: 1px solid var(--gold);
-            border-radius: var(--radius);
-            padding: 28px;
-            max-width: 380px;
-            width: 100%;
-            transform: scale(0.95);
-            transition: transform 0.3s ease;
-            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.5);
+            border-radius: 8px;
+            background: var(--gradient-main);
+            transition: width 1s cubic-bezier(0.4, 0, 0.2, 1);
             position: relative;
+            overflow: hidden;
         }
 
-        .modal-overlay.show .modal-card {
-            transform: scale(1);
-        }
-
-        .modal-close {
+        .progress-fill::after {
+            content: '';
             position: absolute;
-            top: 14px;
-            right: 14px;
-            background: none;
-            border: none;
+            inset: 0;
+            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.4), transparent);
+            animation: shimmer 2s infinite;
+        }
+
+        @keyframes shimmer {
+            0% { transform: translateX(-100%); }
+            100% { transform: translateX(100%); }
+        }
+
+        .progress-info {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 8px;
+            font-size: 12px;
+            font-weight: 500;
             color: var(--text-muted);
-            cursor: pointer;
-            padding: 4px;
-            transition: all var(--transition);
         }
 
-        .modal-close:hover {
-            color: var(--text-primary);
+        .progress-percent {
+            font-weight: 700;
+            color: var(--indigo);
         }
 
-        /* ===== Responsive ===== */
-        @media (max-width: 768px) {
-            body { padding: 12px; }
-            .card { padding: 16px 18px; }
-            .grid-2 { grid-template-columns: 1fr; gap: 12px; }
-            .grid-4 { grid-template-columns: repeat(2, 1fr); gap: 6px; }
-            .value { font-size: 22px; }
-            .title { font-size: 18px; }
-            .avatar { width: 48px; height: 48px; }
-            .avatar svg { width: 24px; height: 24px; }
-            .format-item { flex-wrap: wrap; padding: 10px; }
-            .format-tag { min-width: 60px; font-size: 8px; padding: 3px 10px; }
-            .format-input { font-size: 10px; }
+        /* ===== Days Bar (visual decoration) ===== */
+        .days-deco {
+            margin-top: 18px;
+            display: flex;
+            gap: 4px;
+            position: relative;
+            z-index: 1;
         }
 
-        @media (max-width: 480px) {
-            .grid-4 { grid-template-columns: 1fr 1fr; }
-            .input-group input { font-size: 10px; padding: 6px 10px; }
-            .btn { font-size: 10px; padding: 5px 12px; }
-            .btn-donate { padding: 10px 20px; font-size: 13px; gap: 10px; }
-            .format-item { gap: 6px; }
-            .format-actions { width: 100%; justify-content: flex-end; }
+        .day-dot {
+            flex: 1;
+            height: 6px;
+            border-radius: 6px;
+            background: #f3e8ff;
+            transition: background 0.4s;
         }
 
-        /* ===== Utilities ===== */
-        .flex { display: flex; }
-        .flex-center { display: flex; align-items: center; justify-content: center; }
-        .flex-between { display: flex; align-items: center; justify-content: space-between; }
-        .gap-1 { gap: 6px; }
-        .gap-2 { gap: 12px; }
-        .gap-3 { gap: 16px; }
-        .mt-1 { margin-top: 6px; }
-        .mt-2 { margin-top: 12px; }
-        .mt-3 { margin-top: 16px; }
-        .mt-4 { margin-top: 24px; }
-        .mb-1 { margin-bottom: 6px; }
-        .mb-2 { margin-bottom: 12px; }
-        .text-center { text-align: center; }
-        .w-full { width: 100%; }
-        .relative { position: relative; }
+        .day-dot.active {
+            background: linear-gradient(135deg, #a855f7, #d946ef);
+        }
+
+        /* ===== Footer ===== */
+        .footer {
+            text-align: center;
+            margin-top: 32px;
+            font-size: 12px;
+            color: var(--text-muted);
+            font-weight: 500;
+        }
+
+        .footer .brand {
+            color: var(--indigo);
+            font-weight: 700;
+        }
 
         /* ===== Animations ===== */
         @keyframes fadeInUp {
-            from { opacity: 0; transform: translateY(20px); }
+            from { opacity: 0; transform: translateY(24px); }
             to { opacity: 1; transform: translateY(0); }
         }
 
-        .animate-in {
-            animation: fadeInUp 0.5s ease forwards;
+        .animate {
+            animation: fadeInUp 0.6s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+            opacity: 0;
         }
 
-        .delay-1 { animation-delay: 0.05s; opacity: 0; }
-        .delay-2 { animation-delay: 0.1s; opacity: 0; }
-        .delay-3 { animation-delay: 0.15s; opacity: 0; }
-        .delay-4 { animation-delay: 0.2s; opacity: 0; }
-        .delay-5 { animation-delay: 0.25s; opacity: 0; }
+        .delay-1 { animation-delay: 0.1s; }
+        .delay-2 { animation-delay: 0.2s; }
+        .delay-3 { animation-delay: 0.3s; }
+
+        /* ===== Responsive ===== */
+        @media (max-width: 640px) {
+            body { padding: 16px 12px; }
+            .cards-grid {
+                grid-template-columns: 1fr;
+                gap: 16px;
+            }
+            .card { padding: 24px 20px; }
+            .card-value { font-size: 32px; }
+            .header { margin-bottom: 24px; }
+            .header-text h1 { font-size: 18px; }
+            .avatar { width: 50px; height: 50px; }
+            .avatar svg { width: 22px; height: 22px; }
+        }
+
+        /* ===== Dark Mode (اختیاری) ===== */
+        body.dark {
+            --bg-page: #0f0f1a;
+            --bg-card: #1a1a2e;
+            --bg-soft: #16162a;
+            --text-primary: #f1f5f9;
+            --text-secondary: #94a3b8;
+            --text-muted: #64748b;
+            --border: #2a2a3e;
+            --gradient-soft: linear-gradient(135deg, #1e1b4b 0%, #2e1065 100%);
+        }
+
+        body.dark .progress-track {
+            background: #2a2a3e;
+        }
+
+        body.dark .day-dot {
+            background: #2a2a3e;
+        }
+
+        body.dark .card::before {
+            opacity: 0.3;
+        }
     </style>
 </head>
 <body>
 
-    <!-- ===== Toast ===== -->
-    <div id="toast" class="toast">
-        <svg class="toast-icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
-            <path d="M20 6L9 17l-5-5"/>
-        </svg>
-        <span id="toast-msg">Copied!</span>
-    </div>
-
-    <!-- ===== Modal ===== -->
-    <div id="qr-modal" class="modal-overlay">
-        <div class="modal-card">
-            <button class="modal-close" onclick="closeQR()">
-                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                    <line x1="18" y1="6" x2="6" y2="18"/>
-                    <line x1="6" y1="6" x2="18" y2="18"/>
-                </svg>
-            </button>
-            <h3 class="title text-center mb-2" id="qr-title" style="color: var(--gold);">SCAN QR</h3>
-            <div class="flex-center">
-                <img id="qr-img" src="" alt="QR Code" style="border-radius: 8px; background: white; padding: 8px; width: 200px; height: 200px;">
-            </div>
-            <p id="qr-text" class="text-center text-xs text-muted mt-3 break-all" style="font-family: monospace; font-size: 10px;"></p>
-            <button onclick="closeQR()" class="btn btn-primary w-full mt-3">Close</button>
-        </div>
-    </div>
-
-    <!-- ===== Main Container ===== -->
     <div class="container">
 
         <!-- ===== Header ===== -->
-        <div class="card gold-border animate-in delay-1">
-            <div class="flex-between">
-                <div class="flex gap-2">
-                    <div style="width: 40px; height: 40px; border-radius: var(--radius-sm); background: var(--gold-gradient); display: flex; align-items: center; justify-content: center; flex-shrink: 0;">
-                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#0d0d0d" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
-                            <path d="M12 2L2 7l10 5 10-5-10-5z"/>
-                            <path d="M2 17l10 5 10-5"/>
-                            <path d="M2 12l10 5 10-5"/>
-                        </svg>
-                    </div>
-                    <div>
-                        <div class="title"><span class="title-gold">✦</span> Panel</div>
-                        <div class="subtitle">Subscription Manager</div>
-                    </div>
-                </div>
-                <div class="flex gap-1">
-                    <button onclick="copyAllLinks()" class="btn btn-primary" style="font-size: 10px; padding: 6px 14px;">
-                        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                            <path d="M8 5H6a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2v-1M8 5a2 2 0 002 2h2a2 2 0 002-2M8 5a2 2 0 012-2h2a2 2 0 012 2m0 0h2a2 2 0 012 2v3m2 4H10m0 0l3-3m-3 3l3 3"/>
-                        </svg>
-                        Copy All
-                    </button>
-                </div>
-            </div>
-        </div>
-
-        <!-- ===== Profile ===== -->
-        <div class="card gold-border animate-in delay-2">
-            <div class="flex" style="gap: 16px; flex-wrap: wrap;">
-                <div class="avatar">
-                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                        <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/>
-                        <circle cx="12" cy="7" r="4"/>
-                    </svg>
-                </div>
-                <div style="flex: 1; min-width: 140px;">
-                    <div class="title" style="font-size: 18px;">__USER_NAME__</div>
-                    <div class="subtitle" style="font-size: 12px; font-family: monospace;">ID: __USER_ID__</div>
-                    <div class="flex gap-2 mt-1" style="flex-wrap: wrap;">
-                        <span id="status-badge" class="badge badge-active">Active</span>
-                        <span class="subtitle" style="font-size: 11px;">Expires: <strong style="color: var(--text-primary);">__EXPIRY_DATE__</strong></span>
-                    </div>
-                </div>
-                <div style="text-align: right; flex-shrink: 0;">
-                    <div class="label label-gold">IP</div>
-                    <div class="subtitle" style="font-family: monospace; font-size: 13px;" id="client-ip">—</div>
-                </div>
-            </div>
-        </div>
-
-        <!-- ===== Stats ===== -->
-        <div class="grid-2 animate-in delay-3">
-            <div class="card gold-border">
-                <div class="flex-between">
-                    <span class="label label-gold">Total Usage</span>
-                    <span class="subtitle" style="font-size: 11px;">/ __LIMIT_TOTAL_GB__ GB</span>
-                </div>
-                <div class="value value-gold mt-1">__TOTAL_GB__</div>
-                __TOTAL_PROGRESS__
-            </div>
-            <div class="card gold-border">
-                <div class="flex-between">
-                    <span class="label label-gold">Daily Usage</span>
-                    <span class="subtitle" style="font-size: 11px;">/ __LIMIT_DAILY_GB__ GB</span>
-                </div>
-                <div class="value value-gold mt-1">__DAILY_GB__</div>
-                __DAILY_PROGRESS__
-            </div>
-        </div>
-
-        <!-- ===== Subscription Links ===== -->
-        <div class="card gold-border animate-in delay-4">
-            <div class="flex-between mb-2">
-                <div>
-                    <div class="label label-gold">Subscription Links</div>
-                    <div class="subtitle">Copy the link for your client</div>
-                </div>
-            </div>
-
-            <div class="divider-gold"></div>
-
-            <!-- Base64 -->
-            <div class="format-item">
-                <span class="format-tag format-tag-base64">Base64</span>
-                <input type="text" class="format-input" id="link-base64" value="__SYNC_NORMAL__" readonly>
-                <div class="format-actions">
-                    <button onclick="copyLink('link-base64')" class="btn-copy-small">Copy</button>
-                    <button onclick="showQR(document.getElementById('link-base64').value)" class="btn-icon" style="width: 30px; height: 30px;">
-                        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                            <rect x="3" y="3" width="7" height="7"/>
-                            <rect x="14" y="3" width="7" height="7"/>
-                            <rect x="3" y="14" width="7" height="7"/>
-                            <line x1="14" y1="14" x2="14" y2="21"/>
-                            <line x1="21" y1="14" x2="21" y2="21"/>
-                            <line x1="14" y1="17" x2="21" y2="17"/>
-                        </svg>
-                    </button>
-                </div>
-            </div>
-
-            <!-- Clash -->
-            <div class="format-item" style="margin-top: 8px;">
-                <span class="format-tag format-tag-clash">Clash</span>
-                <input type="text" class="format-input" id="link-clash" value="__SYNC_NORMAL__" readonly>
-                <div class="format-actions">
-                    <button onclick="copyLink('link-clash')" class="btn-copy-small">Copy</button>
-                    <button onclick="showQR(document.getElementById('link-clash').value)" class="btn-icon" style="width: 30px; height: 30px;">
-                        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                            <rect x="3" y="3" width="7" height="7"/>
-                            <rect x="14" y="3" width="7" height="7"/>
-                            <rect x="3" y="14" width="7" height="7"/>
-                            <line x1="14" y1="14" x2="14" y2="21"/>
-                            <line x1="21" y1="14" x2="21" y2="21"/>
-                            <line x1="14" y1="17" x2="21" y2="17"/>
-                        </svg>
-                    </button>
-                </div>
-            </div>
-
-            <!-- Sing-box -->
-            <div class="format-item" style="margin-top: 8px;">
-                <span class="format-tag format-tag-singbox">Sing-box</span>
-                <input type="text" class="format-input" id="link-singbox" value="__SYNC_NORMAL__" readonly>
-                <div class="format-actions">
-                    <button onclick="copyLink('link-singbox')" class="btn-copy-small">Copy</button>
-                    <button onclick="showQR(document.getElementById('link-singbox').value)" class="btn-icon" style="width: 30px; height: 30px;">
-                        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                            <rect x="3" y="3" width="7" height="7"/>
-                            <rect x="14" y="3" width="7" height="7"/>
-                            <rect x="3" y="14" width="7" height="7"/>
-                            <line x1="14" y1="14" x2="14" y2="21"/>
-                            <line x1="21" y1="14" x2="21" y2="21"/>
-                            <line x1="14" y1="17" x2="21" y2="17"/>
-                        </svg>
-                    </button>
-                </div>
-            </div>
-
-            <!-- Raw -->
-            <div class="format-item" style="margin-top: 8px;">
-                <span class="format-tag format-tag-raw">Raw</span>
-                <input type="text" class="format-input" id="link-raw" value="__SYNC_NORMAL__" readonly>
-                <div class="format-actions">
-                    <button onclick="copyLink('link-raw')" class="btn-copy-small">Copy</button>
-                    <button onclick="showQR(document.getElementById('link-raw').value)" class="btn-icon" style="width: 30px; height: 30px;">
-                        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                            <rect x="3" y="3" width="7" height="7"/>
-                            <rect x="14" y="3" width="7" height="7"/>
-                            <rect x="3" y="14" width="7" height="7"/>
-                            <line x1="14" y1="14" x2="14" y2="21"/>
-                            <line x1="21" y1="14" x2="21" y2="21"/>
-                            <line x1="14" y1="17" x2="21" y2="17"/>
-                        </svg>
-                    </button>
-                </div>
-            </div>
-
-            <!-- Shadowrocket -->
-            <div class="format-item" style="margin-top: 8px;">
-                <span class="format-tag format-tag-shadowrocket">Shadowrocket</span>
-                <input type="text" class="format-input" id="link-shadowrocket" value="__SYNC_NORMAL__" readonly>
-                <div class="format-actions">
-                    <button onclick="copyLink('link-shadowrocket')" class="btn-copy-small">Copy</button>
-                    <button onclick="showQR(document.getElementById('link-shadowrocket').value)" class="btn-icon" style="width: 30px; height: 30px;">
-                        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                            <rect x="3" y="3" width="7" height="7"/>
-                            <rect x="14" y="3" width="7" height="7"/>
-                            <rect x="3" y="14" width="7" height="7"/>
-                            <line x1="14" y1="14" x2="14" y2="21"/>
-                            <line x1="21" y1="14" x2="21" y2="21"/>
-                            <line x1="14" y1="17" x2="21" y2="17"/>
-                        </svg>
-                    </button>
-                </div>
-            </div>
-        </div>
-
-        <!-- ===== One-Click Import ===== -->
-        <div class="card gold-border animate-in delay-4">
-            <div class="label label-gold mb-1">One-Click Import</div>
-            <div class="subtitle mb-2">Quick import for supported clients</div>
-            <div class="grid-4">
-                <a id="v2rayng-link" href="#" class="client-btn">
-                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                        <path d="M7 7h10v10"/>
-                        <path d="M7 17L17 7"/>
-                    </svg>
-                    v2rayNG
-                </a>
-                <a href="#" onclick="window.location.href='v2rayn://install-sub?url='+encodeURIComponent('__SYNC_NORMAL__')+'&name=__USER_NAME__'" class="client-btn">
-                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                        <path d="M7 7h10v10"/>
-                        <path d="M7 17L17 7"/>
-                    </svg>
-                    v2rayN
-                </a>
-                <a href="#" onclick="window.location.href='shadowrocket://add/sub://'+btoa('__SYNC_NORMAL__')+'?title=__USER_NAME__'" class="client-btn">
-                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                        <path d="M7 7h10v10"/>
-                        <path d="M7 17L17 7"/>
-                    </svg>
-                    Shadowrocket
-                </a>
-                <a href="#" onclick="window.location.href='streisand://import/__SYNC_NORMAL__'" class="client-btn">
-                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                        <path d="M7 7h10v10"/>
-                        <path d="M7 17L17 7"/>
-                    </svg>
-                    Streisand
-                </a>
-            </div>
-        </div>
-
-        <!-- ===== Donate ===== -->
-        <div class="text-center animate-in delay-5" style="margin-top: 8px;">
-            <a href="https://daramet.com/mmhz" target="_blank" class="btn-donate">
-                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
-                    <path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/>
+        <div class="header animate delay-1">
+            <div class="avatar">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/>
+                    <circle cx="12" cy="7" r="4"/>
                 </svg>
-                <span>❤️ Donate</span>
-                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
-                    <path d="M12 2L2 7l10 5 10-5-10-5z"/>
-                    <path d="M2 17l10 5 10-5"/>
-                    <path d="M2 12l10 5 10-5"/>
-                </svg>
-            </a>
+            </div>
+            <div class="header-text">
+                <h1>__USER_NAME__</h1>
+                <p>وضعیت اشتراک شما</p>
+            </div>
+        </div>
+
+        <!-- ===== Cards Grid ===== -->
+        <div class="cards-grid">
+
+            <!-- ===== کارت میزان مصرف ===== -->
+            <div class="card animate delay-2">
+                <div class="card-icon card-icon-usage">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M4 7v10c0 2 1.5 3 3.5 3h9c2 0 3.5-1 3.5-3V7c0-2-1.5-3-3.5-3h-9C5.5 4 4 5 4 7z"/>
+                        <path d="M8 12h8"/>
+                    </svg>
+                </div>
+
+                <div class="card-label">میزان مصرف</div>
+                <div class="card-value gradient-usage">
+                    __TOTAL_GB__ <span class="unit">GB</span>
+                </div>
+
+                <div class="progress-wrap">
+                    <div class="progress-track">
+                        <div class="progress-fill" style="width: __USAGE_PERCENT__%;"></div>
+                    </div>
+                    <div class="progress-info">
+                        <span>__USAGE_PERCENT__٪ مصرف شده</span>
+                        <span>از __LIMIT_TOTAL_GB__ GB</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- ===== کارت روزهای باقی‌مانده ===== -->
+            <div class="card animate delay-3">
+                <div class="card-icon card-icon-days">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <rect x="3" y="4" width="18" height="18" rx="2" ry="2"/>
+                        <line x1="16" y1="2" x2="16" y2="6"/>
+                        <line x1="8" y1="2" x2="8" y2="6"/>
+                        <line x1="3" y1="10" x2="21" y2="10"/>
+                    </svg>
+                </div>
+
+                <div class="card-label">روزهای باقی‌مانده</div>
+                <div class="card-value gradient-days">
+                    __DAYS_LEFT__ <span class="unit">روز</span>
+                </div>
+
+                <div class="days-deco">
+                    <div class="day-dot active"></div>
+                    <div class="day-dot active"></div>
+                    <div class="day-dot active"></div>
+                    <div class="day-dot"></div>
+                    <div class="day-dot"></div>
+                    <div class="day-dot"></div>
+                    <div class="day-dot"></div>
+                </div>
+            </div>
+
         </div>
 
         <!-- ===== Footer ===== -->
-        <div class="text-center mt-3">
-            <span class="subtitle" style="font-size: 11px; letter-spacing: 1px;">
-                <span class="title-gold">✦</span> Panel <span class="title-gold">✦</span> &bull; <span id="footer-year">2024</span>
-            </span>
+        <div class="footer animate delay-3">
+            <span class="brand">✦ Panel ✦</span>
         </div>
 
     </div>
-
-    <script>
-        // ============================================================
-        // I18N
-        // ============================================================
-        const I18N = {
-            en: {
-                copied: 'Copied!',
-                copiedAll: 'All links copied!',
-                qr: 'Scan QR',
-                close: 'Close'
-            },
-            fa: {
-                copied: 'کپی شد!',
-                copiedAll: 'همه لینک‌ها کپی شد!',
-                qr: 'اسکن QR',
-                close: 'بستن'
-            }
-        };
-
-        let lang = 'en';
-
-        // ============================================================
-        // DOM Ref
-        // ============================================================
-        const $ = id => document.getElementById(id);
-        const qsa = (sel, ctx) => (ctx || document).querySelectorAll(sel);
-
-        // ============================================================
-        // Toast
-        // ============================================================
-        let toastTimer = null;
-
-        function showToast(msg) {
-            const el = $('toast');
-            const text = $('toast-msg');
-            if (!el || !text) return;
-            text.textContent = msg || I18N[lang].copied || 'Copied!';
-            el.classList.add('show');
-            clearTimeout(toastTimer);
-            toastTimer = setTimeout(() => el.classList.remove('show'), 2000);
-        }
-
-        // ============================================================
-        // Copy
-        // ============================================================
-        function copyLink(id) {
-            const el = $(id);
-            if (!el) return;
-            el.select();
-            el.setSelectionRange(0, 99999);
-            try {
-                navigator.clipboard.writeText(el.value).then(() => showToast());
-            } catch (_) {
-                document.execCommand('copy');
-                showToast();
-            }
-        }
-
-        function copyAllLinks() {
-            const links = [
-                $('link-base64'),
-                $('link-clash'),
-                $('link-singbox'),
-                $('link-raw'),
-                $('link-shadowrocket')
-            ];
-            
-            const allText = links
-                .filter(el => el !== null)
-                .map(el => el.value)
-                .join('\n');
-            
-            try {
-                navigator.clipboard.writeText(allText).then(() => {
-                    showToast(I18N[lang].copiedAll || 'All links copied!');
-                });
-            } catch (_) {
-                const textarea = document.createElement('textarea');
-                textarea.value = allText;
-                document.body.appendChild(textarea);
-                textarea.select();
-                document.execCommand('copy');
-                document.body.removeChild(textarea);
-                showToast(I18N[lang].copiedAll || 'All links copied!');
-            }
-        }
-
-        // ============================================================
-        // QR
-        // ============================================================
-        function showQR(url) {
-            const modal = $('qr-modal');
-            const img = $('qr-img');
-            const text = $('qr-text');
-            const title = $('qr-title');
-            if (!modal || !img || !text) return;
-
-            title.textContent = I18N[lang].qr || 'Scan QR';
-            text.textContent = url;
-            img.src = 'https://api.qrserver.com/v1/create-qr-code/?size=300x300&data=' + encodeURIComponent(url);
-
-            modal.classList.add('show');
-            document.body.style.overflow = 'hidden';
-        }
-
-        function closeQR() {
-            const modal = $('qr-modal');
-            if (!modal) return;
-            modal.classList.remove('show');
-            document.body.style.overflow = '';
-        }
-
-        document.addEventListener('click', (e) => {
-            const modal = $('qr-modal');
-            if (e.target === modal) closeQR();
-        });
-
-        // ============================================================
-        // Status Badge
-        // ============================================================
-        function updateBadge() {
-            const badge = $('status-badge');
-            if (!badge) return;
-            const code = '__STATUS_CODE__';
-            const map = {
-                active: { text: 'Active', cls: 'badge-active' },
-                paused: { text: 'Paused', cls: 'badge-paused' },
-                expired: { text: 'Expired', cls: 'badge-expired' },
-                limit: { text: 'Limit Exceeded', cls: 'badge-expired' },
-                dailylimit: { text: 'Daily Limit Exceeded', cls: 'badge-expired' }
-            };
-            const s = map[code] || map.active;
-            badge.textContent = s.text;
-            badge.className = 'badge ' + s.cls;
-        }
-
-        // ============================================================
-        // Init
-        // ============================================================
-        (function init() {
-            // Set year
-            const year = $('footer-year');
-            if (year) year.textContent = new Date().getFullYear();
-
-            // Set status badge
-            updateBadge();
-
-            // Get base link
-            const mainLink = '__SYNC_NORMAL__';
-            const hasQuery = mainLink.includes('?');
-            const q = hasQuery ? '&' : '?';
-
-            // Set format links with proper flags
-            const setVal = (id, flag) => {
-                const el = $(id);
-                if (el) el.value = mainLink + q + 'flag=' + flag;
-            };
-
-            setVal('link-base64', 'base64');
-            setVal('link-clash', 'clash');
-            setVal('link-singbox', 'singbox');
-            setVal('link-raw', 'raw');
-            
-            // Shadowrocket uses base64
-            const srEl = $('link-shadowrocket');
-            if (srEl) srEl.value = mainLink + q + 'flag=base64';
-
-            // Set v2rayNG link with base64 flag
-            const v2 = $('v2rayng-link');
-            if (v2) {
-                const base64Url = mainLink + q + 'flag=base64';
-                v2.href = 'v2rayng://install-sub?url=' + encodeURIComponent(base64Url) + '&name=' + encodeURIComponent('__USER_NAME__');
-            }
-
-            // Fetch IP
-            fetch('https://api.ipify.org?format=json')
-                .then(r => r.json())
-                .then(data => {
-                    const ip = $('client-ip');
-                    if (ip) ip.textContent = data.ip || '—';
-                })
-                .catch(() => {
-                    const ip = $('client-ip');
-                    if (ip) ip.textContent = '—';
-                });
-        })();
-    </script>
 
 </body>
 </html>
