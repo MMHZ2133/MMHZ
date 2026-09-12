@@ -397,14 +397,14 @@
         // =====================================================
         const I18N = {
             fa: {
-                greeting: "خوش آومدی،",
-                used_label: "حجم مصرفی",
-                days_label: "تعداد روز باقی مانده",
-                days_unit: "روز",
-                expiry_label: "تاریخ اتمام:",
-                unlimited: "نامحدود",
-                expired: "تموم شده",
-                no_expiry: "نامحدود"
+                greeting: "به پنلت خوش اومدی,
+                used_label: "چقدر حروم شده",
+                days_label: "چقدر وقت حروم شدنش مونده",
+                days_unit: "شبانه روز",
+                expiry_label: "تاریخ قطع شدنش",
+                unlimited: "تا میتونی مصرف کن ستون",
+                expired: "تسلیت میگم",
+                no_expiry: "تا ابد وقت داری",
             },
             en: {
                 greeting: "Welcome,",
