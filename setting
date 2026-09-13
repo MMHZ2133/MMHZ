@@ -7,40 +7,35 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link href="https://fonts.googleapis.com/css2?family=Vazirmatn:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
     <style>
-        /* ==================== متغیرهای تم Solid Minimal ==================== */
+        /* ==================== حالت شب - مشکی خالص ==================== */
         :root {
-            /* 🌙 حالت شب - آبی نفتی ساده */
             --accent: #38bdf8;
             --accent-bright: #7dd3fc;
-            --accent-glow: rgba(56, 189, 248, 0.3);
             --accent-soft: rgba(56, 189, 248, 0.12);
             --accent-border: rgba(56, 189, 248, 0.25);
 
-            --bg-primary: #082f49;
-            --card-bg: #0c4a6e;
-            --card-bg-inner: #082f49;
-            --card-border: #0c4a6e;
+            --bg-primary: #000000;
+            --card-bg: #111111;
+            --card-bg-inner: #0a0a0a;
+            --card-border: #222222;
 
             --text-primary: #ffffff;
-            --text-secondary: #bae6fd;
-            --text-muted: #94a3b8;
+            --text-secondary: #a3a3a3;
+            --text-muted: #737373;
 
-            --border: #0c4a6e;
-            --ring-bg: #0c4a6e;
+            --border: #222222;
+            --ring-bg: #1a1a1a;
 
-            --gradient-silver: linear-gradient(135deg, #ffffff 0%, #bae6fd 100%);
+            --gradient-silver: linear-gradient(135deg, #ffffff 0%, #a3a3a3 100%);
 
             --blue: #0ea5e9;
-            --blue-glow: rgba(14, 165, 233, 0.4);
             --green: #22c55e;
-            --green-glow: rgba(34, 197, 94, 0.4);
         }
 
+        /* ==================== حالت روز - آبی روشن ==================== */
         html.light {
-            /* ☀️ حالت روز - آبی روشن ساده */
             --accent: #0284c7;
             --accent-bright: #0ea5e9;
-            --accent-glow: rgba(2, 132, 199, 0.25);
             --accent-soft: rgba(2, 132, 199, 0.08);
             --accent-border: rgba(2, 132, 199, 0.2);
 
@@ -77,7 +72,7 @@
         .modal-overlay {
             position: fixed;
             inset: 0;
-            background: rgba(0, 0, 0, 0.6);
+            background: rgba(0, 0, 0, 0.7);
             z-index: 999;
             display: flex;
             align-items: center;
@@ -95,7 +90,7 @@
             padding: 28px 24px;
             max-width: 500px;
             width: 100%;
-            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.5);
             animation: modalIn 0.3s ease;
             max-height: 90vh;
             overflow-y: auto;
@@ -279,18 +274,9 @@
         .app-modal-btn:hover { transform: translateY(-2px); opacity: 0.95; }
         .app-modal-btn svg { width: 20px; height: 20px; }
 
-        .btn-install {
-            background: var(--blue);
-            color: #ffffff;
-        }
-        .btn-open {
-            background: var(--green);
-            color: #ffffff;
-        }
-        .btn-copy {
-            background: var(--accent);
-            color: #ffffff;
-        }
+        .btn-install { background: var(--blue); color: #ffffff; }
+        .btn-open { background: var(--green); color: #ffffff; }
+        .btn-copy { background: var(--accent); color: #ffffff; }
         .btn-cancel {
             background: transparent;
             color: var(--text-muted);
@@ -700,7 +686,7 @@
             font-size: 13px;
             font-weight: 700;
             z-index: 9999;
-            box-shadow: 0 8px 28px rgba(0, 0, 0, 0.25);
+            box-shadow: 0 8px 28px rgba(0, 0, 0, 0.3);
             border: 1px solid var(--card-border);
             opacity: 0;
             transition: opacity 0.3s, transform 0.3s;
@@ -1105,12 +1091,12 @@
                     isCopy: false,
                     notInStore: true,
                     deepLink: (sub) => `v2rayng://install-sub?url=${encodeURIComponent(sub)}&name=__USER_NAME__`,
-                    desc_fa: "محبوب‌ترین و پرکاربردترین کلاینت V2Ray برای اندروید که از تمام پروتکل‌های مدرن مانند VMess، VLESS، Trojan و Shadowsocks پشتیبانی می‌کند.",
-                    guide_fa: "۱. اگر برنامه را نصب دارید، روی دکمه «اجرای برنامه» کلیک کنید.\n۲. اگر نصب ندارید، ابتدا روی دکمه «نصب برنامه» کلیک کرده و از سایت رسمی دانلود کنید.\n۳. پس از نصب، به پنل برگردید و دوباره روی دکمه «اجرای برنامه» کلیک کنید.\n۴. برنامه باز شده و اشتراک شما به صورت خودکار اضافه می‌شود.",
+                    desc_fa: "محبوب‌ترین و پرکاربردترین کلاینت V2Ray برای اندروید که از تمام پروتکل‌های مدرن پشتیبانی می‌کند.",
+                    guide_fa: "۱. اگر برنامه را نصب دارید، روی دکمه «اجرای برنامه» کلیک کنید.\n۲. اگر نصب ندارید، ابتدا روی دکمه «نصب برنامه» کلیک کرده و از سایت رسمی دانلود کنید.\n۳. پس از نصب، به پنل برگردید و دوباره روی دکمه «اجرای برنامه» کلیک کنید.",
                     note_fa: "در صورت بروز مشکل، از دکمه پشتیبانی استفاده کنید.",
                     download_fa: "این برنامه در Google Play موجود نیست. لطفاً از سایت رسمی fa.v2rayng.org دانلود کنید.",
                     desc_en: "The most popular V2Ray client for Android with support for all modern protocols.",
-                    guide_en: "1. If you have the app installed, click 'Open App'.\n2. If not, first click 'Install App' and download from official site.\n3. After installation, return to the panel and click 'Open App' again.\n4. The app will open and your subscription will be added automatically.",
+                    guide_en: "1. If you have the app installed, click 'Open App'.\n2. If not, first click 'Install App' and download from official site.\n3. After installation, return to the panel and click 'Open App' again.",
                     note_en: "If you encounter any issues, use the support button.",
                     download_en: "This app is not available on Google Play. Please download from the official site fa.v2rayng.org.",
                     icon: `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2L2 7l10 5 10-5-10-5z"/><path d="M2 17l10 5 10-5"/><path d="M2 12l10 5 10-5"/></svg>`
@@ -1122,10 +1108,10 @@
                     notInStore: false,
                     deepLink: (sub) => `v2box://install-sub?url=${encodeURIComponent(sub)}&name=__USER_NAME__`,
                     desc_fa: "کلاینت چندپلتفرمی سبک و سریع با پشتیبانی از پروتکل‌های VMess، VLESS، Trojan و Shadowsocks.",
-                    guide_fa: "۱. اگر برنامه را نصب دارید، روی دکمه «اجرای برنامه» کلیک کنید.\n۲. اگر نصب ندارید، ابتدا روی دکمه «نصب برنامه» کلیک کرده و از Google Play نصب کنید.\n۳. پس از نصب، به پنل برگردید و دوباره روی دکمه «اجرای برنامه» کلیک کنید.\n۴. اشتراک شما به صورت خودکار اضافه می‌شود.",
+                    guide_fa: "۱. اگر برنامه را نصب دارید، روی دکمه «اجرای برنامه» کلیک کنید.\n۲. اگر نصب ندارید، ابتدا روی دکمه «نصب برنامه» کلیک کرده و از Google Play نصب کنید.\n۳. پس از نصب، به پنل برگردید و دوباره روی دکمه «اجرای برنامه» کلیک کنید.",
                     note_fa: "برای اتصال سریع‌تر، از سرورهای نزدیک‌تر استفاده کنید.",
                     desc_en: "A lightweight multi-platform client supporting VMess, VLESS, Trojan and Shadowsocks.",
-                    guide_en: "1. If you have the app installed, click 'Open App'.\n2. If not, first click 'Install App' and install from Google Play.\n3. After installation, return to the panel and click 'Open App' again.\n4. Your subscription will be added automatically.",
+                    guide_en: "1. If you have the app installed, click 'Open App'.\n2. If not, first click 'Install App' and install from Google Play.\n3. After installation, return to the panel and click 'Open App' again.",
                     note_en: "For faster connection, use closer servers.",
                     icon: `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="4"/><path d="M9 8l6 8M9 16l6-8"/></svg>`
                 },
@@ -1135,7 +1121,7 @@
                     isCopy: false,
                     notInStore: true,
                     deepLink: (sub) => `sn://subscription?url=${encodeURIComponent(sub)}`,
-                    desc_fa: "کلاینت مدرن بر پایه Sing-box با پشتیبانی از تمام پروتکل‌های پیشرفته شامل Hysteria2 و TUIC.",
+                    desc_fa: "کلاینت مدرن بر پایه Sing-box با پشتیبانی از تمام پروتکل‌های پیشرفته.",
                     guide_fa: "۱. اگر برنامه را نصب دارید، روی دکمه «اجرای برنامه» کلیک کنید.\n۲. اگر نصب ندارید، ابتدا روی دکمه «نصب برنامه» کلیک کرده و از سایت رسمی دانلود کنید.\n۳. فایل APK را نصب کنید.\n۴. پس از نصب، به پنل برگردید و دوباره روی دکمه «اجرای برنامه» کلیک کنید.",
                     note_fa: "حتماً از سایت رسمی nekobox.pro دانلود کنید.",
                     download_fa: "این برنامه در Google Play موجود نیست. لطفاً از سایت رسمی nekobox.pro دانلود کنید.",
@@ -1151,12 +1137,12 @@
                     isCopy: false,
                     notInStore: false,
                     deepLink: (sub) => `hiddify://import/${sub}`,
-                    desc_fa: "کلاینت چندسکویی با رابط کاربری فوق‌العاده زیبا و مدرن که از Sing-box و V2Ray پشتیبانی می‌کند.",
-                    guide_fa: "۱. اگر برنامه را نصب دارید، روی دکمه «اجرای برنامه» کلیک کنید.\n۲. اگر نصب ندارید، ابتدا روی دکمه «نصب برنامه» کلیک کرده و نصب کنید.\n۳. پس از نصب، به پنل برگردید و دوباره روی دکمه «اجرای برنامه» کلیک کنید.\n۴. اشتراک به صورت خودکار اضافه می‌شود.",
-                    note_fa: "Hiddify از پروتکل‌های پیشرفته Hysteria2 و TUIC پشتیبانی می‌کند.",
-                    desc_en: "A multi-platform client with a beautiful modern UI supporting Sing-box and V2Ray.",
-                    guide_en: "1. If you have the app installed, click 'Open App'.\n2. If not, first click 'Install App' and install.\n3. After installation, return to the panel and click 'Open App' again.\n4. Subscription will be added automatically.",
-                    note_en: "Hiddify supports advanced protocols like Hysteria2 and TUIC.",
+                    desc_fa: "کلاینت چندسکویی با رابط کاربری فوق‌العاده زیبا و مدرن.",
+                    guide_fa: "۱. اگر برنامه را نصب دارید، روی دکمه «اجرای برنامه» کلیک کنید.\n۲. اگر نصب ندارید، ابتدا روی دکمه «نصب برنامه» کلیک کرده و نصب کنید.\n۳. پس از نصب، به پنل برگردید و دوباره روی دکمه «اجرای برنامه» کلیک کنید.",
+                    note_fa: "Hiddify از پروتکل‌های پیشرفته پشتیبانی می‌کند.",
+                    desc_en: "A multi-platform client with a beautiful modern UI.",
+                    guide_en: "1. If you have the app installed, click 'Open App'.\n2. If not, first click 'Install App' and install.\n3. After installation, return to the panel and click 'Open App' again.",
+                    note_en: "Hiddify supports advanced protocols.",
                     icon: `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>`
                 },
                 {
@@ -1166,10 +1152,10 @@
                     notInStore: false,
                     deepLink: (sub) => `sing-box://import-remote-profile?url=${encodeURIComponent(sub)}`,
                     desc_fa: "کلاینت رسمی پروژه Sing-box با عملکرد بالا و پایداری عالی.",
-                    guide_fa: "۱. اگر برنامه را نصب دارید، روی دکمه «اجرای برنامه» کلیک کنید.\n۲. اگر نصب ندارید، ابتدا روی دکمه «نصب برنامه» کلیک کرده و از Google Play نصب کنید.\n۳. پس از نصب، به پنل برگردید و دوباره روی دکمه «اجرای برنامه» کلیک کنید.\n۴. اشتراک به صورت خودکار اضافه می‌شود.",
+                    guide_fa: "۱. اگر برنامه را نصب دارید، روی دکمه «اجرای برنامه» کلیک کنید.\n۲. اگر نصب ندارید، ابتدا روی دکمه «نصب برنامه» کلیک کرده و از Google Play نصب کنید.\n۳. پس از نصب، به پنل برگردید و دوباره روی دکمه «اجرای برنامه» کلیک کنید.",
                     note_fa: "برای بهترین عملکرد، آخرین نسخه را نصب کنید.",
-                    desc_en: "The official Sing-box client with high performance and excellent stability.",
-                    guide_en: "1. If you have the app installed, click 'Open App'.\n2. If not, first click 'Install App' and install from Google Play.\n3. After installation, return to the panel and click 'Open App' again.\n4. Subscription will be added automatically.",
+                    desc_en: "The official Sing-box client with high performance.",
+                    guide_en: "1. If you have the app installed, click 'Open App'.\n2. If not, first click 'Install App' and install from Google Play.\n3. After installation, return to the panel and click 'Open App' again.",
                     note_en: "For best performance, install the latest version.",
                     icon: `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="3"/><path d="M8 12h8"/></svg>`
                 },
@@ -1180,10 +1166,10 @@
                     notInStore: false,
                     deepLink: null,
                     desc_fa: "کلاینت ساده و سریع برای اتصال به سرورهای V2Ray با رابط کاربری مینیمال.",
-                    guide_fa: "۱. روی دکمه «کپی لینک اشتراک» کلیک کنید تا لینک کپی شود.\n۲. اگر برنامه را نصب دارید، برنامه را باز کنید.\n۳. اگر نصب ندارید، ابتدا روی دکمه «نصب برنامه» کلیک کرده و نصب کنید.\n۴. پس از نصب، برنامه را باز کرده و از بخش Import، لینک را Paste نمایید.",
+                    guide_fa: "۱. روی دکمه «کپی لینک اشتراک» کلیک کنید.\n۲. اگر برنامه را نصب دارید، برنامه را باز کنید.\n۳. اگر نصب ندارید، ابتدا روی دکمه «نصب برنامه» کلیک کرده و نصب کنید.\n۴. پس از نصب، برنامه را باز کرده و از بخش Import، لینک را Paste نمایید.",
                     note_fa: "این برنامه از بارگذاری خودکار اشتراک پشتیبانی نمی‌کند.",
-                    desc_en: "A simple and fast client for connecting to V2Ray servers with minimal UI.",
-                    guide_en: "1. Click 'Copy Subscription Link' to copy the link.\n2. If you have the app installed, open it.\n3. If not, first click 'Install App' and install.\n4. After installation, open the app and paste the copied link in the Import section.",
+                    desc_en: "A simple and fast client for connecting to V2Ray servers.",
+                    guide_en: "1. Click 'Copy Subscription Link'.\n2. If you have the app installed, open it.\n3. If not, first click 'Install App' and install.\n4. After installation, open the app and paste the copied link in the Import section.",
                     note_en: "This app does not support automatic subscription loading.",
                     icon: `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 20V10a8 8 0 0 1 16 0v10"/><path d="M2 20h20"/><circle cx="12" cy="10" r="2"/></svg>`
                 },
@@ -1194,10 +1180,10 @@
                     notInStore: false,
                     deepLink: null,
                     desc_fa: "کلاینت مدرن با پشتیبانی از پروتکل‌های پیشرفته و رابط کاربری زیبا.",
-                    guide_fa: "۱. روی دکمه «کپی لینک اشتراک» کلیک کنید تا لینک کپی شود.\n۲. اگر برنامه را نصب دارید، برنامه را باز کنید.\n۳. اگر نصب ندارید، ابتدا روی دکمه «نصب برنامه» کلیک کرده و نصب کنید.\n۴. پس از نصب، برنامه را باز کرده و از بخش Add Subscription، لینک را Paste نمایید.",
+                    guide_fa: "۱. روی دکمه «کپی لینک اشتراک» کلیک کنید.\n۲. اگر برنامه را نصب دارید، برنامه را باز کنید.\n۳. اگر نصب ندارید، ابتدا روی دکمه «نصب برنامه» کلیک کرده و نصب کنید.\n۴. پس از نصب، برنامه را باز کرده و از بخش Add Subscription، لینک را Paste نمایید.",
                     note_fa: "این برنامه از بارگذاری خودکار اشتراک پشتیبانی نمی‌کند.",
                     desc_en: "A modern client with advanced protocol support and beautiful UI.",
-                    guide_en: "1. Click 'Copy Subscription Link' to copy the link.\n2. If you have the app installed, open it.\n3. If not, first click 'Install App' and install.\n4. After installation, open the app and paste the copied link in the Add Subscription section.",
+                    guide_en: "1. Click 'Copy Subscription Link'.\n2. If you have the app installed, open it.\n3. If not, first click 'Install App' and install.\n4. After installation, open the app and paste the copied link in the Add Subscription section.",
                     note_en: "This app does not support automatic subscription loading.",
                     icon: `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M8 14s1.5 2 4 2 4-2 4-2"/><line x1="9" y1="9" x2="9.01" y2="9"/><line x1="15" y1="9" x2="15.01" y2="9"/></svg>`
                 }
@@ -1210,10 +1196,10 @@
                     notInStore: false,
                     deepLink: (sub) => `shadowrocket://add/sub://${btoa(sub)}?remarks=__USER_NAME__`,
                     desc_fa: "محبوب‌ترین و حرفه‌ای‌ترین کلاینت iOS با پشتیبانی از تمام پروتکل‌های مدرن.",
-                    guide_fa: "۱. اگر برنامه را نصب دارید، روی دکمه «اجرای برنامه» کلیک کنید.\n۲. اگر نصب ندارید، ابتدا روی دکمه «نصب برنامه» کلیک کرده و از App Store نصب کنید.\n۳. پس از نصب، به پنل برگردید و دوباره روی دکمه «اجرای برنامه» کلیک کنید.\n۴. اشتراک به صورت خودکار اضافه می‌شود.",
+                    guide_fa: "۱. اگر برنامه را نصب دارید، روی دکمه «اجرای برنامه» کلیک کنید.\n۲. اگر نصب ندارید، ابتدا روی دکمه «نصب برنامه» کلیک کرده و از App Store نصب کنید.\n۳. پس از نصب، به پنل برگردید و دوباره روی دکمه «اجرای برنامه» کلیک کنید.",
                     note_fa: "این برنامه پولی است اما ارزش خرید دارد.",
-                    desc_en: "The most popular and professional iOS client with support for all modern protocols.",
-                    guide_en: "1. If you have the app installed, click 'Open App'.\n2. If not, first click 'Install App' and install from App Store.\n3. After installation, return to the panel and click 'Open App' again.\n4. Subscription will be added automatically.",
+                    desc_en: "The most popular and professional iOS client.",
+                    guide_en: "1. If you have the app installed, click 'Open App'.\n2. If not, first click 'Install App' and install from App Store.\n3. After installation, return to the panel and click 'Open App' again.",
                     note_en: "This app is paid but worth it.",
                     icon: `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4.5 16.5c-1.5 1.26-2 5-2 5s3.74-.5 5-2c.71-.84.7-2.13-.09-2.91a2.18 2.18 0 0 0-2.91 0z"/><path d="M12 15l-3-3a22 22 0 0 1 2-3.95A12.88 12.88 0 0 1 22 2c0 2.72-.78 7.5-6 11a22.35 22.35 0 0 1-4 2z"/><path d="M9 12H4s.55-3.03 2-4c1.62-1.08 5 0 5 0"/><path d="M12 15v5s3.03-.55 4-2c1.08-1.62 0-5 0-5"/></svg>`
                 },
@@ -1223,12 +1209,12 @@
                     isCopy: false,
                     notInStore: false,
                     deepLink: (sub) => `streisand://import/${sub}`,
-                    desc_fa: "کلاینت رایگان و قدرتمند برای iOS با پشتیبانی از V2Ray و پروتکل‌های مختلف.",
-                    guide_fa: "۱. اگر برنامه را نصب دارید، روی دکمه «اجرای برنامه» کلیک کنید.\n۲. اگر نصب ندارید، ابتدا روی دکمه «نصب برنامه» کلیک کرده و از App Store نصب کنید.\n۳. پس از نصب، به پنل برگردید و دوباره روی دکمه «اجرای برنامه» کلیک کنید.\n۴. اشتراک به صورت خودکار اضافه می‌شود.",
-                    note_fa: "Streisand رایگان است و امکانات خوبی ارائه می‌دهد.",
+                    desc_fa: "کلاینت رایگان و قدرتمند برای iOS با پشتیبانی از V2Ray.",
+                    guide_fa: "۱. اگر برنامه را نصب دارید، روی دکمه «اجرای برنامه» کلیک کنید.\n۲. اگر نصب ندارید، ابتدا روی دکمه «نصب برنامه» کلیک کرده و از App Store نصب کنید.\n۳. پس از نصب، به پنل برگردید و دوباره روی دکمه «اجرای برنامه» کلیک کنید.",
+                    note_fa: "Streisand رایگان است.",
                     desc_en: "A free and powerful iOS client with V2Ray support.",
-                    guide_en: "1. If you have the app installed, click 'Open App'.\n2. If not, first click 'Install App' and install from App Store.\n3. After installation, return to the panel and click 'Open App' again.\n4. Subscription will be added automatically.",
-                    note_en: "Streisand is free and offers good features.",
+                    guide_en: "1. If you have the app installed, click 'Open App'.\n2. If not, first click 'Install App' and install from App Store.\n3. After installation, return to the panel and click 'Open App' again.",
+                    note_en: "Streisand is free.",
                     icon: `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>`
                 },
                 {
@@ -1237,11 +1223,11 @@
                     isCopy: false,
                     notInStore: false,
                     deepLink: (sub) => `v2box://install-sub?url=${encodeURIComponent(sub)}&name=__USER_NAME__`,
-                    desc_fa: "کلاینت چندپلتفرمی سبک و سریع با پشتیبانی از پروتکل‌های مختلف.",
-                    guide_fa: "۱. اگر برنامه را نصب دارید، روی دکمه «اجرای برنامه» کلیک کنید.\n۲. اگر نصب ندارید، ابتدا روی دکمه «نصب برنامه» کلیک کرده و از App Store نصب کنید.\n۳. پس از نصب، به پنل برگردید و دوباره روی دکمه «اجرای برنامه» کلیک کنید.\n۴. اشتراک به صورت خودکار اضافه می‌شود.",
+                    desc_fa: "کلاینت چندپلتفرمی سبک و سریع.",
+                    guide_fa: "۱. اگر برنامه را نصب دارید، روی دکمه «اجرای برنامه» کلیک کنید.\n۲. اگر نصب ندارید، ابتدا روی دکمه «نصب برنامه» کلیک کرده و از App Store نصب کنید.\n۳. پس از نصب، به پنل برگردید و دوباره روی دکمه «اجرای برنامه» کلیک کنید.",
                     note_fa: "برای اتصال سریع‌تر، از سرورهای نزدیک‌تر استفاده کنید.",
-                    desc_en: "A lightweight multi-platform client supporting various protocols.",
-                    guide_en: "1. If you have the app installed, click 'Open App'.\n2. If not, first click 'Install App' and install from App Store.\n3. After installation, return to the panel and click 'Open App' again.\n4. Subscription will be added automatically.",
+                    desc_en: "A lightweight multi-platform client.",
+                    guide_en: "1. If you have the app installed, click 'Open App'.\n2. If not, first click 'Install App' and install from App Store.\n3. After installation, return to the panel and click 'Open App' again.",
                     note_en: "For faster connection, use closer servers.",
                     icon: `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="4"/><path d="M9 8l6 8M9 16l6-8"/></svg>`
                 },
@@ -1251,12 +1237,12 @@
                     isCopy: false,
                     notInStore: false,
                     deepLink: (sub) => `foxray://install-sub?url=${encodeURIComponent(sub)}`,
-                    desc_fa: "کلاینت سبک و سریع برای iOS با رابط کاربری ساده و مینیمال.",
-                    guide_fa: "۱. اگر برنامه را نصب دارید، روی دکمه «اجرای برنامه» کلیک کنید.\n۲. اگر نصب ندارید، ابتدا روی دکمه «نصب برنامه» کلیک کرده و از App Store نصب کنید.\n۳. پس از نصب، به پنل برگردید و دوباره روی دکمه «اجرای برنامه» کلیک کنید.\n۴. اشتراک به صورت خودکار اضافه می‌شود.",
-                    note_fa: "این برنامه رایگان است و امکانات پایه‌ای خوبی دارد.",
-                    desc_en: "A lightweight and fast iOS client with simple minimal UI.",
-                    guide_en: "1. If you have the app installed, click 'Open App'.\n2. If not, first click 'Install App' and install from App Store.\n3. After installation, return to the panel and click 'Open App' again.\n4. Subscription will be added automatically.",
-                    note_en: "This app is free and offers good basic features.",
+                    desc_fa: "کلاینت سبک و سریع برای iOS.",
+                    guide_fa: "۱. اگر برنامه را نصب دارید، روی دکمه «اجرای برنامه» کلیک کنید.\n۲. اگر نصب ندارید، ابتدا روی دکمه «نصب برنامه» کلیک کرده و از App Store نصب کنید.\n۳. پس از نصب، به پنل برگردید و دوباره روی دکمه «اجرای برنامه» کلیک کنید.",
+                    note_fa: "این برنامه رایگان است.",
+                    desc_en: "A lightweight and fast iOS client.",
+                    guide_en: "1. If you have the app installed, click 'Open App'.\n2. If not, first click 'Install App' and install from App Store.\n3. After installation, return to the panel and click 'Open App' again.",
+                    note_en: "This app is free.",
                     icon: `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M12 2v20M2 12h20"/></svg>`
                 },
                 {
@@ -1265,11 +1251,11 @@
                     isCopy: false,
                     notInStore: false,
                     deepLink: (sub) => `hiddify://import/${sub}`,
-                    desc_fa: "کلاینت چندسکویی با رابط کاربری فوق‌العاده زیبا و مدرن.",
-                    guide_fa: "۱. اگر برنامه را نصب دارید، روی دکمه «اجرای برنامه» کلیک کنید.\n۲. اگر نصب ندارید، ابتدا روی دکمه «نصب برنامه» کلیک کرده و از App Store نصب کنید.\n۳. پس از نصب، به پنل برگردید و دوباره روی دکمه «اجرای برنامه» کلیک کنید.\n۴. اشتراک به صورت خودکار اضافه می‌شود.",
+                    desc_fa: "کلاینت چندسکویی با رابط کاربری زیبا.",
+                    guide_fa: "۱. اگر برنامه را نصب دارید، روی دکمه «اجرای برنامه» کلیک کنید.\n۲. اگر نصب ندارید، ابتدا روی دکمه «نصب برنامه» کلیک کرده و از App Store نصب کنید.\n۳. پس از نصب، به پنل برگردید و دوباره روی دکمه «اجرای برنامه» کلیک کنید.",
                     note_fa: "Hiddify از پروتکل‌های پیشرفته پشتیبانی می‌کند.",
-                    desc_en: "A multi-platform client with beautiful modern UI.",
-                    guide_en: "1. If you have the app installed, click 'Open App'.\n2. If not, first click 'Install App' and install from App Store.\n3. After installation, return to the panel and click 'Open App' again.\n4. Subscription will be added automatically.",
+                    desc_en: "A multi-platform client with beautiful UI.",
+                    guide_en: "1. If you have the app installed, click 'Open App'.\n2. If not, first click 'Install App' and install from App Store.\n3. After installation, return to the panel and click 'Open App' again.",
                     note_en: "Hiddify supports advanced protocols.",
                     icon: `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>`
                 },
@@ -1279,11 +1265,11 @@
                     isCopy: false,
                     notInStore: false,
                     deepLink: (sub) => `sing-box://import-remote-profile?url=${encodeURIComponent(sub)}`,
-                    desc_fa: "کلاینت رسمی پروژه Sing-box برای iOS با عملکرد بالا.",
-                    guide_fa: "۱. اگر برنامه را نصب دارید، روی دکمه «اجرای برنامه» کلیک کنید.\n۲. اگر نصب ندارید، ابتدا روی دکمه «نصب برنامه» کلیک کرده و از App Store نصب کنید.\n۳. پس از نصب، به پنل برگردید و دوباره روی دکمه «اجرای برنامه» کلیک کنید.\n۴. اشتراک به صورت خودکار اضافه می‌شود.",
+                    desc_fa: "کلاینت رسمی پروژه Sing-box برای iOS.",
+                    guide_fa: "۱. اگر برنامه را نصب دارید، روی دکمه «اجرای برنامه» کلیک کنید.\n۲. اگر نصب ندارید، ابتدا روی دکمه «نصب برنامه» کلیک کرده و از App Store نصب کنید.\n۳. پس از نصب، به پنل برگردید و دوباره روی دکمه «اجرای برنامه» کلیک کنید.",
                     note_fa: "برای بهترین عملکرد، آخرین نسخه را نصب کنید.",
-                    desc_en: "The official Sing-box client for iOS with high performance.",
-                    guide_en: "1. If you have the app installed, click 'Open App'.\n2. If not, first click 'Install App' and install from App Store.\n3. After installation, return to the panel and click 'Open App' again.\n4. Subscription will be added automatically.",
+                    desc_en: "The official Sing-box client for iOS.",
+                    guide_en: "1. If you have the app installed, click 'Open App'.\n2. If not, first click 'Install App' and install from App Store.\n3. After installation, return to the panel and click 'Open App' again.",
                     note_en: "For best performance, install the latest version.",
                     icon: `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="3"/><path d="M8 12h8"/></svg>`
                 }
@@ -1295,14 +1281,14 @@
                     isCopy: false,
                     notInStore: true,
                     deepLink: null,
-                    desc_fa: "محبوب‌ترین کلاینت V2Ray برای ویندوز با پشتیبانی از تمام پروتکل‌های مدرن.",
-                    guide_fa: "۱. اگر برنامه را نصب دارید، لینک اشتراک را کپی کنید و با Ctrl+V در برنامه اضافه کنید.\n۲. اگر نصب ندارید، ابتدا روی دکمه «نصب برنامه» کلیک کرده و از GitHub دانلود کنید.\n۳. پس از نصب، برنامه را باز کنید.\n۴. با استفاده از Ctrl+V لینک اشتراک را در برنامه اضافه کنید.",
+                    desc_fa: "محبوب‌ترین کلاینت V2Ray برای ویندوز.",
+                    guide_fa: "۱. لینک اشتراک را کپی کنید و با Ctrl+V در برنامه اضافه کنید.\n۲. اگر نصب ندارید، ابتدا روی دکمه «نصب برنامه» کلیک کرده و از GitHub دانلود کنید.\n۳. پس از نصب، برنامه را باز کرده و لینک را Paste کنید.",
                     note_fa: "برای اجرا، به .NET Framework نیاز دارید.",
                     download_fa: "این برنامه در Microsoft Store موجود نیست. لطفاً از GitHub دانلود کنید.",
-                    desc_en: "The most popular V2Ray client for Windows with support for all modern protocols.",
-                    guide_en: "1. If you have the app installed, copy the subscription link and add it with Ctrl+V.\n2. If not, first click 'Install App' and download from GitHub.\n3. After installation, open the app.\n4. Add the subscription link in the app using Ctrl+V.",
-                    note_en: "Requires .NET Framework to run.",
-                    download_en: "This app is not available on Microsoft Store. Please download from GitHub.",
+                    desc_en: "The most popular V2Ray client for Windows.",
+                    guide_en: "1. Copy the subscription link and add it with Ctrl+V.\n2. If not, first click 'Install App' and download from GitHub.\n3. After installation, open the app and paste the link.",
+                    note_en: "Requires .NET Framework.",
+                    download_en: "Not available on Microsoft Store. Download from GitHub.",
                     icon: `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M8 12h8M12 8v8"/></svg>`
                 },
                 {
@@ -1311,14 +1297,14 @@
                     isCopy: false,
                     notInStore: true,
                     deepLink: null,
-                    desc_fa: "کلاینت مدرن بر پایه Clash Meta با رابط کاربری زیبا و امکانات حرفه‌ای.",
-                    guide_fa: "۱. اگر برنامه را نصب دارید، لینک اشتراک را کپی کنید و با Ctrl+V در برنامه اضافه کنید.\n۲. اگر نصب ندارید، ابتدا روی دکمه «نصب برنامه» کلیک کرده و از GitHub دانلود کنید.\n۳. پس از نصب، برنامه را باز کنید.\n۴. با استفاده از Ctrl+V لینک اشتراک را در برنامه اضافه کنید.",
-                    note_fa: "Clash Verge از قوانین مسیریابی پیشرفته پشتیبانی می‌کند.",
+                    desc_fa: "کلاینت مدرن بر پایه Clash Meta.",
+                    guide_fa: "۱. لینک اشتراک را کپی کنید و با Ctrl+V اضافه کنید.\n۲. اگر نصب ندارید، ابتدا روی دکمه «نصب برنامه» کلیک کرده و از GitHub دانلود کنید.\n۳. پس از نصب، برنامه را باز کرده و لینک را Paste کنید.",
+                    note_fa: "از قوانین مسیریابی پیشرفته پشتیبانی می‌کند.",
                     download_fa: "این برنامه در Microsoft Store موجود نیست. لطفاً از GitHub دانلود کنید.",
-                    desc_en: "A modern client based on Clash Meta with beautiful UI and professional features.",
-                    guide_en: "1. If you have the app installed, copy the subscription link and add it with Ctrl+V.\n2. If not, first click 'Install App' and download from GitHub.\n3. After installation, open the app.\n4. Add the subscription link in the app using Ctrl+V.",
-                    note_en: "Clash Verge supports advanced routing rules.",
-                    download_en: "This app is not available on Microsoft Store. Please download from GitHub.",
+                    desc_en: "A modern client based on Clash Meta.",
+                    guide_en: "1. Copy the subscription link and add it with Ctrl+V.\n2. If not, first click 'Install App' and download from GitHub.\n3. After installation, open the app and paste the link.",
+                    note_en: "Supports advanced routing rules.",
+                    download_en: "Not available on Microsoft Store. Download from GitHub.",
                     icon: `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"/></svg>`
                 },
                 {
@@ -1327,14 +1313,14 @@
                     isCopy: false,
                     notInStore: true,
                     deepLink: null,
-                    desc_fa: "کلاینت چندسکویی با رابط کاربری فوق‌العاده زیبا و مدرن.",
-                    guide_fa: "۱. اگر برنامه را نصب دارید، لینک اشتراک را کپی کنید و با Ctrl+V در برنامه اضافه کنید.\n۲. اگر نصب ندارید، ابتدا روی دکمه «نصب برنامه» کلیک کرده و از GitHub دانلود کنید.\n۳. پس از نصب، برنامه را باز کنید.\n۴. با استفاده از Ctrl+V لینک اشتراک را در برنامه اضافه کنید.",
-                    note_fa: "Hiddify از پروتکل‌های پیشرفته پشتیبانی می‌کند.",
+                    desc_fa: "کلاینت چندسکویی با رابط کاربری زیبا.",
+                    guide_fa: "۱. لینک اشتراک را کپی کنید و با Ctrl+V اضافه کنید.\n۲. اگر نصب ندارید، ابتدا روی دکمه «نصب برنامه» کلیک کرده و از GitHub دانلود کنید.\n۳. پس از نصب، برنامه را باز کرده و لینک را Paste کنید.",
+                    note_fa: "از پروتکل‌های پیشرفته پشتیبانی می‌کند.",
                     download_fa: "این برنامه در Microsoft Store موجود نیست. لطفاً از GitHub دانلود کنید.",
-                    desc_en: "A multi-platform client with beautiful modern UI.",
-                    guide_en: "1. If you have the app installed, copy the subscription link and add it with Ctrl+V.\n2. If not, first click 'Install App' and download from GitHub.\n3. After installation, open the app.\n4. Add the subscription link in the app using Ctrl+V.",
-                    note_en: "Hiddify supports advanced protocols.",
-                    download_en: "This app is not available on Microsoft Store. Please download from GitHub.",
+                    desc_en: "A multi-platform client with beautiful UI.",
+                    guide_en: "1. Copy the subscription link and add it with Ctrl+V.\n2. If not, first click 'Install App' and download from GitHub.\n3. After installation, open the app and paste the link.",
+                    note_en: "Supports advanced protocols.",
+                    download_en: "Not available on Microsoft Store. Download from GitHub.",
                     icon: `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>`
                 },
                 {
@@ -1343,14 +1329,14 @@
                     isCopy: false,
                     notInStore: true,
                     deepLink: null,
-                    desc_fa: "کلاینت سبک و سریع بر پایه Sing-box با رابط کاربری ساده.",
-                    guide_fa: "۱. اگر برنامه را نصب دارید، لینک اشتراک را کپی کنید و با Ctrl+V در برنامه اضافه کنید.\n۲. اگر نصب ندارید، ابتدا روی دکمه «نصب برنامه» کلیک کرده و از GitHub دانلود کنید.\n۳. پس از نصب، برنامه را باز کنید.\n۴. با استفاده از Ctrl+V لینک اشتراک را در برنامه اضافه کنید.",
-                    note_fa: "NekoRay از تمام پروتکل‌های مدرن پشتیبانی می‌کند.",
+                    desc_fa: "کلاینت سبک و سریع بر پایه Sing-box.",
+                    guide_fa: "۱. لینک اشتراک را کپی کنید و با Ctrl+V اضافه کنید.\n۲. اگر نصب ندارید، ابتدا روی دکمه «نصب برنامه» کلیک کرده و از GitHub دانلود کنید.\n۳. پس از نصب، برنامه را باز کرده و لینک را Paste کنید.",
+                    note_fa: "از تمام پروتکل‌های مدرن پشتیبانی می‌کند.",
                     download_fa: "این برنامه در Microsoft Store موجود نیست. لطفاً از GitHub دانلود کنید.",
-                    desc_en: "A lightweight and fast client based on Sing-box with simple UI.",
-                    guide_en: "1. If you have the app installed, copy the subscription link and add it with Ctrl+V.\n2. If not, first click 'Install App' and download from GitHub.\n3. After installation, open the app.\n4. Add the subscription link in the app using Ctrl+V.",
-                    note_en: "NekoRay supports all modern protocols.",
-                    download_en: "This app is not available on Microsoft Store. Please download from GitHub.",
+                    desc_en: "A lightweight and fast client based on Sing-box.",
+                    guide_en: "1. Copy the subscription link and add it with Ctrl+V.\n2. If not, first click 'Install App' and download from GitHub.\n3. After installation, open the app and paste the link.",
+                    note_en: "Supports all modern protocols.",
+                    download_en: "Not available on Microsoft Store. Download from GitHub.",
                     icon: `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M8 12h8M12 8v8"/></svg>`
                 },
                 {
@@ -1359,14 +1345,14 @@
                     isCopy: false,
                     notInStore: true,
                     deepLink: null,
-                    desc_fa: "کلاینت رسمی پروژه Sing-box برای ویندوز با عملکرد بالا.",
-                    guide_fa: "۱. اگر برنامه را نصب دارید، لینک اشتراک را کپی کنید و با Ctrl+V در برنامه اضافه کنید.\n۲. اگر نصب ندارید، ابتدا روی دکمه «نصب برنامه» کلیک کرده و از GitHub دانلود کنید.\n۳. پس از نصب، برنامه را باز کنید.\n۴. با استفاده از Ctrl+V لینک اشتراک را در برنامه اضافه کنید.",
+                    desc_fa: "کلاینت رسمی پروژه Sing-box برای ویندوز.",
+                    guide_fa: "۱. لینک اشتراک را کپی کنید و با Ctrl+V اضافه کنید.\n۲. اگر نصب ندارید، ابتدا روی دکمه «نصب برنامه» کلیک کرده و از GitHub دانلود کنید.\n۳. پس از نصب، برنامه را باز کرده و لینک را Paste کنید.",
                     note_fa: "برای بهترین عملکرد، آخرین نسخه را نصب کنید.",
                     download_fa: "این برنامه در Microsoft Store موجود نیست. لطفاً از GitHub دانلود کنید.",
-                    desc_en: "The official Sing-box client for Windows with high performance.",
-                    guide_en: "1. If you have the app installed, copy the subscription link and add it with Ctrl+V.\n2. If not, first click 'Install App' and download from GitHub.\n3. After installation, open the app.\n4. Add the subscription link in the app using Ctrl+V.",
+                    desc_en: "The official Sing-box client for Windows.",
+                    guide_en: "1. Copy the subscription link and add it with Ctrl+V.\n2. If not, first click 'Install App' and download from GitHub.\n3. After installation, open the app and paste the link.",
                     note_en: "For best performance, install the latest version.",
-                    download_en: "This app is not available on Microsoft Store. Please download from GitHub.",
+                    download_en: "Not available on Microsoft Store. Download from GitHub.",
                     icon: `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="3"/><path d="M8 12h8"/></svg>`
                 }
             ]
