@@ -56,7 +56,6 @@
             transition: background 0.3s, color 0.3s;
         }
 
-        /* ==================== Modal ==================== */
         .modal-overlay {
             position: fixed;
             inset: 0;
@@ -78,7 +77,7 @@
             border: 1px solid var(--border);
             border-radius: 20px;
             padding: 28px 24px;
-            max-width: 440px;
+            max-width: 500px;
             width: 100%;
             box-shadow: 0 20px 60px rgba(0, 0, 0, 0.4);
             animation: modalIn 0.4s ease;
@@ -182,38 +181,65 @@
             font-weight: 900;
             color: var(--text-primary);
             text-align: center;
-            margin-bottom: 14px;
+            margin-bottom: 16px;
         }
 
         .app-modal-desc {
             font-size: 12.5px;
             line-height: 1.9;
             color: var(--text-secondary);
-            margin-bottom: 16px;
-            padding: 12px;
+            margin-bottom: 14px;
+            padding: 14px;
             background: var(--card-bg-inner);
             border: 1px solid var(--border);
             border-radius: 10px;
+            text-align: right;
         }
         .app-modal-desc .desc-title {
             color: var(--accent-bright);
             font-weight: 800;
             display: block;
             margin-bottom: 6px;
+            font-size: 13px;
+        }
+        .app-modal-desc .desc-text {
+            font-size: 12px;
+            line-height: 1.9;
+            margin-bottom: 12px;
+        }
+        .app-modal-desc .steps-title {
+            color: var(--accent-bright);
+            font-weight: 800;
+            display: block;
+            margin-top: 10px;
+            margin-bottom: 6px;
+            font-size: 13px;
         }
         .app-modal-desc ol {
             padding-inline-start: 20px;
-            margin-top: 6px;
+            margin-top: 4px;
         }
         .app-modal-desc ol li {
-            margin-bottom: 4px;
+            margin-bottom: 5px;
             font-size: 12px;
+            line-height: 1.7;
+        }
+        .app-modal-desc .note-box {
+            margin-top: 10px;
+            padding: 8px 10px;
+            background: var(--accent-soft);
+            border: 1px solid var(--accent-border);
+            border-radius: 8px;
+            font-size: 11.5px;
+            color: var(--accent-bright);
+            font-weight: 600;
         }
 
         .app-modal-actions {
             display: flex;
             flex-direction: column;
             gap: 10px;
+            margin-top: 16px;
         }
 
         .app-modal-btn {
@@ -242,6 +268,13 @@
         }
         .btn-install:hover { box-shadow: 0 8px 24px var(--blue-glow); }
 
+        .btn-open {
+            background: linear-gradient(135deg, var(--green), #16a34a);
+            color: #ffffff;
+            box-shadow: 0 4px 16px var(--green-glow);
+        }
+        .btn-open:hover { box-shadow: 0 8px 24px var(--green-glow); }
+
         .btn-copy {
             background: linear-gradient(135deg, var(--green), #16a34a);
             color: #ffffff;
@@ -259,7 +292,6 @@
             color: var(--accent-bright);
         }
 
-        /* ==================== Top Controls ==================== */
         .top-controls {
             position: fixed;
             top: 20px;
@@ -293,7 +325,6 @@
         .ctrl-btn.support-btn { padding: 8px; }
         .ctrl-btn.support-btn svg { width: 22px; height: 22px; }
 
-        /* ==================== Container ==================== */
         .container {
             position: relative;
             z-index: 1;
@@ -307,7 +338,6 @@
             justify-content: center;
         }
 
-        /* ==================== Logo ==================== */
         .logo-header { text-align: center; margin-bottom: 28px; }
 
         .logo-ring {
@@ -356,7 +386,6 @@
         }
         .brand-tagline span { color: var(--accent); margin: 0 6px; }
 
-        /* ==================== Greeting ==================== */
         .user-greeting {
             display: flex;
             align-items: center;
@@ -368,7 +397,6 @@
         }
         .user-greeting strong { color: var(--text-primary); font-weight: 700; }
 
-        /* ==================== Cards ==================== */
         .cards-grid {
             display: grid;
             grid-template-columns: 1fr 1fr;
@@ -530,7 +558,6 @@
             font-weight: 700;
         }
 
-        /* ==================== Guide ==================== */
         .guide-text {
             font-size: 12px;
             line-height: 2;
@@ -575,7 +602,6 @@
         .support-inline-btn:hover { transform: translateY(-2px); }
         .support-inline-btn svg { width: 18px; height: 18px; }
 
-        /* ==================== App Links ==================== */
         .app-links-grid {
             display: grid;
             grid-template-columns: repeat(4, 1fr);
@@ -614,7 +640,6 @@
         }
         .app-btn:hover svg { stroke: #ffffff; }
 
-        /* ==================== Footer ==================== */
         .footer {
             text-align: center;
             margin-top: 28px;
@@ -628,7 +653,6 @@
             font-weight: 900;
         }
 
-        /* ==================== Toast ==================== */
         .app-toast {
             position: fixed;
             bottom: 30px;
@@ -683,7 +707,7 @@
 </head>
 <body>
 
-    <!-- ==================== Welcome Modal ==================== -->
+    <!-- Welcome Modal -->
     <div class="modal-overlay" id="welcome-modal">
         <div class="modal-card">
             <div class="modal-icon">
@@ -708,7 +732,7 @@
         </div>
     </div>
 
-    <!-- ==================== App Modal ==================== -->
+    <!-- App Modal -->
     <div class="modal-overlay hidden" id="app-modal">
         <div class="modal-card">
             <div class="app-modal-icon" id="app-modal-icon"></div>
@@ -718,7 +742,7 @@
         </div>
     </div>
 
-    <!-- ==================== Top Controls ==================== -->
+    <!-- Top Controls -->
     <div class="top-controls">
         <button class="ctrl-btn" onclick="toggleLang()" title="Change Language">
             <span id="lang-flag">🇮🇷</span>
@@ -827,13 +851,12 @@
                     </div>
                     <div class="card-label" data-i18n="guide_label">راهنمای استفاده</div>
                     <div class="guide-text">
-                        <p><span class="guide-title" data-i18n="guide_android_title">📱 کاربران اندروید:</span><span data-i18n="guide_android_text">روی آیکون برنامه مورد نظر کلیک کنید. پنجره‌ای باز می‌شود که می‌توانید برنامه را از فروشگاه نصب کنید.</span></p>
-                        <p><span class="guide-title" data-i18n="guide_ios_title">🍎 کاربران iOS:</span><span data-i18n="guide_ios_text">روی آیکون برنامه مورد نظر کلیک کنید. پنجره‌ای باز می‌شود که می‌توانید برنامه را از اپ استور نصب کنید.</span></p>
-                        <p><span class="guide-title" data-i18n="guide_win_title">💻 کاربران ویندوز:</span><span data-i18n="guide_win_text">روی آیکون برنامه مورد نظر کلیک کنید. سپس لینک اشتراک را کپی کرده و با استفاده از Ctrl+V در برنامه اضافه کنید.</span></p>
+                        <p><span class="guide-title" data-i18n="guide_main_title">📖 نحوه استفاده:</span></p>
+                        <p data-i18n="guide_main_text">روی آیکون هر برنامه کلیک کنید. پنجره‌ای باز می‌شود که شامل توضیحات کامل و آموزش اختصاصی آن برنامه است. اگر برنامه را نصب دارید، روی دکمه «اجرای برنامه» کلیک کنید. اگر نصب ندارید، ابتدا روی دکمه «نصب برنامه» کلیک کرده، پس از نصب به پنل برگردید و سپس روی دکمه «اجرای برنامه» کلیک کنید.</p>
 
                         <div class="guide-note">
                             <strong data-i18n="guide_note_title">💡 نکته مهم:</strong>
-                            <span data-i18n="guide_note_text">برای برنامه Happ و NPV Tunnel، پس از نصب، لینک اشتراک را از دکمه کپی دریافت کرده و در برنامه Paste نمایید.</span>
+                            <span data-i18n="guide_note_text">برای برنامه‌های Happ و NPV Tunnel، پس از نصب، لینک اشتراک را از دکمه کپی دریافت کرده و در برنامه Paste نمایید.</span>
                         </div>
 
                         <a class="support-inline-btn" href="https://t.me/vaslplus_support1" target="_blank">
@@ -904,7 +927,6 @@
     <div class="app-toast" id="app-toast"></div>
 
     <script>
-        // ==================== Data ====================
         const DATA = {
             userName: "__USER_NAME__",
             userId: "__USER_ID__",
@@ -922,7 +944,6 @@
                                 DATA.expiryDate === "2099-01-01" ||
                                 DATA.expiryDate === "Never Expire";
 
-        // ==================== i18n ====================
         const I18N = {
             fa: {
                 greeting: "خوش آمدی،",
@@ -947,14 +968,10 @@
                 modal_checkbox: "دیگر نشان نده",
                 modal_btn: "متوجه شدم، ادامه",
                 guide_label: "راهنمای استفاده",
-                guide_android_title: "📱 کاربران اندروید:",
-                guide_android_text: "روی آیکون برنامه مورد نظر کلیک کنید. پنجره‌ای باز می‌شود که می‌توانید برنامه را از فروشگاه نصب کنید.",
-                guide_ios_title: "🍎 کاربران iOS:",
-                guide_ios_text: "روی آیکون برنامه مورد نظر کلیک کنید. پنجره‌ای باز می‌شود که می‌توانید برنامه را از اپ استور نصب کنید.",
-                guide_win_title: "💻 کاربران ویندوز:",
-                guide_win_text: "روی آیکون برنامه مورد نظر کلیک کنید. سپس لینک اشتراک را کپی کرده و با استفاده از Ctrl+V در برنامه اضافه کنید.",
+                guide_main_title: "📖 نحوه استفاده:",
+                guide_main_text: "روی آیکون هر برنامه کلیک کنید. پنجره‌ای باز می‌شود که شامل توضیحات کامل و آموزش اختصاصی آن برنامه است. اگر برنامه را نصب دارید، روی دکمه «اجرای برنامه» کلیک کنید. اگر نصب ندارید، ابتدا روی دکمه «نصب برنامه» کلیک کرده، پس از نصب به پنل برگردید و سپس روی دکمه «اجرای برنامه» کلیک کنید.",
                 guide_note_title: "💡 نکته مهم:",
-                guide_note_text: "برای برنامه Happ و NPV Tunnel، پس از نصب، لینک اشتراک را از دکمه کپی دریافت کرده و در برنامه Paste نمایید.",
+                guide_note_text: "برای برنامه‌های Happ و NPV Tunnel، پس از نصب، لینک اشتراک را از دکمه کپی دریافت کرده و در برنامه Paste نمایید.",
                 support_btn_text: "ارتباط با پشتیبانی",
                 android_label: "📱 اپلیکیشن‌های اندروید",
                 ios_label: "🍎 اپلیکیشن‌های iOS",
@@ -971,13 +988,14 @@
                 copy_success: "لینک اشتراک کپی شد! آن را در برنامه Paste کنید.",
                 copy_error: "خطا در کپی لینک",
                 btn_install_app: "نصب برنامه",
+                btn_open_app: "اجرای برنامه",
                 btn_copy_link: "کپی لینک اشتراک",
                 btn_cancel: "بستن",
-                app_modal_subtitle: "برای نصب روی دکمه زیر کلیک کنید",
-                app_modal_copy_desc: "این برنامه از بارگذاری خودکار لینک اشتراک پشتیبانی نمی‌کند. لطفاً مراحل زیر را دنبال کنید:",
-                app_modal_step_1: "برنامه را از فروشگاه نصب کنید",
-                app_modal_step_2: "روی دکمه «کپی لینک اشتراک» بزنید",
-                app_modal_step_3: "برنامه را باز کرده و از بخش افزودن اشتراک، لینک را Paste کنید"
+                // App Modal
+                app_modal_desc_title: "📝 توضیحات:",
+                app_modal_guide_title: "📖 آموزش استفاده:",
+                app_modal_note_title: "💡 نکته:",
+                not_installed_msg: "برنامه نصب نیست. لطفاً ابتدا با استفاده از دکمه «نصب برنامه»، آن را نصب کنید و سپس روی دکمه «اجرای برنامه» کلیک نمایید."
             },
             en: {
                 greeting: "Welcome,",
@@ -1002,12 +1020,8 @@
                 modal_checkbox: "Don't show again",
                 modal_btn: "Got it, Continue",
                 guide_label: "User Guide",
-                guide_android_title: "📱 Android Users:",
-                guide_android_text: "Tap on the icon of your desired app. A window will open where you can install the app from the store.",
-                guide_ios_title: "🍎 iOS Users:",
-                guide_ios_text: "Tap on the icon of your desired app. A window will open where you can install the app from the App Store.",
-                guide_win_title: "💻 Windows Users:",
-                guide_win_text: "Click on the icon of your desired app. Then copy the subscription link and paste it using Ctrl+V in the app.",
+                guide_main_title: "📖 How to Use:",
+                guide_main_text: "Click on the icon of each app. A window will open with full description and dedicated guide. If you already have the app installed, click 'Open App'. If not, first click 'Install App', then return to the panel and click 'Open App'.",
                 guide_note_title: "💡 Important Note:",
                 guide_note_text: "For Happ and NPV Tunnel apps, after installation, copy the subscription link and paste it in the app.",
                 support_btn_text: "Contact Support",
@@ -1026,13 +1040,13 @@
                 copy_success: "Subscription link copied! Paste it in the app.",
                 copy_error: "Failed to copy link",
                 btn_install_app: "Install App",
+                btn_open_app: "Open App",
                 btn_copy_link: "Copy Subscription Link",
                 btn_cancel: "Close",
-                app_modal_subtitle: "Click the button below to install",
-                app_modal_copy_desc: "This app does not support automatic subscription loading. Please follow these steps:",
-                app_modal_step_1: "Install the app from the store",
-                app_modal_step_2: "Click the 'Copy Subscription Link' button",
-                app_modal_step_3: "Open the app and paste the link in the Add Subscription section"
+                app_modal_desc_title: "📝 Description:",
+                app_modal_guide_title: "📖 How to Use:",
+                app_modal_note_title: "💡 Note:",
+                not_installed_msg: "App is not installed. Please first install it using 'Install App' button, then click 'Open App'."
             }
         };
 
@@ -1041,53 +1055,248 @@
 
         const $ = (id) => document.getElementById(id);
 
-        // ==================== Apps ====================
+        // Apps with full descriptions
         const APPS = {
             android: [
-                { id: "v2rayng", name: "V2rayNG", store: "https://fa.v2rayng.org/download/", isCopy: false,
-                  icon: `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2L2 7l10 5 10-5-10-5z"/><path d="M2 17l10 5 10-5"/><path d="M2 12l10 5 10-5"/></svg>` },
-                { id: "v2box", name: "V2Box", store: "https://play.google.com/store/apps/details?id=dev.hexasoftware.v2box", isCopy: false,
-                  icon: `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="4"/><path d="M9 8l6 8M9 16l6-8"/></svg>` },
-                { id: "nekobox", name: "NekoBox", store: "https://nekobox.pro/fa/#download", isCopy: false,
-                  icon: `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M8 12h8M12 8v8"/></svg>` },
-                { id: "hiddify", name: "Hiddify", store: "https://play.google.com/store/apps/details?id=app.hiddify.com", isCopy: false,
-                  icon: `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>` },
-                { id: "singbox", name: "Sing-box", store: "https://play.google.com/store/apps/details?id=io.nekohasekai.sfa", isCopy: false,
-                  icon: `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="3"/><path d="M8 12h8"/></svg>` },
-                { id: "npv", name: "NPV Tunnel", store: "https://play.google.com/store/apps/details?id=com.napsternetlabs.napsternetv", isCopy: true,
-                  icon: `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 20V10a8 8 0 0 1 16 0v10"/><path d="M2 20h20"/><circle cx="12" cy="10" r="2"/></svg>` },
-                { id: "happ", name: "Happ", store: "https://play.google.com/store/apps/details?id=com.happproxy", isCopy: true,
-                  icon: `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M8 14s1.5 2 4 2 4-2 4-2"/><line x1="9" y1="9" x2="9.01" y2="9"/><line x1="15" y1="9" x2="15.01" y2="9"/></svg>` }
+                {
+                    id: "v2rayng", name: "V2rayNG",
+                    store: "https://fa.v2rayng.org/download/",
+                    isCopy: false,
+                    deepLink: (sub) => `v2rayng://install-sub?url=${encodeURIComponent(sub)}&name=__USER_NAME__`,
+                    desc_fa: "محبوب‌ترین و پرکاربردترین کلاینت V2Ray برای اندروید که از تمام پروتکل‌های مدرن مانند VMess، VLESS، Trojan و Shadowsocks پشتیبانی می‌کند. رابط کاربری ساده و روان آن، آن را به انتخاب اول کاربران اندروید تبدیل کرده است.",
+                    guide_fa: "۱. اگر برنامه را نصب دارید، روی دکمه «اجرای برنامه» کلیک کنید.\n۲. اگر نصب ندارید، ابتدا روی دکمه «نصب برنامه» کلیک کرده و از Google Play نصب کنید.\n۳. پس از نصب، به پنل برگردید و دوباره روی دکمه «اجرای برنامه» کلیک کنید.\n۴. برنامه باز شده و اشتراک شما به صورت خودکار اضافه می‌شود.",
+                    note_fa: "در صورت بروز مشکل، از دکمه پشتیبانی استفاده کنید.",
+                    desc_en: "The most popular V2Ray client for Android with support for all modern protocols including VMess, VLESS, Trojan and Shadowsocks.",
+                    guide_en: "1. If you have the app installed, click 'Open App'.\n2. If not, first click 'Install App' and install from Google Play.\n3. After installation, return to the panel and click 'Open App' again.\n4. The app will open and your subscription will be added automatically.",
+                    note_en: "If you encounter any issues, use the support button.",
+                    icon: `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2L2 7l10 5 10-5-10-5z"/><path d="M2 17l10 5 10-5"/><path d="M2 12l10 5 10-5"/></svg>`
+                },
+                {
+                    id: "v2box", name: "V2Box",
+                    store: "https://play.google.com/store/apps/details?id=dev.hexasoftware.v2box",
+                    isCopy: false,
+                    deepLink: (sub) => `v2box://install-sub?url=${encodeURIComponent(sub)}&name=__USER_NAME__`,
+                    desc_fa: "کلاینت چندپلتفرمی سبک و سریع با پشتیبانی از پروتکل‌های VMess، VLESS، Trojan و Shadowsocks. این برنامه هم برای اندروید و هم برای iOS طراحی شده و رابط کاربری بسیار ساده‌ای دارد.",
+                    guide_fa: "۱. اگر برنامه را نصب دارید، روی دکمه «اجرای برنامه» کلیک کنید.\n۲. اگر نصب ندارید، ابتدا روی دکمه «نصب برنامه» کلیک کرده و از Google Play نصب کنید.\n۳. پس از نصب، به پنل برگردید و دوباره روی دکمه «اجرای برنامه» کلیک کنید.\n۴. اشتراک شما به صورت خودکار اضافه می‌شود.",
+                    note_fa: "برای اتصال سریع‌تر، از سرورهای نزدیک‌تر استفاده کنید.",
+                    desc_en: "A lightweight multi-platform client supporting VMess, VLESS, Trojan and Shadowsocks protocols.",
+                    guide_en: "1. If you have the app installed, click 'Open App'.\n2. If not, first click 'Install App' and install from Google Play.\n3. After installation, return to the panel and click 'Open App' again.\n4. Your subscription will be added automatically.",
+                    note_en: "For faster connection, use closer servers.",
+                    icon: `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="4"/><path d="M9 8l6 8M9 16l6-8"/></svg>`
+                },
+                {
+                    id: "nekobox", name: "NekoBox",
+                    store: "https://nekobox.pro/fa/#download",
+                    isCopy: false,
+                    deepLink: (sub) => `sn://subscription?url=${encodeURIComponent(sub)}`,
+                    desc_fa: "کلاینت مدرن بر پایه Sing-box با پشتیبانی از تمام پروتکل‌های پیشرفته شامل VMess، VLESS، Trojan، Hysteria2، TUIC و WireGuard. این برنامه رابط کاربری زیبا و قابلیت‌های حرفه‌ای دارد.",
+                    guide_fa: "۱. اگر برنامه را نصب دارید، روی دکمه «اجرای برنامه» کلیک کنید.\n۲. اگر نصب ندارید، ابتدا روی دکمه «نصب برنامه» کلیک کرده و از سایت رسمی دانلود کنید.\n۳. فایل APK را نصب کنید (اجازه نصب از منابع ناشناس را بدهید).\n۴. پس از نصب، به پنل برگردید و دوباره روی دکمه «اجرای برنامه» کلیک کنید.",
+                    note_fa: "حتماً از سایت رسمی nekobox.pro دانلود کنید.",
+                    desc_en: "A modern client based on Sing-box with support for all advanced protocols including Hysteria2 and TUIC.",
+                    guide_en: "1. If you have the app installed, click 'Open App'.\n2. If not, first click 'Install App' and download from official site.\n3. Install the APK file (allow installation from unknown sources).\n4. After installation, return to the panel and click 'Open App' again.",
+                    note_en: "Make sure to download from the official site nekobox.pro.",
+                    icon: `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M8 12h8M12 8v8"/></svg>`
+                },
+                {
+                    id: "hiddify", name: "Hiddify",
+                    store: "https://play.google.com/store/apps/details?id=app.hiddify.com",
+                    isCopy: false,
+                    deepLink: (sub) => `hiddify://import/${sub}`,
+                    desc_fa: "کلاینت چندسکویی با رابط کاربری فوق‌العاده زیبا و مدرن که از Sing-box و V2Ray پشتیبانی می‌کند. این برنامه برای اندروید، iOS، ویندوز، مک و لینوکس موجود است.",
+                    guide_fa: "۱. اگر برنامه را نصب دارید، روی دکمه «اجرای برنامه» کلیک کنید.\n۲. اگر نصب ندارید، ابتدا روی دکمه «نصب برنامه» کلیک کرده و نصب کنید.\n۳. پس از نصب، به پنل برگردید و دوباره روی دکمه «اجرای برنامه» کلیک کنید.\n۴. اشتراک به صورت خودکار اضافه می‌شود.",
+                    note_fa: "Hiddify از پروتکل‌های پیشرفته Hysteria2 و TUIC پشتیبانی می‌کند.",
+                    desc_en: "A multi-platform client with a beautiful modern UI supporting Sing-box and V2Ray.",
+                    guide_en: "1. If you have the app installed, click 'Open App'.\n2. If not, first click 'Install App' and install.\n3. After installation, return to the panel and click 'Open App' again.\n4. Subscription will be added automatically.",
+                    note_en: "Hiddify supports advanced protocols like Hysteria2 and TUIC.",
+                    icon: `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>`
+                },
+                {
+                    id: "singbox", name: "Sing-box",
+                    store: "https://play.google.com/store/apps/details?id=io.nekohasekai.sfa",
+                    isCopy: false,
+                    deepLink: (sub) => `sing-box://import-remote-profile?url=${encodeURIComponent(sub)}`,
+                    desc_fa: "کلاینت رسمی پروژه Sing-box با عملکرد بالا و پایداری عالی. این برنامه توسط تیم SagerNet توسعه یافته و از تمام پروتکل‌های مدرن پشتیبانی می‌کند.",
+                    guide_fa: "۱. اگر برنامه را نصب دارید، روی دکمه «اجرای برنامه» کلیک کنید.\n۲. اگر نصب ندارید، ابتدا روی دکمه «نصب برنامه» کلیک کرده و از Google Play نصب کنید.\n۳. پس از نصب، به پنل برگردید و دوباره روی دکمه «اجرای برنامه» کلیک کنید.\n۴. اشتراک به صورت خودکار اضافه می‌شود.",
+                    note_fa: "برای بهترین عملکرد، آخرین نسخه را نصب کنید.",
+                    desc_en: "The official Sing-box client with high performance and excellent stability.",
+                    guide_en: "1. If you have the app installed, click 'Open App'.\n2. If not, first click 'Install App' and install from Google Play.\n3. After installation, return to the panel and click 'Open App' again.\n4. Subscription will be added automatically.",
+                    note_en: "For best performance, install the latest version.",
+                    icon: `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="3"/><path d="M8 12h8"/></svg>`
+                },
+                {
+                    id: "npv", name: "NPV Tunnel",
+                    store: "https://play.google.com/store/apps/details?id=com.napsternetlabs.napsternetv",
+                    isCopy: true,
+                    desc_fa: "کلاینت ساده و سریع برای اتصال به سرورهای V2Ray. این برنامه رابط کاربری مینیمال و سبکی دارد و برای کاربرانی که به دنبال راه‌حل ساده هستند، ایده‌آل است.",
+                    guide_fa: "۱. اگر برنامه را نصب دارید، روی دکمه «کپی لینک اشتراک» کلیک کنید.\n۲. اگر نصب ندارید، ابتدا روی دکمه «نصب برنامه» کلیک کرده و نصب کنید.\n۳. پس از نصب، برنامه را باز کنید.\n۴. از بخش Import، لینک کپی‌شده را Paste نمایید.",
+                    note_fa: "این برنامه از بارگذاری خودکار اشتراک پشتیبانی نمی‌کند.",
+                    desc_en: "A simple and fast client for connecting to V2Ray servers with minimal UI.",
+                    guide_en: "1. If you have the app installed, click 'Copy Subscription Link'.\n2. If not, first click 'Install App' and install.\n3. Open the app.\n4. Paste the copied link in the Import section.",
+                    note_en: "This app does not support automatic subscription loading.",
+                    icon: `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 20V10a8 8 0 0 1 16 0v10"/><path d="M2 20h20"/><circle cx="12" cy="10" r="2"/></svg>`
+                },
+                {
+                    id: "happ", name: "Happ",
+                    store: "https://play.google.com/store/apps/details?id=com.happproxy",
+                    isCopy: true,
+                    desc_fa: "کلاینت مدرن با پشتیبانی از پروتکل‌های پیشرفته و رابط کاربری زیبا. این برنامه به تازگی وارد بازار شده و امکانات خوبی ارائه می‌دهد.",
+                    guide_fa: "۱. اگر برنامه را نصب دارید، روی دکمه «کپی لینک اشتراک» کلیک کنید.\n۲. اگر نصب ندارید، ابتدا روی دکمه «نصب برنامه» کلیک کرده و نصب کنید.\n۳. پس از نصب، برنامه را باز کنید.\n۴. از بخش Add Subscription، لینک کپی‌شده را Paste نمایید.",
+                    note_fa: "این برنامه از بارگذاری خودکار اشتراک پشتیبانی نمی‌کند.",
+                    desc_en: "A modern client with advanced protocol support and beautiful UI.",
+                    guide_en: "1. If you have the app installed, click 'Copy Subscription Link'.\n2. If not, first click 'Install App' and install.\n3. Open the app.\n4. Paste the copied link in the Add Subscription section.",
+                    note_en: "This app does not support automatic subscription loading.",
+                    icon: `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M8 14s1.5 2 4 2 4-2 4-2"/><line x1="9" y1="9" x2="9.01" y2="9"/><line x1="15" y1="9" x2="15.01" y2="9"/></svg>`
+                }
             ],
             ios: [
-                { id: "shadowrocket", name: "Shadowrocket", store: "https://apps.apple.com/us/app/shadowrocket/id932747118", isCopy: false,
-                  icon: `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4.5 16.5c-1.5 1.26-2 5-2 5s3.74-.5 5-2c.71-.84.7-2.13-.09-2.91a2.18 2.18 0 0 0-2.91 0z"/><path d="M12 15l-3-3a22 22 0 0 1 2-3.95A12.88 12.88 0 0 1 22 2c0 2.72-.78 7.5-6 11a22.35 22.35 0 0 1-4 2z"/><path d="M9 12H4s.55-3.03 2-4c1.62-1.08 5 0 5 0"/><path d="M12 15v5s3.03-.55 4-2c1.08-1.62 0-5 0-5"/></svg>` },
-                { id: "streisand", name: "Streisand", store: "https://apps.apple.com/us/app/streisand/id6450534064", isCopy: false,
-                  icon: `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>` },
-                { id: "v2box-ios", name: "V2Box", store: "https://apps.apple.com/us/app/v2box-v2ray-client/id6446814690", isCopy: false,
-                  icon: `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="4"/><path d="M9 8l6 8M9 16l6-8"/></svg>` },
-                { id: "foxray", name: "FoXray", store: "https://apps.apple.com/us/app/foxray/id6448898396", isCopy: false,
-                  icon: `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M12 2v20M2 12h20"/></svg>` },
-                { id: "hiddify-ios", name: "Hiddify", store: "https://apps.apple.com/us/app/hiddify-proxy-vpn/id6596777532", isCopy: false,
-                  icon: `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>` },
-                { id: "singbox-ios", name: "Sing-box", store: "https://apps.apple.com/us/app/sing-box-vt/id6673731168", isCopy: false,
-                  icon: `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="3"/><path d="M8 12h8"/></svg>` }
+                {
+                    id: "shadowrocket", name: "Shadowrocket",
+                    store: "https://apps.apple.com/us/app/shadowrocket/id932747118",
+                    isCopy: false,
+                    deepLink: (sub) => `shadowrocket://add/sub://${btoa(sub)}?remarks=__USER_NAME__`,
+                    desc_fa: "محبوب‌ترین و حرفه‌ای‌ترین کلاینت iOS با پشتیبانی از تمام پروتکل‌های مدرن. این برنامه امکانات پیشرفته‌ای مانند قوانین مسیریابی، تست سرعت و مدیریت چند اشتراک دارد.",
+                    guide_fa: "۱. اگر برنامه را نصب دارید، روی دکمه «اجرای برنامه» کلیک کنید.\n۲. اگر نصب ندارید، ابتدا روی دکمه «نصب برنامه» کلیک کرده و از App Store نصب کنید.\n۳. پس از نصب، به پنل برگردید و دوباره روی دکمه «اجرای برنامه» کلیک کنید.\n۴. اشتراک به صورت خودکار اضافه می‌شود.",
+                    note_fa: "این برنامه پولی است اما ارزش خرید دارد.",
+                    desc_en: "The most popular and professional iOS client with support for all modern protocols.",
+                    guide_en: "1. If you have the app installed, click 'Open App'.\n2. If not, first click 'Install App' and install from App Store.\n3. After installation, return to the panel and click 'Open App' again.\n4. Subscription will be added automatically.",
+                    note_en: "This app is paid but worth it.",
+                    icon: `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4.5 16.5c-1.5 1.26-2 5-2 5s3.74-.5 5-2c.71-.84.7-2.13-.09-2.91a2.18 2.18 0 0 0-2.91 0z"/><path d="M12 15l-3-3a22 22 0 0 1 2-3.95A12.88 12.88 0 0 1 22 2c0 2.72-.78 7.5-6 11a22.35 22.35 0 0 1-4 2z"/><path d="M9 12H4s.55-3.03 2-4c1.62-1.08 5 0 5 0"/><path d="M12 15v5s3.03-.55 4-2c1.08-1.62 0-5 0-5"/></svg>`
+                },
+                {
+                    id: "streisand", name: "Streisand",
+                    store: "https://apps.apple.com/us/app/streisand/id6450534064",
+                    isCopy: false,
+                    deepLink: (sub) => `streisand://import/${sub}`,
+                    desc_fa: "کلاینت رایگان و قدرتمند برای iOS با پشتیبانی از V2Ray و پروتکل‌های مختلف. این برنامه رابط کاربری ساده و کاربردی دارد.",
+                    guide_fa: "۱. اگر برنامه را نصب دارید، روی دکمه «اجرای برنامه» کلیک کنید.\n۲. اگر نصب ندارید، ابتدا روی دکمه «نصب برنامه» کلیک کرده و از App Store نصب کنید.\n۳. پس از نصب، به پنل برگردید و دوباره روی دکمه «اجرای برنامه» کلیک کنید.\n۴. اشتراک به صورت خودکار اضافه می‌شود.",
+                    note_fa: "Streisand رایگان است و امکانات خوبی ارائه می‌دهد.",
+                    desc_en: "A free and powerful iOS client with V2Ray support.",
+                    guide_en: "1. If you have the app installed, click 'Open App'.\n2. If not, first click 'Install App' and install from App Store.\n3. After installation, return to the panel and click 'Open App' again.\n4. Subscription will be added automatically.",
+                    note_en: "Streisand is free and offers good features.",
+                    icon: `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>`
+                },
+                {
+                    id: "v2box-ios", name: "V2Box",
+                    store: "https://apps.apple.com/us/app/v2box-v2ray-client/id6446814690",
+                    isCopy: false,
+                    deepLink: (sub) => `v2box://install-sub?url=${encodeURIComponent(sub)}&name=__USER_NAME__`,
+                    desc_fa: "کلاینت چندپلتفرمی سبک و سریع با پشتیبانی از پروتکل‌های VMess، VLESS، Trojan و Shadowsocks.",
+                    guide_fa: "۱. اگر برنامه را نصب دارید، روی دکمه «اجرای برنامه» کلیک کنید.\n۲. اگر نصب ندارید، ابتدا روی دکمه «نصب برنامه» کلیک کرده و از App Store نصب کنید.\n۳. پس از نصب، به پنل برگردید و دوباره روی دکمه «اجرای برنامه» کلیک کنید.\n۴. اشتراک به صورت خودکار اضافه می‌شود.",
+                    note_fa: "برای اتصال سریع‌تر، از سرورهای نزدیک‌تر استفاده کنید.",
+                    desc_en: "A lightweight multi-platform client supporting VMess, VLESS, Trojan and Shadowsocks.",
+                    guide_en: "1. If you have the app installed, click 'Open App'.\n2. If not, first click 'Install App' and install from App Store.\n3. After installation, return to the panel and click 'Open App' again.\n4. Subscription will be added automatically.",
+                    note_en: "For faster connection, use closer servers.",
+                    icon: `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="4"/><path d="M9 8l6 8M9 16l6-8"/></svg>`
+                },
+                {
+                    id: "foxray", name: "FoXray",
+                    store: "https://apps.apple.com/us/app/foxray/id6448898396",
+                    isCopy: false,
+                    deepLink: (sub) => `foxray://install-sub?url=${encodeURIComponent(sub)}`,
+                    desc_fa: "کلاینت سبک و سریع برای iOS با رابط کاربری ساده و مینیمال. این برنامه برای کاربرانی که به دنبال راه‌حل ساده و سریع هستند، ایده‌آل است.",
+                    guide_fa: "۱. اگر برنامه را نصب دارید، روی دکمه «اجرای برنامه» کلیک کنید.\n۲. اگر نصب ندارید، ابتدا روی دکمه «نصب برنامه» کلیک کرده و از App Store نصب کنید.\n۳. پس از نصب، به پنل برگردید و دوباره روی دکمه «اجرای برنامه» کلیک کنید.\n۴. اشتراک به صورت خودکار اضافه می‌شود.",
+                    note_fa: "این برنامه رایگان است و امکانات پایه‌ای خوبی دارد.",
+                    desc_en: "A lightweight and fast iOS client with simple minimal UI.",
+                    guide_en: "1. If you have the app installed, click 'Open App'.\n2. If not, first click 'Install App' and install from App Store.\n3. After installation, return to the panel and click 'Open App' again.\n4. Subscription will be added automatically.",
+                    note_en: "This app is free and offers good basic features.",
+                    icon: `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M12 2v20M2 12h20"/></svg>`
+                },
+                {
+                    id: "hiddify-ios", name: "Hiddify",
+                    store: "https://apps.apple.com/us/app/hiddify-proxy-vpn/id6596777532",
+                    isCopy: false,
+                    deepLink: (sub) => `hiddify://import/${sub}`,
+                    desc_fa: "کلاینت چندسکویی با رابط کاربری فوق‌العاده زیبا و مدرن که از Sing-box و V2Ray پشتیبانی می‌کند.",
+                    guide_fa: "۱. اگر برنامه را نصب دارید، روی دکمه «اجرای برنامه» کلیک کنید.\n۲. اگر نصب ندارید، ابتدا روی دکمه «نصب برنامه» کلیک کرده و از App Store نصب کنید.\n۳. پس از نصب، به پنل برگردید و دوباره روی دکمه «اجرای برنامه» کلیک کنید.\n۴. اشتراک به صورت خودکار اضافه می‌شود.",
+                    note_fa: "Hiddify از پروتکل‌های پیشرفته پشتیبانی می‌کند.",
+                    desc_en: "A multi-platform client with beautiful modern UI supporting Sing-box and V2Ray.",
+                    guide_en: "1. If you have the app installed, click 'Open App'.\n2. If not, first click 'Install App' and install from App Store.\n3. After installation, return to the panel and click 'Open App' again.\n4. Subscription will be added automatically.",
+                    note_en: "Hiddify supports advanced protocols.",
+                    icon: `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>`
+                },
+                {
+                    id: "singbox-ios", name: "Sing-box",
+                    store: "https://apps.apple.com/us/app/sing-box-vt/id6673731168",
+                    isCopy: false,
+                    deepLink: (sub) => `sing-box://import-remote-profile?url=${encodeURIComponent(sub)}`,
+                    desc_fa: "کلاینت رسمی پروژه Sing-box برای iOS با عملکرد بالا و پایداری عالی.",
+                    guide_fa: "۱. اگر برنامه را نصب دارید، روی دکمه «اجرای برنامه» کلیک کنید.\n۲. اگر نصب ندارید، ابتدا روی دکمه «نصب برنامه» کلیک کرده و از App Store نصب کنید.\n۳. پس از نصب، به پنل برگردید و دوباره روی دکمه «اجرای برنامه» کلیک کنید.\n۴. اشتراک به صورت خودکار اضافه می‌شود.",
+                    note_fa: "برای بهترین عملکرد، آخرین نسخه را نصب کنید.",
+                    desc_en: "The official Sing-box client for iOS with high performance and excellent stability.",
+                    guide_en: "1. If you have the app installed, click 'Open App'.\n2. If not, first click 'Install App' and install from App Store.\n3. After installation, return to the panel and click 'Open App' again.\n4. Subscription will be added automatically.",
+                    note_en: "For best performance, install the latest version.",
+                    icon: `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="3"/><path d="M8 12h8"/></svg>`
+                }
             ],
             windows: [
-                { id: "v2rayn", name: "V2rayN", store: "https://github.com/2dust/v2rayN/releases", isCopy: false,
-                  icon: `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M8 12h8M12 8v8"/></svg>` },
-                { id: "clash-verge", name: "Clash Verge", store: "https://github.com/clash-verge-rev/clash-verge-rev/releases", isCopy: false,
-                  icon: `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"/></svg>` },
-                { id: "hiddify-win", name: "Hiddify", store: "https://github.com/hiddify/hiddify-next/releases", isCopy: false,
-                  icon: `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>` },
-                { id: "nekoray", name: "NekoRay", store: "https://github.com/MatsuriDayo/nekoray/releases", isCopy: false,
-                  icon: `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M8 12h8M12 8v8"/></svg>` },
-                { id: "singbox-win", name: "Sing-box", store: "https://github.com/SagerNet/sing-box/releases", isCopy: false,
-                  icon: `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="3"/><path d="M8 12h8"/></svg>` }
+                {
+                    id: "v2rayn", name: "V2rayN",
+                    store: "https://github.com/2dust/v2rayN/releases",
+                    isCopy: false,
+                    deepLink: null,
+                    desc_fa: "محبوب‌ترین کلاینت V2Ray برای ویندوز با پشتیبانی از تمام پروتکل‌های مدرن. این برنامه امکانات پیشرفته‌ای مانند قوانین مسیریابی، تست سرعت و مدیریت چند اشتراک دارد.",
+                    guide_fa: "۱. اگر برنامه را نصب دارید، لینک اشتراک را کپی کنید.\n۲. اگر نصب ندارید، ابتدا روی دکمه «نصب برنامه» کلیک کرده و از GitHub دانلود کنید.\n۳. پس از نصب، برنامه را باز کنید.\n۴. با استفاده از Ctrl+V لینک اشتراک را در برنامه اضافه کنید.",
+                    note_fa: "برای اجرا، به .NET Framework نیاز دارید.",
+                    desc_en: "The most popular V2Ray client for Windows with support for all modern protocols.",
+                    guide_en: "1. If you have the app installed, copy the subscription link.\n2. If not, first click 'Install App' and download from GitHub.\n3. After installation, open the app.\n4. Add the subscription link in the app using Ctrl+V.",
+                    note_en: "Requires .NET Framework to run.",
+                    icon: `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M8 12h8M12 8v8"/></svg>`
+                },
+                {
+                    id: "clash-verge", name: "Clash Verge",
+                    store: "https://github.com/clash-verge-rev/clash-verge-rev/releases",
+                    isCopy: false,
+                    deepLink: null,
+                    desc_fa: "کلاینت مدرن بر پایه Clash Meta با رابط کاربری زیبا و امکانات حرفه‌ای. این برنامه از پروتکل‌های مختلف پشتیبانی می‌کند و برای کاربران حرفه‌ای ایده‌آل است.",
+                    guide_fa: "۱. اگر برنامه را نصب دارید، لینک اشتراک را کپی کنید.\n۲. اگر نصب ندارید، ابتدا روی دکمه «نصب برنامه» کلیک کرده و از GitHub دانلود کنید.\n۳. پس از نصب، برنامه را باز کنید.\n۴. با استفاده از Ctrl+V لینک اشتراک را در برنامه اضافه کنید.",
+                    note_fa: "Clash Verge از قوانین مسیریابی پیشرفته پشتیبانی می‌کند.",
+                    desc_en: "A modern client based on Clash Meta with beautiful UI and professional features.",
+                    guide_en: "1. If you have the app installed, copy the subscription link.\n2. If not, first click 'Install App' and download from GitHub.\n3. After installation, open the app.\n4. Add the subscription link in the app using Ctrl+V.",
+                    note_en: "Clash Verge supports advanced routing rules.",
+                    icon: `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"/></svg>`
+                },
+                {
+                    id: "hiddify-win", name: "Hiddify",
+                    store: "https://github.com/hiddify/hiddify-next/releases",
+                    isCopy: false,
+                    deepLink: null,
+                    desc_fa: "کلاینت چندسکویی با رابط کاربری فوق‌العاده زیبا و مدرن که از Sing-box و V2Ray پشتیبانی می‌کند.",
+                    guide_fa: "۱. اگر برنامه را نصب دارید، لینک اشتراک را کپی کنید.\n۲. اگر نصب ندارید، ابتدا روی دکمه «نصب برنامه» کلیک کرده و از GitHub دانلود کنید.\n۳. پس از نصب، برنامه را باز کنید.\n۴. با استفاده از Ctrl+V لینک اشتراک را در برنامه اضافه کنید.",
+                    note_fa: "Hiddify از پروتکل‌های پیشرفته پشتیبانی می‌کند.",
+                    desc_en: "A multi-platform client with beautiful modern UI supporting Sing-box and V2Ray.",
+                    guide_en: "1. If you have the app installed, copy the subscription link.\n2. If not, first click 'Install App' and download from GitHub.\n3. After installation, open the app.\n4. Add the subscription link in the app using Ctrl+V.",
+                    note_en: "Hiddify supports advanced protocols.",
+                    icon: `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>`
+                },
+                {
+                    id: "nekoray", name: "NekoRay",
+                    store: "https://github.com/MatsuriDayo/nekoray/releases",
+                    isCopy: false,
+                    deepLink: null,
+                    desc_fa: "کلاینت سبک و سریع بر پایه Sing-box با رابط کاربری ساده. این برنامه برای کاربرانی که به دنبال راه‌حل سبک و سریع هستند، ایده‌آل است.",
+                    guide_fa: "۱. اگر برنامه را نصب دارید، لینک اشتراک را کپی کنید.\n۲. اگر نصب ندارید، ابتدا روی دکمه «نصب برنامه» کلیک کرده و از GitHub دانلود کنید.\n۳. پس از نصب، برنامه را باز کنید.\n۴. با استفاده از Ctrl+V لینک اشتراک را در برنامه اضافه کنید.",
+                    note_fa: "NekoRay از تمام پروتکل‌های مدرن پشتیبانی می‌کند.",
+                    desc_en: "A lightweight and fast client based on Sing-box with simple UI.",
+                    guide_en: "1. If you have the app installed, copy the subscription link.\n2. If not, first click 'Install App' and download from GitHub.\n3. After installation, open the app.\n4. Add the subscription link in the app using Ctrl+V.",
+                    note_en: "NekoRay supports all modern protocols.",
+                    icon: `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M8 12h8M12 8v8"/></svg>`
+                },
+                {
+                    id: "singbox-win", name: "Sing-box",
+                    store: "https://github.com/SagerNet/sing-box/releases",
+                    isCopy: false,
+                    deepLink: null,
+                    desc_fa: "کلاینت رسمی پروژه Sing-box برای ویندوز با عملکرد بالا و پایداری عالی.",
+                    guide_fa: "۱. اگر برنامه را نصب دارید، لینک اشتراک را کپی کنید.\n۲. اگر نصب ندارید، ابتدا روی دکمه «نصب برنامه» کلیک کرده و از GitHub دانلود کنید.\n۳. پس از نصب، برنامه را باز کنید.\n۴. با استفاده از Ctrl+V لینک اشتراک را در برنامه اضافه کنید.",
+                    note_fa: "برای بهترین عملکرد، آخرین نسخه را نصب کنید.",
+                    desc_en: "The official Sing-box client for Windows with high performance.",
+                    guide_en: "1. If you have the app installed, copy the subscription link.\n2. If not, first click 'Install App' and download from GitHub.\n3. After installation, open the app.\n4. Add the subscription link in the app using Ctrl+V.",
+                    note_en: "For best performance, install the latest version.",
+                    icon: `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="3"/><path d="M8 12h8"/></svg>`
+                }
             ]
         };
 
-        // ==================== Format ====================
         function formatNumber(num, maxDecimals = 2) {
             if (!isFinite(num) || num === 0) return "0";
             const rounded = Math.round(num * Math.pow(10, maxDecimals)) / Math.pow(10, maxDecimals);
@@ -1095,7 +1304,6 @@
             return parseFloat(rounded.toFixed(maxDecimals)).toString();
         }
 
-        // ==================== Time ====================
         function getTimeRemaining(expiryStr) {
             if (!expiryStr || expiryStr === "Never Expire" || expiryStr === "2099-01-01") {
                 return { valid: false, days: 0, hours: 0, minutes: 0, expired: false };
@@ -1107,10 +1315,8 @@
                 expiry = new Date(num > 10000000000 ? num : num * 1000);
             } else expiry = new Date(expiryStr);
             if (!expiry || isNaN(expiry.getTime())) return { valid: false, days: 0, hours: 0, minutes: 0, expired: false };
-
             const diffMs = expiry.getTime() - Date.now();
             if (diffMs <= 0) return { valid: true, days: 0, hours: 0, minutes: 0, expired: true };
-
             const totalMinutes = Math.floor(diffMs / 60000);
             return {
                 valid: true,
@@ -1150,7 +1356,6 @@
             } catch (e) { return "—"; }
         }
 
-        // ==================== Toast ====================
         let toastTimer = null;
         function showToast(msg) {
             const toast = $("app-toast");
@@ -1160,7 +1365,6 @@
             toastTimer = setTimeout(() => toast.classList.remove("show"), 3000);
         }
 
-        // ==================== Welcome Modal ====================
         function closeWelcomeModal() {
             const checkbox = $("dont-show-again");
             if (checkbox && checkbox.checked) {
@@ -1182,29 +1386,41 @@
         function openAppModal(app) {
             const t = I18N[currentLang];
             const modal = $("app-modal");
+            const isFa = currentLang === "fa";
 
-            // آیکون
             $("app-modal-icon").innerHTML = app.icon;
-
-            // عنوان
             $("app-modal-title").textContent = app.name;
 
-            // توضیحات
-            const descEl = $("app-modal-desc");
+            // توضیحات و آموزش
+            const desc = isFa ? app.desc_fa : app.desc_en;
+            const guide = isFa ? app.guide_fa : app.guide_en;
+            const note = isFa ? app.note_fa : app.note_en;
+
+            let descHtml = `
+                <span class="desc-title">${t.app_modal_desc_title}</span>
+                <div class="desc-text">${desc}</div>
+                <span class="steps-title">${t.app_modal_guide_title}</span>
+                <div class="desc-text" style="white-space: pre-line;">${guide}</div>
+            `;
+            if (note) {
+                descHtml += `<div class="note-box">${t.app_modal_note_title} ${note}</div>`;
+            }
+            $("app-modal-desc").innerHTML = descHtml;
+
+            // دکمه‌ها
             const actionsEl = $("app-modal-actions");
 
             if (app.isCopy) {
-                // Happ / NPV Tunnel — توضیحات مخصوص
-                descEl.innerHTML = `
-                    <span class="desc-title">${t.app_modal_copy_desc}</span>
-                    <ol>
-                        <li>${t.app_modal_step_1}</li>
-                        <li>${t.app_modal_step_2}</li>
-                        <li>${t.app_modal_step_3}</li>
-                    </ol>
-                `;
-
+                // Happ / NPV — فقط نصب و کپی
                 actionsEl.innerHTML = `
+                    <a class="app-modal-btn btn-install" href="${app.store}" target="_blank">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/>
+                            <polyline points="7 10 12 15 17 10"/>
+                            <line x1="12" y1="15" x2="12" y2="3"/>
+                        </svg>
+                        <span>${t.btn_install_app}</span>
+                    </a>
                     <button class="app-modal-btn btn-copy" onclick="copySubLinkAndClose()">
                         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
                             <rect x="9" y="9" width="13" height="13" rx="2" ry="2"/>
@@ -1212,20 +1428,10 @@
                         </svg>
                         <span>${t.btn_copy_link}</span>
                     </button>
-                    <a class="app-modal-btn btn-install" href="${app.store}" target="_blank">
-                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                            <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/>
-                            <polyline points="7 10 12 15 17 10"/>
-                            <line x1="12" y1="15" x2="12" y2="3"/>
-                        </svg>
-                        <span>${t.btn_install_app}</span>
-                    </a>
                     <button class="app-modal-btn btn-cancel" onclick="closeAppModal()">${t.btn_cancel}</button>
                 `;
             } else {
-                // بقیه برنامه‌ها
-                descEl.innerHTML = `<span>${t.app_modal_subtitle}</span>`;
-
+                // بقیه برنامه‌ها — نصب و اجرا
                 actionsEl.innerHTML = `
                     <a class="app-modal-btn btn-install" href="${app.store}" target="_blank">
                         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
@@ -1235,6 +1441,14 @@
                         </svg>
                         <span>${t.btn_install_app}</span>
                     </a>
+                    <button class="app-modal-btn btn-open" onclick="openAppDeepLink('${app.id}')">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/>
+                            <polyline points="15 3 21 3 21 9"/>
+                            <line x1="10" y1="14" x2="21" y2="3"/>
+                        </svg>
+                        <span>${t.btn_open_app}</span>
+                    </button>
                     <button class="app-modal-btn btn-cancel" onclick="closeAppModal()">${t.btn_cancel}</button>
                 `;
             }
@@ -1256,7 +1470,38 @@
             });
         }
 
-        // ==================== Render Apps ====================
+        function openAppDeepLink(appId) {
+            const t = I18N[currentLang];
+            const allApps = [...APPS.android, ...APPS.ios, ...APPS.windows];
+            const app = allApps.find(a => a.id === appId);
+
+            if (!app || !app.deepLink) {
+                showToast(t.not_installed_msg);
+                return;
+            }
+
+            const subLink = "__SYNC_NORMAL__";
+            const deepLink = app.deepLink(subLink);
+            const storeUrl = app.store;
+
+            // تلاش برای باز کردن برنامه
+            const startTime = Date.now();
+
+            try {
+                window.location.href = deepLink;
+            } catch (e) {
+                showToast(t.not_installed_msg);
+                return;
+            }
+
+            // اگه برنامه باز نشد → پیام راهنما
+            setTimeout(() => {
+                if (Date.now() - startTime < 2500) {
+                    showToast(t.not_installed_msg);
+                }
+            }, 2000);
+        }
+
         function renderApps() {
             const containers = {
                 android: $("android-apps"),
@@ -1282,7 +1527,6 @@
             });
         }
 
-        // ==================== Language ====================
         function applyLang() {
             const t = I18N[currentLang];
             document.documentElement.lang = currentLang;
@@ -1304,7 +1548,6 @@
             applyLang();
         }
 
-        // ==================== Theme ====================
         function applyTheme() {
             document.documentElement.classList.toggle("light", currentTheme === "light");
             $("theme-icon").textContent = currentTheme === "dark" ? "🌙" : "☀️";
@@ -1316,13 +1559,11 @@
             applyTheme();
         }
 
-        // ==================== Render ====================
         function render() {
             const t = I18N[currentLang];
             const usageContainer = $("usage-value-container");
             const daysContainer = $("days-value-container");
 
-            // Usage
             if (isUnlimitedGB) {
                 const used = parseFloat(DATA.totalGb) || 0;
                 usageContainer.innerHTML = `
@@ -1359,7 +1600,6 @@
                 }, 300);
             }
 
-            // Days
             if (isUnlimitedDays) {
                 daysContainer.innerHTML = `
                     <span class="num" style="font-size: 42px; color: var(--accent-bright); line-height: 0.8;">∞</span>
@@ -1390,7 +1630,6 @@
             }
         }
 
-        // ==================== Init ====================
         (function init() {
             applyTheme();
             applyLang();
