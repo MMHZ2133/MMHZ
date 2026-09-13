@@ -7,25 +7,27 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link href="https://fonts.googleapis.com/css2?family=Vazirmatn:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
     <style>
-        /* ==================== متغیرهای تم اقیانوسی ==================== */
+        /* ==================== متغیرهای تم شیشه‌ای آبی ==================== */
         :root {
-            /* 🌙 حالت شب - اقیانوسی */
+            /* 🌙 حالت شب - شیشه‌ای آبی */
             --accent: #38bdf8;
             --accent-bright: #7dd3fc;
             --accent-glow: rgba(56, 189, 248, 0.35);
-            --accent-soft: rgba(56, 189, 248, 0.10);
+            --accent-soft: rgba(56, 189, 248, 0.12);
             --accent-border: rgba(56, 189, 248, 0.25);
 
-            --bg-primary: #082f49;
-            --card-bg: #0c4a6e;
-            --card-bg-inner: #082f49;
+            --bg-primary: #0a0a0f;
+            --card-bg: rgba(12, 74, 110, 0.35);
+            --card-bg-inner: rgba(8, 47, 73, 0.5);
+            --card-border: rgba(255, 255, 255, 0.12);
+            --glass-highlight: rgba(255, 255, 255, 0.1);
 
             --text-primary: #e0f2fe;
             --text-secondary: #7dd3fc;
             --text-muted: #64748b;
 
-            --border: #0c4a6e;
-            --ring-bg: #0c4a6e;
+            --border: rgba(255, 255, 255, 0.12);
+            --ring-bg: rgba(255, 255, 255, 0.1);
 
             --gradient-silver: linear-gradient(135deg, #e0f2fe 0%, #7dd3fc 100%);
 
@@ -33,26 +35,30 @@
             --blue-glow: rgba(14, 165, 233, 0.4);
             --green: #22c55e;
             --green-glow: rgba(34, 197, 94, 0.4);
+
+            --glass-blur: blur(20px) saturate(180%);
         }
 
         html.light {
-            /* ☀️ حالت روز - اقیانوسی */
+            /* ☀️ حالت روز - شیشه‌ای آبی */
             --accent: #0284c7;
             --accent-bright: #0ea5e9;
-            --accent-glow: rgba(2, 132, 199, 0.35);
+            --accent-glow: rgba(2, 132, 199, 0.3);
             --accent-soft: rgba(2, 132, 199, 0.08);
-            --accent-border: rgba(2, 132, 199, 0.20);
+            --accent-border: rgba(2, 132, 199, 0.2);
 
-            --bg-primary: #f0f9ff;
-            --card-bg: #ffffff;
-            --card-bg-inner: #f8fbff;
+            --bg-primary: #e0f2fe;
+            --card-bg: rgba(255, 255, 255, 0.45);
+            --card-bg-inner: rgba(240, 249, 255, 0.6);
+            --card-border: rgba(255, 255, 255, 0.6);
+            --glass-highlight: rgba(255, 255, 255, 0.4);
 
             --text-primary: #082f49;
             --text-secondary: #0369a1;
             --text-muted: #64748b;
 
-            --border: #bae6fd;
-            --ring-bg: #e0f2fe;
+            --border: rgba(186, 230, 253, 0.8);
+            --ring-bg: rgba(186, 230, 253, 0.6);
 
             --gradient-silver: linear-gradient(135deg, #082f49 0%, #0c4a6e 100%);
 
@@ -64,20 +70,46 @@
 
         html, body {
             font-family: 'Vazirmatn', sans-serif;
-            background: var(--bg-primary);
             color: var(--text-primary);
             min-height: 100vh;
             overflow-x: hidden;
-            transition: background 0.4s, color 0.4s;
+            transition: color 0.4s;
+        }
+
+        /* ==================== پس‌زمینه شیشه‌ای متحرک ==================== */
+        body::before {
+            content: '';
+            position: fixed;
+            inset: -50%;
+            background: conic-gradient(from 0deg,
+                #38bdf8, #0ea5e9, #0284c7, #7dd3fc,
+                #38bdf8, #0ea5e9, #0284c7, #7dd3fc);
+            animation: rotateBg 20s linear infinite;
+            z-index: -2;
+        }
+        @keyframes rotateBg {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+        body::after {
+            content: '';
+            position: fixed;
+            inset: 0;
+            background: var(--bg-primary);
+            opacity: 0.75;
+            backdrop-filter: blur(80px);
+            -webkit-backdrop-filter: blur(80px);
+            z-index: -1;
+            transition: background 0.4s, opacity 0.4s;
         }
 
         /* ==================== مودال ==================== */
         .modal-overlay {
             position: fixed;
             inset: 0;
-            background: rgba(0, 0, 0, 0.7);
-            backdrop-filter: blur(6px);
-            -webkit-backdrop-filter: blur(6px);
+            background: rgba(0, 0, 0, 0.5);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
             z-index: 999;
             display: flex;
             align-items: center;
@@ -90,12 +122,15 @@
 
         .modal-card {
             background: var(--card-bg);
-            border: 1px solid var(--border);
-            border-radius: 20px;
+            backdrop-filter: var(--glass-blur);
+            -webkit-backdrop-filter: var(--glass-blur);
+            border: 1px solid var(--card-border);
+            border-radius: 24px;
             padding: 28px 24px;
             max-width: 500px;
             width: 100%;
-            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.4);
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3),
+                        inset 0 1px 0 var(--glass-highlight);
             animation: modalIn 0.4s ease;
             max-height: 90vh;
             overflow-y: auto;
@@ -105,7 +140,6 @@
             to { opacity: 1; transform: scale(1) translateY(0); }
         }
 
-        /* مودال خوش‌آمد */
         .modal-icon {
             width: 60px;
             height: 60px;
@@ -115,8 +149,9 @@
             align-items: center;
             justify-content: center;
             background: var(--accent-soft);
-            border: 2px solid var(--accent-border);
+            border: 1px solid var(--accent-border);
             color: var(--accent-bright);
+            box-shadow: 0 0 20px var(--accent-glow);
         }
         .modal-icon svg { width: 30px; height: 30px; }
 
@@ -163,7 +198,7 @@
         .modal-btn {
             width: 100%;
             padding: 13px;
-            background: var(--accent);
+            background: linear-gradient(135deg, var(--accent), var(--accent-bright));
             color: #ffffff;
             border: none;
             border-radius: 12px;
@@ -172,9 +207,10 @@
             font-weight: 800;
             cursor: pointer;
             transition: all 0.2s;
+            box-shadow: 0 8px 24px var(--accent-glow);
         }
         .modal-btn:hover {
-            opacity: 0.9;
+            opacity: 0.95;
             transform: translateY(-2px);
         }
 
@@ -188,8 +224,9 @@
             align-items: center;
             justify-content: center;
             background: var(--accent-soft);
-            border: 2px solid var(--accent-border);
+            border: 1px solid var(--accent-border);
             color: var(--accent-bright);
+            box-shadow: 0 0 20px var(--accent-glow);
         }
         .app-modal-icon svg { width: 38px; height: 38px; }
 
@@ -208,9 +245,11 @@
             margin-bottom: 14px;
             padding: 14px;
             background: var(--card-bg-inner);
-            border: 1px solid var(--border);
-            border-radius: 10px;
+            backdrop-filter: blur(10px);
+            border: 1px solid var(--card-border);
+            border-radius: 12px;
             text-align: right;
+            box-shadow: inset 0 1px 0 var(--glass-highlight);
         }
         .app-modal-desc .desc-title {
             color: var(--accent-bright);
@@ -245,8 +284,8 @@
         .app-modal-desc .download-box {
             margin-top: 10px;
             padding: 10px 12px;
-            background: rgba(14, 165, 233, 0.08);
-            border: 1px solid rgba(14, 165, 233, 0.25);
+            background: rgba(14, 165, 233, 0.12);
+            border: 1px solid rgba(14, 165, 233, 0.3);
             border-radius: 8px;
             font-size: 12px;
             color: var(--accent-bright);
@@ -321,7 +360,9 @@
             gap: 8px;
             padding: 10px 14px;
             background: var(--card-bg);
-            border: 1px solid var(--border);
+            backdrop-filter: var(--glass-blur);
+            -webkit-backdrop-filter: var(--glass-blur);
+            border: 1px solid var(--card-border);
             border-radius: 12px;
             color: var(--text-secondary);
             font-family: inherit;
@@ -329,27 +370,21 @@
             font-weight: 700;
             cursor: pointer;
             transition: all 0.3s;
+            box-shadow: 0 4px 16px rgba(0, 0, 0, 0.1),
+                        inset 0 1px 0 var(--glass-highlight);
         }
         .ctrl-btn:hover {
             border-color: var(--accent);
             color: var(--accent-bright);
             transform: translateY(-3px);
-            box-shadow: 0 8px 20px var(--accent-glow);
+            box-shadow: 0 8px 24px var(--accent-glow);
         }
         .ctrl-btn svg { width: 18px; height: 18px; }
 
-        /* دکمه زبان */
-        .ctrl-btn.lang-btn {
-            padding: 10px 12px;
-        }
-        .ctrl-btn.lang-btn .flag-emoji {
-            font-size: 16px;
-        }
+        .ctrl-btn.lang-btn { padding: 10px 12px; }
+        .ctrl-btn.lang-btn .flag-emoji { font-size: 16px; }
 
-        /* دکمه تم */
-        .ctrl-btn.theme-btn {
-            padding: 10px 12px;
-        }
+        .ctrl-btn.theme-btn { padding: 10px 12px; }
         .ctrl-btn.theme-btn:hover svg {
             animation: rotateIcon 0.6s ease;
         }
@@ -358,18 +393,18 @@
             100% { transform: rotate(360deg); }
         }
 
-        /* دکمه پشتیبانی */
         .ctrl-btn.support-btn {
             padding: 10px;
             background: linear-gradient(135deg, var(--accent), var(--accent-bright));
             border-color: var(--accent);
             color: #ffffff;
+            box-shadow: 0 4px 16px var(--accent-glow);
         }
         .ctrl-btn.support-btn:hover {
             background: linear-gradient(135deg, var(--accent-bright), var(--accent));
             border-color: var(--accent-bright);
             color: #ffffff;
-            box-shadow: 0 8px 24px var(--accent-glow);
+            box-shadow: 0 8px 32px var(--accent-glow);
         }
         .ctrl-btn.support-btn svg {
             width: 22px;
@@ -401,8 +436,8 @@
             margin: 0 auto 14px;
             border-radius: 50%;
             padding: 3px;
-            background: var(--accent);
-            box-shadow: 0 0 20px var(--accent-glow);
+            background: linear-gradient(135deg, var(--accent), var(--accent-bright));
+            box-shadow: 0 0 30px var(--accent-glow), inset 0 1px 0 rgba(255, 255, 255, 0.3);
         }
         .logo-mark {
             width: 100%;
@@ -412,6 +447,7 @@
             align-items: center;
             justify-content: center;
             background: var(--card-bg);
+            backdrop-filter: blur(20px);
         }
         .logo-mark svg { width: 42px; height: 42px; }
 
@@ -421,6 +457,7 @@
             letter-spacing: 0.5px;
             line-height: 1;
             direction: ltr;
+            text-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
         }
         .brand-name .vasl {
             background: var(--gradient-silver);
@@ -448,6 +485,7 @@
             margin-bottom: 20px;
             font-size: 14px;
             color: var(--text-secondary);
+            text-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
         }
         .user-greeting strong { color: var(--text-primary); font-weight: 700; }
 
@@ -459,21 +497,26 @@
         }
         .card-wrap {
             position: relative;
-            border-radius: 16px;
-            padding: 2px;
-            background: var(--border);
-            border: 1px solid var(--border);
+            border-radius: 20px;
+            padding: 1px;
+            background: var(--card-border);
         }
         .card-wrap.full-width { grid-column: 1 / -1; }
 
         .card {
             background: var(--card-bg);
-            border-radius: 14px;
+            backdrop-filter: var(--glass-blur);
+            -webkit-backdrop-filter: var(--glass-blur);
+            border: 1px solid var(--card-border);
+            border-radius: 19px;
             padding: 20px 18px;
             position: relative;
             overflow: hidden;
             height: 100%;
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1),
+                        inset 0 1px 0 var(--glass-highlight);
         }
+
         .card-icon {
             width: 40px;
             height: 40px;
@@ -485,6 +528,7 @@
             border: 1px solid var(--accent-border);
             color: var(--accent-bright);
             margin-bottom: 12px;
+            box-shadow: 0 0 16px var(--accent-glow);
         }
         .card-icon svg { width: 20px; height: 20px; }
 
@@ -518,6 +562,7 @@
             align-items: baseline;
             gap: 8px;
             direction: ltr;
+            text-shadow: 0 0 20px var(--accent-glow);
         }
         .unlimited-line-1 .infinity-symbol {
             font-size: 36px;
@@ -547,7 +592,8 @@
         .simple-progress-fill {
             height: 100%;
             border-radius: 8px;
-            background: var(--accent);
+            background: linear-gradient(90deg, var(--accent), var(--accent-bright));
+            box-shadow: 0 0 12px var(--accent-glow);
             transition: width 1s cubic-bezier(0.4, 0, 0.2, 1);
             width: 0%;
         }
@@ -564,7 +610,6 @@
             );
             background-size: 300% 100%;
             animation: unlimitedSlide 3s linear infinite;
-            border-radius: 8px;
         }
         @keyframes unlimitedSlide {
             0% { background-position: 0% 0; }
@@ -596,6 +641,7 @@
             background: var(--accent-soft);
             border: 1px solid var(--accent-border);
             border-radius: 10px;
+            box-shadow: inset 0 1px 0 var(--glass-highlight);
         }
         .expiry-box {
             margin-top: 8px;
@@ -605,8 +651,9 @@
             text-align: center;
             padding: 8px 10px;
             background: var(--card-bg-inner);
-            border: 1px solid var(--border);
+            border: 1px solid var(--card-border);
             border-radius: 10px;
+            box-shadow: inset 0 1px 0 var(--glass-highlight);
         }
         .expiry-box strong {
             color: var(--accent-bright);
@@ -634,6 +681,7 @@
             margin: 10px 0;
             font-size: 11px;
             line-height: 1.7;
+            box-shadow: inset 0 1px 0 var(--glass-highlight);
         }
 
         .support-inline-btn {
@@ -654,6 +702,7 @@
             margin-top: 12px;
             width: 100%;
             transition: transform 0.2s;
+            box-shadow: 0 4px 16px var(--accent-glow);
         }
         .support-inline-btn:hover { transform: translateY(-2px); }
         .support-inline-btn svg { width: 18px; height: 18px; }
@@ -673,8 +722,9 @@
             gap: 6px;
             padding: 12px 6px;
             background: var(--card-bg-inner);
-            border: 1px solid var(--border);
-            border-radius: 10px;
+            backdrop-filter: blur(10px);
+            border: 1px solid var(--card-border);
+            border-radius: 12px;
             color: var(--text-secondary);
             text-decoration: none;
             font-size: 9px;
@@ -682,20 +732,23 @@
             text-align: center;
             transition: all 0.2s ease;
             cursor: pointer;
+            box-shadow: inset 0 1px 0 var(--glass-highlight);
         }
         .app-btn svg {
             width: 22px;
             height: 22px;
             stroke: var(--accent-bright);
             transition: stroke 0.2s;
+            filter: drop-shadow(0 0 6px var(--accent-glow));
         }
         .app-btn:hover {
-            background: var(--accent);
+            background: linear-gradient(135deg, var(--accent), var(--accent-bright));
             border-color: var(--accent-bright);
             color: #ffffff;
             transform: translateY(-2px);
+            box-shadow: 0 8px 24px var(--accent-glow);
         }
-        .app-btn:hover svg { stroke: #ffffff; }
+        .app-btn:hover svg { stroke: #ffffff; filter: none; }
 
         /* ==================== فوتر ==================== */
         .footer {
@@ -705,6 +758,7 @@
             font-weight: 700;
             color: var(--text-secondary);
             letter-spacing: 0.5px;
+            text-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
         }
         .footer .brand-footer {
             color: var(--accent-bright);
@@ -718,14 +772,17 @@
             left: 50%;
             transform: translateX(-50%) translateY(20px);
             background: var(--card-bg);
+            backdrop-filter: var(--glass-blur);
+            -webkit-backdrop-filter: var(--glass-blur);
             color: var(--text-primary);
             padding: 12px 22px;
             border-radius: 12px;
             font-size: 13px;
             font-weight: 700;
             z-index: 9999;
-            box-shadow: 0 8px 28px rgba(0, 0, 0, 0.25);
-            border: 1px solid var(--border);
+            box-shadow: 0 8px 28px rgba(0, 0, 0, 0.25),
+                        inset 0 1px 0 var(--glass-highlight);
+            border: 1px solid var(--card-border);
             opacity: 0;
             transition: opacity 0.3s, transform 0.3s;
             pointer-events: none;
@@ -1656,7 +1713,6 @@
             document.documentElement.classList.toggle("light", currentTheme === "light");
             const iconEl = $("theme-icon");
             if (currentTheme === "dark") {
-                // حالت شب → آیکون خورشید (برای رفتن به روز)
                 iconEl.innerHTML = `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
                     <circle cx="12" cy="12" r="5"/>
                     <line x1="12" y1="1" x2="12" y2="3"/>
@@ -1669,7 +1725,6 @@
                     <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/>
                 </svg>`;
             } else {
-                // حالت روز → آیکون ماه (برای رفتن به شب)
                 iconEl.innerHTML = `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
                     <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/>
                 </svg>`;
@@ -1688,7 +1743,6 @@
             const usageContainer = $("usage-value-container");
             const daysContainer = $("days-value-container");
 
-            // حجم مصرفی
             if (isUnlimitedGB) {
                 const used = parseFloat(DATA.totalGb) || 0;
                 usageContainer.innerHTML = `
@@ -1725,7 +1779,6 @@
                 }, 300);
             }
 
-            // روزهای باقی‌مانده
             if (isUnlimitedDays) {
                 daysContainer.innerHTML = `
                     <span class="num" style="font-size: 42px; color: var(--accent-bright); line-height: 0.8;">∞</span>
