@@ -14,8 +14,6 @@
             --accent-glow: rgba(255, 35, 56, 0.4);
             --accent-soft: rgba(255, 35, 56, 0.12);
             --accent-border: rgba(255, 35, 56, 0.35);
-            --bg-primary: #0a0a0f;
-            --bg-card: rgba(20, 20, 28, 0.75);
             --text-primary: #ffffff;
             --text-muted: #6b6b80;
             --text-secondary: #a0a0b0;
@@ -23,6 +21,11 @@
             --ring-bg: #23232f;
             --gradient-silver: linear-gradient(135deg, #ffffff 0%, #b8b8c8 100%);
             --rgb-gradient: linear-gradient(90deg, #ff0000, #ff8000, #ffff00, #00ff00, #00ffff, #0080ff, #8000ff, #ff00ff, #ff0000);
+
+            /* Velvet backgrounds - Dark (مشکی-قرمز مخملی) */
+            --velvet-bg: radial-gradient(ellipse at top left, #2a0a12 0%, #1a060d 30%, #0a0a0f 60%, #050507 100%);
+            --velvet-overlay: radial-gradient(circle at 20% 30%, rgba(255, 35, 56, 0.08) 0%, transparent 50%),
+                              radial-gradient(circle at 80% 70%, rgba(255, 107, 53, 0.06) 0%, transparent 50%);
         }
 
         html.light {
@@ -31,60 +34,47 @@
             --accent-glow: rgba(13, 110, 253, 0.35);
             --accent-soft: rgba(13, 110, 253, 0.12);
             --accent-border: rgba(13, 110, 253, 0.35);
-            --bg-primary: #f0f6ff;
-            --bg-card: rgba(255, 255, 255, 0.8);
             --text-primary: #0a2540;
             --text-muted: #94a3b8;
             --text-secondary: #475569;
             --border: #dbeafe;
             --ring-bg: #dbeafe;
             --gradient-silver: linear-gradient(135deg, #0a2540 0%, #1e40af 100%);
+
+            /* Velvet backgrounds - Light (آبی-سفید مخملی) */
+            --velvet-bg: radial-gradient(ellipse at top left, #dbeafe 0%, #eff6ff 30%, #f0f9ff 60%, #ffffff 100%);
+            --velvet-overlay: radial-gradient(circle at 20% 30%, rgba(13, 110, 253, 0.08) 0%, transparent 50%),
+                              radial-gradient(circle at 80% 70%, rgba(59, 130, 246, 0.06) 0%, transparent 50%);
         }
 
         * { margin: 0; padding: 0; box-sizing: border-box; }
 
         html, body {
             font-family: 'Vazirmatn', sans-serif;
-            background: var(--bg-primary);
             color: var(--text-primary);
             min-height: 100vh;
             overflow-x: hidden;
-            transition: background 0.4s, color 0.4s;
+            transition: color 0.4s;
         }
 
-        /* ==================== Fiber Optic Background ==================== */
-        .fiber-bg {
+        /* ==================== Velvet Background ==================== */
+        body::before {
+            content: '';
             position: fixed;
             inset: 0;
-            z-index: 0;
-            overflow: hidden;
+            z-index: -2;
+            background: var(--velvet-bg);
+            transition: background 0.5s ease;
+        }
+        body::after {
+            content: '';
+            position: fixed;
+            inset: 0;
+            z-index: -1;
+            background: var(--velvet-overlay);
+            transition: background 0.5s ease;
             pointer-events: none;
         }
-        .fiber-bg svg {
-            width: 100%;
-            height: 100%;
-            display: block;
-        }
-        .fiber-line {
-            fill: none;
-            stroke-width: 1.5;
-            stroke-linecap: round;
-            will-change: opacity;
-        }
-        .fiber-line.f1 { stroke: #ff2338; animation: fiberPulse 5s ease-in-out infinite; }
-        .fiber-line.f2 { stroke: #ff6b35; animation: fiberPulse 6s ease-in-out infinite 1s; }
-        .fiber-line.f3 { stroke: #ffd700; animation: fiberPulse 5.5s ease-in-out infinite 2s; }
-
-        @keyframes fiberPulse {
-            0%, 100% { opacity: 0.15; }
-            50% { opacity: 0.6; }
-        }
-
-        .fiber-particle {
-            fill: #ff2338;
-            filter: drop-shadow(0 0 4px #ff2338);
-        }
-        .fiber-particle.p2 { fill: #ff6b35; filter: drop-shadow(0 0 4px #ff6b35); }
 
         /* ==================== Top Controls ==================== */
         .top-controls {
@@ -101,7 +91,7 @@
             justify-content: center;
             gap: 6px;
             padding: 9px 12px;
-            background: var(--bg-card);
+            background: rgba(20, 20, 28, 0.75);
             backdrop-filter: blur(10px);
             -webkit-backdrop-filter: blur(10px);
             border: 1px solid var(--border);
@@ -112,6 +102,9 @@
             font-weight: 700;
             cursor: pointer;
             transition: border-color 0.2s, color 0.2s;
+        }
+        html.light .ctrl-btn {
+            background: rgba(255, 255, 255, 0.8);
         }
         .ctrl-btn:hover {
             border-color: var(--accent);
@@ -143,7 +136,7 @@
             justify-content: center;
         }
 
-        /* ==================== Logo ==================== */
+        /* ==================== Logo with RGB Ring ==================== */
         .logo-header { text-align: center; margin-bottom: 36px; }
 
         .logo-ring {
@@ -170,7 +163,10 @@
             display: flex;
             align-items: center;
             justify-content: center;
-            background: var(--bg-primary);
+            background: var(--velvet-bg);
+        }
+        html.light .logo-mark {
+            background: #ffffff;
         }
         .logo-mark svg { width: 44px; height: 44px; }
         .logo-mark .logo-swoosh { stroke: var(--accent-bright); }
@@ -229,11 +225,11 @@
                 #ff0000, #ff8000, #ffff00, #00ff00,
                 #00ffff, #0080ff, #8000ff, #ff00ff, #ff0000);
             animation: rgbRotate 4s linear infinite;
-            box-shadow: 0 0 20px rgba(255, 0, 128, 0.2);
+            box-shadow: 0 0 20px rgba(255, 0, 128, 0.15);
         }
 
         .card {
-            background: var(--bg-card);
+            background: rgba(20, 20, 28, 0.75);
             backdrop-filter: blur(12px);
             -webkit-backdrop-filter: blur(12px);
             border-radius: 14px;
@@ -241,6 +237,9 @@
             position: relative;
             overflow: hidden;
             height: 100%;
+        }
+        html.light .card {
+            background: rgba(255, 255, 255, 0.85);
         }
 
         .card-icon {
@@ -330,18 +329,37 @@
             font-weight: 700;
         }
 
-        /* ==================== Time Remaining Text ==================== */
+        /* ==================== Time Remaining Box ==================== */
         .time-remaining {
-            margin-top: 10px;
+            margin-top: 12px;
             font-size: 13px;
             font-weight: 700;
             color: var(--accent-bright);
             text-align: center;
-            padding: 8px 12px;
+            padding: 10px 12px;
             background: var(--accent-soft);
             border: 1px solid var(--accent-border);
             border-radius: 10px;
-            direction: inherit;
+        }
+
+        /* ==================== Expiry Date Box ==================== */
+        .expiry-box {
+            margin-top: 10px;
+            font-size: 12px;
+            font-weight: 600;
+            color: var(--text-secondary);
+            text-align: center;
+            padding: 8px 12px;
+            background: rgba(255, 255, 255, 0.03);
+            border: 1px solid var(--border);
+            border-radius: 10px;
+        }
+        html.light .expiry-box {
+            background: rgba(0, 0, 0, 0.03);
+        }
+        .expiry-box strong {
+            color: var(--accent-bright);
+            font-weight: 700;
         }
 
         /* ==================== Footer ==================== */
@@ -412,22 +430,6 @@
     </style>
 </head>
 <body>
-
-    <!-- ==================== Fiber Optic Background ==================== -->
-    <div class="fiber-bg">
-        <svg viewBox="0 0 1200 800" preserveAspectRatio="none">
-            <path class="fiber-line f1" d="M-100,150 Q250,250 500,180 T1100,250 T1300,180"/>
-            <path class="fiber-line f2" d="M-100,450 Q300,500 600,420 T1000,500 T1300,450"/>
-            <path class="fiber-line f3" d="M-100,700 Q250,650 500,720 T1050,650 T1300,700"/>
-
-            <circle class="fiber-particle" r="3">
-                <animateMotion dur="7s" repeatCount="indefinite" path="M-100,150 Q250,250 500,180 T1100,250 T1300,180"/>
-            </circle>
-            <circle class="fiber-particle p2" r="3">
-                <animateMotion dur="9s" repeatCount="indefinite" path="M-100,700 Q250,650 500,720 T1050,650 T1300,700"/>
-            </circle>
-        </svg>
-    </div>
 
     <!-- ==================== Top Controls ==================== -->
     <div class="top-controls">
@@ -517,12 +519,15 @@
                     <div class="rgb-progress">
                         <div class="rgb-progress-fill" id="days-progress"></div>
                     </div>
-                    <div class="progress-info">
-                        <span><span class="highlight" id="days-percent">0</span><span data-i18n="percent_remaining">٪ باقی‌مانده</span></span>
-                        <span class="highlight" id="expiry-date">—</span>
-                    </div>
-                    <!-- نمایش دقیق زمان باقی‌مانده -->
+
+                    <!-- زمان دقیق باقی‌مانده -->
                     <div class="time-remaining" id="time-remaining">—</div>
+
+                    <!-- تاریخ انقضا -->
+                    <div class="expiry-box">
+                        <span data-i18n="expiry_label">تاریخ انقضا:</span>
+                        <strong id="expiry-date">—</strong>
+                    </div>
                 </div>
             </div>
 
@@ -566,14 +571,13 @@
                 days_label: "روزهای باقی‌مانده",
                 days_unit: "روز",
                 percent_used: "٪ مصرف شده",
-                percent_remaining: "٪ باقی‌مانده",
                 remaining: "باقی‌مانده:",
+                expiry_label: "تاریخ انقضا:",
                 unlimited: "نامحدود",
                 gb_unit: "GB",
                 expired: "منقضی شده",
                 no_expiry: "بدون انقضا",
                 footer: "پنل کاربری وصل پلاس",
-                // Time units
                 day: "روز",
                 days: "روز",
                 hour: "ساعت",
@@ -581,8 +585,8 @@
                 minute: "دقیقه",
                 minutes: "دقیقه",
                 and: "و",
-                time_remaining: "باقی‌مانده",
-                expired_text: "منقضی شده"
+                expired_text: "منقضی شده",
+                remaining_prefix: "باقی‌مانده"
             },
             en: {
                 greeting: "Welcome,",
@@ -590,14 +594,13 @@
                 days_label: "Days Remaining",
                 days_unit: "days",
                 percent_used: "% used",
-                percent_remaining: "% remaining",
                 remaining: "Remaining:",
+                expiry_label: "Expiry date:",
                 unlimited: "Unlimited",
                 gb_unit: "GB",
                 expired: "Expired",
                 no_expiry: "No expiry",
                 footer: "VaslPlus User Panel",
-                // Time units
                 day: "day",
                 days: "days",
                 hour: "hour",
@@ -605,8 +608,8 @@
                 minute: "minute",
                 minutes: "minutes",
                 and: "and",
-                time_remaining: "remaining",
-                expired_text: "Expired"
+                expired_text: "Expired",
+                remaining_prefix: "remaining"
             }
         };
 
@@ -624,7 +627,6 @@
         }
 
         // ==================== Time Breakdown ====================
-        // تابع برای محاسبه‌ی روز، ساعت، دقیقه باقی‌مانده
         function getTimeRemaining(expiryStr) {
             if (!expiryStr || expiryStr === "Never Expire" || expiryStr === "2099-01-01") {
                 return { valid: false, days: 0, hours: 0, minutes: 0, expired: false };
@@ -658,7 +660,6 @@
         }
 
         // ==================== Format Time Text ====================
-        // مثال: "5 روز و 18 ساعت" یا "5 days and 18 hours"
         function formatTimeText(timeData, lang) {
             const t = I18N[lang];
 
@@ -681,22 +682,16 @@
                 return lang === "fa" ? "کمتر از یک دقیقه" : "less than a minute";
             }
 
-            return parts.join(` ${t.and} `);
+            const joined = parts.join(` ${t.and} `);
+            return lang === "fa" ? `${joined} ${t.remaining_prefix}` : `${joined} ${t.remaining_prefix}`;
         }
 
         // ==================== Calculate Days Progress ====================
-        // محاسبه‌ی درصد باقی‌مانده بر اساس 30 روز پیش‌فرض
-        // اگه کاربر بیشتر از 30 روز داشته باشه، بر اساس همون محاسبه می‌شه
         function calcDaysPercent(timeData) {
             if (timeData.expired) return 0;
-            
-            // فرض: کل زمان 30 روز
             const totalMinutes = 30 * 24 * 60;
             const remainingMinutes = (timeData.days * 24 * 60) + (timeData.hours * 60) + timeData.minutes;
-            
-            // اگه بیشتر از 30 روز مونده → 100%
             if (remainingMinutes >= totalMinutes) return 100;
-            
             return Math.max(0, Math.min(100, (remainingMinutes / totalMinutes) * 100));
         }
 
@@ -791,12 +786,9 @@
                     <span class="infinity">∞</span>
                     <span class="infinity-text">${t.unlimited}</span>
                 `;
-                $("expiry-date").textContent = t.no_expiry;
-                $("days-percent").textContent = "∞";
+                $("days-progress").style.width = "100%";
                 $("time-remaining").textContent = t.no_expiry;
-                setTimeout(() => {
-                    $("days-progress").style.width = "100%";
-                }, 300);
+                $("expiry-date").textContent = t.no_expiry;
             } else {
                 const timeData = getTimeRemaining(DATA.expiryDate);
 
@@ -805,7 +797,6 @@
                         <span class="num">0</span>
                         <span class="unit unit-accent">${t.expired}</span>
                     `;
-                    $("days-percent").textContent = "0";
                     $("days-progress").style.width = "0%";
                     $("time-remaining").textContent = t.expired_text;
                     $("expiry-date").textContent = "—";
@@ -814,24 +805,18 @@
                         <span class="num">0</span>
                         <span class="unit unit-accent">${t.expired}</span>
                     `;
-                    $("days-percent").textContent = "0";
                     $("days-progress").style.width = "0%";
                     $("time-remaining").textContent = t.expired_text;
                     $("expiry-date").textContent = toLocaleDate(DATA.expiryDate, currentLang);
                 } else {
-                    // نمایش اصلی: تعداد روز
                     daysContainer.innerHTML = `
                         <span class="num">${timeData.days}</span>
                         <span class="unit unit-accent">${t.days_unit}</span>
                     `;
 
-                    // محاسبه‌ی درصد باقی‌مانده (صحیح)
                     const remainingPercent = calcDaysPercent(timeData);
-                    $("days-percent").textContent = formatNumber(remainingPercent, 1);
 
-                    // نمایش دقیق زمان: "5 روز و 18 ساعت"
                     $("time-remaining").textContent = formatTimeText(timeData, currentLang);
-
                     $("expiry-date").textContent = toLocaleDate(DATA.expiryDate, currentLang);
 
                     setTimeout(() => {
