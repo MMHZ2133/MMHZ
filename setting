@@ -8,7 +8,6 @@
     <link href="https://fonts.googleapis.com/css2?family=Vazirmatn:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
     <style>
         :root {
-            /* تم شب - مشکی و قرمز */
             --accent: #ff2338;
             --accent-bright: #ff4d5e;
             --accent-glow: rgba(255, 35, 56, 0.4);
@@ -23,10 +22,13 @@
             --border: #2a2a2a;
             --ring-bg: #2a2a2a;
             --gradient-silver: linear-gradient(135deg, #ffffff 0%, #b8b8c8 100%);
+            --blue: #0088cc;
+            --blue-glow: rgba(0, 136, 204, 0.4);
+            --green: #22c55e;
+            --green-glow: rgba(34, 197, 94, 0.4);
         }
 
         html.light {
-            /* تم روز - سفید و آبی */
             --accent: #0d6efd;
             --accent-bright: #3b82f6;
             --accent-glow: rgba(13, 110, 253, 0.35);
@@ -76,7 +78,7 @@
             border: 1px solid var(--border);
             border-radius: 20px;
             padding: 28px 24px;
-            max-width: 480px;
+            max-width: 440px;
             width: 100%;
             box-shadow: 0 20px 60px rgba(0, 0, 0, 0.4);
             animation: modalIn 0.4s ease;
@@ -158,6 +160,103 @@
         .modal-btn:hover {
             opacity: 0.9;
             transform: translateY(-2px);
+        }
+
+        /* App Modal */
+        .app-modal-icon {
+            width: 72px;
+            height: 72px;
+            margin: 0 auto 14px;
+            border-radius: 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: var(--accent-soft);
+            border: 2px solid var(--accent-border);
+            color: var(--accent-bright);
+        }
+        .app-modal-icon svg { width: 38px; height: 38px; }
+
+        .app-modal-title {
+            font-size: 20px;
+            font-weight: 900;
+            color: var(--text-primary);
+            text-align: center;
+            margin-bottom: 14px;
+        }
+
+        .app-modal-desc {
+            font-size: 12.5px;
+            line-height: 1.9;
+            color: var(--text-secondary);
+            margin-bottom: 16px;
+            padding: 12px;
+            background: var(--card-bg-inner);
+            border: 1px solid var(--border);
+            border-radius: 10px;
+        }
+        .app-modal-desc .desc-title {
+            color: var(--accent-bright);
+            font-weight: 800;
+            display: block;
+            margin-bottom: 6px;
+        }
+        .app-modal-desc ol {
+            padding-inline-start: 20px;
+            margin-top: 6px;
+        }
+        .app-modal-desc ol li {
+            margin-bottom: 4px;
+            font-size: 12px;
+        }
+
+        .app-modal-actions {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+
+        .app-modal-btn {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            padding: 13px;
+            border: none;
+            border-radius: 12px;
+            font-family: inherit;
+            font-size: 13.5px;
+            font-weight: 800;
+            cursor: pointer;
+            transition: all 0.2s;
+            text-decoration: none;
+            width: 100%;
+        }
+        .app-modal-btn:hover { transform: translateY(-2px); }
+        .app-modal-btn svg { width: 20px; height: 20px; }
+
+        .btn-install {
+            background: linear-gradient(135deg, var(--blue), #00a8e8);
+            color: #ffffff;
+            box-shadow: 0 4px 16px var(--blue-glow);
+        }
+        .btn-install:hover { box-shadow: 0 8px 24px var(--blue-glow); }
+
+        .btn-copy {
+            background: linear-gradient(135deg, var(--green), #16a34a);
+            color: #ffffff;
+            box-shadow: 0 4px 16px var(--green-glow);
+        }
+        .btn-copy:hover { box-shadow: 0 8px 24px var(--green-glow); }
+
+        .btn-cancel {
+            background: transparent;
+            color: var(--text-muted);
+            border: 1px solid var(--border);
+        }
+        .btn-cancel:hover {
+            border-color: var(--accent);
+            color: var(--accent-bright);
         }
 
         /* ==================== Top Controls ==================== */
@@ -269,13 +368,12 @@
         }
         .user-greeting strong { color: var(--text-primary); font-weight: 700; }
 
-        /* ==================== Cards Grid ==================== */
+        /* ==================== Cards ==================== */
         .cards-grid {
             display: grid;
             grid-template-columns: 1fr 1fr;
             gap: 14px;
         }
-
         .card-wrap {
             position: relative;
             border-radius: 16px;
@@ -293,7 +391,6 @@
             overflow: hidden;
             height: 100%;
         }
-
         .card-icon {
             width: 40px;
             height: 40px;
@@ -315,7 +412,6 @@
             margin-bottom: 10px;
         }
 
-        /* ==================== Card Values ==================== */
         .card-value {
             font-size: 28px;
             font-weight: 900;
@@ -330,7 +426,6 @@
         .card-value .unit { font-size: 13px; font-weight: 600; color: var(--text-muted); }
         .card-value .unit-accent { color: var(--accent-bright); }
 
-        /* ==================== Unlimited Layout ==================== */
         .unlimited-line-1 {
             font-size: 26px;
             font-weight: 900;
@@ -358,7 +453,6 @@
             font-weight: 900;
         }
 
-        /* ==================== Simple Progress ==================== */
         .simple-progress {
             position: relative;
             height: 8px;
@@ -374,23 +468,24 @@
             transition: width 1s cubic-bezier(0.4, 0, 0.2, 1);
             width: 0%;
         }
-
-        /* نوار متحرک برای نامحدود */
         .simple-progress.unlimited .simple-progress-fill {
-            width: 40% !important;
+            width: 100% !important;
             background: linear-gradient(90deg,
-                transparent,
                 var(--accent),
                 var(--accent-bright),
+                #ff6b35,
+                var(--accent-bright),
                 var(--accent),
-                transparent);
-            background-size: 200% 100%;
-            animation: unlimitedSlide 2s linear infinite;
+                var(--accent-bright),
+                var(--accent)
+            );
+            background-size: 300% 100%;
+            animation: unlimitedSlide 3s linear infinite;
             border-radius: 8px;
         }
         @keyframes unlimitedSlide {
-            0% { background-position: -100% 0; }
-            100% { background-position: 200% 0; }
+            0% { background-position: 0% 0; }
+            100% { background-position: 300% 0; }
         }
 
         .progress-info {
@@ -419,7 +514,6 @@
             border: 1px solid var(--accent-border);
             border-radius: 10px;
         }
-
         .expiry-box {
             margin-top: 8px;
             font-size: 11.5px;
@@ -458,11 +552,6 @@
             font-size: 11px;
             line-height: 1.7;
         }
-        .guide-text .guide-warn {
-            margin-top: 10px;
-            padding-top: 10px;
-            border-top: 1px dashed var(--border);
-        }
 
         .support-inline-btn {
             display: inline-flex;
@@ -493,7 +582,6 @@
             gap: 8px;
             margin-top: 12px;
         }
-
         .app-btn {
             display: flex;
             flex-direction: column;
@@ -530,29 +618,14 @@
         .footer {
             text-align: center;
             margin-top: 28px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
+            font-size: 13px;
+            font-weight: 700;
+            color: var(--text-secondary);
+            letter-spacing: 0.5px;
         }
-        .footer .blink-text {
+        .footer .brand-footer {
+            color: var(--accent-bright);
             font-weight: 900;
-            font-size: 15px;
-            letter-spacing: 1.5px;
-        }
-
-        html.light .footer .blink-text {
-            animation: redBlink 1.2s ease-in-out infinite;
-        }
-        @keyframes redBlink {
-            0%, 100% { color: #dc2626; text-shadow: 0 0 14px rgba(220, 38, 38, 0.6); }
-            50% { color: #ff6b35; text-shadow: 0 0 14px rgba(255, 107, 53, 0.6); }
-        }
-        html:not(.light) .footer .blink-text {
-            animation: blueBlink 1.2s ease-in-out infinite;
-        }
-        @keyframes blueBlink {
-            0%, 100% { color: #3b82f6; text-shadow: 0 0 14px rgba(59, 130, 246, 0.6); }
-            50% { color: #00d4ff; text-shadow: 0 0 14px rgba(0, 212, 255, 0.6); }
         }
 
         /* ==================== Toast ==================== */
@@ -635,6 +708,16 @@
         </div>
     </div>
 
+    <!-- ==================== App Modal ==================== -->
+    <div class="modal-overlay hidden" id="app-modal">
+        <div class="modal-card">
+            <div class="app-modal-icon" id="app-modal-icon"></div>
+            <div class="app-modal-title" id="app-modal-title">App Name</div>
+            <div class="app-modal-desc" id="app-modal-desc"></div>
+            <div class="app-modal-actions" id="app-modal-actions"></div>
+        </div>
+    </div>
+
     <!-- ==================== Top Controls ==================== -->
     <div class="top-controls">
         <button class="ctrl-btn" onclick="toggleLang()" title="Change Language">
@@ -658,7 +741,7 @@
 
     <div class="container">
 
-        <!-- ==================== Logo ==================== -->
+        <!-- Logo -->
         <div class="logo-header animate delay-1">
             <div class="logo-ring">
                 <div class="logo-mark">
@@ -680,15 +763,15 @@
             <div class="brand-tagline">FAST <span>•</span> SECURE <span>•</span> GLOBAL</div>
         </div>
 
-        <!-- ==================== Greeting ==================== -->
+        <!-- Greeting -->
         <div class="user-greeting animate delay-2">
             <span data-i18n="greeting">خوش آمدی،</span> <strong>__USER_NAME__</strong>
         </div>
 
-        <!-- ==================== Cards ==================== -->
+        <!-- Cards -->
         <div class="cards-grid">
 
-            <!-- کارت حجم مصرفی -->
+            <!-- حجم مصرفی -->
             <div class="card-wrap animate delay-3">
                 <div class="card">
                     <div class="card-icon">
@@ -709,7 +792,7 @@
                 </div>
             </div>
 
-            <!-- کارت روزهای باقی‌مانده -->
+            <!-- روزهای باقی‌مانده -->
             <div class="card-wrap animate delay-4">
                 <div class="card">
                     <div class="card-icon">
@@ -733,7 +816,7 @@
                 </div>
             </div>
 
-            <!-- کارت راهنما -->
+            <!-- راهنما -->
             <div class="card-wrap full-width animate delay-5">
                 <div class="card">
                     <div class="card-icon">
@@ -744,18 +827,13 @@
                     </div>
                     <div class="card-label" data-i18n="guide_label">راهنمای استفاده</div>
                     <div class="guide-text">
-                        <p><span class="guide-title" data-i18n="guide_android_title">📱 کاربران اندروید:</span><span data-i18n="guide_android_text">روی آیکون برنامه مورد نظر کلیک کنید تا فروشگاه باز شود. پس از نصب، لینک اشتراک خودکار اضافه می‌شود.</span></p>
-                        <p><span class="guide-title" data-i18n="guide_ios_title">🍎 کاربران iOS:</span><span data-i18n="guide_ios_text">روی آیکون برنامه مورد نظر کلیک کنید تا اپ استور باز شود. پس از نصب، لینک اشتراک خودکار اضافه می‌شود.</span></p>
-                        <p><span class="guide-title" data-i18n="guide_win_title">💻 کاربران ویندوز:</span><span data-i18n="guide_win_text">روی آیکون برنامه مورد نظر کلیک کنید تا سایت رسمی باز شود. پس از دانلود و نصب، لینک اشتراک خودکار اضافه می‌شود.</span></p>
+                        <p><span class="guide-title" data-i18n="guide_android_title">📱 کاربران اندروید:</span><span data-i18n="guide_android_text">روی آیکون برنامه مورد نظر کلیک کنید. پنجره‌ای باز می‌شود که می‌توانید برنامه را از فروشگاه نصب کنید.</span></p>
+                        <p><span class="guide-title" data-i18n="guide_ios_title">🍎 کاربران iOS:</span><span data-i18n="guide_ios_text">روی آیکون برنامه مورد نظر کلیک کنید. پنجره‌ای باز می‌شود که می‌توانید برنامه را از اپ استور نصب کنید.</span></p>
+                        <p><span class="guide-title" data-i18n="guide_win_title">💻 کاربران ویندوز:</span><span data-i18n="guide_win_text">روی آیکون برنامه مورد نظر کلیک کنید. سپس لینک اشتراک را کپی کرده و با استفاده از Ctrl+V در برنامه اضافه کنید.</span></p>
 
                         <div class="guide-note">
                             <strong data-i18n="guide_note_title">💡 نکته مهم:</strong>
-                            <span data-i18n="guide_note_text">در صورت نصب بودن برنامه، به صورت خودکار باز شده و اشتراک شما اضافه می‌شود.</span>
-                        </div>
-
-                        <div class="guide-warn">
-                            <p><span class="guide-title" data-i18n="guide_happ_title">⚠️ توضیح Happ:</span><span data-i18n="guide_happ_text">لینک اشتراک خودکار بارگذاری نمی‌شود. روی آیکون کلیک کنید تا لینک کپی شود، سپس در برنامه Paste نمایید.</span></p>
-                            <p><span class="guide-title" data-i18n="guide_npv_title">⚠️ توضیح NPV Tunnel:</span><span data-i18n="guide_npv_text">لینک اشتراک خودکار بارگذاری نمی‌شود. روی آیکون کلیک کنید تا لینک کپی شود، سپس در برنامه Paste نمایید.</span></p>
+                            <span data-i18n="guide_note_text">برای برنامه Happ و NPV Tunnel، پس از نصب، لینک اشتراک را از دکمه کپی دریافت کرده و در برنامه Paste نمایید.</span>
                         </div>
 
                         <a class="support-inline-btn" href="https://t.me/vaslplus_support1" target="_blank">
@@ -815,14 +893,14 @@
 
         </div>
 
-        <!-- ==================== Footer ==================== -->
+        <!-- Footer -->
         <div class="footer animate delay-6">
-            <span class="blink-text" id="footer-text">پنل کاربری وصل پلاس</span>
+            <span class="brand-footer">وصل پلاس</span> | <span data-i18n="footer_tagline">اتصال امن و پایدار</span>
         </div>
 
     </div>
 
-    <!-- ==================== Toast ==================== -->
+    <!-- Toast -->
     <div class="app-toast" id="app-toast"></div>
 
     <script>
@@ -859,7 +937,7 @@
                 expired: "منقضی شده",
                 no_expiry: "بدون انقضا",
                 used_text: "مصرف شده",
-                footer: "پنل کاربری وصل پلاس",
+                footer_tagline: "اتصال امن و پایدار",
                 modal_title: "خوش آمدید",
                 modal_greet: "سلام و عرض ادب خدمت شما کاربر گرامی",
                 modal_body: "از اینکه وصل پلاس را انتخاب نموده‌اید، صمیمانه سپاسگزاریم.",
@@ -870,17 +948,13 @@
                 modal_btn: "متوجه شدم، ادامه",
                 guide_label: "راهنمای استفاده",
                 guide_android_title: "📱 کاربران اندروید:",
-                guide_android_text: "روی آیکون برنامه مورد نظر کلیک کنید تا فروشگاه باز شود. پس از نصب، لینک اشتراک خودکار اضافه می‌شود.",
+                guide_android_text: "روی آیکون برنامه مورد نظر کلیک کنید. پنجره‌ای باز می‌شود که می‌توانید برنامه را از فروشگاه نصب کنید.",
                 guide_ios_title: "🍎 کاربران iOS:",
-                guide_ios_text: "روی آیکون برنامه مورد نظر کلیک کنید تا اپ استور باز شود. پس از نصب، لینک اشتراک خودکار اضافه می‌شود.",
+                guide_ios_text: "روی آیکون برنامه مورد نظر کلیک کنید. پنجره‌ای باز می‌شود که می‌توانید برنامه را از اپ استور نصب کنید.",
                 guide_win_title: "💻 کاربران ویندوز:",
-                guide_win_text: "روی آیکون برنامه مورد نظر کلیک کنید تا سایت رسمی باز شود. پس از دانلود و نصب، لینک اشتراک خودکار اضافه می‌شود.",
+                guide_win_text: "روی آیکون برنامه مورد نظر کلیک کنید. سپس لینک اشتراک را کپی کرده و با استفاده از Ctrl+V در برنامه اضافه کنید.",
                 guide_note_title: "💡 نکته مهم:",
-                guide_note_text: "در صورت نصب بودن برنامه، به صورت خودکار باز شده و اشتراک شما اضافه می‌شود.",
-                guide_happ_title: "⚠️ توضیح Happ:",
-                guide_happ_text: "لینک اشتراک خودکار بارگذاری نمی‌شود. روی آیکون کلیک کنید تا لینک کپی شود، سپس در برنامه Paste نمایید.",
-                guide_npv_title: "⚠️ توضیح NPV Tunnel:",
-                guide_npv_text: "لینک اشتراک خودکار بارگذاری نمی‌شود. روی آیکون کلیک کنید تا لینک کپی شود، سپس در برنامه Paste نمایید.",
+                guide_note_text: "برای برنامه Happ و NPV Tunnel، پس از نصب، لینک اشتراک را از دکمه کپی دریافت کرده و در برنامه Paste نمایید.",
                 support_btn_text: "ارتباط با پشتیبانی",
                 android_label: "📱 اپلیکیشن‌های اندروید",
                 ios_label: "🍎 اپلیکیشن‌های iOS",
@@ -894,8 +968,16 @@
                 and: "و",
                 expired_text: "منقضی شده",
                 remaining_prefix: "باقی‌مانده",
-                copy_success: "لینک کپی شد!",
-                copy_error: "خطا در کپی لینک"
+                copy_success: "لینک اشتراک کپی شد! آن را در برنامه Paste کنید.",
+                copy_error: "خطا در کپی لینک",
+                btn_install_app: "نصب برنامه",
+                btn_copy_link: "کپی لینک اشتراک",
+                btn_cancel: "بستن",
+                app_modal_subtitle: "برای نصب روی دکمه زیر کلیک کنید",
+                app_modal_copy_desc: "این برنامه از بارگذاری خودکار لینک اشتراک پشتیبانی نمی‌کند. لطفاً مراحل زیر را دنبال کنید:",
+                app_modal_step_1: "برنامه را از فروشگاه نصب کنید",
+                app_modal_step_2: "روی دکمه «کپی لینک اشتراک» بزنید",
+                app_modal_step_3: "برنامه را باز کرده و از بخش افزودن اشتراک، لینک را Paste کنید"
             },
             en: {
                 greeting: "Welcome,",
@@ -910,7 +992,7 @@
                 expired: "Expired",
                 no_expiry: "No expiry",
                 used_text: "used",
-                footer: "VaslPlus User Panel",
+                footer_tagline: "Secure & Stable Connection",
                 modal_title: "Welcome",
                 modal_greet: "Hello and warm greetings, dear user",
                 modal_body: "We sincerely thank you for choosing VaslPlus.",
@@ -921,17 +1003,13 @@
                 modal_btn: "Got it, Continue",
                 guide_label: "User Guide",
                 guide_android_title: "📱 Android Users:",
-                guide_android_text: "Tap on the icon of your desired app to open the store. After installation, the subscription link will be added automatically.",
+                guide_android_text: "Tap on the icon of your desired app. A window will open where you can install the app from the store.",
                 guide_ios_title: "🍎 iOS Users:",
-                guide_ios_text: "Tap on the icon of your desired app to open the App Store. After installation, the subscription link will be added automatically.",
+                guide_ios_text: "Tap on the icon of your desired app. A window will open where you can install the app from the App Store.",
                 guide_win_title: "💻 Windows Users:",
-                guide_win_text: "Click on the icon of your desired app to open the official website. After installing, the subscription link will be added automatically.",
+                guide_win_text: "Click on the icon of your desired app. Then copy the subscription link and paste it using Ctrl+V in the app.",
                 guide_note_title: "💡 Important Note:",
-                guide_note_text: "If the app is installed, it will open automatically and your subscription will be added.",
-                guide_happ_title: "⚠️ Happ Note:",
-                guide_happ_text: "The subscription link is not loaded automatically. Click the icon to copy the link, then paste it in the app.",
-                guide_npv_title: "⚠️ NPV Tunnel Note:",
-                guide_npv_text: "The subscription link is not loaded automatically. Click the icon to copy the link, then paste it in the app.",
+                guide_note_text: "For Happ and NPV Tunnel apps, after installation, copy the subscription link and paste it in the app.",
                 support_btn_text: "Contact Support",
                 android_label: "📱 Android Apps",
                 ios_label: "🍎 iOS Apps",
@@ -945,8 +1023,16 @@
                 and: "and",
                 expired_text: "Expired",
                 remaining_prefix: "remaining",
-                copy_success: "Link copied!",
-                copy_error: "Failed to copy link"
+                copy_success: "Subscription link copied! Paste it in the app.",
+                copy_error: "Failed to copy link",
+                btn_install_app: "Install App",
+                btn_copy_link: "Copy Subscription Link",
+                btn_cancel: "Close",
+                app_modal_subtitle: "Click the button below to install",
+                app_modal_copy_desc: "This app does not support automatic subscription loading. Please follow these steps:",
+                app_modal_step_1: "Install the app from the store",
+                app_modal_step_2: "Click the 'Copy Subscription Link' button",
+                app_modal_step_3: "Open the app and paste the link in the Add Subscription section"
             }
         };
 
@@ -1074,7 +1160,7 @@
             toastTimer = setTimeout(() => toast.classList.remove("show"), 3000);
         }
 
-        // ==================== Modal ====================
+        // ==================== Welcome Modal ====================
         function closeWelcomeModal() {
             const checkbox = $("dont-show-again");
             if (checkbox && checkbox.checked) {
@@ -1092,19 +1178,82 @@
             }
         }
 
-        // ==================== App Click ====================
-        function handleAppClick(app) {
+        // ==================== App Modal ====================
+        function openAppModal(app) {
+            const t = I18N[currentLang];
+            const modal = $("app-modal");
+
+            // آیکون
+            $("app-modal-icon").innerHTML = app.icon;
+
+            // عنوان
+            $("app-modal-title").textContent = app.name;
+
+            // توضیحات
+            const descEl = $("app-modal-desc");
+            const actionsEl = $("app-modal-actions");
+
             if (app.isCopy) {
-                const t = I18N[currentLang];
-                const guideKey = app.id === "happ" ? "guide_happ_text" : "guide_npv_text";
-                navigator.clipboard.writeText("__SYNC_NORMAL__").then(() => {
-                    showToast(t[guideKey]);
-                }).catch(() => {
-                    showToast(t.copy_error);
-                });
-                return;
+                // Happ / NPV Tunnel — توضیحات مخصوص
+                descEl.innerHTML = `
+                    <span class="desc-title">${t.app_modal_copy_desc}</span>
+                    <ol>
+                        <li>${t.app_modal_step_1}</li>
+                        <li>${t.app_modal_step_2}</li>
+                        <li>${t.app_modal_step_3}</li>
+                    </ol>
+                `;
+
+                actionsEl.innerHTML = `
+                    <button class="app-modal-btn btn-copy" onclick="copySubLinkAndClose()">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <rect x="9" y="9" width="13" height="13" rx="2" ry="2"/>
+                            <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/>
+                        </svg>
+                        <span>${t.btn_copy_link}</span>
+                    </button>
+                    <a class="app-modal-btn btn-install" href="${app.store}" target="_blank">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/>
+                            <polyline points="7 10 12 15 17 10"/>
+                            <line x1="12" y1="15" x2="12" y2="3"/>
+                        </svg>
+                        <span>${t.btn_install_app}</span>
+                    </a>
+                    <button class="app-modal-btn btn-cancel" onclick="closeAppModal()">${t.btn_cancel}</button>
+                `;
+            } else {
+                // بقیه برنامه‌ها
+                descEl.innerHTML = `<span>${t.app_modal_subtitle}</span>`;
+
+                actionsEl.innerHTML = `
+                    <a class="app-modal-btn btn-install" href="${app.store}" target="_blank">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/>
+                            <polyline points="7 10 12 15 17 10"/>
+                            <line x1="12" y1="15" x2="12" y2="3"/>
+                        </svg>
+                        <span>${t.btn_install_app}</span>
+                    </a>
+                    <button class="app-modal-btn btn-cancel" onclick="closeAppModal()">${t.btn_cancel}</button>
+                `;
             }
-            window.open(app.store, "_blank");
+
+            modal.classList.remove("hidden");
+        }
+
+        function closeAppModal() {
+            $("app-modal").classList.add("hidden");
+        }
+
+        function copySubLinkAndClose() {
+            const t = I18N[currentLang];
+            navigator.clipboard.writeText("__SYNC_NORMAL__").then(() => {
+                showToast(t.copy_success);
+                closeAppModal();
+            }).catch(() => {
+                showToast(t.copy_error);
+            });
         }
 
         // ==================== Render Apps ====================
@@ -1126,7 +1275,7 @@
                     btn.innerHTML = `${app.icon}<span>${app.name}</span>`;
                     btn.addEventListener("click", (e) => {
                         e.preventDefault();
-                        handleAppClick(app);
+                        openAppModal(app);
                     });
                     container.appendChild(btn);
                 });
@@ -1146,7 +1295,6 @@
 
             $("lang-flag").textContent = currentLang === "fa" ? "🇮🇷" : "🇬🇧";
             $("lang-text").textContent = currentLang === "fa" ? "FA" : "EN";
-            $("footer-text").textContent = t.footer;
             render();
         }
 
@@ -1174,7 +1322,7 @@
             const usageContainer = $("usage-value-container");
             const daysContainer = $("days-value-container");
 
-            // ========== Usage ==========
+            // Usage
             if (isUnlimitedGB) {
                 const used = parseFloat(DATA.totalGb) || 0;
                 usageContainer.innerHTML = `
@@ -1186,13 +1334,11 @@
                         <span class="used-num">${formatNumber(used)} GB</span> ${t.used_text}
                     </div>
                 `;
-                // نوار متحرک برای نامحدود
                 const progressWrap = $("usage-progress-wrap");
                 progressWrap.classList.add("unlimited");
                 setTimeout(() => {
-                    $("usage-progress").style.width = "40%";
+                    $("usage-progress").style.width = "100%";
                 }, 300);
-                // مخفی کردن اطلاعات درصد
                 $("usage-progress-info").style.display = "none";
             } else {
                 const used = parseFloat(DATA.totalGb) || 0;
@@ -1213,7 +1359,7 @@
                 }, 300);
             }
 
-            // ========== Days ==========
+            // Days
             if (isUnlimitedDays) {
                 daysContainer.innerHTML = `
                     <span class="num" style="font-size: 42px; color: var(--accent-bright); line-height: 0.8;">∞</span>
