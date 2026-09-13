@@ -25,7 +25,6 @@
             --fib1: #ff2338;
             --fib2: #ff6b35;
             --fib3: #ffd700;
-            --footer-glow: rgba(255, 35, 56, 0.5);
         }
 
         html.light {
@@ -43,7 +42,6 @@
             --ring-bg: #dbeafe;
             --gradient-accent: linear-gradient(135deg, #0d6efd 0%, #3b82f6 100%);
             --gradient-silver: linear-gradient(135deg, #0a2540 0%, #1e40af 100%);
-            --footer-glow: rgba(13, 110, 253, 0.5);
         }
 
         * { margin: 0; padding: 0; box-sizing: border-box; }
@@ -57,7 +55,7 @@
             transition: background 0.5s, color 0.5s;
         }
 
-        /* ==================== Fiber Optic Background ==================== */
+        /* ==================== Fiber Optic Background (Light) ==================== */
         .fiber-bg {
             position: fixed;
             inset: 0;
@@ -65,46 +63,28 @@
             overflow: hidden;
             pointer-events: none;
         }
-
         .fiber-bg svg {
             width: 100%;
             height: 100%;
             display: block;
         }
-
         .fiber-line {
             fill: none;
             stroke-width: 1.5;
             stroke-linecap: round;
-            filter: drop-shadow(0 0 4px currentColor);
         }
-
-        .fiber-line.f1 { stroke: var(--fib1); animation: fiberPulse1 4s ease-in-out infinite; }
-        .fiber-line.f2 { stroke: var(--fib2); animation: fiberPulse2 5s ease-in-out infinite; }
-        .fiber-line.f3 { stroke: var(--fib3); animation: fiberPulse3 6s ease-in-out infinite; }
-        .fiber-line.f4 { stroke: var(--fib1); animation: fiberPulse1 5.5s ease-in-out infinite 0.5s; }
-        .fiber-line.f5 { stroke: var(--fib2); animation: fiberPulse2 4.5s ease-in-out infinite 1s; }
-        .fiber-line.f6 { stroke: var(--fib3); animation: fiberPulse3 5.5s ease-in-out infinite 1.5s; }
-
-        @keyframes fiberPulse1 {
-            0%, 100% { opacity: 0.15; stroke-width: 1.5; }
-            50% { opacity: 0.75; stroke-width: 2.5; }
+        .fiber-line.f1 { stroke: var(--fib1); animation: fiberPulse 5s ease-in-out infinite; }
+        .fiber-line.f2 { stroke: var(--fib2); animation: fiberPulse 6s ease-in-out infinite 1s; }
+        .fiber-line.f3 { stroke: var(--fib3); animation: fiberPulse 5.5s ease-in-out infinite 2s; }
+        @keyframes fiberPulse {
+            0%, 100% { opacity: 0.18; }
+            50% { opacity: 0.7; }
         }
-        @keyframes fiberPulse2 {
-            0%, 100% { opacity: 0.2; stroke-width: 1.5; }
-            50% { opacity: 0.7; stroke-width: 2.5; }
-        }
-        @keyframes fiberPulse3 {
-            0%, 100% { opacity: 0.18; stroke-width: 1.5; }
-            50% { opacity: 0.65; stroke-width: 2.5; }
-        }
-
         .fiber-particle {
             fill: var(--fib1);
-            filter: drop-shadow(0 0 6px currentColor);
+            filter: drop-shadow(0 0 5px currentColor);
         }
         .fiber-particle.p2 { fill: var(--fib2); }
-        .fiber-particle.p3 { fill: var(--fib3); }
 
         /* ==================== Top Controls ==================== */
         .top-controls {
@@ -115,7 +95,6 @@
             gap: 10px;
             z-index: 100;
         }
-
         .ctrl-btn {
             display: inline-flex;
             align-items: center;
@@ -141,6 +120,7 @@
             box-shadow: 0 8px 24px var(--accent-glow);
         }
         .ctrl-btn svg { width: 18px; height: 18px; }
+
         .ctrl-btn.support-btn {
             background: linear-gradient(135deg, #0088cc 0%, #00a8e8 100%);
             border-color: #0088cc;
@@ -150,6 +130,7 @@
         .ctrl-btn.support-btn:hover {
             box-shadow: 0 8px 24px rgba(0, 136, 204, 0.5);
             border-color: #00a8e8;
+            color: #ffffff;
         }
 
         /* ==================== Container ==================== */
@@ -178,15 +159,8 @@
             padding: 3px;
             background: conic-gradient(
                 from 0deg,
-                #ff0000,
-                #ff8000,
-                #ffff00,
-                #00ff00,
-                #00ffff,
-                #0080ff,
-                #8000ff,
-                #ff00ff,
-                #ff0000
+                #ff0000, #ff8000, #ffff00, #00ff00,
+                #00ffff, #0080ff, #8000ff, #ff00ff, #ff0000
             );
             animation: rgbRotate 4s linear infinite;
             box-shadow: 0 0 25px rgba(255, 0, 128, 0.3),
@@ -196,7 +170,6 @@
             from { filter: hue-rotate(0deg); }
             to { filter: hue-rotate(360deg); }
         }
-
         .logo-mark {
             width: 100%;
             height: 100%;
@@ -208,6 +181,7 @@
             position: relative;
         }
         .logo-mark svg { width: 44px; height: 44px; }
+        .logo-mark .logo-swoosh { stroke: var(--accent-bright); }
 
         .brand-name {
             font-size: 26px;
@@ -270,7 +244,9 @@
             position: absolute;
             top: 0; left: 0; right: 0;
             height: 3px;
-            background: linear-gradient(90deg, #ff0000, #ff8000, #ffff00, #00ff00, #00ffff, #0080ff, #8000ff, #ff00ff, #ff0000);
+            background: linear-gradient(90deg,
+                #ff0000, #ff8000, #ffff00, #00ff00,
+                #00ffff, #0080ff, #8000ff, #ff00ff, #ff0000);
             background-size: 200% 100%;
             animation: rgbSlide 3s linear infinite;
         }
@@ -329,7 +305,7 @@
             margin-right: 6px;
         }
 
-        /* ==================== RGB Progress Bar ==================== */
+        /* ==================== RGB Progress Bars (هم برای حجم هم مهلت) ==================== */
         .rgb-progress {
             position: relative;
             height: 8px;
@@ -341,12 +317,15 @@
         .rgb-progress-fill {
             height: 100%;
             border-radius: 8px;
-            background: linear-gradient(90deg, #ff0000, #ff8000, #ffff00, #00ff00, #00ffff, #0080ff, #8000ff, #ff00ff, #ff0000);
+            background: linear-gradient(90deg,
+                #ff0000, #ff8000, #ffff00, #00ff00,
+                #00ffff, #0080ff, #8000ff, #ff00ff, #ff0000);
             background-size: 300% 100%;
             animation: rgbSlide 3s linear infinite;
             box-shadow: 0 0 12px rgba(255, 0, 128, 0.5);
             transition: width 1s cubic-bezier(0.4, 0, 0.2, 1);
             position: relative;
+            width: 0%;
         }
         .rgb-progress-fill::after {
             content: '';
@@ -375,26 +354,6 @@
             font-weight: 700;
         }
 
-        /* ==================== Days Ring (RGB) ==================== */
-        .days-ring {
-            margin-top: 16px;
-            display: flex;
-            gap: 4px;
-        }
-        .day-seg {
-            flex: 1;
-            height: 6px;
-            border-radius: 4px;
-            background: var(--ring-bg);
-            transition: all 0.4s;
-        }
-        .day-seg.active {
-            background: linear-gradient(90deg, #ff0000, #ff8000, #ffff00, #00ff00, #00ffff, #0080ff, #8000ff, #ff00ff);
-            background-size: 300% 100%;
-            animation: rgbSlide 4s linear infinite;
-            box-shadow: 0 0 8px rgba(255, 100, 0, 0.5);
-        }
-
         /* ==================== Footer with Blink ==================== */
         .footer {
             text-align: center;
@@ -410,7 +369,7 @@
             transition: color 0.3s;
         }
 
-        /* روز: قرمز با فلاشر */
+        /* روز: قرمز */
         html.light .footer .blink-text {
             animation: redBlink 1.2s ease-in-out infinite;
         }
@@ -427,7 +386,7 @@
             }
         }
 
-        /* شب: آبی با فلاشر */
+        /* شب: آبی */
         html:not(.light) .footer .blink-text {
             animation: blueBlink 1.2s ease-in-out infinite;
         }
@@ -471,47 +430,18 @@
 </head>
 <body>
 
-    <!-- ==================== Fiber Optic Background ==================== -->
+    <!-- ==================== Fiber Optic Background (سبک) ==================== -->
     <div class="fiber-bg">
         <svg viewBox="0 0 1200 800" preserveAspectRatio="none">
-            <defs>
-                <radialGradient id="glowRed" cx="50%" cy="50%" r="50%">
-                    <stop offset="0%" stop-color="#ff2338" stop-opacity="0.8"/>
-                    <stop offset="100%" stop-color="#ff2338" stop-opacity="0"/>
-                </radialGradient>
-                <radialGradient id="glowOrange" cx="50%" cy="50%" r="50%">
-                    <stop offset="0%" stop-color="#ff6b35" stop-opacity="0.8"/>
-                    <stop offset="100%" stop-color="#ff6b35" stop-opacity="0"/>
-                </radialGradient>
-                <radialGradient id="glowGold" cx="50%" cy="50%" r="50%">
-                    <stop offset="0%" stop-color="#ffd700" stop-opacity="0.8"/>
-                    <stop offset="100%" stop-color="#ffd700" stop-opacity="0"/>
-                </radialGradient>
-            </defs>
+            <path class="fiber-line f1" d="M-100,150 Q250,250 500,180 T1100,250 T1300,180"/>
+            <path class="fiber-line f2" d="M-100,450 Q300,500 600,420 T1000,500 T1300,450"/>
+            <path class="fiber-line f3" d="M-100,700 Q250,650 500,720 T1050,650 T1300,700"/>
 
-            <!-- Fiber Lines -->
-            <path class="fiber-line f1" d="M-100,100 Q200,150 400,100 T900,200 T1300,150"/>
-            <path class="fiber-line f2" d="M-100,250 Q150,200 350,280 T800,220 T1300,300"/>
-            <path class="fiber-line f3" d="M-100,400 Q250,450 500,380 T950,450 T1300,400"/>
-            <path class="fiber-line f4" d="M-100,550 Q200,500 450,580 T1000,520 T1300,600"/>
-            <path class="fiber-line f5" d="M-100,700 Q300,650 550,720 T1050,660 T1300,700"/>
-            <path class="fiber-line f6" d="M200,-50 Q300,200 250,400 T350,700 T300,850"/>
-
-            <!-- Moving Particles -->
             <circle class="fiber-particle" r="3">
-                <animateMotion dur="6s" repeatCount="indefinite" path="M-100,100 Q200,150 400,100 T900,200 T1300,150"/>
+                <animateMotion dur="7s" repeatCount="indefinite" path="M-100,150 Q250,250 500,180 T1100,250 T1300,180"/>
             </circle>
             <circle class="fiber-particle p2" r="3">
-                <animateMotion dur="7s" repeatCount="indefinite" path="M-100,400 Q250,450 500,380 T950,450 T1300,400"/>
-            </circle>
-            <circle class="fiber-particle p3" r="3">
-                <animateMotion dur="5s" repeatCount="indefinite" path="M-100,700 Q300,650 550,720 T1050,660 T1300,700"/>
-            </circle>
-            <circle class="fiber-particle" r="2.5">
-                <animateMotion dur="8s" repeatCount="indefinite" path="M-100,250 Q150,200 350,280 T800,220 T1300,300"/>
-            </circle>
-            <circle class="fiber-particle p2" r="2.5">
-                <animateMotion dur="6.5s" repeatCount="indefinite" path="M-100,550 Q200,500 450,580 T1000,520 T1300,600"/>
+                <animateMotion dur="9s" repeatCount="indefinite" path="M-100,700 Q250,650 500,720 T1050,650 T1300,700"/>
             </circle>
         </svg>
     </div>
@@ -529,10 +459,11 @@
             <span id="theme-icon">🌙</span>
         </button>
 
-        <!-- دکمه پشتیبانی -->
-        <a class="ctrl-btn support-btn" href="https://t.me/vaslplus_support1" target="_blank" title="Support">
-            <svg viewBox="0 0 24 24" fill="currentColor">
-                <path d="M9.78 18.65l.28-4.23 7.68-6.92c.34-.31-.07-.46-.52-.19L7.74 13.3 3.64 12c-.88-.25-.89-.86.2-1.3l15.97-6.16c.73-.33 1.43.18 1.15 1.3l-2.72 12.81c-.19.91-.74 1.13-1.5.71L12.6 16.3l-1.99 1.93c-.23.23-.42.42-.83.42z"/>
+        <!-- دکمه پشتیبانی - آیکون هدست ساپورت -->
+        <a class="ctrl-btn support-btn" href="https://t.me/vaslplus_support1" target="_blank" title="پشتیبانی / Support">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M3 18v-6a9 9 0 0 1 18 0v6"/>
+                <path d="M21 19a2 2 0 0 1-2 2h-1a2 2 0 0 1-2-2v-3a2 2 0 0 1 2-2h3zM3 19a2 2 0 0 0 2 2h1a2 2 0 0 0 2-2v-3a2 2 0 0 0-2-2H3z"/>
             </svg>
         </a>
     </div>
@@ -545,7 +476,7 @@
                 <div class="logo-mark">
                     <svg viewBox="0 0 24 24" fill="none">
                         <path d="M4 4 L10 20 L14 20 L20 4 L16 4 L12 15 L8 4 Z" fill="url(#silverGrad)"/>
-                        <path class="logo-swoosh" d="M3 8 Q12 16 21 6" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round"/>
+                        <path class="logo-swoosh" d="M3 8 Q12 16 21 6" stroke-width="2" fill="none" stroke-linecap="round"/>
                         <defs>
                             <linearGradient id="silverGrad" x1="0%" y1="0%" x2="100%" y2="100%">
                                 <stop offset="0%" stop-color="#ffffff"/>
@@ -580,7 +511,7 @@
                 <div class="card-label" data-i18n="used_label">حجم مصرف‌شده</div>
                 <div class="card-value" id="usage-value-container"></div>
                 <div class="rgb-progress">
-                    <div class="rgb-progress-fill" id="usage-progress" style="width: 0%;"></div>
+                    <div class="rgb-progress-fill" id="usage-progress"></div>
                 </div>
                 <div class="progress-info">
                     <span><span class="highlight" id="used-percent">0</span><span data-i18n="percent_used">٪ مصرف شده</span></span>
@@ -600,10 +531,16 @@
                 </div>
                 <div class="card-label" data-i18n="days_label">روزهای باقی‌مانده</div>
                 <div class="card-value" id="days-value-container"></div>
-                <div class="days-ring" id="days-ring"></div>
-                <div class="progress-info" style="margin-top: 10px;">
+                <!-- نوار RGB برای مهلت -->
+                <div class="rgb-progress">
+                    <div class="rgb-progress-fill" id="days-progress"></div>
+                </div>
+                <div class="progress-info">
+                    <span><span class="highlight" id="days-percent">0</span><span data-i18n="percent_remaining">٪ باقی‌مانده</span></span>
                     <span data-i18n="expiry_label">تاریخ انقضا:</span>
-                    <span class="highlight" id="expiry-date">—</span>
+                </div>
+                <div class="progress-info" style="margin-top: 4px;">
+                    <span class="highlight" id="expiry-date" style="font-size: 12px;">—</span>
                 </div>
             </div>
 
@@ -647,6 +584,7 @@
                 days_label: "روزهای باقی‌مانده",
                 days_unit: "روز",
                 percent_used: "٪ مصرف شده",
+                percent_remaining: "٪ باقی‌مانده",
                 remaining: "باقی‌مانده:",
                 expiry_label: "تاریخ انقضا:",
                 unlimited: "نامحدود",
@@ -661,6 +599,7 @@
                 days_label: "Days Remaining",
                 days_unit: "days",
                 percent_used: "% used",
+                percent_remaining: "% remaining",
                 remaining: "Remaining:",
                 expiry_label: "Expiry date:",
                 unlimited: "Unlimited",
@@ -765,7 +704,6 @@
             const t = I18N[currentLang];
             const usageContainer = $("usage-value-container");
             const daysContainer = $("days-value-container");
-            const ring = $("days-ring");
 
             // ========== Usage ==========
             if (isUnlimitedGB) {
@@ -773,7 +711,9 @@
                     <span class="infinity">∞</span>
                     <span class="infinity-text">${t.unlimited}</span>
                 `;
-                $("usage-progress").style.width = "100%";
+                setTimeout(() => {
+                    $("usage-progress").style.width = "100%";
+                }, 300);
             } else {
                 const used = parseFloat(DATA.totalGb) || 0;
                 const total = parseFloat(DATA.limitTotalGb) || 0;
@@ -792,7 +732,7 @@
 
                 setTimeout(() => {
                     $("usage-progress").style.width = Math.min(100, percent) + "%";
-                }, 200);
+                }, 300);
             }
 
             // ========== Days ==========
@@ -802,37 +742,37 @@
                     <span class="infinity-text">${t.unlimited}</span>
                 `;
                 $("expiry-date").textContent = t.no_expiry;
-                ring.innerHTML = "";
-                for (let i = 0; i < 7; i++) {
-                    const seg = document.createElement("div");
-                    seg.className = "day-seg active";
-                    ring.appendChild(seg);
-                }
+                $("days-percent").textContent = "∞";
+                setTimeout(() => {
+                    $("days-progress").style.width = "100%";
+                }, 300);
             } else {
                 const result = calcDaysLeft(DATA.expiryDate);
+
                 if (result.expired) {
                     daysContainer.innerHTML = `
                         <span class="num">0</span>
                         <span class="unit unit-accent">${t.expired}</span>
                     `;
+                    $("days-percent").textContent = "0";
+                    $("days-progress").style.width = "0%";
                 } else {
                     daysContainer.innerHTML = `
                         <span class="num">${result.days}</span>
                         <span class="unit unit-accent">${t.days_unit}</span>
                     `;
+
+                    // محاسبه درصد باقی‌مانده (بر اساس ۳۰ روز پیش‌فرض)
+                    const maxDays = 30;
+                    const remainingPercent = Math.min(100, (result.days / maxDays) * 100);
+                    $("days-percent").textContent = formatNumber(remainingPercent, 1);
+
+                    setTimeout(() => {
+                        $("days-progress").style.width = remainingPercent + "%";
+                    }, 300);
                 }
+
                 $("expiry-date").textContent = toLocaleDate(DATA.expiryDate, currentLang);
-                const daysLeft = result.days;
-                const segments = 7;
-                const filledSegments = daysLeft >= 30
-                    ? segments
-                    : Math.max(0, Math.round((daysLeft / 30) * segments));
-                ring.innerHTML = "";
-                for (let i = 0; i < segments; i++) {
-                    const seg = document.createElement("div");
-                    seg.className = "day-seg" + (i < filledSegments ? " active" : "");
-                    ring.appendChild(seg);
-                }
             }
         }
 
