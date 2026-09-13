@@ -7,26 +7,26 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link href="https://fonts.googleapis.com/css2?family=Vazirmatn:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
     <style>
-        /* ==================== متغیرهای تم اقیانوسی شیشه‌ای ==================== */
+        /* ==================== متغیرهای تم Solid Minimal ==================== */
         :root {
-            /* 🌙 حالت شب - آبی نفتی شیشه‌ای */
+            /* 🌙 حالت شب - آبی نفتی ساده */
             --accent: #38bdf8;
             --accent-bright: #7dd3fc;
-            --accent-glow: rgba(56, 189, 248, 0.35);
-            --accent-soft: rgba(56, 189, 248, 0.10);
+            --accent-glow: rgba(56, 189, 248, 0.3);
+            --accent-soft: rgba(56, 189, 248, 0.12);
             --accent-border: rgba(56, 189, 248, 0.25);
 
             --bg-primary: #082f49;
-            --card-bg: rgba(12, 74, 110, 0.5);
-            --card-bg-inner: rgba(8, 47, 73, 0.6);
-            --card-border: rgba(56, 189, 248, 0.2);
+            --card-bg: #0c4a6e;
+            --card-bg-inner: #082f49;
+            --card-border: #0c4a6e;
 
             --text-primary: #ffffff;
             --text-secondary: #bae6fd;
             --text-muted: #94a3b8;
 
-            --border: rgba(56, 189, 248, 0.2);
-            --ring-bg: rgba(56, 189, 248, 0.15);
+            --border: #0c4a6e;
+            --ring-bg: #0c4a6e;
 
             --gradient-silver: linear-gradient(135deg, #ffffff 0%, #bae6fd 100%);
 
@@ -37,24 +37,24 @@
         }
 
         html.light {
-            /* ☀️ حالت روز - آبی روشن شیشه‌ای */
+            /* ☀️ حالت روز - آبی روشن ساده */
             --accent: #0284c7;
             --accent-bright: #0ea5e9;
-            --accent-glow: rgba(2, 132, 199, 0.3);
+            --accent-glow: rgba(2, 132, 199, 0.25);
             --accent-soft: rgba(2, 132, 199, 0.08);
             --accent-border: rgba(2, 132, 199, 0.2);
 
             --bg-primary: #e0f2fe;
-            --card-bg: rgba(255, 255, 255, 0.5);
-            --card-bg-inner: rgba(240, 249, 255, 0.7);
-            --card-border: rgba(2, 132, 199, 0.15);
+            --card-bg: #ffffff;
+            --card-bg-inner: #f0f9ff;
+            --card-border: #dbeafe;
 
             --text-primary: #000000;
             --text-secondary: #1e293b;
             --text-muted: #475569;
 
-            --border: rgba(2, 132, 199, 0.15);
-            --ring-bg: rgba(2, 132, 199, 0.1);
+            --border: #dbeafe;
+            --ring-bg: #e0f2fe;
 
             --gradient-silver: linear-gradient(135deg, #000000 0%, #1e293b 100%);
 
@@ -66,28 +66,11 @@
 
         html, body {
             font-family: 'Vazirmatn', sans-serif;
+            background: var(--bg-primary);
             color: var(--text-primary);
             min-height: 100vh;
             overflow-x: hidden;
-            transition: color 0.3s;
-        }
-
-        body {
-            background: var(--bg-primary);
-            position: relative;
-            transition: background 0.4s;
-        }
-        body::before {
-            content: '';
-            position: fixed;
-            inset: 0;
-            background: 
-                radial-gradient(circle at 15% 20%, var(--accent-soft) 0%, transparent 45%),
-                radial-gradient(circle at 85% 80%, var(--accent-soft) 0%, transparent 45%),
-                radial-gradient(circle at 50% 50%, rgba(255, 255, 255, 0.03) 0%, transparent 70%);
-            z-index: -1;
-            pointer-events: none;
-            transition: background 0.4s;
+            transition: background 0.3s, color 0.3s;
         }
 
         /* ==================== مودال ==================== */
@@ -95,8 +78,6 @@
             position: fixed;
             inset: 0;
             background: rgba(0, 0, 0, 0.6);
-            backdrop-filter: blur(10px);
-            -webkit-backdrop-filter: blur(10px);
             z-index: 999;
             display: flex;
             align-items: center;
@@ -109,10 +90,8 @@
 
         .modal-card {
             background: var(--card-bg);
-            backdrop-filter: blur(20px) saturate(150%);
-            -webkit-backdrop-filter: blur(20px) saturate(150%);
             border: 1px solid var(--card-border);
-            border-radius: 22px;
+            border-radius: 20px;
             padding: 28px 24px;
             max-width: 500px;
             width: 100%;
@@ -183,7 +162,7 @@
         .modal-btn {
             width: 100%;
             padding: 13px;
-            background: linear-gradient(135deg, var(--accent), var(--accent-bright));
+            background: var(--accent);
             color: #ffffff;
             border: none;
             border-radius: 12px;
@@ -191,7 +170,7 @@
             font-size: 14px;
             font-weight: 800;
             cursor: pointer;
-            transition: all 0.2s;
+            transition: opacity 0.2s, transform 0.2s;
         }
         .modal-btn:hover {
             opacity: 0.95;
@@ -293,23 +272,23 @@
             font-size: 13.5px;
             font-weight: 800;
             cursor: pointer;
-            transition: all 0.2s;
+            transition: opacity 0.2s, transform 0.2s;
             text-decoration: none;
             width: 100%;
         }
-        .app-modal-btn:hover { transform: translateY(-2px); }
+        .app-modal-btn:hover { transform: translateY(-2px); opacity: 0.95; }
         .app-modal-btn svg { width: 20px; height: 20px; }
 
         .btn-install {
-            background: linear-gradient(135deg, var(--blue), var(--accent-bright));
+            background: var(--blue);
             color: #ffffff;
         }
         .btn-open {
-            background: linear-gradient(135deg, var(--green), #16a34a);
+            background: var(--green);
             color: #ffffff;
         }
         .btn-copy {
-            background: linear-gradient(135deg, var(--accent), var(--accent-bright));
+            background: var(--accent);
             color: #ffffff;
         }
         .btn-cancel {
@@ -338,8 +317,6 @@
             gap: 8px;
             padding: 10px 14px;
             background: var(--card-bg);
-            backdrop-filter: blur(12px);
-            -webkit-backdrop-filter: blur(12px);
             border: 1px solid var(--card-border);
             border-radius: 12px;
             color: var(--text-secondary);
@@ -365,12 +342,13 @@
 
         .ctrl-btn.support-btn {
             padding: 10px;
-            background: linear-gradient(135deg, var(--accent), var(--accent-bright));
+            background: var(--accent);
             border-color: var(--accent);
             color: #ffffff;
         }
         .ctrl-btn.support-btn:hover {
             border-color: var(--accent-bright);
+            background: var(--accent-bright);
             color: #ffffff;
         }
         .ctrl-btn.support-btn svg {
@@ -403,8 +381,7 @@
             margin: 0 auto 14px;
             border-radius: 50%;
             padding: 3px;
-            background: linear-gradient(135deg, var(--accent), var(--accent-bright));
-            box-shadow: 0 0 30px var(--accent-glow);
+            background: var(--accent);
         }
         .logo-mark {
             width: 100%;
@@ -461,24 +438,19 @@
         }
         .card-wrap {
             position: relative;
-            border-radius: 18px;
-            padding: 1px;
+            border-radius: 16px;
+            border: 1px solid var(--card-border);
             background: var(--card-border);
         }
         .card-wrap.full-width { grid-column: 1 / -1; }
 
         .card {
             background: var(--card-bg);
-            backdrop-filter: blur(16px) saturate(150%);
-            -webkit-backdrop-filter: blur(16px) saturate(150%);
-            border: 1px solid var(--card-border);
-            border-radius: 17px;
+            border-radius: 15px;
             padding: 20px 18px;
             position: relative;
             overflow: hidden;
             height: 100%;
-            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
-            transition: background 0.4s, border-color 0.4s;
         }
 
         .card-icon {
@@ -527,7 +499,7 @@
         .simple-progress-fill {
             height: 100%;
             border-radius: 8px;
-            background: linear-gradient(90deg, var(--accent), var(--accent-bright));
+            background: var(--accent);
             transition: width 0.8s ease;
             width: 0%;
         }
@@ -535,8 +507,6 @@
             width: 100% !important;
             background: linear-gradient(90deg,
                 var(--accent),
-                var(--accent-bright),
-                #0ea5e9,
                 var(--accent-bright),
                 var(--accent),
                 var(--accent-bright),
@@ -648,7 +618,7 @@
             justify-content: center;
             gap: 8px;
             padding: 10px 20px;
-            background: linear-gradient(135deg, var(--accent), var(--accent-bright));
+            background: var(--accent);
             color: #ffffff;
             border: none;
             border-radius: 10px;
@@ -659,9 +629,9 @@
             text-decoration: none;
             margin-top: 12px;
             width: 100%;
-            transition: transform 0.2s;
+            transition: opacity 0.2s, transform 0.2s;
         }
-        .support-inline-btn:hover { transform: translateY(-2px); }
+        .support-inline-btn:hover { transform: translateY(-2px); opacity: 0.95; }
         .support-inline-btn svg { width: 18px; height: 18px; }
 
         /* ==================== آیکون اپ‌ها ==================== */
@@ -686,7 +656,7 @@
             font-size: 9px;
             font-weight: 700;
             text-align: center;
-            transition: all 0.2s ease;
+            transition: background 0.2s, border-color 0.2s, color 0.2s, transform 0.2s;
             cursor: pointer;
         }
         .app-btn svg {
@@ -696,8 +666,8 @@
             transition: stroke 0.2s;
         }
         .app-btn:hover {
-            background: linear-gradient(135deg, var(--accent), var(--accent-bright));
-            border-color: var(--accent-bright);
+            background: var(--accent);
+            border-color: var(--accent);
             color: #ffffff;
             transform: translateY(-2px);
         }
@@ -724,8 +694,6 @@
             left: 50%;
             transform: translateX(-50%) translateY(20px);
             background: var(--card-bg);
-            backdrop-filter: blur(20px);
-            -webkit-backdrop-filter: blur(20px);
             color: var(--text-primary);
             padding: 12px 22px;
             border-radius: 12px;
@@ -747,16 +715,16 @@
 
         /* ==================== انیمیشن ملایم ==================== */
         @keyframes fadeInUp {
-            from { opacity: 0; transform: translateY(15px); }
+            from { opacity: 0; transform: translateY(12px); }
             to { opacity: 1; transform: translateY(0); }
         }
-        .animate { animation: fadeInUp 0.4s ease forwards; opacity: 0; }
-        .delay-1 { animation-delay: 0.05s; }
-        .delay-2 { animation-delay: 0.1s; }
-        .delay-3 { animation-delay: 0.15s; }
-        .delay-4 { animation-delay: 0.2s; }
-        .delay-5 { animation-delay: 0.25s; }
-        .delay-6 { animation-delay: 0.3s; }
+        .animate { animation: fadeInUp 0.35s ease forwards; opacity: 0; }
+        .delay-1 { animation-delay: 0.04s; }
+        .delay-2 { animation-delay: 0.08s; }
+        .delay-3 { animation-delay: 0.12s; }
+        .delay-4 { animation-delay: 0.16s; }
+        .delay-5 { animation-delay: 0.2s; }
+        .delay-6 { animation-delay: 0.24s; }
 
         /* ==================== ریسپانسیو ==================== */
         @media (max-width: 600px) {
@@ -813,18 +781,18 @@
 
     <!-- ==================== کنترل‌های بالا ==================== -->
     <div class="top-controls">
-        <button class="ctrl-btn lang-btn" onclick="toggleLang()" title="تغییر زبان / Change Language">
+        <button class="ctrl-btn lang-btn" onclick="toggleLang()">
             <span class="flag-emoji" id="lang-flag">🇮🇷</span>
             <span id="lang-text">FA</span>
         </button>
-        <button class="ctrl-btn theme-btn" onclick="toggleTheme()" title="تغییر تم / Toggle Theme">
+        <button class="ctrl-btn theme-btn" onclick="toggleTheme()">
             <span id="theme-icon">
                 <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
                     <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/>
                 </svg>
             </span>
         </button>
-        <a class="ctrl-btn support-btn" href="https://t.me/vaslplus_support1" target="_blank" title="پشتیبانی / Support">
+        <a class="ctrl-btn support-btn" href="https://t.me/vaslplus_support1" target="_blank">
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
                 <path d="M3 18v-6a9 9 0 0 1 18 0v6"/>
                 <path d="M21 19a2 2 0 0 1-2 2h-1a2 2 0 0 1-2-2v-3a2 2 0 0 1 2-2h3zM3 19a2 2 0 0 0 2 2h1a2 2 0 0 0 2-2v-3a2 2 0 0 0-2-2H3z"/>
