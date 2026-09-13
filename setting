@@ -5,11 +5,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>VaslPlus | __USER_NAME__</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link href="https://fonts.googleapis.com/css2?family=Vazirmatn:wght@400;600;700;900&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Vazirmatn:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
     <style>
         /* ==================== Variables ==================== */
         :root {
-            /* تم شب - مشکی و قرمز */
             --accent: #ff2338;
             --accent-bright: #ff4d5e;
             --accent-glow: rgba(255, 35, 56, 0.4);
@@ -25,10 +24,10 @@
             --ring-bg: #2a2a2a;
             --gradient-silver: linear-gradient(135deg, #ffffff 0%, #b8b8c8 100%);
             --rgb-gradient: linear-gradient(90deg, #ff0000, #ff8000, #ffff00, #00ff00, #00ffff, #0080ff, #8000ff, #ff00ff, #ff0000);
+            --shadow-card: 0 4px 20px rgba(0, 0, 0, 0.5);
         }
 
         html.light {
-            /* تم روز - سفید و آبی */
             --accent: #0d6efd;
             --accent-bright: #3b82f6;
             --accent-glow: rgba(13, 110, 253, 0.35);
@@ -43,6 +42,7 @@
             --border: #e5eefb;
             --ring-bg: #dbeafe;
             --gradient-silver: linear-gradient(135deg, #0a2540 0%, #1e40af 100%);
+            --shadow-card: 0 4px 20px rgba(13, 110, 253, 0.08);
         }
 
         * { margin: 0; padding: 0; box-sizing: border-box; }
@@ -79,11 +79,12 @@
             font-size: 12px;
             font-weight: 700;
             cursor: pointer;
-            transition: border-color 0.2s, color 0.2s;
+            transition: all 0.2s;
         }
         .ctrl-btn:hover {
             border-color: var(--accent);
             color: var(--accent-bright);
+            transform: translateY(-2px);
         }
         .ctrl-btn svg { width: 18px; height: 18px; }
 
@@ -110,13 +111,13 @@
         }
 
         /* ==================== Logo ==================== */
-        .logo-header { text-align: center; margin-bottom: 32px; }
+        .logo-header { text-align: center; margin-bottom: 28px; }
 
         .logo-ring {
             position: relative;
-            width: 92px;
-            height: 92px;
-            margin: 0 auto 16px;
+            width: 88px;
+            height: 88px;
+            margin: 0 auto 14px;
             border-radius: 50%;
             padding: 3px;
             background: conic-gradient(from 0deg,
@@ -137,11 +138,11 @@
             justify-content: center;
             background: var(--card-bg);
         }
-        .logo-mark svg { width: 44px; height: 44px; }
+        .logo-mark svg { width: 42px; height: 42px; }
         .logo-mark .logo-swoosh { stroke: var(--accent-bright); }
 
         .brand-name {
-            font-size: 26px;
+            font-size: 24px;
             font-weight: 900;
             letter-spacing: 0.5px;
             line-height: 1;
@@ -153,9 +154,7 @@
             -webkit-text-fill-color: transparent;
             background-clip: text;
         }
-        .brand-name .plus {
-            color: var(--accent-bright);
-        }
+        .brand-name .plus { color: var(--accent-bright); }
         .brand-tagline {
             font-size: 10px;
             font-weight: 600;
@@ -172,7 +171,7 @@
             align-items: center;
             justify-content: center;
             gap: 10px;
-            margin-bottom: 22px;
+            margin-bottom: 20px;
             font-size: 14px;
             color: var(--text-secondary);
         }
@@ -182,10 +181,9 @@
         .cards-grid {
             display: grid;
             grid-template-columns: 1fr 1fr;
-            gap: 16px;
+            gap: 14px;
         }
 
-        /* RGB Border Wrapper — فقط دور کارت */
         .card-rgb {
             position: relative;
             border-radius: 18px;
@@ -198,8 +196,11 @@
         .card-rgb.full-width {
             grid-column: 1 / -1;
         }
+        .card-rgb.no-rgb {
+            background: var(--border);
+            animation: none;
+        }
 
-        /* کارت داخلی — رنگ تم */
         .card {
             background: var(--card-bg);
             border-radius: 15px;
@@ -207,6 +208,7 @@
             position: relative;
             overflow: hidden;
             height: 100%;
+            box-shadow: var(--shadow-card);
         }
 
         .card-icon {
@@ -219,17 +221,97 @@
             background: var(--accent-soft);
             border: 1px solid var(--accent-border);
             color: var(--accent-bright);
-            margin-bottom: 14px;
+            margin-bottom: 12px;
         }
         .card-icon svg { width: 20px; height: 20px; }
 
         .card-label {
             font-size: 12px;
-            font-weight: 600;
-            color: var(--text-secondary);
+            font-weight: 700;
+            color: var(--text-primary);
             margin-bottom: 10px;
         }
 
+        /* ==================== Welcome Text ==================== */
+        .welcome-text {
+            font-size: 12.5px;
+            line-height: 1.9;
+            color: var(--text-secondary);
+            font-weight: 500;
+        }
+        .welcome-text .greet-line {
+            color: var(--accent-bright);
+            font-weight: 700;
+            font-size: 13.5px;
+            margin-bottom: 8px;
+        }
+        .welcome-text .thanks {
+            margin-top: 10px;
+            padding-top: 10px;
+            border-top: 1px dashed var(--border);
+            color: var(--accent-bright);
+            font-weight: 700;
+            font-size: 12px;
+        }
+
+        /* ==================== Guide Text ==================== */
+        .guide-text {
+            font-size: 12px;
+            line-height: 2;
+            color: var(--text-secondary);
+        }
+        .guide-text p {
+            margin-bottom: 10px;
+        }
+        .guide-text .guide-title {
+            color: var(--accent-bright);
+            font-weight: 800;
+            margin-bottom: 4px;
+            display: block;
+        }
+        .guide-text .guide-note {
+            background: var(--accent-soft);
+            border: 1px solid var(--accent-border);
+            border-radius: 8px;
+            padding: 8px 10px;
+            margin: 10px 0;
+            font-size: 11px;
+            line-height: 1.7;
+        }
+        .guide-text .guide-warn {
+            margin-top: 10px;
+            padding-top: 10px;
+            border-top: 1px dashed var(--border);
+        }
+
+        .support-inline-btn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+            padding: 10px 20px;
+            background: linear-gradient(135deg, #0088cc, #00a8e8);
+            color: #ffffff;
+            border: none;
+            border-radius: 10px;
+            font-family: inherit;
+            font-size: 13px;
+            font-weight: 700;
+            cursor: pointer;
+            text-decoration: none;
+            margin-top: 12px;
+            width: 100%;
+            transition: transform 0.2s;
+        }
+        .support-inline-btn:hover {
+            transform: translateY(-2px);
+        }
+        .support-inline-btn svg {
+            width: 18px;
+            height: 18px;
+        }
+
+        /* ==================== Card Values ==================== */
         .card-value {
             font-size: 28px;
             font-weight: 900;
@@ -256,7 +338,7 @@
             margin-right: 6px;
         }
 
-        /* ==================== RGB Progress ==================== */
+        /* ==================== Progress ==================== */
         .rgb-progress {
             position: relative;
             height: 8px;
@@ -294,7 +376,7 @@
             font-weight: 700;
         }
 
-        /* ==================== Time Remaining ==================== */
+        /* ==================== Time & Expiry ==================== */
         .time-remaining {
             margin-top: 12px;
             font-size: 12.5px;
@@ -307,7 +389,6 @@
             border-radius: 10px;
         }
 
-        /* ==================== Expiry Box ==================== */
         .expiry-box {
             margin-top: 8px;
             font-size: 11.5px;
@@ -324,12 +405,15 @@
             font-weight: 700;
         }
 
-        /* ==================== App Links Grid ==================== */
+        /* ==================== App Links ==================== */
         .app-links-grid {
             display: grid;
             grid-template-columns: repeat(4, 1fr);
             gap: 8px;
             margin-top: 12px;
+        }
+        .app-links-grid.cols-5 {
+            grid-template-columns: repeat(5, 1fr);
         }
 
         .app-btn {
@@ -344,7 +428,7 @@
             border-radius: 10px;
             color: var(--text-secondary);
             text-decoration: none;
-            font-size: 10px;
+            font-size: 9px;
             font-weight: 700;
             text-align: center;
             transition: all 0.2s ease;
@@ -372,7 +456,7 @@
         /* ==================== Footer ==================== */
         .footer {
             text-align: center;
-            margin-top: 30px;
+            margin-top: 28px;
             display: flex;
             align-items: center;
             justify-content: center;
@@ -383,34 +467,19 @@
             letter-spacing: 1.5px;
         }
 
-        /* روز: قرمز فلاشر */
         html.light .footer .blink-text {
             animation: redBlink 1.2s ease-in-out infinite;
         }
         @keyframes redBlink {
-            0%, 100% {
-                color: #dc2626;
-                text-shadow: 0 0 14px rgba(220, 38, 38, 0.6);
-            }
-            50% {
-                color: #ff6b35;
-                text-shadow: 0 0 14px rgba(255, 107, 53, 0.6);
-            }
+            0%, 100% { color: #dc2626; text-shadow: 0 0 14px rgba(220, 38, 38, 0.6); }
+            50% { color: #ff6b35; text-shadow: 0 0 14px rgba(255, 107, 53, 0.6); }
         }
-
-        /* شب: آبی فلاشر */
         html:not(.light) .footer .blink-text {
             animation: blueBlink 1.2s ease-in-out infinite;
         }
         @keyframes blueBlink {
-            0%, 100% {
-                color: #3b82f6;
-                text-shadow: 0 0 14px rgba(59, 130, 246, 0.6);
-            }
-            50% {
-                color: #00d4ff;
-                text-shadow: 0 0 14px rgba(0, 212, 255, 0.6);
-            }
+            0%, 100% { color: #3b82f6; text-shadow: 0 0 14px rgba(59, 130, 246, 0.6); }
+            50% { color: #00d4ff; text-shadow: 0 0 14px rgba(0, 212, 255, 0.6); }
         }
 
         /* ==================== Toast ==================== */
@@ -431,6 +500,8 @@
             opacity: 0;
             transition: opacity 0.3s, transform 0.3s;
             pointer-events: none;
+            max-width: 90%;
+            text-align: center;
         }
         .app-toast.show {
             opacity: 1;
@@ -448,6 +519,7 @@
         .delay-3 { animation-delay: 0.24s; }
         .delay-4 { animation-delay: 0.32s; }
         .delay-5 { animation-delay: 0.4s; }
+        .delay-6 { animation-delay: 0.48s; }
 
         /* ==================== Responsive ==================== */
         @media (max-width: 600px) {
@@ -458,9 +530,9 @@
             .card { padding: 18px 16px; }
             .card-value { font-size: 26px; }
             .brand-name { font-size: 22px; }
-            .logo-ring { width: 80px; height: 80px; }
+            .logo-ring { width: 78px; height: 78px; }
             .logo-mark svg { width: 36px; height: 36px; }
-            .app-links-grid { grid-template-columns: repeat(2, 1fr); }
+            .app-links-grid { grid-template-columns: repeat(3, 1fr) !important; }
         }
     </style>
 </head>
@@ -477,16 +549,12 @@
             <span id="theme-icon">🌙</span>
         </button>
 
-        <!-- دکمه پشتیبانی با آیکون هدست‌دار -->
         <a class="ctrl-btn support-btn" href="https://t.me/vaslplus_support1" target="_blank" title="پشتیبانی / Support">
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
-                <!-- هدست -->
                 <path d="M5 15V10a7 7 0 0 1 14 0v5"/>
                 <path d="M5 15a2 2 0 0 0 2 2h1a1 1 0 0 0 1-1v-3a1 1 0 0 0-1-1H5z"/>
                 <path d="M19 15a2 2 0 0 1-2 2h-1a1 1 0 0 1-1-1v-3a1 1 0 0 1 1-1h3z"/>
-                <!-- سر و صورت -->
                 <circle cx="12" cy="12" r="3"/>
-                <!-- میکروفون -->
                 <path d="M14 13l2 1"/>
                 <circle cx="16.5" cy="14.5" r="1"/>
             </svg>
@@ -525,8 +593,27 @@
         <!-- ==================== Cards ==================== -->
         <div class="cards-grid">
 
+            <!-- کارت خوش‌آمدگویی -->
+            <div class="card-rgb full-width animate delay-3">
+                <div class="card">
+                    <div class="card-icon">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/>
+                            <circle cx="12" cy="7" r="4"/>
+                        </svg>
+                    </div>
+                    <div class="card-label" data-i18n="welcome_label">خوش آمدگویی</div>
+                    <div class="welcome-text">
+                        <div class="greet-line" data-i18n="welcome_greet">سلام و عرض ادب خدمت شما کاربر گرامی</div>
+                        <p data-i18n="welcome_body">از اینکه پنل کاربری وصل پلاس را انتخاب نموده‌اید، صمیمانه سپاسگزاریم. ما در تلاش هستیم تا با ارائه بهترین کیفیت و پشتیبانی، تجربه‌ای متفاوت برای شما فراهم کنیم.</p>
+                        <p data-i18n="welcome_guide">لطفاً برای استفاده بهینه از امکانات، بخش راهنمای زیر را با دقت مطالعه فرمایید.</p>
+                        <div class="thanks" data-i18n="welcome_thanks">با تشکر - تیم پشتیبانی وصل پلاس</div>
+                    </div>
+                </div>
+            </div>
+
             <!-- کارت حجم مصرفی -->
-            <div class="card-rgb animate delay-3">
+            <div class="card-rgb animate delay-4">
                 <div class="card">
                     <div class="card-icon">
                         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
@@ -570,65 +657,93 @@
                 </div>
             </div>
 
-            <!-- کادر سوم: اتصال به برنامه‌ها -->
+            <!-- کارت راهنما (بدون RGB) -->
+            <div class="card-rgb full-width no-rgb animate delay-5">
+                <div class="card">
+                    <div class="card-icon">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/>
+                            <path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"/>
+                        </svg>
+                    </div>
+                    <div class="card-label" data-i18n="guide_label">راهنمای استفاده</div>
+                    <div class="guide-text">
+                        <p><span class="guide-title" data-i18n="guide_android_title">📱 کاربران اندروید:</span><span data-i18n="guide_android_text">برای اتصال، روی آیکون برنامه مورد نظر کلیک نمایید. برنامه به صورت خودکار باز شده و اشتراک شما به آن اضافه خواهد شد.</span></p>
+
+                        <p><span class="guide-title" data-i18n="guide_ios_title">🍎 کاربران iOS:</span><span data-i18n="guide_ios_text">برای اتصال، روی آیکون برنامه مورد نظر کلیک نمایید. برنامه به صورت خودکار باز شده و اشتراک شما به آن اضافه خواهد شد.</span></p>
+
+                        <p><span class="guide-title" data-i18n="guide_win_title">💻 کاربران ویندوز:</span><span data-i18n="guide_win_text">برای اتصال، روی آیکون برنامه مورد نظر کلیک نمایید. لینک اشتراک شما در حافظه کپی خواهد شد، سپس آن را در برنامه مربوطه Paste نمایید.</span></p>
+
+                        <div class="guide-note">
+                            <strong data-i18n="guide_note_title">💡 نکته مهم:</strong>
+                            <span data-i18n="guide_note_text">در صورتی که برنامه به صورت خودکار باز نشد، لینک اشتراک را به صورت دستی کپی کرده و در برنامه مورد نظر اضافه نمایید.</span>
+                        </div>
+
+                        <div class="guide-warn">
+                            <p><span class="guide-title" data-i18n="guide_happ_title">⚠️ توضیح Happ:</span><span data-i18n="guide_happ_text">در برنامه Happ، لینک اشتراک به صورت خودکار بارگذاری نمی‌شود. لطفاً پس از کلیک روی آیکون، لینک اشتراک در حافظه کپی خواهد شد. سپس برنامه Happ را باز نموده و از بخش «افزودن اشتراک»، لینک کپی‌شده را Paste نمایید.</span></p>
+
+                            <p><span class="guide-title" data-i18n="guide_npv_title">⚠️ توضیح NPV Tunnel:</span><span data-i18n="guide_npv_text">در برنامه NPV Tunnel، لینک اشتراک به صورت خودکار بارگذاری نمی‌شود. لطفاً پس از کلیک روی آیکون، لینک اشتراک در حافظه کپی خواهد شد. سپس برنامه NPV Tunnel را باز نموده و از بخش «Import from Clipboard»، لینک کپی‌شده را Paste نمایید.</span></p>
+                        </div>
+
+                        <a class="support-inline-btn" href="https://t.me/vaslplus_support1" target="_blank">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <path d="M5 15V10a7 7 0 0 1 14 0v5"/>
+                                <path d="M5 15a2 2 0 0 0 2 2h1a1 1 0 0 0 1-1v-3a1 1 0 0 0-1-1H5z"/>
+                                <path d="M19 15a2 2 0 0 1-2 2h-1a1 1 0 0 1-1-1v-3a1 1 0 0 1 1-1h3z"/>
+                            </svg>
+                            <span data-i18n="support_btn_text">ارتباط با پشتیبانی</span>
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- کادر اندروید -->
             <div class="card-rgb full-width animate delay-5">
                 <div class="card">
                     <div class="card-icon">
                         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                            <path d="M4 5a1 1 0 0 1 1-1h4a1 1 0 0 1 1 1v4a1 1 0 0 1-1 1H5a1 1 0 0 1-1-1V5z"/>
-                            <path d="M14 5a1 1 0 0 1 1-1h4a1 1 0 0 1 1 1v4a1 1 0 0 1-1 1h-4a1 1 0 0 1-1-1V5z"/>
-                            <path d="M4 15a1 1 0 0 1 1-1h4a1 1 0 0 1 1 1v4a1 1 0 0 1-1 1H5a1 1 0 0 1-1-1v-4z"/>
-                            <path d="M14 15a1 1 0 0 1 1-1h4a1 1 0 0 1 1 1v4a1 1 0 0 1-1 1h-4a1 1 0 0 1-1-1v-4z"/>
+                            <rect x="5" y="2" width="14" height="20" rx="2" ry="2"/>
+                            <line x1="12" y1="18" x2="12.01" y2="18"/>
                         </svg>
                     </div>
-                    <div class="card-label" data-i18n="app_links">اتصال به برنامه‌ها</div>
+                    <div class="card-label" data-i18n="android_label">📱 اپلیکیشن‌های اندروید</div>
+                    <div class="app-links-grid" id="android-apps"></div>
+                </div>
+            </div>
 
-                    <div class="app-links-grid">
-                        <!-- V2ray -->
-                        <a class="app-btn" id="btn-v2rayng" href="#" title="V2ray">
-                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                                <path d="M12 2L2 7l10 5 10-5-10-5z"/>
-                                <path d="M2 17l10 5 10-5"/>
-                                <path d="M2 12l10 5 10-5"/>
-                            </svg>
-                            <span>V2ray</span>
-                        </a>
-
-                        <!-- V2Box -->
-                        <a class="app-btn" id="btn-v2box" href="#" title="V2Box">
-                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                                <rect x="3" y="3" width="18" height="18" rx="4"/>
-                                <path d="M9 8l6 8M9 16l6-8"/>
-                            </svg>
-                            <span>V2Box</span>
-                        </a>
-
-                        <!-- Happ -->
-                        <a class="app-btn" id="btn-happ" href="#" title="Happ">
-                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                                <circle cx="12" cy="12" r="10"/>
-                                <path d="M8 14s1.5 2 4 2 4-2 4-2"/>
-                                <line x1="9" y1="9" x2="9.01" y2="9"/>
-                                <line x1="15" y1="9" x2="15.01" y2="9"/>
-                            </svg>
-                            <span>Happ</span>
-                        </a>
-
-                        <!-- NPV Tunnel -->
-                        <a class="app-btn" id="btn-npv" href="#" title="NPV Tunnel">
-                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                                <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>
-                            </svg>
-                            <span>NPV Tunnel</span>
-                        </a>
+            <!-- کادر iOS -->
+            <div class="card-rgb full-width animate delay-6">
+                <div class="card">
+                    <div class="card-icon">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M12 20.94c1.5 0 2.75 1.06 4 1.06 3 0 6-8 6-12.22A4.91 4.91 0 0 0 17 5c-2.22 0-4 1.44-5 2-1-.56-2.78-2-5-2a4.9 4.9 0 0 0-5 4.78C2 14 5 22 8 22c1.25 0 2.5-1.06 4-1.06Z"/>
+                            <path d="M10 2c1 .5 2 2 2 5"/>
+                        </svg>
                     </div>
+                    <div class="card-label" data-i18n="ios_label">🍎 اپلیکیشن‌های iOS</div>
+                    <div class="app-links-grid cols-5" id="ios-apps"></div>
+                </div>
+            </div>
+
+            <!-- کادر ویندوز -->
+            <div class="card-rgb full-width animate delay-6">
+                <div class="card">
+                    <div class="card-icon">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <rect x="3" y="3" width="18" height="18" rx="2" ry="2"/>
+                            <line x1="3" y1="9" x2="21" y2="9"/>
+                            <line x1="9" y1="21" x2="9" y2="9"/>
+                        </svg>
+                    </div>
+                    <div class="card-label" data-i18n="win_label">💻 اپلیکیشن‌های ویندوز</div>
+                    <div class="app-links-grid cols-5" id="windows-apps"></div>
                 </div>
             </div>
 
         </div>
 
         <!-- ==================== Footer ==================== -->
-        <div class="footer animate delay-5">
+        <div class="footer animate delay-6">
             <span class="blink-text" id="footer-text">پنل کاربری وصل پلاس</span>
         </div>
 
@@ -675,7 +790,28 @@
                 expired: "منقضی شده",
                 no_expiry: "بدون انقضا",
                 footer: "پنل کاربری وصل پلاس",
-                app_links: "اتصال به برنامه‌ها",
+                welcome_label: "خوش آمدگویی",
+                welcome_greet: "سلام و عرض ادب خدمت شما کاربر گرامی",
+                welcome_body: "از اینکه پنل کاربری وصل پلاس را انتخاب نموده‌اید، صمیمانه سپاسگزاریم. ما در تلاش هستیم تا با ارائه بهترین کیفیت و پشتیبانی، تجربه‌ای متفاوت برای شما فراهم کنیم.",
+                welcome_guide: "لطفاً برای استفاده بهینه از امکانات، بخش راهنمای زیر را با دقت مطالعه فرمایید.",
+                welcome_thanks: "با تشکر - تیم پشتیبانی وصل پلاس",
+                guide_label: "راهنمای استفاده",
+                guide_android_title: "📱 کاربران اندروید:",
+                guide_android_text: "برای اتصال، روی آیکون برنامه مورد نظر کلیک نمایید. برنامه به صورت خودکار باز شده و اشتراک شما به آن اضافه خواهد شد.",
+                guide_ios_title: "🍎 کاربران iOS:",
+                guide_ios_text: "برای اتصال، روی آیکون برنامه مورد نظر کلیک نمایید. برنامه به صورت خودکار باز شده و اشتراک شما به آن اضافه خواهد شد.",
+                guide_win_title: "💻 کاربران ویندوز:",
+                guide_win_text: "برای اتصال، روی آیکون برنامه مورد نظر کلیک نمایید. لینک اشتراک شما در حافظه کپی خواهد شد، سپس آن را در برنامه مربوطه Paste نمایید.",
+                guide_note_title: "💡 نکته مهم:",
+                guide_note_text: "در صورتی که برنامه به صورت خودکار باز نشد، لینک اشتراک را به صورت دستی کپی کرده و در برنامه مورد نظر اضافه نمایید.",
+                guide_happ_title: "⚠️ توضیح Happ:",
+                guide_happ_text: "در برنامه Happ، لینک اشتراک به صورت خودکار بارگذاری نمی‌شود. لطفاً پس از کلیک روی آیکون، لینک اشتراک در حافظه کپی خواهد شد. سپس برنامه Happ را باز نموده و از بخش «افزودن اشتراک»، لینک کپی‌شده را Paste نمایید.",
+                guide_npv_title: "⚠️ توضیح NPV Tunnel:",
+                guide_npv_text: "در برنامه NPV Tunnel، لینک اشتراک به صورت خودکار بارگذاری نمی‌شود. لطفاً پس از کلیک روی آیکون، لینک اشتراک در حافظه کپی خواهد شد. سپس برنامه NPV Tunnel را باز نموده و از بخش «Import from Clipboard»، لینک کپی‌شده را Paste نمایید.",
+                support_btn_text: "ارتباط با پشتیبانی",
+                android_label: "📱 اپلیکیشن‌های اندروید",
+                ios_label: "🍎 اپلیکیشن‌های iOS",
+                win_label: "💻 اپلیکیشن‌های ویندوز",
                 day: "روز",
                 days: "روز",
                 hour: "ساعت",
@@ -685,8 +821,7 @@
                 and: "و",
                 expired_text: "منقضی شده",
                 remaining_prefix: "باقی‌مانده",
-                copy_success_happ: "لینک کپی شد! توی Happ paste کن",
-                copy_success_npv: "لینک کپی شد! توی NPV Tunnel paste کن",
+                copy_success: "لینک کپی شد!",
                 copy_error: "خطا در کپی لینک"
             },
             en: {
@@ -702,7 +837,28 @@
                 expired: "Expired",
                 no_expiry: "No expiry",
                 footer: "VaslPlus User Panel",
-                app_links: "Connect to Apps",
+                welcome_label: "Welcome",
+                welcome_greet: "Hello and warm greetings, dear user",
+                welcome_body: "We sincerely thank you for choosing VaslPlus User Panel. We strive to provide you with the best quality and support to create a unique experience for you.",
+                welcome_guide: "Please read the guide below carefully for optimal use of the features.",
+                welcome_thanks: "Best regards - VaslPlus Support Team",
+                guide_label: "User Guide",
+                guide_android_title: "📱 Android Users:",
+                guide_android_text: "To connect, tap on the icon of your desired app. The app will open automatically and your subscription will be added.",
+                guide_ios_title: "🍎 iOS Users:",
+                guide_ios_text: "To connect, tap on the icon of your desired app. The app will open automatically and your subscription will be added.",
+                guide_win_title: "💻 Windows Users:",
+                guide_win_text: "To connect, click on the icon of your desired app. Your subscription link will be copied, then paste it into the app.",
+                guide_note_title: "💡 Important Note:",
+                guide_note_text: "If the app doesn't open automatically, manually copy the subscription link and add it in the app.",
+                guide_happ_title: "⚠️ Happ Note:",
+                guide_happ_text: "In the Happ app, the subscription link is not loaded automatically. After clicking the icon, the subscription link will be copied. Then open the Happ app and paste the copied link in the 'Add Subscription' section.",
+                guide_npv_title: "⚠️ NPV Tunnel Note:",
+                guide_npv_text: "In the NPV Tunnel app, the subscription link is not loaded automatically. After clicking the icon, the subscription link will be copied. Then open the NPV Tunnel app and paste the copied link in the 'Import from Clipboard' section.",
+                support_btn_text: "Contact Support",
+                android_label: "📱 Android Apps",
+                ios_label: "🍎 iOS Apps",
+                win_label: "💻 Windows Apps",
                 day: "day",
                 days: "days",
                 hour: "hour",
@@ -712,8 +868,7 @@
                 and: "and",
                 expired_text: "Expired",
                 remaining_prefix: "remaining",
-                copy_success_happ: "Link copied! Paste in Happ",
-                copy_success_npv: "Link copied! Paste in NPV Tunnel",
+                copy_success: "Link copied!",
                 copy_error: "Failed to copy link"
             }
         };
@@ -722,6 +877,142 @@
         let currentTheme = localStorage.getItem("vp_theme") || "dark";
 
         const $ = (id) => document.getElementById(id);
+
+        // ==================== App Definitions ====================
+        const APPS = {
+            android: [
+                {
+                    id: "v2rayng",
+                    name: "V2rayNG",
+                    deepLink: (sub) => `v2rayng://install-sub?url=${encodeURIComponent(sub)}&name=__USER_NAME__`,
+                    playStore: "https://play.google.com/store/apps/details?id=com.v2ray.ang",
+                    icon: `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2L2 7l10 5 10-5-10-5z"/><path d="M2 17l10 5 10-5"/><path d="M2 12l10 5 10-5"/></svg>`
+                },
+                {
+                    id: "v2box",
+                    name: "V2Box",
+                    deepLink: (sub) => `v2box://install-sub?url=${encodeURIComponent(sub)}&name=__USER_NAME__`,
+                    playStore: "https://play.google.com/store/apps/details?id=dev.hexasoftware.v2box",
+                    icon: `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="4"/><path d="M9 8l6 8M9 16l6-8"/></svg>`
+                },
+                {
+                    id: "nekobox",
+                    name: "NekoBox",
+                    deepLink: (sub) => `sn://subscription?url=${encodeURIComponent(sub)}`,
+                    playStore: "https://play.google.com/store/apps/details?id=moe.nb4a",
+                    icon: `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M8 12h8M12 8v8"/></svg>`
+                },
+                {
+                    id: "hiddify",
+                    name: "Hiddify",
+                    deepLink: (sub) => `hiddify://import/${sub}`,
+                    playStore: "https://play.google.com/store/apps/details?id=app.hiddify.com",
+                    icon: `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>`
+                },
+                {
+                    id: "singbox",
+                    name: "Sing-box",
+                    deepLink: (sub) => `sing-box://import-remote-profile?url=${encodeURIComponent(sub)}`,
+                    playStore: "https://play.google.com/store/apps/details?id=io.nekohasekai.sfa",
+                    icon: `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="3"/><path d="M8 12h8"/></svg>`
+                },
+                {
+                    id: "npv",
+                    name: "NPV Tunnel",
+                    deepLink: null,
+                    playStore: "https://play.google.com/store/apps/details?id=com.napsternetlabs.napsternetv",
+                    icon: `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 20V10a8 8 0 0 1 16 0v10"/><path d="M2 20h20"/><circle cx="12" cy="10" r="2"/></svg>`
+                },
+                {
+                    id: "happ",
+                    name: "Happ",
+                    deepLink: null,
+                    playStore: "https://play.google.com/store/apps/details?id=com.happproxy",
+                    icon: `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M8 14s1.5 2 4 2 4-2 4-2"/><line x1="9" y1="9" x2="9.01" y2="9"/><line x1="15" y1="9" x2="15.01" y2="9"/></svg>`
+                }
+            ],
+            ios: [
+                {
+                    id: "shadowrocket",
+                    name: "Shadowrocket",
+                    deepLink: (sub) => `shadowrocket://add/sub://${btoa(sub)}?remarks=__USER_NAME__`,
+                    appStore: "https://apps.apple.com/us/app/shadowrocket/id932747118",
+                    icon: `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4.5 16.5c-1.5 1.26-2 5-2 5s3.74-.5 5-2c.71-.84.7-2.13-.09-2.91a2.18 2.18 0 0 0-2.91 0z"/><path d="M12 15l-3-3a22 22 0 0 1 2-3.95A12.88 12.88 0 0 1 22 2c0 2.72-.78 7.5-6 11a22.35 22.35 0 0 1-4 2z"/><path d="M9 12H4s.55-3.03 2-4c1.62-1.08 5 0 5 0"/><path d="M12 15v5s3.03-.55 4-2c1.08-1.62 0-5 0-5"/></svg>`
+                },
+                {
+                    id: "streisand",
+                    name: "Streisand",
+                    deepLink: (sub) => `streisand://import/${sub}`,
+                    appStore: "https://apps.apple.com/us/app/streisand/id6450534064",
+                    icon: `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>`
+                },
+                {
+                    id: "v2box-ios",
+                    name: "V2Box",
+                    deepLink: (sub) => `v2box://install-sub?url=${encodeURIComponent(sub)}&name=__USER_NAME__`,
+                    appStore: "https://apps.apple.com/us/app/v2box-v2ray-client/id6446814690",
+                    icon: `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="4"/><path d="M9 8l6 8M9 16l6-8"/></svg>`
+                },
+                {
+                    id: "foxray",
+                    name: "FoXray",
+                    deepLink: (sub) => `foxray://install-sub?url=${encodeURIComponent(sub)}`,
+                    appStore: "https://apps.apple.com/us/app/foxray/id6448898396",
+                    icon: `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M12 2v20M2 12h20"/></svg>`
+                },
+                {
+                    id: "hiddify-ios",
+                    name: "Hiddify",
+                    deepLink: (sub) => `hiddify://import/${sub}`,
+                    appStore: "https://apps.apple.com/us/app/hiddify-proxy-vpn/id6596777532",
+                    icon: `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>`
+                },
+                {
+                    id: "singbox-ios",
+                    name: "Sing-box",
+                    deepLink: (sub) => `sing-box://import-remote-profile?url=${encodeURIComponent(sub)}`,
+                    appStore: "https://apps.apple.com/us/app/sing-box-vt/id6673731168",
+                    icon: `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="3"/><path d="M8 12h8"/></svg>`
+                }
+            ],
+            windows: [
+                {
+                    id: "v2rayn",
+                    name: "V2rayN",
+                    deepLink: (sub) => `v2rayn://install-sub?url=${encodeURIComponent(sub)}&name=__USER_NAME__`,
+                    site: "https://github.com/2dust/v2rayN/releases",
+                    icon: `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M8 12h8M12 8v8"/></svg>`
+                },
+                {
+                    id: "clash-verge",
+                    name: "Clash Verge",
+                    deepLink: (sub) => `clash://install-config?url=${encodeURIComponent(sub)}`,
+                    site: "https://github.com/clash-verge-rev/clash-verge-rev/releases",
+                    icon: `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"/></svg>`
+                },
+                {
+                    id: "hiddify-win",
+                    name: "Hiddify",
+                    deepLink: (sub) => `hiddify://import/${sub}`,
+                    site: "https://github.com/hiddify/hiddify-next/releases",
+                    icon: `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>`
+                },
+                {
+                    id: "nekoray",
+                    name: "NekoRay",
+                    deepLink: (sub) => `nekoray://install-sub?url=${encodeURIComponent(sub)}`,
+                    site: "https://github.com/MatsuriDayo/nekoray/releases",
+                    icon: `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M8 12h8M12 8v8"/></svg>`
+                },
+                {
+                    id: "singbox-win",
+                    name: "Sing-box",
+                    deepLink: (sub) => `sing-box://import-remote-profile?url=${encodeURIComponent(sub)}`,
+                    site: "https://github.com/SagerNet/sing-box/releases",
+                    icon: `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="3"/><path d="M8 12h8"/></svg>`
+                }
+            ]
+        };
 
         // ==================== Format Number ====================
         function formatNumber(num, maxDecimals = 2) {
@@ -764,7 +1055,6 @@
             return { valid: true, days, hours, minutes, expired: false };
         }
 
-        // ==================== Format Time Text ====================
         function formatTimeText(timeData, lang) {
             const t = I18N[lang];
             if (timeData.expired) return t.expired_text;
@@ -788,7 +1078,6 @@
             return `${joined} ${t.remaining_prefix}`;
         }
 
-        // ==================== Days Percent ====================
         function calcDaysPercent(timeData) {
             if (timeData.expired) return 0;
             const totalMinutes = 30 * 24 * 60;
@@ -808,6 +1097,98 @@
                     year: 'numeric', month: '2-digit', day: '2-digit'
                 });
             } catch (e) { return "—"; }
+        }
+
+        // ==================== Toast ====================
+        let toastTimer = null;
+        function showToast(msg) {
+            const toast = $("app-toast");
+            toast.textContent = msg;
+            toast.classList.add("show");
+            clearTimeout(toastTimer);
+            toastTimer = setTimeout(() => toast.classList.remove("show"), 2500);
+        }
+
+        // ==================== Copy ====================
+        function copySubLink(msg) {
+            navigator.clipboard.writeText("__SYNC_NORMAL__").then(() => {
+                showToast(msg);
+            }).catch(() => {
+                showToast(I18N[currentLang].copy_error);
+            });
+        }
+
+        // ==================== Open App ====================
+        function openApp(app, storeUrl) {
+            if (!app.deepLink) {
+                // deep link نداره → پیام راهنما
+                const t = I18N[currentLang];
+                const guideKey = app.id === "happ" ? "guide_happ" : "guide_npv";
+                copySubLink(t[guideKey + "_text"] || t.copy_success);
+                return;
+            }
+
+            // deep link داره → تلاش برای باز کردن
+            const subLink = "__SYNC_NORMAL__";
+            const deepLink = app.deepLink(subLink);
+
+            const startTime = Date.now();
+            window.location.href = deepLink;
+
+            // اگه برنامه باز نشد → لینک گوگل پلی / سایت
+            setTimeout(() => {
+                if (Date.now() - startTime < 2500) {
+                    window.location.href = storeUrl;
+                }
+            }, 2000);
+        }
+
+        // ==================== Render App Buttons ====================
+        function renderApps() {
+            // اندروید
+            const androidContainer = $("android-apps");
+            androidContainer.innerHTML = "";
+            APPS.android.forEach(app => {
+                const btn = document.createElement("a");
+                btn.className = "app-btn";
+                btn.href = "#";
+                btn.innerHTML = `${app.icon}<span>${app.name}</span>`;
+                btn.addEventListener("click", (e) => {
+                    e.preventDefault();
+                    openApp(app, app.playStore);
+                });
+                androidContainer.appendChild(btn);
+            });
+
+            // iOS
+            const iosContainer = $("ios-apps");
+            iosContainer.innerHTML = "";
+            APPS.ios.forEach(app => {
+                const btn = document.createElement("a");
+                btn.className = "app-btn";
+                btn.href = "#";
+                btn.innerHTML = `${app.icon}<span>${app.name}</span>`;
+                btn.addEventListener("click", (e) => {
+                    e.preventDefault();
+                    openApp(app, app.appStore);
+                });
+                iosContainer.appendChild(btn);
+            });
+
+            // ویندوز
+            const windowsContainer = $("windows-apps");
+            windowsContainer.innerHTML = "";
+            APPS.windows.forEach(app => {
+                const btn = document.createElement("a");
+                btn.className = "app-btn";
+                btn.href = "#";
+                btn.innerHTML = `${app.icon}<span>${app.name}</span>`;
+                btn.addEventListener("click", (e) => {
+                    e.preventDefault();
+                    openApp(app, app.site);
+                });
+                windowsContainer.appendChild(btn);
+            });
         }
 
         // ==================== Apply Language ====================
@@ -846,23 +1227,13 @@
             applyTheme();
         }
 
-        // ==================== Toast ====================
-        let toastTimer = null;
-        function showToast(msg) {
-            const toast = $("app-toast");
-            toast.textContent = msg;
-            toast.classList.add("show");
-            clearTimeout(toastTimer);
-            toastTimer = setTimeout(() => toast.classList.remove("show"), 2500);
-        }
-
         // ==================== Render ====================
         function render() {
             const t = I18N[currentLang];
             const usageContainer = $("usage-value-container");
             const daysContainer = $("days-value-container");
 
-            // ========== Usage ==========
+            // Usage
             if (isUnlimitedGB) {
                 usageContainer.innerHTML = `
                     <span class="infinity">∞</span>
@@ -892,7 +1263,7 @@
                 }, 300);
             }
 
-            // ========== Days ==========
+            // Days
             if (isUnlimitedDays) {
                 daysContainer.innerHTML = `
                     <span class="infinity">∞</span>
@@ -938,56 +1309,11 @@
             }
         }
 
-        // ==================== App Deep Links ====================
-        (function setupAppLinks() {
-            const subLink = "__SYNC_NORMAL__";
-            const userName = "__USER_NAME__";
-
-            // V2rayNG
-            const v2rayng = $("btn-v2rayng");
-            if (v2rayng) {
-                v2rayng.href = "v2rayng://install-sub?url=" + encodeURIComponent(subLink) + "&name=" + encodeURIComponent(userName);
-            }
-
-            // V2Box
-            const v2box = $("btn-v2box");
-            if (v2box) {
-                v2box.href = "v2box://install-sub?url=" + encodeURIComponent(subLink) + "&name=" + encodeURIComponent(userName);
-            }
-
-            // Happ — کپی لینک
-            const happ = $("btn-happ");
-            if (happ) {
-                happ.addEventListener("click", function(e) {
-                    e.preventDefault();
-                    const t = I18N[currentLang];
-                    navigator.clipboard.writeText(subLink).then(() => {
-                        showToast(t.copy_success_happ);
-                    }).catch(() => {
-                        showToast(t.copy_error);
-                    });
-                });
-            }
-
-            // NPV Tunnel — کپی لینک
-            const npv = $("btn-npv");
-            if (npv) {
-                npv.addEventListener("click", function(e) {
-                    e.preventDefault();
-                    const t = I18N[currentLang];
-                    navigator.clipboard.writeText(subLink).then(() => {
-                        showToast(t.copy_success_npv);
-                    }).catch(() => {
-                        showToast(t.copy_error);
-                    });
-                });
-            }
-        })();
-
         // ==================== Init ====================
         (function init() {
             applyTheme();
             applyLang();
+            renderApps();
         })();
     </script>
 
