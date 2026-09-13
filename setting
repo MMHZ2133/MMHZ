@@ -7,53 +7,57 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link href="https://fonts.googleapis.com/css2?family=Vazirmatn:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
     <style>
+        /* ==================== متغیرهای تم اقیانوسی ==================== */
         :root {
-            /* ============ حالت شب - مینیمال ============ */
-            --accent: #ef4444;
-            --accent-bright: #f87171;
-            --accent-glow: rgba(239, 68, 68, 0.35);
-            --accent-soft: rgba(239, 68, 68, 0.10);
-            --accent-border: rgba(239, 68, 68, 0.25);
+            /* 🌙 حالت شب - اقیانوسی */
+            --accent: #38bdf8;
+            --accent-bright: #7dd3fc;
+            --accent-glow: rgba(56, 189, 248, 0.35);
+            --accent-soft: rgba(56, 189, 248, 0.10);
+            --accent-border: rgba(56, 189, 248, 0.25);
 
-            --bg-primary: #111827;
-            --card-bg: #1f2937;
-            --card-bg-inner: #111827;
+            --bg-primary: #082f49;
+            --card-bg: #0c4a6e;
+            --card-bg-inner: #082f49;
 
-            --text-primary: #f9fafb;
-            --text-secondary: #9ca3af;
-            --text-muted: #6b7280;
+            --text-primary: #e0f2fe;
+            --text-secondary: #7dd3fc;
+            --text-muted: #64748b;
 
-            --border: #374151;
-            --ring-bg: #374151;
+            --border: #0c4a6e;
+            --ring-bg: #0c4a6e;
 
-            --gradient-silver: linear-gradient(135deg, #f9fafb 0%, #9ca3af 100%);
+            --gradient-silver: linear-gradient(135deg, #e0f2fe 0%, #7dd3fc 100%);
 
-            --blue: #3b82f6;
-            --blue-glow: rgba(59, 130, 246, 0.4);
+            --blue: #0ea5e9;
+            --blue-glow: rgba(14, 165, 233, 0.4);
             --green: #22c55e;
             --green-glow: rgba(34, 197, 94, 0.4);
         }
 
         html.light {
-            /* ============ حالت روز - مینیمال ============ */
-            --accent: #3b82f6;
-            --accent-bright: #60a5fa;
-            --accent-glow: rgba(59, 130, 246, 0.35);
-            --accent-soft: rgba(59, 130, 246, 0.08);
-            --accent-border: rgba(59, 130, 246, 0.20);
+            /* ☀️ حالت روز - اقیانوسی */
+            --accent: #0284c7;
+            --accent-bright: #0ea5e9;
+            --accent-glow: rgba(2, 132, 199, 0.35);
+            --accent-soft: rgba(2, 132, 199, 0.08);
+            --accent-border: rgba(2, 132, 199, 0.20);
 
-            --bg-primary: #ffffff;
-            --card-bg: #f9fafb;
-            --card-bg-inner: #ffffff;
+            --bg-primary: #f0f9ff;
+            --card-bg: #ffffff;
+            --card-bg-inner: #f8fbff;
 
-            --text-primary: #111827;
-            --text-secondary: #4b5563;
-            --text-muted: #6b7280;
+            --text-primary: #082f49;
+            --text-secondary: #0369a1;
+            --text-muted: #64748b;
 
-            --border: #e5e7eb;
-            --ring-bg: #e5e7eb;
+            --border: #bae6fd;
+            --ring-bg: #e0f2fe;
 
-            --gradient-silver: linear-gradient(135deg, #111827 0%, #374151 100%);
+            --gradient-silver: linear-gradient(135deg, #082f49 0%, #0c4a6e 100%);
+
+            --blue: #0ea5e9;
+            --green: #16a34a;
         }
 
         * { margin: 0; padding: 0; box-sizing: border-box; }
@@ -64,10 +68,10 @@
             color: var(--text-primary);
             min-height: 100vh;
             overflow-x: hidden;
-            transition: background 0.3s, color 0.3s;
+            transition: background 0.4s, color 0.4s;
         }
 
-        /* ==================== Modal ==================== */
+        /* ==================== مودال ==================== */
         .modal-overlay {
             position: fixed;
             inset: 0;
@@ -101,6 +105,7 @@
             to { opacity: 1; transform: scale(1) translateY(0); }
         }
 
+        /* مودال خوش‌آمد */
         .modal-icon {
             width: 60px;
             height: 60px;
@@ -173,7 +178,7 @@
             transform: translateY(-2px);
         }
 
-        /* App Modal */
+        /* مودال اپ */
         .app-modal-icon {
             width: 72px;
             height: 72px;
@@ -227,15 +232,6 @@
             margin-bottom: 6px;
             font-size: 13px;
         }
-        .app-modal-desc ol {
-            padding-inline-start: 20px;
-            margin-top: 4px;
-        }
-        .app-modal-desc ol li {
-            margin-bottom: 5px;
-            font-size: 12px;
-            line-height: 1.7;
-        }
         .app-modal-desc .note-box {
             margin-top: 10px;
             padding: 8px 10px;
@@ -249,17 +245,13 @@
         .app-modal-desc .download-box {
             margin-top: 10px;
             padding: 10px 12px;
-            background: rgba(59, 130, 246, 0.08);
-            border: 1px solid rgba(59, 130, 246, 0.25);
+            background: rgba(14, 165, 233, 0.08);
+            border: 1px solid rgba(14, 165, 233, 0.25);
             border-radius: 8px;
             font-size: 12px;
-            color: #60a5fa;
+            color: var(--accent-bright);
             font-weight: 600;
             line-height: 1.7;
-        }
-        html.light .app-modal-desc .download-box {
-            background: rgba(59, 130, 246, 0.06);
-            color: #2563eb;
         }
 
         .app-modal-actions {
@@ -289,30 +281,20 @@
         .app-modal-btn svg { width: 20px; height: 20px; }
 
         .btn-install {
-            background: linear-gradient(135deg, var(--blue), #2563eb);
+            background: linear-gradient(135deg, var(--blue), var(--accent-bright));
             color: #ffffff;
             box-shadow: 0 4px 16px var(--blue-glow);
         }
-        .btn-install:hover { box-shadow: 0 8px 24px var(--blue-glow); }
-
         .btn-open {
             background: linear-gradient(135deg, var(--green), #16a34a);
             color: #ffffff;
             box-shadow: 0 4px 16px var(--green-glow);
         }
-        .btn-open:hover { box-shadow: 0 8px 24px var(--green-glow); }
-
         .btn-copy {
-            background: linear-gradient(135deg, var(--accent), #dc2626);
+            background: linear-gradient(135deg, var(--accent), var(--accent-bright));
             color: #ffffff;
             box-shadow: 0 4px 16px var(--accent-glow);
         }
-        .btn-copy:hover { box-shadow: 0 8px 24px var(--accent-glow); }
-
-        html.light .btn-copy {
-            background: linear-gradient(135deg, #3b82f6, #2563eb);
-        }
-
         .btn-cancel {
             background: transparent;
             color: var(--text-muted);
@@ -323,7 +305,7 @@
             color: var(--accent-bright);
         }
 
-        /* Top Controls */
+        /* ==================== کنترل‌های بالا ==================== */
         .top-controls {
             position: fixed;
             top: 20px;
@@ -336,28 +318,66 @@
             display: inline-flex;
             align-items: center;
             justify-content: center;
-            gap: 6px;
-            padding: 9px 12px;
+            gap: 8px;
+            padding: 10px 14px;
             background: var(--card-bg);
             border: 1px solid var(--border);
-            border-radius: 10px;
+            border-radius: 12px;
             color: var(--text-secondary);
             font-family: inherit;
             font-size: 12px;
             font-weight: 700;
             cursor: pointer;
-            transition: all 0.2s;
+            transition: all 0.3s;
         }
         .ctrl-btn:hover {
             border-color: var(--accent);
             color: var(--accent-bright);
-            transform: translateY(-2px);
+            transform: translateY(-3px);
+            box-shadow: 0 8px 20px var(--accent-glow);
         }
         .ctrl-btn svg { width: 18px; height: 18px; }
-        .ctrl-btn.support-btn { padding: 8px; }
-        .ctrl-btn.support-btn svg { width: 22px; height: 22px; }
 
-        /* Container */
+        /* دکمه زبان */
+        .ctrl-btn.lang-btn {
+            padding: 10px 12px;
+        }
+        .ctrl-btn.lang-btn .flag-emoji {
+            font-size: 16px;
+        }
+
+        /* دکمه تم */
+        .ctrl-btn.theme-btn {
+            padding: 10px 12px;
+        }
+        .ctrl-btn.theme-btn:hover svg {
+            animation: rotateIcon 0.6s ease;
+        }
+        @keyframes rotateIcon {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+
+        /* دکمه پشتیبانی */
+        .ctrl-btn.support-btn {
+            padding: 10px;
+            background: linear-gradient(135deg, var(--accent), var(--accent-bright));
+            border-color: var(--accent);
+            color: #ffffff;
+        }
+        .ctrl-btn.support-btn:hover {
+            background: linear-gradient(135deg, var(--accent-bright), var(--accent));
+            border-color: var(--accent-bright);
+            color: #ffffff;
+            box-shadow: 0 8px 24px var(--accent-glow);
+        }
+        .ctrl-btn.support-btn svg {
+            width: 22px;
+            height: 22px;
+            stroke: #ffffff;
+        }
+
+        /* ==================== کانتینر ==================== */
         .container {
             position: relative;
             z-index: 1;
@@ -371,7 +391,7 @@
             justify-content: center;
         }
 
-        /* Logo */
+        /* ==================== لوگو ==================== */
         .logo-header { text-align: center; margin-bottom: 28px; }
 
         .logo-ring {
@@ -394,7 +414,6 @@
             background: var(--card-bg);
         }
         .logo-mark svg { width: 42px; height: 42px; }
-        .logo-mark .logo-swoosh { stroke: var(--accent-bright); }
 
         .brand-name {
             font-size: 24px;
@@ -420,7 +439,7 @@
         }
         .brand-tagline span { color: var(--accent); margin: 0 6px; }
 
-        /* Greeting */
+        /* ==================== خوش‌آمدگویی ==================== */
         .user-greeting {
             display: flex;
             align-items: center;
@@ -432,7 +451,7 @@
         }
         .user-greeting strong { color: var(--text-primary); font-weight: 700; }
 
-        /* Cards */
+        /* ==================== کارت‌ها ==================== */
         .cards-grid {
             display: grid;
             grid-template-columns: 1fr 1fr;
@@ -537,7 +556,7 @@
             background: linear-gradient(90deg,
                 var(--accent),
                 var(--accent-bright),
-                #dc2626,
+                #0ea5e9,
                 var(--accent-bright),
                 var(--accent),
                 var(--accent-bright),
@@ -594,7 +613,7 @@
             font-weight: 700;
         }
 
-        /* Guide */
+        /* ==================== راهنما ==================== */
         .guide-text {
             font-size: 12px;
             line-height: 2;
@@ -623,7 +642,7 @@
             justify-content: center;
             gap: 8px;
             padding: 10px 20px;
-            background: linear-gradient(135deg, #0088cc, #00a8e8);
+            background: linear-gradient(135deg, var(--accent), var(--accent-bright));
             color: #ffffff;
             border: none;
             border-radius: 10px;
@@ -639,7 +658,7 @@
         .support-inline-btn:hover { transform: translateY(-2px); }
         .support-inline-btn svg { width: 18px; height: 18px; }
 
-        /* App Links */
+        /* ==================== آیکون اپ‌ها ==================== */
         .app-links-grid {
             display: grid;
             grid-template-columns: repeat(4, 1fr);
@@ -678,7 +697,7 @@
         }
         .app-btn:hover svg { stroke: #ffffff; }
 
-        /* Footer */
+        /* ==================== فوتر ==================== */
         .footer {
             text-align: center;
             margin-top: 28px;
@@ -692,7 +711,7 @@
             font-weight: 900;
         }
 
-        /* Toast */
+        /* ==================== Toast ==================== */
         .app-toast {
             position: fixed;
             bottom: 30px;
@@ -718,6 +737,7 @@
             transform: translateX(-50%) translateY(0);
         }
 
+        /* ==================== انیمیشن ==================== */
         @keyframes fadeInUp {
             from { opacity: 0; transform: translateY(20px); }
             to { opacity: 1; transform: translateY(0); }
@@ -730,6 +750,7 @@
         .delay-5 { animation-delay: 0.4s; }
         .delay-6 { animation-delay: 0.48s; }
 
+        /* ==================== ریسپانسیو ==================== */
         @media (max-width: 600px) {
             .top-controls { top: 12px; left: 12px; }
             .ctrl-btn { padding: 8px 10px; font-size: 11px; }
@@ -747,7 +768,7 @@
 </head>
 <body>
 
-    <!-- Welcome Modal -->
+    <!-- ==================== مودال خوش‌آمدگویی ==================== -->
     <div class="modal-overlay" id="welcome-modal">
         <div class="modal-card">
             <div class="modal-icon">
@@ -772,7 +793,7 @@
         </div>
     </div>
 
-    <!-- App Modal -->
+    <!-- ==================== مودال اپ ==================== -->
     <div class="modal-overlay hidden" id="app-modal">
         <div class="modal-card">
             <div class="app-modal-icon" id="app-modal-icon"></div>
@@ -782,36 +803,37 @@
         </div>
     </div>
 
-    <!-- Top Controls -->
+    <!-- ==================== کنترل‌های بالا ==================== -->
     <div class="top-controls">
-        <button class="ctrl-btn" onclick="toggleLang()" title="Change Language">
-            <span id="lang-flag">🇮🇷</span>
+        <button class="ctrl-btn lang-btn" onclick="toggleLang()" title="تغییر زبان / Change Language">
+            <span class="flag-emoji" id="lang-flag">🇮🇷</span>
             <span id="lang-text">FA</span>
         </button>
-        <button class="ctrl-btn" onclick="toggleTheme()" title="Toggle Theme">
-            <span id="theme-icon">🌙</span>
+        <button class="ctrl-btn theme-btn" onclick="toggleTheme()" title="تغییر تم / Toggle Theme">
+            <span id="theme-icon">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/>
+                </svg>
+            </span>
         </button>
         <a class="ctrl-btn support-btn" href="https://t.me/vaslplus_support1" target="_blank" title="پشتیبانی / Support">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
-                <path d="M5 15V10a7 7 0 0 1 14 0v5"/>
-                <path d="M5 15a2 2 0 0 0 2 2h1a1 1 0 0 0 1-1v-3a1 1 0 0 0-1-1H5z"/>
-                <path d="M19 15a2 2 0 0 1-2 2h-1a1 1 0 0 1-1-1v-3a1 1 0 0 1 1-1h3z"/>
-                <circle cx="12" cy="12" r="3"/>
-                <path d="M14 13l2 1"/>
-                <circle cx="16.5" cy="14.5" r="1"/>
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M3 18v-6a9 9 0 0 1 18 0v6"/>
+                <path d="M21 19a2 2 0 0 1-2 2h-1a2 2 0 0 1-2-2v-3a2 2 0 0 1 2-2h3zM3 19a2 2 0 0 0 2 2h1a2 2 0 0 0 2-2v-3a2 2 0 0 0-2-2H3z"/>
+                <path d="M9 20h6"/>
             </svg>
         </a>
     </div>
 
     <div class="container">
 
-        <!-- Logo -->
+        <!-- ==================== لوگو ==================== -->
         <div class="logo-header animate delay-1">
             <div class="logo-ring">
                 <div class="logo-mark">
                     <svg viewBox="0 0 24 24" fill="none">
                         <path d="M4 4 L10 20 L14 20 L20 4 L16 4 L12 15 L8 4 Z" fill="url(#silverGrad)"/>
-                        <path class="logo-swoosh" d="M3 8 Q12 16 21 6" stroke-width="2" fill="none" stroke-linecap="round"/>
+                        <path d="M3 8 Q12 16 21 6" stroke="var(--accent-bright)" stroke-width="2" fill="none" stroke-linecap="round"/>
                         <defs>
                             <linearGradient id="silverGrad" x1="0%" y1="0%" x2="100%" y2="100%">
                                 <stop offset="0%" stop-color="#ffffff"/>
@@ -827,12 +849,12 @@
             <div class="brand-tagline">FAST <span>•</span> SECURE <span>•</span> GLOBAL</div>
         </div>
 
-        <!-- Greeting -->
+        <!-- ==================== خوش‌آمدگویی ==================== -->
         <div class="user-greeting animate delay-2">
             <span data-i18n="greeting">خوش آمدی،</span> <strong>__USER_NAME__</strong>
         </div>
 
-        <!-- Cards -->
+        <!-- ==================== کارت‌ها ==================== -->
         <div class="cards-grid">
 
             <!-- حجم مصرفی -->
@@ -901,9 +923,9 @@
 
                         <a class="support-inline-btn" href="https://t.me/vaslplus_support1" target="_blank">
                             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                                <path d="M5 15V10a7 7 0 0 1 14 0v5"/>
-                                <path d="M5 15a2 2 0 0 0 2 2h1a1 1 0 0 0 1-1v-3a1 1 0 0 0-1-1H5z"/>
-                                <path d="M19 15a2 2 0 0 1-2 2h-1a1 1 0 0 1-1-1v-3a1 1 0 0 1 1-1h3z"/>
+                                <path d="M3 18v-6a9 9 0 0 1 18 0v6"/>
+                                <path d="M21 19a2 2 0 0 1-2 2h-1a2 2 0 0 1-2-2v-3a2 2 0 0 1 2-2h3zM3 19a2 2 0 0 0 2 2h1a2 2 0 0 0 2-2v-3a2 2 0 0 0-2-2H3z"/>
+                                <path d="M9 20h6"/>
                             </svg>
                             <span data-i18n="support_btn_text">ارتباط با پشتیبانی</span>
                         </a>
@@ -956,17 +978,18 @@
 
         </div>
 
-        <!-- Footer -->
+        <!-- ==================== فوتر ==================== -->
         <div class="footer animate delay-6">
             <span class="brand-footer">وصل پلاس</span> | <span data-i18n="footer_tagline">اتصال امن و پایدار</span>
         </div>
 
     </div>
 
-    <!-- Toast -->
+    <!-- ==================== Toast ==================== -->
     <div class="app-toast" id="app-toast"></div>
 
     <script>
+        // ==================== داده‌ها ====================
         const DATA = {
             userName: "__USER_NAME__",
             userId: "__USER_ID__",
@@ -984,6 +1007,7 @@
                                 DATA.expiryDate === "2099-01-01" ||
                                 DATA.expiryDate === "Never Expire";
 
+        // ==================== ترجمه ====================
         const I18N = {
             fa: {
                 greeting: "خوش آمدی،",
@@ -1096,7 +1120,7 @@
 
         const $ = (id) => document.getElementById(id);
 
-        // ==================== Apps ====================
+        // ==================== اپلیکیشن‌ها ====================
         const APPS = {
             android: [
                 {
@@ -1105,7 +1129,7 @@
                     isCopy: false,
                     notInStore: true,
                     deepLink: (sub) => `v2rayng://install-sub?url=${encodeURIComponent(sub)}&name=__USER_NAME__`,
-                    desc_fa: "محبوب‌ترین و پرکاربردترین کلاینت V2Ray برای اندروید که از تمام پروتکل‌های مدرن مانند VMess، VLESS، Trojan و Shadowsocks پشتیبانی می‌کند. رابط کاربری ساده و روان آن، آن را به انتخاب اول کاربران اندروید تبدیل کرده است.",
+                    desc_fa: "محبوب‌ترین و پرکاربردترین کلاینت V2Ray برای اندروید که از تمام پروتکل‌های مدرن مانند VMess، VLESS، Trojan و Shadowsocks پشتیبانی می‌کند.",
                     guide_fa: "۱. اگر برنامه را نصب دارید، روی دکمه «اجرای برنامه» کلیک کنید.\n۲. اگر نصب ندارید، ابتدا روی دکمه «نصب برنامه» کلیک کرده و از سایت رسمی دانلود کنید.\n۳. پس از نصب، به پنل برگردید و دوباره روی دکمه «اجرای برنامه» کلیک کنید.\n۴. برنامه باز شده و اشتراک شما به صورت خودکار اضافه می‌شود.",
                     note_fa: "در صورت بروز مشکل، از دکمه پشتیبانی استفاده کنید.",
                     download_fa: "این برنامه در Google Play موجود نیست. لطفاً از سایت رسمی fa.v2rayng.org دانلود کنید.",
@@ -1135,12 +1159,12 @@
                     isCopy: false,
                     notInStore: true,
                     deepLink: (sub) => `sn://subscription?url=${encodeURIComponent(sub)}`,
-                    desc_fa: "کلاینت مدرن بر پایه Sing-box با پشتیبانی از تمام پروتکل‌های پیشرفته شامل VMess، VLESS، Trojan، Hysteria2، TUIC و WireGuard.",
-                    guide_fa: "۱. اگر برنامه را نصب دارید، روی دکمه «اجرای برنامه» کلیک کنید.\n۲. اگر نصب ندارید، ابتدا روی دکمه «نصب برنامه» کلیک کرده و از سایت رسمی دانلود کنید.\n۳. فایل APK را نصب کنید (اجازه نصب از منابع ناشناس را بدهید).\n۴. پس از نصب، به پنل برگردید و دوباره روی دکمه «اجرای برنامه» کلیک کنید.",
+                    desc_fa: "کلاینت مدرن بر پایه Sing-box با پشتیبانی از تمام پروتکل‌های پیشرفته شامل Hysteria2 و TUIC.",
+                    guide_fa: "۱. اگر برنامه را نصب دارید، روی دکمه «اجرای برنامه» کلیک کنید.\n۲. اگر نصب ندارید، ابتدا روی دکمه «نصب برنامه» کلیک کرده و از سایت رسمی دانلود کنید.\n۳. فایل APK را نصب کنید.\n۴. پس از نصب، به پنل برگردید و دوباره روی دکمه «اجرای برنامه» کلیک کنید.",
                     note_fa: "حتماً از سایت رسمی nekobox.pro دانلود کنید.",
                     download_fa: "این برنامه در Google Play موجود نیست. لطفاً از سایت رسمی nekobox.pro دانلود کنید.",
                     desc_en: "A modern client based on Sing-box with support for all advanced protocols.",
-                    guide_en: "1. If you have the app installed, click 'Open App'.\n2. If not, first click 'Install App' and download from official site.\n3. Install the APK file (allow installation from unknown sources).\n4. After installation, return to the panel and click 'Open App' again.",
+                    guide_en: "1. If you have the app installed, click 'Open App'.\n2. If not, first click 'Install App' and download from official site.\n3. Install the APK file.\n4. After installation, return to the panel and click 'Open App' again.",
                     note_en: "Make sure to download from the official site nekobox.pro.",
                     download_en: "This app is not available on Google Play. Please download from the official site nekobox.pro.",
                     icon: `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M8 12h8M12 8v8"/></svg>`
@@ -1180,7 +1204,7 @@
                     notInStore: false,
                     deepLink: null,
                     desc_fa: "کلاینت ساده و سریع برای اتصال به سرورهای V2Ray با رابط کاربری مینیمال.",
-                    guide_fa: "۱. روی دکمه «کپی لینک اشتراک» کلیک کنید تا لینک کپی شود.\n۲. اگر برنامه را نصب دارید، برنامه را باز کنید.\n۳. اگر نصب ندارید، ابتدا روی دکمه «نصب برنامه» کلیک کرده و نصب کنید.\n۴. پس از نصب، برنامه را باز کرده و از بخش Import، لینک کپی‌شده را Paste نمایید.",
+                    guide_fa: "۱. روی دکمه «کپی لینک اشتراک» کلیک کنید تا لینک کپی شود.\n۲. اگر برنامه را نصب دارید، برنامه را باز کنید.\n۳. اگر نصب ندارید، ابتدا روی دکمه «نصب برنامه» کلیک کرده و نصب کنید.\n۴. پس از نصب، برنامه را باز کرده و از بخش Import، لینک را Paste نمایید.",
                     note_fa: "این برنامه از بارگذاری خودکار اشتراک پشتیبانی نمی‌کند.",
                     desc_en: "A simple and fast client for connecting to V2Ray servers with minimal UI.",
                     guide_en: "1. Click 'Copy Subscription Link' to copy the link.\n2. If you have the app installed, open it.\n3. If not, first click 'Install App' and install.\n4. After installation, open the app and paste the copied link in the Import section.",
@@ -1194,7 +1218,7 @@
                     notInStore: false,
                     deepLink: null,
                     desc_fa: "کلاینت مدرن با پشتیبانی از پروتکل‌های پیشرفته و رابط کاربری زیبا.",
-                    guide_fa: "۱. روی دکمه «کپی لینک اشتراک» کلیک کنید تا لینک کپی شود.\n۲. اگر برنامه را نصب دارید، برنامه را باز کنید.\n۳. اگر نصب ندارید، ابتدا روی دکمه «نصب برنامه» کلیک کرده و نصب کنید.\n۴. پس از نصب، برنامه را باز کرده و از بخش Add Subscription، لینک کپی‌شده را Paste نمایید.",
+                    guide_fa: "۱. روی دکمه «کپی لینک اشتراک» کلیک کنید تا لینک کپی شود.\n۲. اگر برنامه را نصب دارید، برنامه را باز کنید.\n۳. اگر نصب ندارید، ابتدا روی دکمه «نصب برنامه» کلیک کرده و نصب کنید.\n۴. پس از نصب، برنامه را باز کرده و از بخش Add Subscription، لینک را Paste نمایید.",
                     note_fa: "این برنامه از بارگذاری خودکار اشتراک پشتیبانی نمی‌کند.",
                     desc_en: "A modern client with advanced protocol support and beautiful UI.",
                     guide_en: "1. Click 'Copy Subscription Link' to copy the link.\n2. If you have the app installed, open it.\n3. If not, first click 'Install App' and install.\n4. After installation, open the app and paste the copied link in the Add Subscription section.",
@@ -1237,10 +1261,10 @@
                     isCopy: false,
                     notInStore: false,
                     deepLink: (sub) => `v2box://install-sub?url=${encodeURIComponent(sub)}&name=__USER_NAME__`,
-                    desc_fa: "کلاینت چندپلتفرمی سبک و سریع با پشتیبانی از پروتکل‌های VMess، VLESS، Trojan و Shadowsocks.",
+                    desc_fa: "کلاینت چندپلتفرمی سبک و سریع با پشتیبانی از پروتکل‌های مختلف.",
                     guide_fa: "۱. اگر برنامه را نصب دارید، روی دکمه «اجرای برنامه» کلیک کنید.\n۲. اگر نصب ندارید، ابتدا روی دکمه «نصب برنامه» کلیک کرده و از App Store نصب کنید.\n۳. پس از نصب، به پنل برگردید و دوباره روی دکمه «اجرای برنامه» کلیک کنید.\n۴. اشتراک به صورت خودکار اضافه می‌شود.",
                     note_fa: "برای اتصال سریع‌تر، از سرورهای نزدیک‌تر استفاده کنید.",
-                    desc_en: "A lightweight multi-platform client supporting VMess, VLESS, Trojan and Shadowsocks.",
+                    desc_en: "A lightweight multi-platform client supporting various protocols.",
                     guide_en: "1. If you have the app installed, click 'Open App'.\n2. If not, first click 'Install App' and install from App Store.\n3. After installation, return to the panel and click 'Open App' again.\n4. Subscription will be added automatically.",
                     note_en: "For faster connection, use closer servers.",
                     icon: `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="4"/><path d="M9 8l6 8M9 16l6-8"/></svg>`
@@ -1265,10 +1289,10 @@
                     isCopy: false,
                     notInStore: false,
                     deepLink: (sub) => `hiddify://import/${sub}`,
-                    desc_fa: "کلاینت چندسکویی با رابط کاربری فوق‌العاده زیبا و مدرن که از Sing-box و V2Ray پشتیبانی می‌کند.",
+                    desc_fa: "کلاینت چندسکویی با رابط کاربری فوق‌العاده زیبا و مدرن.",
                     guide_fa: "۱. اگر برنامه را نصب دارید، روی دکمه «اجرای برنامه» کلیک کنید.\n۲. اگر نصب ندارید، ابتدا روی دکمه «نصب برنامه» کلیک کرده و از App Store نصب کنید.\n۳. پس از نصب، به پنل برگردید و دوباره روی دکمه «اجرای برنامه» کلیک کنید.\n۴. اشتراک به صورت خودکار اضافه می‌شود.",
                     note_fa: "Hiddify از پروتکل‌های پیشرفته پشتیبانی می‌کند.",
-                    desc_en: "A multi-platform client with beautiful modern UI supporting Sing-box and V2Ray.",
+                    desc_en: "A multi-platform client with beautiful modern UI.",
                     guide_en: "1. If you have the app installed, click 'Open App'.\n2. If not, first click 'Install App' and install from App Store.\n3. After installation, return to the panel and click 'Open App' again.\n4. Subscription will be added automatically.",
                     note_en: "Hiddify supports advanced protocols.",
                     icon: `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>`
@@ -1279,7 +1303,7 @@
                     isCopy: false,
                     notInStore: false,
                     deepLink: (sub) => `sing-box://import-remote-profile?url=${encodeURIComponent(sub)}`,
-                    desc_fa: "کلاینت رسمی پروژه Sing-box برای iOS با عملکرد بالا و پایداری عالی.",
+                    desc_fa: "کلاینت رسمی پروژه Sing-box برای iOS با عملکرد بالا.",
                     guide_fa: "۱. اگر برنامه را نصب دارید، روی دکمه «اجرای برنامه» کلیک کنید.\n۲. اگر نصب ندارید، ابتدا روی دکمه «نصب برنامه» کلیک کرده و از App Store نصب کنید.\n۳. پس از نصب، به پنل برگردید و دوباره روی دکمه «اجرای برنامه» کلیک کنید.\n۴. اشتراک به صورت خودکار اضافه می‌شود.",
                     note_fa: "برای بهترین عملکرد، آخرین نسخه را نصب کنید.",
                     desc_en: "The official Sing-box client for iOS with high performance.",
@@ -1327,11 +1351,11 @@
                     isCopy: false,
                     notInStore: true,
                     deepLink: null,
-                    desc_fa: "کلاینت چندسکویی با رابط کاربری فوق‌العاده زیبا و مدرن که از Sing-box و V2Ray پشتیبانی می‌کند.",
+                    desc_fa: "کلاینت چندسکویی با رابط کاربری فوق‌العاده زیبا و مدرن.",
                     guide_fa: "۱. اگر برنامه را نصب دارید، لینک اشتراک را کپی کنید و با Ctrl+V در برنامه اضافه کنید.\n۲. اگر نصب ندارید، ابتدا روی دکمه «نصب برنامه» کلیک کرده و از GitHub دانلود کنید.\n۳. پس از نصب، برنامه را باز کنید.\n۴. با استفاده از Ctrl+V لینک اشتراک را در برنامه اضافه کنید.",
                     note_fa: "Hiddify از پروتکل‌های پیشرفته پشتیبانی می‌کند.",
                     download_fa: "این برنامه در Microsoft Store موجود نیست. لطفاً از GitHub دانلود کنید.",
-                    desc_en: "A multi-platform client with beautiful modern UI supporting Sing-box and V2Ray.",
+                    desc_en: "A multi-platform client with beautiful modern UI.",
                     guide_en: "1. If you have the app installed, copy the subscription link and add it with Ctrl+V.\n2. If not, first click 'Install App' and download from GitHub.\n3. After installation, open the app.\n4. Add the subscription link in the app using Ctrl+V.",
                     note_en: "Hiddify supports advanced protocols.",
                     download_en: "This app is not available on Microsoft Store. Please download from GitHub.",
@@ -1372,6 +1396,7 @@
             ]
         };
 
+        // ==================== توابع کمکی ====================
         function formatNumber(num, maxDecimals = 2) {
             if (!isFinite(num) || num === 0) return "0";
             const rounded = Math.round(num * Math.pow(10, maxDecimals)) / Math.pow(10, maxDecimals);
@@ -1440,6 +1465,7 @@
             toastTimer = setTimeout(() => toast.classList.remove("show"), 3000);
         }
 
+        // ==================== مودال خوش‌آمد ====================
         function closeWelcomeModal() {
             const checkbox = $("dont-show-again");
             if (checkbox && checkbox.checked) {
@@ -1457,6 +1483,7 @@
             }
         }
 
+        // ==================== مودال اپ ====================
         function openAppModal(app) {
             const t = I18N[currentLang];
             const modal = $("app-modal");
@@ -1495,7 +1522,6 @@
 
             $("app-modal-desc").innerHTML = descHtml;
 
-            // ============ Buttons ============
             const actionsEl = $("app-modal-actions");
             let buttonsHtml = `
                 <a class="app-modal-btn btn-install" href="${app.store}" target="_blank">
@@ -1561,7 +1587,6 @@
 
             const subLink = "__SYNC_NORMAL__";
             const deepLink = app.deepLink(subLink);
-
             const startTime = Date.now();
 
             try {
@@ -1578,6 +1603,7 @@
             }, 2000);
         }
 
+        // ==================== رندر اپ‌ها ====================
         function renderApps() {
             const containers = {
                 android: $("android-apps"),
@@ -1603,6 +1629,7 @@
             });
         }
 
+        // ==================== زبان ====================
         function applyLang() {
             const t = I18N[currentLang];
             document.documentElement.lang = currentLang;
@@ -1624,9 +1651,29 @@
             applyLang();
         }
 
+        // ==================== تم ====================
         function applyTheme() {
             document.documentElement.classList.toggle("light", currentTheme === "light");
-            $("theme-icon").textContent = currentTheme === "dark" ? "🌙" : "☀️";
+            const iconEl = $("theme-icon");
+            if (currentTheme === "dark") {
+                // حالت شب → آیکون خورشید (برای رفتن به روز)
+                iconEl.innerHTML = `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <circle cx="12" cy="12" r="5"/>
+                    <line x1="12" y1="1" x2="12" y2="3"/>
+                    <line x1="12" y1="21" x2="12" y2="23"/>
+                    <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/>
+                    <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/>
+                    <line x1="1" y1="12" x2="3" y2="12"/>
+                    <line x1="21" y1="12" x2="23" y2="12"/>
+                    <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/>
+                    <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/>
+                </svg>`;
+            } else {
+                // حالت روز → آیکون ماه (برای رفتن به شب)
+                iconEl.innerHTML = `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/>
+                </svg>`;
+            }
         }
 
         function toggleTheme() {
@@ -1635,11 +1682,13 @@
             applyTheme();
         }
 
+        // ==================== رندر ====================
         function render() {
             const t = I18N[currentLang];
             const usageContainer = $("usage-value-container");
             const daysContainer = $("days-value-container");
 
+            // حجم مصرفی
             if (isUnlimitedGB) {
                 const used = parseFloat(DATA.totalGb) || 0;
                 usageContainer.innerHTML = `
@@ -1676,6 +1725,7 @@
                 }, 300);
             }
 
+            // روزهای باقی‌مانده
             if (isUnlimitedDays) {
                 daysContainer.innerHTML = `
                     <span class="num" style="font-size: 42px; color: var(--accent-bright); line-height: 0.8;">∞</span>
@@ -1706,6 +1756,7 @@
             }
         }
 
+        // ==================== راه‌اندازی ====================
         (function init() {
             applyTheme();
             applyLang();
